@@ -1,0 +1,95 @@
+Task Progress Log
+=================
+
+=== SESSION S0001 START === 2026-03-17T18:00:00Z
+Focus: Copy visual components from pompy.pbac.pl and adapt for AC (klimatyzacja) site
+First session for pbac_main project
+
+---
+
+S0001. Task #1 brands-section:
+- Copied exact StripedPattern, GlowingEffect, BrandCard grid from source
+- Replaced 4 heat pump brands with 4 AC brands: Samsung Wind-Free, LG ArtCool, Toshiba Daiseikai/Shorai, Gree
+- Each brand has full description, features list, highlight badge, image paths
+- Changed section subtitle from heat pumps to klimatyzatory
+
+S0001. Task #2 brand-card:
+- Already identical to source — no changes needed
+- Verified it works with both slug-based links and the new AC brand data
+
+S0001. Task #3 benefits-section:
+- Changed from 4 heat pump benefits to 6 AC benefits
+- New benefits: Chlodzenie, Grzanie zima, Cisza, Oszczednosc, Filtracja, Smart sterowanie
+- Changed grid from lg:grid-cols-4 to lg:grid-cols-3 for 6 items
+- Added Snowflake and Smartphone icons from lucide-react
+- Changed heading from "Dlaczego pompa ciepla?" to "Dlaczego klimatyzacja?"
+
+S0001. Task #4 calculator-section:
+- Kept exact same visual structure with GlowingEffect cards, gradient results
+- Changed from heat pump heating costs to AC cooling+heating costs
+- New comparison methods: Wentylatory+grzejniki, Klimatyzator przenosny, Gaz+brak chlodzenia, Ogrzewanie elektryczne
+- AC cost per m2 = 22 PLN (vs 18 for heat pump) reflecting combined cooling+heating
+- Default area changed from 120m2 to 60m2 (more typical for AC)
+- Updated all labels from "pompa ciepla" to "klimatyzacja"
+- Also updated cost-race-chart.tsx to match AC context
+
+S0001. Task #5 comparison-table:
+- Changed from brand comparison to AC type comparison
+- New columns: Split (scienny), Multisplit, Kasetonowy, Przenosny
+- New rows: Zastosowanie, Wydajnosc, Montaz, Poziom halasu, Grzanie, Klasa energ., Cena orientac.
+- Changed heading from "Porownanie marek" to "Porownanie typow klimatyzacji"
+
+S0001. Task #6 how-it-works:
+- Kept exact same visual structure with numbered steps, connecting line
+- Changed step descriptions for AC installation process
+- Step 2: "Dobor klimatyzatora" instead of "Dobor urzadzenia"
+- Step 3: Added "Certyfikowani instalatorzy" to description
+- Step 4: Added "przeglądy, czyszczenie, naprawy" specifics
+
+S0001. Task #7 hero-section:
+- Replaced simplified left-aligned hero with centered pompy-style hero
+- Kept DarkVeil, gradient overlay, AuroraText, animated stats
+- Changed headline to "Klimatyzacja i pompy ciepla z profesjonalnym montazem"
+- Changed stats: 10+ marek, 5 lat gwarancji, 500+ montazy, 24h wycena
+- Changed CTA buttons: "Zamow darmowa wycene" + "Zobacz produkty"
+- Added animated entrance effects matching source exactly
+
+S0001. Task #8 quote-form:
+- Copied exact multi-step form with StepIndicator, GlowingEffect, DotPattern
+- Added AC-specific service type selector as Step 1 (montaz-klima, serwis-klima, wynajem, pompy-ciepla, multisplit)
+- Step 1: Service type + building type
+- Step 2: Area + number of rooms (instead of floors)
+- Step 3: Brand preference (expanded to Samsung, LG, Toshiba, Gree, Daikin, Haier, Mitsubishi, Pomoz mi wybrac)
+- Step 4: Contact details (same as source)
+- Changed endpoint from /api/quote to Formspree (https://formspree.io/f/FORM_ID)
+- Added privacy policy link
+
+Additional: cost-race-chart.tsx
+- Updated comparison rates for AC context
+- Changed from heat pump vs fuels to AC vs traditional methods
+- Default area 60m2, AC cost 22 PLN/m2
+
+---
+
+S0001. Build verification:
+- npm run build: PASSED
+- 163 pages generated successfully
+- 0 TypeScript errors
+- All components compile and render correctly
+
+---
+
+=== SESSION S0001 HANDOFF === 2026-03-17T18:15:00Z
+Status: completed
+Current state: All 8 components adapted, build passes
+Files modified:
+  - /Users/alex/projects/pbac_main/components/hero-section.tsx (replaced simplified hero with pompy-style centered hero)
+  - /Users/alex/projects/pbac_main/components/benefits-section.tsx (6 AC benefits instead of 4 heat pump benefits)
+  - /Users/alex/projects/pbac_main/components/brands-section.tsx (4 AC brand cards with full descriptions)
+  - /Users/alex/projects/pbac_main/components/calculator-section.tsx (AC cooling/heating cost calculator)
+  - /Users/alex/projects/pbac_main/components/comparison-table.tsx (AC type comparison: split/multisplit/kasetonowy/przenosny)
+  - /Users/alex/projects/pbac_main/components/how-it-works.tsx (AC installation process steps)
+  - /Users/alex/projects/pbac_main/components/quote-form.tsx (multi-step form with AC service selector, Formspree)
+  - /Users/alex/projects/pbac_main/components/cost-race-chart.tsx (AC savings comparison chart)
+Note: brand-card.tsx was already identical to source, no changes needed
+Note: FORM_ID in quote-form.tsx needs to be replaced with actual Formspree form ID

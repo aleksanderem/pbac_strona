@@ -4,13 +4,17 @@ import JsonLd from "@/components/json-ld";
 import Navbar from "@/components/navbar";
 import HeroSection from "@/components/hero-section";
 import ServicesSection from "@/components/services-section";
+import BenefitsSection from "@/components/benefits-section";
+import BrandsSection from "@/components/brands-section";
 import { testimonials } from "@/lib/testimonials";
 import { homepageFaqs } from "@/components/faq-section";
 
-const BrandsSection = dynamic(() => import("@/components/brands-section"));
+const CalculatorSection = dynamic(() => import("@/components/calculator-section"));
+const ComparisonTable = dynamic(() => import("@/components/comparison-table"));
+const ChartsSection = dynamic(() => import("@/components/charts-section"));
 const WhyPbacSection = dynamic(() => import("@/components/why-pbac-section"));
 const FeaturedProductsSection = dynamic(() => import("@/components/featured-products-section"));
-const HowWeWorkSection = dynamic(() => import("@/components/how-we-work-section"));
+const HowItWorks = dynamic(() => import("@/components/how-it-works"));
 const LocationsSection = dynamic(() => import("@/components/locations-section"));
 const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"));
 const LatestBlogSection = dynamic(() => import("@/components/latest-blog-section"));
@@ -226,10 +230,14 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <ServicesSection />
+      <BenefitsSection />
       <BrandsSection />
-      <WhyPbacSection />
+      <CalculatorSection />
+      <ChartsSection />
       <FeaturedProductsSection />
-      <HowWeWorkSection />
+      <HowItWorks />
+      <ComparisonTable />
+      <WhyPbacSection />
       <LocationsSection />
       <TestimonialsSection />
       <LatestBlogSection />

@@ -127,19 +127,19 @@ export const greeProducts: Product[] = [
     powerRange: "2,5 – 6,2 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "/images/products/gree-pular-matt.png",
+      "/images/products/gree-pular-matt-2.png",
     imageAlt: "Klimatyzator Gree Pular Matt",
     gallery: [
       {
-        src: "/images/products/gree-pular-matt.png",
+        src: "/images/products/gree-pular-matt-2-gallery-0.png",
         alt: "Gree Pular Matt - widok z przodu",
       },
       {
-        src: "/images/products/gree-pular-matt-gallery-1.jpg",
+        src: "/images/products/gree-pular-matt-2-gallery-1.jpg",
         alt: "Gree Pular Matt - jednostka zewnętrzna",
       },
       {
-        src: "/images/products/gree-pular-matt-gallery-2.jpg",
+        src: "/images/products/gree-pular-matt-2-gallery-2.jpg",
         alt: "Gree Pular Matt - pilot zdalnego sterowania",
       },
     ],
