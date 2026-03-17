@@ -78,7 +78,7 @@ function ServiceCard({
         <div className="mb-4 size-12 rounded-xl gradient-icon flex items-center justify-center">
           <Icon className="size-6 text-white" />
         </div>
-        <h4 className="font-montserrat text-lg font-bold mb-2">{title}</h4>
+        <h3 className="font-montserrat text-lg font-bold mb-2">{title}</h3>
         <p className="text-white/60 text-sm leading-relaxed">{description}</p>
       </div>
     </FadeIn>

@@ -69,7 +69,7 @@ export default function DetailedInstallation() {
 
           <div className="flex flex-col gap-8">
             {steps.map((step, index) => (
-              <FadeIn key={step.number} delay={index * 0.08}>
+              <FadeIn key={step.number} delay={index * 0.1}>
                 <div className="relative flex items-start gap-5 sm:gap-6">
                   {/* Number circle */}
                   <div className="relative z-10 flex-shrink-0 size-12 sm:size-16 rounded-full gradient-icon flex items-center justify-center shadow-lg">
@@ -80,7 +80,7 @@ export default function DetailedInstallation() {
 
                   {/* Content */}
                   <div className="pt-2 sm:pt-3.5 flex-1">
-                    <h3 className="font-montserrat text-base sm:text-lg font-semibold text-white/90 leading-snug">
+                    <h3 className="font-montserrat text-lg sm:text-xl font-semibold text-white/90 leading-snug">
                       {step.title}
                     </h3>
                     {step.substeps && (

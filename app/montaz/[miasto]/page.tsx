@@ -3,7 +3,11 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getLocationBySlug, getLocationsByService, getAllLocations } from "@/lib/locations";
 import { getAllBrands } from "@/lib/brands";
+import dynamic from "next/dynamic";
 import HeroBackground from "@/components/hero-background";
+
+const PricingTable = dynamic(() => import("@/components/pricing-table"));
+const DetailedInstallation = dynamic(() => import("@/components/detailed-installation"));
 import { testimonials } from "@/lib/testimonials";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -519,6 +523,9 @@ export default async function MontazPage({ params }: Props) {
           </FadeIn>
         </div>
       </section>
+
+      <DetailedInstallation />
+      <PricingTable />
 
       <Footer />
     </main>

@@ -64,8 +64,8 @@ export default function PricingTable() {
         </FadeIn>
 
         <FadeIn delay={0.15}>
-          <div className="rounded-2xl border border-white/10 overflow-hidden">
-            <table className="w-full">
+          <div className="rounded-2xl border border-white/10 overflow-hidden overflow-x-auto">
+            <table className="w-full min-w-[500px]">
               <thead>
                 <tr className="bg-white/10 backdrop-blur-md">
                   <th className="font-montserrat text-left text-sm font-bold px-6 py-4 text-white/90">
@@ -79,7 +79,7 @@ export default function PricingTable() {
               <tbody>
                 {pricingData.map((row, index) => (
                   <tr
-                    key={index}
+                    key={row.service}
                     className={`border-t border-white/5 transition-colors hover:bg-white/5 ${
                       index % 2 === 0 ? "bg-white/[0.03]" : "bg-transparent"
                     }`}

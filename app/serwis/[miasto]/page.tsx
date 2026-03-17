@@ -4,7 +4,10 @@ import Link from "next/link";
 import { getLocationBySlug, getLocationsByService } from "@/lib/locations";
 import { getAllBrands } from "@/lib/brands";
 import { testimonials } from "@/lib/testimonials";
+import dynamic from "next/dynamic";
 import HeroBackground from "@/components/hero-background";
+
+const PricingTable = dynamic(() => import("@/components/pricing-table"));
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Breadcrumb, { buildBreadcrumbSchema } from "@/components/breadcrumb";
@@ -1009,6 +1012,8 @@ export default async function SerwisPage({ params }: Props) {
           </FadeIn>
         </div>
       </section>
+
+      <PricingTable />
 
       <Footer />
     </main>
