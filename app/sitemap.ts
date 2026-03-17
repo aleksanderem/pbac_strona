@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllLocations, getLocationsByService } from "@/lib/locations";
+import { getAllProducts, getProductBrands } from "@/lib/products";
+import { getAllArticles } from "@/lib/articles";
 
 export const dynamic = "force-static";
 
@@ -24,9 +26,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
-  // TODO: Add product and article URLs when lib/products.ts and lib/articles.ts are populated
-  // import { getAllProducts } from "@/lib/products";
-  // import { getAllArticleSlugs, getArticleBySlug } from "@/lib/articles";
+  const brandPages: MetadataRoute.Sitemap = getProductBrands().map((brand) => ({
+    url: `${baseUrl}/produkty/${brand}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  const productPages: MetadataRoute.Sitemap = getAllProducts().map((p) => ({
+    url: `${baseUrl}/produkty/${p.brand}/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  const articlePages: MetadataRoute.Sitemap = getAllArticles().map((a) => ({
+    url: `${baseUrl}/blog/${a.slug}`,
+    lastModified: a.date ? new Date(a.date) : new Date(),
+    changeFrequency: "monthly",
+    priority: 0.5,
+  }));
 
   return [
     {
@@ -91,5 +110,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...montazLocations,
     ...serwisLocations,
+    ...brandPages,
+    ...productPages,
+    ...articlePages,
   ];
 }
