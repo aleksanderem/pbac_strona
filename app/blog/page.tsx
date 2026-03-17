@@ -7,7 +7,7 @@ import FadeIn from "@/components/ui/fade-in";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { StripedPattern } from "@/components/ui/striped-pattern";
 import HeroBackground from "@/components/hero-background";
-import ArticleCard from "@/components/article-card";
+import BlogFilter from "@/components/blog-filter";
 import { getAllArticles, getCategories } from "@/lib/articles";
 
 export const metadata: Metadata = {
@@ -70,33 +70,7 @@ export default function BlogPage() {
               </div>
             </FadeIn>
           ) : (
-            <>
-              {categories.length > 1 && (
-                <FadeIn>
-                  <div className="flex flex-wrap gap-2 mb-12">
-                    <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white font-bold">
-                      Wszystkie ({articles.length})
-                    </span>
-                    {categories.map((cat) => (
-                      <span
-                        key={cat}
-                        className="rounded-full border border-white/10 px-4 py-2 text-sm text-white/60 hover:text-white hover:border-white/30 transition-colors cursor-pointer"
-                      >
-                        {cat}
-                      </span>
-                    ))}
-                  </div>
-                </FadeIn>
-              )}
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {articles.map((article, idx) => (
-                  <FadeIn key={article.slug} delay={Math.min(idx * 0.05, 0.5)}>
-                    <ArticleCard article={article} />
-                  </FadeIn>
-                ))}
-              </div>
-            </>
+            <BlogFilter articles={articles} categories={categories} />
           )}
         </div>
       </section>

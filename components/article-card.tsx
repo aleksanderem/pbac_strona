@@ -16,7 +16,7 @@ interface ArticleCardProps {
 }
 
 export default function ArticleCard({ article }: ArticleCardProps) {
-  const hasImage = !!article.coverImage;
+  const hasImage = !!article.coverImage && !article.coverImage.startsWith("/images/blog/");
   const gradient = categoryGradients[article.category] || defaultGradient;
 
   return (
