@@ -75,7 +75,7 @@ export default async function BrandPage({ params }: Props) {
               Klimatyzatory <AuroraText className="font-montserrat">{brand.name}</AuroraText>
             </h1>
             <p className="text-lg text-white/70 mb-4">
-              {brandProducts.length} {brandProducts.length === 1 ? "model" : brandProducts.length < 5 ? "modele" : "modeli"} w ofercie · {brand.country}
+              {brandProducts.length} {brandProducts.length === 1 ? "model" : brandProducts.length < 5 ? "modele" : "modeli"} w ofercie
             </p>
             <p className="text-white/60 leading-relaxed max-w-3xl">
               {brand.description}

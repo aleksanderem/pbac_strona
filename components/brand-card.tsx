@@ -17,7 +17,6 @@ interface BrandCardProps {
 
 export default function BrandCard({
   name,
-  origin,
   series,
   description,
   features,
@@ -48,7 +47,6 @@ export default function BrandCard({
         <div className="px-6 pb-4 flex items-start justify-between gap-3">
           <div>
             <h3 className="font-montserrat text-xl font-bold text-white">{name}</h3>
-            <p className="text-white/50 text-sm">{origin}</p>
           </div>
           <span className="text-xs gradient-button text-white px-3 py-1 rounded-full shrink-0 mt-1">
             {highlight}

@@ -13,6 +13,8 @@ export default function ProductCard({ product }: ProductCardProps) {
     .filter((p): p is number => p !== undefined)
     .sort((a, b) => a - b)[0];
 
+  const brandName = product.brand.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
   return (
     <Link
       href={`/produkty/${product.brand}/${product.slug}`}
@@ -20,13 +22,19 @@ export default function ProductCard({ product }: ProductCardProps) {
     >
       <GlowingEffect spread={40} glow proximity={64} />
       <div className="relative overflow-hidden rounded-xl bg-white/10 backdrop-blur-md">
+        {/* Brand name above image */}
+        <div className="px-4 pt-3 pb-1">
+          <span className="text-xs font-medium text-white/40 uppercase tracking-wider">
+            {brandName}
+          </span>
+        </div>
         <div className="relative aspect-[4/3] overflow-hidden bg-white/5">
           {product.imageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={product.imageUrl}
               alt={product.imageAlt}
-              className="absolute inset-0 w-full h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+              className="absolute inset-0 w-full h-full object-contain p-4"
               loading="lazy"
             />
           ) : (
@@ -35,14 +43,11 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
           )}
         </div>
-        <div className="p-5">
-          <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 mb-3">
-            {product.origin}
-          </span>
-          <h3 className="font-montserrat text-lg font-bold leading-tight line-clamp-2 mb-1 group-hover:text-white transition-colors">
+        <div className="p-4 pt-2">
+          <h3 className="font-montserrat text-lg font-bold leading-tight line-clamp-2 mb-1">
             {product.name}
           </h3>
-          <p className="text-sm text-white/60 line-clamp-2 mb-3">
+          <p className="text-sm text-white/60 line-clamp-2 mb-2">
             {product.tagline}
           </p>
           <div className="flex items-center justify-between">

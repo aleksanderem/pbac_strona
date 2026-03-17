@@ -125,7 +125,7 @@ export default async function ProductPage({ params }: Props) {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pb-20">
           <FadeIn delay={0.1}>
             <span className="inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs text-white/70 mb-4">
-              {product.origin}
+              {brand?.name || marka}
             </span>
             <h1 className="font-montserrat text-4xl md:text-5xl lg:text-6xl font-bold mb-3">
               {product.name}
