@@ -118,6 +118,7 @@ export default async function ProductPage({ params }: Props) {
           <ProductHero
             imageUrl={product.imageUrl}
             imageAlt={product.imageAlt}
+            brandName={brand?.name || marka}
           />
         </FadeIn>
 

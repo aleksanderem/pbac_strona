@@ -8,12 +8,12 @@ const MagicRings = dynamic(() => import("@/components/MagicRings"), { ssr: false
 interface ProductHeroProps {
   imageUrl: string;
   imageAlt: string;
-  name?: string;
+  brandName?: string;
 }
 
-export default function ProductHero({ imageUrl, imageAlt }: ProductHeroProps) {
+export default function ProductHero({ imageUrl, imageAlt, brandName }: ProductHeroProps) {
   return (
-    <div className="relative w-full flex items-center justify-center" style={{ height: "500px" }}>
+    <div className="relative w-full flex flex-col items-center justify-center" style={{ height: "500px" }}>
       {/* MagicRings — exact reactbits.dev params */}
       <div style={{ position: "absolute", inset: 0 }}>
         <MagicRings
@@ -35,11 +35,20 @@ export default function ProductHero({ imageUrl, imageAlt }: ProductHeroProps) {
           fadeOut={0.5}
           followMouse={false}
           mouseInfluence={0.2}
-          hoverScale={1.2}
+          hoverScale={1}
           parallax={0.05}
           clickBurst={false}
         />
       </div>
+
+      {/* Brand name above product */}
+      {brandName && (
+        <div className="relative z-10 mb-2">
+          <span className="text-xs font-medium text-white/50 uppercase tracking-widest">
+            {brandName}
+          </span>
+        </div>
+      )}
 
       {/* Product image centered */}
       <div className="relative z-10">
@@ -47,7 +56,7 @@ export default function ProductHero({ imageUrl, imageAlt }: ProductHeroProps) {
         <img
           src={imageUrl}
           alt={imageAlt}
-          className="max-h-[460px] max-w-[600px] object-contain drop-shadow-[0_12px_60px_rgba(179,24,83,0.3)]"
+          className="max-h-[400px] max-w-[600px] object-contain drop-shadow-[0_12px_60px_rgba(179,24,83,0.3)]"
         />
       </div>
     </div>
