@@ -1,6 +1,7 @@
 import type { Product, Brand } from "@/types";
 import { scrapedProducts } from "./products-scraped";
 import { greeProducts } from "./products-gree";
+import { haierProducts } from "./products-haier";
 // import { lgToshibaProducts } from "./products-lg-toshiba";
 
 // Samsung products inline (5), rest imported from sub-files
@@ -211,6 +212,7 @@ export const products: Product[] = [
   ...samsungProducts,
   ...scrapedProducts,
   ...greeProducts,
+  ...haierProducts,
   // ...lgToshibaProducts,
 ];
 
@@ -234,7 +236,7 @@ export function getAllProductSlugs(): string[] {
 export function getFeaturedProducts(): Product[] {
   const featured = [
     "samsung-wind-free-elite",
-    "samsung-cebu",
+    "gree-clivia-silver",
     "aux-halo-deluxe",
     "kaisai-ice-black",
     "daikin-stylish-white",
