@@ -139,8 +139,8 @@ export default async function ProductPage({ params }: Props) {
 
           {/* Specs grid */}
           <FadeIn delay={0.2}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
-              {product.specs.map((spec) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
+              {product.specs.filter((spec) => spec.label !== "Gwarancja").map((spec) => (
                 <div key={spec.label} className="relative rounded-2xl border border-white/15 p-1">
                   <GlowingEffect spread={40} glow proximity={64} />
                   <div className="relative rounded-xl bg-white/10 backdrop-blur-sm p-5 text-center">
