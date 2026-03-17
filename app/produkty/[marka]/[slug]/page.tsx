@@ -1,0 +1,269 @@
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
+import { getAllProducts, getProductBySlug, getLowestPrice } from "@/lib/products";
+import { getBrandBySlug } from "@/lib/brands";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+import Breadcrumb, { buildBreadcrumbSchema } from "@/components/breadcrumb";
+import JsonLd from "@/components/json-ld";
+import FadeIn from "@/components/ui/fade-in";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { GridPattern } from "@/components/ui/grid-pattern";
+import { Phone, CheckCircle, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+
+interface Props {
+  params: Promise<{ marka: string; slug: string }>;
+}
+
+export async function generateStaticParams() {
+  return getAllProducts().map((p) => ({ marka: p.brand, slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+  if (!product) return {};
+  return {
+    title: `${product.name} — Klimatyzator | PBAC Warszawa`,
+    description: `${product.tagline}. ${product.powerRange}, czynnik ${product.refrigerant}. Montaż Warszawa. Cena od ${getLowestPrice(product)?.toLocaleString("pl-PL")} zł.`,
+    alternates: { canonical: `/produkty/${product.brand}/${slug}` },
+    openGraph: {
+      title: `${product.name} — Klimatyzator | PBAC`,
+      description: product.tagline,
+      type: "website",
+      siteName: "PBAC",
+    },
+  };
+}
+
+export default async function ProductPage({ params }: Props) {
+  const { slug, marka } = await params;
+  const product = getProductBySlug(slug);
+  if (!product || product.brand !== marka) notFound();
+
+  const brand = getBrandBySlug(marka);
+  const lowestPrice = getLowestPrice(product);
+
+  const breadcrumbItems = [
+    { name: "Strona główna", href: "/" },
+    { name: "Produkty", href: "/produkty" },
+    { name: brand?.name || marka, href: `/produkty/${marka}` },
+    { name: product.name },
+  ];
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `https://pbac.pl/produkty/${marka}/${slug}`,
+    name: product.name,
+    description: product.description,
+    image: product.imageUrl,
+    brand: { "@type": "Brand", name: brand?.name || marka },
+    category: "Klimatyzatory",
+    url: `https://pbac.pl/produkty/${marka}/${slug}`,
+    additionalProperty: product.specs.map((s) => ({
+      "@type": "PropertyValue",
+      name: s.label,
+      value: s.value,
+    })),
+    offers: lowestPrice
+      ? {
+          "@type": "AggregateOffer",
+          priceCurrency: "PLN",
+          lowPrice: lowestPrice,
+          highPrice: Math.max(...product.models.map((m) => m.price || 0)),
+          offerCount: product.models.length,
+          availability: "https://schema.org/InStock",
+          seller: { "@type": "Organization", "@id": "https://pbac.pl/#organization" },
+        }
+      : undefined,
+  };
+
+  const faqSchema = product.faq && product.faq.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: product.faq.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }
+    : null;
+
+  return (
+    <main className="min-h-screen bg-black text-white">
+      <JsonLd data={[productSchema, buildBreadcrumbSchema(breadcrumbItems), ...(faqSchema ? [faqSchema] : [])]} />
+      <Navbar />
+
+      <section className="relative pt-28 pb-20 px-4 overflow-hidden">
+        <GridPattern className="absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]" width={40} height={40} />
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <Breadcrumb items={breadcrumbItems} />
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-8">
+            {/* Image */}
+            <FadeIn>
+              <div className="relative aspect-square rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                <Image
+                  src={product.imageUrl}
+                  alt={product.imageAlt}
+                  fill
+                  className="object-contain p-8"
+                  priority
+                />
+              </div>
+            </FadeIn>
+
+            {/* Info */}
+            <div>
+              <FadeIn delay={0.1}>
+                <span className="inline-block rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 mb-3">
+                  {product.origin}
+                </span>
+                <h1 className="font-montserrat text-3xl md:text-4xl font-bold mb-2">
+                  {product.name}
+                </h1>
+                <p className="text-lg text-white/60 mb-6">{product.tagline}</p>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
+                  {product.specs.map((spec) => (
+                    <div key={spec.label} className="rounded-lg border border-white/10 bg-white/5 p-3">
+                      <div className="text-xs text-white/40 mb-1">{spec.label}</div>
+                      <div className="text-sm font-bold">{spec.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+
+              {/* Variants */}
+              <FadeIn delay={0.3}>
+                <h2 className="font-montserrat text-xl font-bold mb-4">Dostępne warianty</h2>
+                <div className="space-y-3 mb-8">
+                  {product.models.map((model) => (
+                    <div key={model.name} className="flex items-center justify-between rounded-lg border border-white/10 bg-white/5 p-4">
+                      <div>
+                        <div className="font-bold text-sm">{model.power}</div>
+                        {model.area && <div className="text-xs text-white/40">{model.area}</div>}
+                      </div>
+                      <div className="text-right">
+                        {model.price ? (
+                          <div className="font-bold text-lg">{model.price.toLocaleString("pl-PL")} zł</div>
+                        ) : (
+                          <div className="text-sm text-white/50">Zapytaj o cenę</div>
+                        )}
+                        <div className="text-xs text-white/40">{model.energyClass}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+
+              {/* CTA */}
+              <FadeIn delay={0.4}>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="tel:+48503151802"
+                    className="inline-flex items-center justify-center gap-2 gradient-button text-white rounded-full px-8 py-4 font-bold text-sm transition-opacity hover:opacity-90"
+                  >
+                    <Phone className="w-4 h-4" />
+                    Zapytaj o ten produkt
+                  </a>
+                  <a
+                    href="/#wycena"
+                    className="inline-flex items-center justify-center gap-2 border border-white/20 text-white rounded-full px-8 py-4 font-bold text-sm hover:bg-white/10 transition-colors"
+                  >
+                    Bezpłatna wycena
+                  </a>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+
+          {/* Description */}
+          <div className="mt-16">
+            <FadeIn>
+              <h2 className="font-montserrat text-2xl font-bold mb-6">Opis</h2>
+              <div className="space-y-4 text-white/70 leading-relaxed max-w-3xl">
+                {product.descriptionLong.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* Features */}
+          <div className="mt-12">
+            <FadeIn>
+              <h2 className="font-montserrat text-2xl font-bold mb-6">Cechy i funkcje</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {product.features.map((f) => (
+                  <div key={f} className="flex items-start gap-3 text-white/70 text-sm">
+                    <CheckCircle className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
+                    {f}
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* Advantages */}
+          {product.advantages.length > 0 && (
+            <div className="mt-12">
+              <FadeIn>
+                <h2 className="font-montserrat text-2xl font-bold mb-6">Kluczowe zalety</h2>
+              </FadeIn>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {product.advantages.map((adv, idx) => (
+                  <FadeIn key={adv.title} delay={idx * 0.1}>
+                    <div className="relative rounded-2xl border border-white/10 p-2">
+                      <GlowingEffect spread={40} glow proximity={64} />
+                      <div className="relative rounded-xl bg-white/10 backdrop-blur-md p-6">
+                        <h3 className="font-montserrat font-bold mb-2">{adv.title}</h3>
+                        <p className="text-sm text-white/60">{adv.desc}</p>
+                      </div>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Warranty */}
+          <FadeIn delay={0.2}>
+            <div className="mt-12 flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-6">
+              <ShieldCheck className="w-8 h-8 text-green-400 shrink-0" />
+              <div>
+                <div className="font-montserrat font-bold">Gwarancja</div>
+                <div className="text-sm text-white/60">{product.warranty}</div>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* FAQ */}
+          {product.faq && product.faq.length > 0 && (
+            <div className="mt-12">
+              <FadeIn>
+                <h2 className="font-montserrat text-2xl font-bold mb-6">Najczęstsze pytania</h2>
+              </FadeIn>
+              <div className="space-y-4">
+                {product.faq.map((f, idx) => (
+                  <FadeIn key={idx} delay={idx * 0.1}>
+                    <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+                      <h3 className="font-montserrat font-bold mb-2">{f.question}</h3>
+                      <p className="text-sm text-white/60 leading-relaxed">{f.answer}</p>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+      <Footer />
+    </main>
+  );
+}
