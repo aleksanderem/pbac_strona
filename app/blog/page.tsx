@@ -4,6 +4,9 @@ import Footer from "@/components/footer";
 import Breadcrumb, { buildBreadcrumbSchema } from "@/components/breadcrumb";
 import JsonLd from "@/components/json-ld";
 import FadeIn from "@/components/ui/fade-in";
+import { AuroraText } from "@/components/ui/aurora-text";
+import { StripedPattern } from "@/components/ui/striped-pattern";
+import HeroBackground from "@/components/hero-background";
 import ArticleCard from "@/components/article-card";
 import { getAllArticles, getCategories } from "@/lib/articles";
 
@@ -36,21 +39,32 @@ export default function BlogPage() {
       <JsonLd data={[blogSchema, buildBreadcrumbSchema(breadcrumbItems)]} />
       <Navbar />
 
-      <section className="pt-28 pb-20 px-4">
-        <div className="max-w-7xl mx-auto">
+      {/* ═══ HERO ═══ */}
+      <section className="relative min-h-[50vh] flex items-end overflow-hidden">
+        <HeroBackground />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 pb-16 pt-32 w-full">
           <Breadcrumb items={breadcrumbItems} />
-
           <FadeIn>
-            <h1 className="font-montserrat text-4xl md:text-5xl font-bold mt-6 mb-4">
-              Blog — Baza wiedzy
+            <h1 className="font-montserrat text-4xl sm:text-5xl md:text-6xl font-bold mt-6 mb-4">
+              <AuroraText className="font-montserrat">Blog</AuroraText> — Baza wiedzy
             </h1>
-            <p className="text-lg text-white/70 mb-8 max-w-3xl">
+            <p className="text-lg sm:text-xl text-white/70 max-w-3xl">
               Niezbędna wiedza przed zakupem klimatyzatora. Poradniki, porównania i odpowiedzi na najczęstsze pytania.
             </p>
           </FadeIn>
+        </div>
+      </section>
 
+      {/* ═══ CATEGORY FILTER + ARTICLES ═══ */}
+      <section className="relative py-20 px-4 overflow-hidden">
+        <StripedPattern
+          width={12}
+          height={12}
+          className="absolute inset-x-0 top-0 h-[60%] z-0 text-white/25 [mask-image:radial-gradient(600px_circle_at_50%_30%,white,transparent)]"
+        />
+        <div className="relative z-10 max-w-7xl mx-auto">
           {articles.length === 0 ? (
-            <FadeIn delay={0.1}>
+            <FadeIn>
               <div className="text-center py-20 text-white/40">
                 <p className="text-lg">Artykuły wkrótce</p>
               </div>
@@ -58,10 +72,10 @@ export default function BlogPage() {
           ) : (
             <>
               {categories.length > 1 && (
-                <FadeIn delay={0.1}>
+                <FadeIn>
                   <div className="flex flex-wrap gap-2 mb-12">
-                    <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white">
-                      Wszystkie
+                    <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white font-bold">
+                      Wszystkie ({articles.length})
                     </span>
                     {categories.map((cat) => (
                       <span
@@ -86,6 +100,7 @@ export default function BlogPage() {
           )}
         </div>
       </section>
+
       <Footer />
     </main>
   );

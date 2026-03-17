@@ -3,6 +3,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Breadcrumb, { buildBreadcrumbSchema } from "@/components/breadcrumb";
 import JsonLd from "@/components/json-ld";
+import { StripedPattern } from "@/components/ui/striped-pattern";
 
 export const metadata: Metadata = {
   title: "Polityka prywatności — PBAC",
@@ -21,8 +22,13 @@ export default function PolitykaPrywatnosciPage() {
       <JsonLd data={[buildBreadcrumbSchema(breadcrumbItems)]} />
       <Navbar />
 
-      <section className="pt-28 pb-20 px-4">
-        <div className="max-w-3xl mx-auto">
+      <section className="relative pt-28 pb-20 px-4 overflow-hidden">
+        <StripedPattern
+          width={12}
+          height={12}
+          className="absolute inset-x-0 top-0 h-[60%] z-0 text-white/25 [mask-image:radial-gradient(600px_circle_at_50%_30%,white,transparent)]"
+        />
+        <div className="relative z-10 max-w-3xl mx-auto">
           <Breadcrumb items={breadcrumbItems} />
           <h1 className="font-montserrat text-4xl font-bold mt-6 mb-8">Polityka prywatności</h1>
 

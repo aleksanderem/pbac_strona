@@ -7,89 +7,162 @@ First session for pbac_main project
 
 ---
 
-S0001. Task #1 brands-section:
-- Copied exact StripedPattern, GlowingEffect, BrandCard grid from source
-- Replaced 4 heat pump brands with 4 AC brands: Samsung Wind-Free, LG ArtCool, Toshiba Daiseikai/Shorai, Gree
-- Each brand has full description, features list, highlight badge, image paths
-- Changed section subtitle from heat pumps to klimatyzatory
-
-S0001. Task #2 brand-card:
-- Already identical to source — no changes needed
-- Verified it works with both slug-based links and the new AC brand data
-
-S0001. Task #3 benefits-section:
-- Changed from 4 heat pump benefits to 6 AC benefits
-- New benefits: Chlodzenie, Grzanie zima, Cisza, Oszczednosc, Filtracja, Smart sterowanie
-- Changed grid from lg:grid-cols-4 to lg:grid-cols-3 for 6 items
-- Added Snowflake and Smartphone icons from lucide-react
-- Changed heading from "Dlaczego pompa ciepla?" to "Dlaczego klimatyzacja?"
-
-S0001. Task #4 calculator-section:
-- Kept exact same visual structure with GlowingEffect cards, gradient results
-- Changed from heat pump heating costs to AC cooling+heating costs
-- New comparison methods: Wentylatory+grzejniki, Klimatyzator przenosny, Gaz+brak chlodzenia, Ogrzewanie elektryczne
-- AC cost per m2 = 22 PLN (vs 18 for heat pump) reflecting combined cooling+heating
-- Default area changed from 120m2 to 60m2 (more typical for AC)
-- Updated all labels from "pompa ciepla" to "klimatyzacja"
-- Also updated cost-race-chart.tsx to match AC context
-
-S0001. Task #5 comparison-table:
-- Changed from brand comparison to AC type comparison
-- New columns: Split (scienny), Multisplit, Kasetonowy, Przenosny
-- New rows: Zastosowanie, Wydajnosc, Montaz, Poziom halasu, Grzanie, Klasa energ., Cena orientac.
-- Changed heading from "Porownanie marek" to "Porownanie typow klimatyzacji"
-
-S0001. Task #6 how-it-works:
-- Kept exact same visual structure with numbered steps, connecting line
-- Changed step descriptions for AC installation process
-- Step 2: "Dobor klimatyzatora" instead of "Dobor urzadzenia"
-- Step 3: Added "Certyfikowani instalatorzy" to description
-- Step 4: Added "przeglądy, czyszczenie, naprawy" specifics
-
-S0001. Task #7 hero-section:
-- Replaced simplified left-aligned hero with centered pompy-style hero
-- Kept DarkVeil, gradient overlay, AuroraText, animated stats
-- Changed headline to "Klimatyzacja i pompy ciepla z profesjonalnym montazem"
-- Changed stats: 10+ marek, 5 lat gwarancji, 500+ montazy, 24h wycena
-- Changed CTA buttons: "Zamow darmowa wycene" + "Zobacz produkty"
-- Added animated entrance effects matching source exactly
-
-S0001. Task #8 quote-form:
-- Copied exact multi-step form with StepIndicator, GlowingEffect, DotPattern
-- Added AC-specific service type selector as Step 1 (montaz-klima, serwis-klima, wynajem, pompy-ciepla, multisplit)
-- Step 1: Service type + building type
-- Step 2: Area + number of rooms (instead of floors)
-- Step 3: Brand preference (expanded to Samsung, LG, Toshiba, Gree, Daikin, Haier, Mitsubishi, Pomoz mi wybrac)
-- Step 4: Contact details (same as source)
-- Changed endpoint from /api/quote to Formspree (https://formspree.io/f/FORM_ID)
-- Added privacy policy link
-
-Additional: cost-race-chart.tsx
-- Updated comparison rates for AC context
-- Changed from heat pump vs fuels to AC vs traditional methods
-- Default area 60m2, AC cost 22 PLN/m2
-
----
-
-S0001. Build verification:
-- npm run build: PASSED
-- 163 pages generated successfully
-- 0 TypeScript errors
-- All components compile and render correctly
-
----
+S0001. Tasks #1-8: All components adapted from pompy to AC content, build passes.
+See previous verbose log for details.
 
 === SESSION S0001 HANDOFF === 2026-03-17T18:15:00Z
 Status: completed
-Current state: All 8 components adapted, build passes
+
+---
+
+=== SESSION S0002 START === 2026-03-17T19:00:00Z
+Focus: Upgrade ALL subpages to match rich visual style of homepage
+Continuing from: S0001 (completed)
+Active tasks: #1-12 (all subpages)
+
+---
+
+S0002. Task #1 klimatyzacja_page:
+- Added DarkVeil hero via HeroBackground component
+- Added AuroraText in heading ("Klimatyzacja")
+- Added DotPattern background (width=20 height=20 cr=1) for features section
+- Added 6 GlowingEffect feature cards (Chłodzenie, Grzanie, Cisza, Smart, Filtracja, Gwarancja)
+- Added brands marquee section with links to /produkty/[marka]
+- Added "Polecane klimatyzatory" section with 4 ProductCards from getFeaturedProducts()
+- Added StripedPattern background on featured products section
+- Added testimonials marquee section from filtered testimonials
+- Added "Poradnik klimatyzacyjny" section with 3 latest ArticleCards
+- Added internal links grid: montaz/warszawa, serwis/warszawa, produkty, wynajem
+- Added QuoteForm at bottom
+
+S0002. Task #2 pompy_ciepla_page:
+- Added DarkVeil hero with AuroraText ("Pompy ciepla")
+- Added DotPattern backgrounds on benefits section
+- Added 4 GlowingEffect benefit cards (Oszczędność, Ekologia, Ogrzewanie/chłodzenie, Dofinansowanie)
+- Added gradient CTA prominently linking to pompy.pbac.pl
+- Internal links to /kontakt and /klimatyzacja
+
+S0002. Task #3 wynajem_klimatyzatorow_page:
+- Added DarkVeil hero with AuroraText ("klimatyzatorów")
+- Added StripedPattern background on benefits section
+- Added 4 GlowingEffect rental benefit cards
+- Added DotPattern on process steps section
+- Added 4 numbered process steps with GlowingEffect (similar to HowItWorks)
+- Added FAQ accordion with GlowingEffect wrapper
+- Added gradient CTA with phone + link to klimatyzacja page
+
+S0002. Task #4 kontakt_page:
+- Added DarkVeil hero with AuroraText ("Kontakt")
+- Added DotPattern background on contact info section
+- Enhanced contact cards with gradient-icon circles
+- Added GlowingEffect on contact info cards
+- Embedded QuoteForm (full multi-step version)
+- Locations grid linking to /montaz/[miasto]
+
+S0002. Task #5 produkty_page:
+- Added DarkVeil hero with AuroraText ("klimatyzatorów")
+- Added brand filter pills section with active state ("Wszystkie" highlighted)
+- Added DotPattern on "Polecane" featured products section at top
+- Added StripedPattern on "Wszystkie klimatyzatory" section
+- Internal links via brand pills to /produkty/[marka]
+
+S0002. Task #6 produkty_marka_page:
+- Added DarkVeil hero with brand name in AuroraText
+- Added DotPattern background on products grid
+- GlowingEffect already on ProductCard component
+- Brand description with proper styling
+- Added "Inne marki w ofercie" section linking to other brands
+
+S0002. Task #7 produkty_marka_slug_page:
+- Changed from GridPattern to HeroBackground (DarkVeil)
+- Added GlowingEffect on spec cards (rounded-2xl p-1 wrapper)
+- Added "Inne produkty [brand]" section with 3 ProductCards at bottom with StripedPattern
+- Added "Powiązane artykuły" section with 3 ArticleCards with DotPattern
+- Added internal links: montaz/warszawa ("Zamów montaż tego produktu"), serwis/warszawa ("Serwis i przeglądy") with gradient-icon
+- Added sticky CTA bar at bottom on mobile (fixed, lg:hidden)
+- Added GlowingEffect wrapper on FAQ items
+- Added DotPattern on description/features section
+
+S0002. Task #8 blog_page:
+- Added DarkVeil hero with AuroraText ("Blog")
+- Added StripedPattern background on articles section
+- Category filter pills with active state highlighting ("Wszystkie" with count)
+
+S0002. Task #9 blog_slug_page:
+- Replaced basic header with cover image hero (full-width with gradient overlay from-black via-black/70 to-black/30)
+- Added fallback header for articles without cover image
+- Added StripedPattern background on content area
+- Added internal links section: "Zobacz nasze klimatyzatory" -> /produkty, "Bezpłatna wycena" -> /kontakt
+- Added gradient CTA banner ("Potrzebujesz klimatyzacji?")
+- Related articles section with DotPattern background
+
+S0002. Task #10 serwis_index_page:
+- Added DarkVeil hero with AuroraText ("klimatyzacji")
+- Added DotPattern background on locations grid
+- Added GlowingEffect on location cards with MapPin icon
+- Added internal links section: produkty, blog, klimatyzacja
+
+S0002. Task #11 serwis_miasto_page:
+- Full treatment matching montaz/[miasto] structure
+- DarkVeil hero with AuroraText (location name)
+- Stats bar (500+ Serwisów, 10+ Marek, 4.9 Ocena, Gwarancja na usługę)
+- DotPattern on service items section
+- 4 GlowingEffect service cards (Czyszczenie, Czynnik, Diagnostyka, Raport)
+- Detailed checklist with green checkmarks
+- Brands marquee section
+- Testimonials marquee (serwis testimonials)
+- FAQ accordion with GlowingEffect wrapper and StripedPattern
+- Other locations links
+- Internal links: produkty, blog, montaz/[miasto]
+- Gradient CTA with phone + form link
+
+S0002. Task #12 polityka_prywatnosci_page:
+- Added StripedPattern background
+- Text content preserved unchanged
+
+BONUS: montaz_index_page also upgraded:
+- Added DarkVeil hero with AuroraText
+- Added DotPattern on locations grid
+- Added internal links section
+
+---
+
+S0002. Build verification:
+- npm run build: PASSED
+- 163 pages generated successfully
+- 0 TypeScript errors
+- All pages compile and render correctly
+
+---
+
+S0002. Cross-page internal linking summary:
+- Product pages -> /montaz/warszawa ("Zamów montaż tego produktu")
+- Product pages -> /serwis/warszawa ("Serwis i przeglądy")
+- Blog articles -> /produkty ("Zobacz nasze klimatyzatory")
+- Blog articles -> /kontakt ("Bezpłatna wycena")
+- Location pages (montaz, serwis) -> /produkty ("Katalog klimatyzatorów")
+- Location pages -> /blog ("Poradnik klimatyzacyjny")
+- All major pages -> QuoteForm CTA or link to /#wycena
+- Klimatyzacja page -> /montaz/warszawa, /serwis/warszawa, /produkty, /wynajem
+- Brand hub pages -> other brands
+- Serwis/[miasto] -> /montaz/[miasto]
+
+---
+
+=== SESSION S0002 HANDOFF === 2026-03-17T19:45:00Z
+Status: completed
+Current state: All 12 pages upgraded, build passes with 163 pages
 Files modified:
-  - /Users/alex/projects/pbac_main/components/hero-section.tsx (replaced simplified hero with pompy-style centered hero)
-  - /Users/alex/projects/pbac_main/components/benefits-section.tsx (6 AC benefits instead of 4 heat pump benefits)
-  - /Users/alex/projects/pbac_main/components/brands-section.tsx (4 AC brand cards with full descriptions)
-  - /Users/alex/projects/pbac_main/components/calculator-section.tsx (AC cooling/heating cost calculator)
-  - /Users/alex/projects/pbac_main/components/comparison-table.tsx (AC type comparison: split/multisplit/kasetonowy/przenosny)
-  - /Users/alex/projects/pbac_main/components/how-it-works.tsx (AC installation process steps)
-  - /Users/alex/projects/pbac_main/components/quote-form.tsx (multi-step form with AC service selector, Formspree)
-  - /Users/alex/projects/pbac_main/components/cost-race-chart.tsx (AC savings comparison chart)
-Note: brand-card.tsx was already identical to source, no changes needed
-Note: FORM_ID in quote-form.tsx needs to be replaced with actual Formspree form ID
+  - /Users/alex/projects/pbac_main/app/klimatyzacja/page.tsx
+  - /Users/alex/projects/pbac_main/app/pompy-ciepla/page.tsx
+  - /Users/alex/projects/pbac_main/app/wynajem-klimatyzatorow/page.tsx
+  - /Users/alex/projects/pbac_main/app/kontakt/page.tsx
+  - /Users/alex/projects/pbac_main/app/produkty/page.tsx
+  - /Users/alex/projects/pbac_main/app/produkty/[marka]/page.tsx
+  - /Users/alex/projects/pbac_main/app/produkty/[marka]/[slug]/page.tsx
+  - /Users/alex/projects/pbac_main/app/blog/page.tsx
+  - /Users/alex/projects/pbac_main/app/blog/[slug]/page.tsx
+  - /Users/alex/projects/pbac_main/app/serwis/page.tsx
+  - /Users/alex/projects/pbac_main/app/serwis/[miasto]/page.tsx
+  - /Users/alex/projects/pbac_main/app/polityka-prywatnosci/page.tsx
+  - /Users/alex/projects/pbac_main/app/montaz/page.tsx (bonus)
