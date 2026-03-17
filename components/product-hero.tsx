@@ -16,7 +16,7 @@ export default function ProductHero({ imageUrl, imageAlt, brandName, warranty }:
   return (
     <div className="relative w-full" style={{ height: "500px" }}>
       {/* MagicRings background */}
-      <div style={{ position: "absolute", inset: 0 }}>
+      <div style={{ position: "absolute", width: "100vw", height: "860px", top: "-140px", left: "50%", transform: "translateX(-50%)" }}>
         <MagicRings
           color="#ff4080"
           colorTwo="#6B8AFF"
