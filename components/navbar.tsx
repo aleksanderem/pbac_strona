@@ -39,11 +39,11 @@ const klimatyzacjaServices = [
 ];
 
 const featuredBrands = [
-  { name: "Samsung", slug: "samsung", logo: "/images/brands/samsung-logo.jpg" },
-  { name: "Gree", slug: "gree", logo: "/images/brands/gree-logo.jpg" },
+  { name: "Samsung", slug: "samsung", logo: "/images/brands/samsung-logo.png" },
+  { name: "Gree", slug: "gree", logo: "/images/brands/gree-logo.png" },
   { name: "Daikin", slug: "daikin", logo: "/images/brands/daikin-logo.png" },
-  { name: "Kaisai", slug: "kaisai", logo: "/images/brands/kaisai-logo.jpg" },
-  { name: "Mitsubishi", slug: "mitsubishi-electric", logo: "/images/brands/mitsubishi-logo.jpg" },
+  { name: "Kaisai", slug: "kaisai", logo: "/images/brands/kaisai-logo.png" },
+  { name: "Mitsubishi", slug: "mitsubishi-electric", logo: "/images/brands/mitsubishi-logo.png" },
 ];
 
 // ── Produkty mega menu data ─────────────────────────────────────────────

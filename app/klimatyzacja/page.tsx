@@ -137,9 +137,9 @@ export default function KlimatyzacjaPage() {
         </FadeIn>
         <Marquee className="[--gap:2rem] [--duration:25s]" pauseOnHover>
           {brands.map((brand) => (
-            <Link key={brand.slug} href={`/produkty/${brand.slug}`} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-6 py-3 hover:bg-white/10 transition-colors shrink-0">
+            <Link key={brand.slug} href={`/produkty/${brand.slug}`} className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 px-6 py-3 hover:bg-white/10 transition-colors shrink-0">
+              <img src={brand.logo} alt={brand.name} className="h-8 w-auto object-contain" loading="lazy" />
               <span className="font-montserrat font-bold text-white/70 hover:text-white transition-colors">{brand.name}</span>
-              <span className="text-xs text-white/30">{brand.country}</span>
             </Link>
           ))}
         </Marquee>

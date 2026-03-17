@@ -357,17 +357,10 @@ export default async function SerwisPage({ params }: Props) {
       <section className="py-12 px-4">
         <div className="max-w-5xl mx-auto">
           <FadeIn>
-            <div className="relative rounded-2xl overflow-hidden border border-white/10">
-              <img
-                src="/images/serwis/serwis-hero.jpg"
-                alt="Serwis klimatyzacji — technik PBAC podczas przeglądu"
-                className="w-full h-64 sm:h-80 md:h-96 object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-white/90 font-montserrat font-bold text-lg sm:text-xl">Kompleksowy serwis klimatyzacji</p>
-                <p className="text-white/60 text-sm mt-1">Przegląd, czyszczenie, dezynfekcja i naprawa — wszystkie marki</p>
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 gradient-primary p-10 sm:p-16 text-center">
+              <div className="relative z-10">
+                <p className="text-white/90 font-montserrat font-bold text-xl sm:text-3xl mb-2">Kompleksowy serwis klimatyzacji</p>
+                <p className="text-white/70 text-sm sm:text-base">Przegląd, czyszczenie, dezynfekcja i naprawa — wszystkie marki</p>
               </div>
             </div>
           </FadeIn>
@@ -460,18 +453,9 @@ export default async function SerwisPage({ params }: Props) {
 
           {/* Czyszczenie image break */}
           <FadeIn>
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 mb-16">
-              <img
-                src="/images/serwis/serwis-czyszczenie.jpg"
-                alt="Czyszczenie i dezynfekcja klimatyzatora podczas serwisu"
-                className="w-full h-56 sm:h-72 object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5 right-5">
-                <p className="text-white/90 font-montserrat font-bold">Profesjonalne czyszczenie i dezynfekcja</p>
-                <p className="text-white/60 text-xs mt-0.5">Mycie parownika, filtrów i odpływu skroplin preparatami biobójczymi</p>
-              </div>
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-r from-cyan-900/30 via-blue-900/20 to-indigo-900/30 p-8 mb-16 text-center">
+              <p className="text-white/80 font-montserrat font-bold text-lg">Profesjonalne czyszczenie i dezynfekcja</p>
+              <p className="text-white/50 text-sm mt-1">Mycie parownika, filtrów i odpływu skroplin preparatami biobójczymi</p>
             </div>
           </FadeIn>
 
@@ -675,42 +659,11 @@ export default async function SerwisPage({ params }: Props) {
           {/* Brand product images */}
           <FadeIn delay={0.1}>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
-              <div className="relative rounded-2xl overflow-hidden border border-white/10">
-                <img
-                  src="/images/serwis/klimatyzator-samsung.jpg"
-                  alt="Serwis klimatyzatora Samsung"
-                  className="w-full h-48 object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-3">
-                  <p className="text-white font-montserrat font-bold text-sm">Samsung</p>
+              {["Samsung", "Mitsubishi", "Kaisai"].map((brand) => (
+                <div key={brand} className="relative rounded-2xl overflow-hidden border border-white/10 gradient-primary p-8 flex items-center justify-center h-48">
+                  <p className="text-white font-montserrat font-bold text-2xl">{brand}</p>
                 </div>
-              </div>
-              <div className="relative rounded-2xl overflow-hidden border border-white/10">
-                <img
-                  src="/images/serwis/klimatyzator-mitsubishi.jpg"
-                  alt="Serwis klimatyzatora Mitsubishi Electric"
-                  className="w-full h-48 object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-3">
-                  <p className="text-white font-montserrat font-bold text-sm">Mitsubishi</p>
-                </div>
-              </div>
-              <div className="relative rounded-2xl overflow-hidden border border-white/10">
-                <img
-                  src="/images/serwis/klimatyzator-kaisai.jpg"
-                  alt="Serwis klimatyzatora Kaisai"
-                  className="w-full h-48 object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-3">
-                  <p className="text-white font-montserrat font-bold text-sm">Kaisai</p>
-                </div>
-              </div>
+              ))}
             </div>
           </FadeIn>
 
@@ -753,9 +706,9 @@ export default async function SerwisPage({ params }: Props) {
       <section className="py-12 overflow-hidden border-y border-white/10">
         <Marquee className="[--gap:2rem] [--duration:25s]" pauseOnHover>
           {brands.map((brand) => (
-            <Link key={brand.slug} href={`/produkty/${brand.slug}`} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-6 py-3 hover:bg-white/10 transition-colors shrink-0">
+            <Link key={brand.slug} href={`/produkty/${brand.slug}`} className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 px-6 py-3 hover:bg-white/10 transition-colors shrink-0">
+              <img src={brand.logo} alt={brand.name} className="h-8 w-auto object-contain" loading="lazy" />
               <span className="font-montserrat font-bold text-white/70 hover:text-white transition-colors">{brand.name}</span>
-              <span className="text-xs text-white/30">{brand.country}</span>
             </Link>
           ))}
         </Marquee>

@@ -177,15 +177,8 @@ export default async function MontazPage({ params }: Props) {
       <section className="py-12 px-4">
         <div className="max-w-5xl mx-auto">
           <FadeIn>
-            <div className="relative rounded-2xl overflow-hidden border border-white/10">
-              <img
-                src="/images/montaz/montaz-hero.jpg"
-                alt="Montaż klimatyzacji przez technika PBAC"
-                className="w-full h-64 sm:h-80 md:h-96 object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 gradient-primary h-64 sm:h-80 md:h-96 flex items-end">
+              <div className="p-6">
                 <p className="text-white/90 font-montserrat font-bold text-lg sm:text-xl">Profesjonalny montaż klimatyzacji</p>
                 <p className="text-white/60 text-sm mt-1">Wykonywany zgodnie z wytycznymi producenta przez certyfikowanych techników</p>
               </div>
@@ -200,19 +193,19 @@ export default async function MontazPage({ params }: Props) {
         const Pattern = patterns[idx % patterns.length];
         const isEven = idx % 2 === 0;
 
-        const sectionImages = [
-          { src: "/images/serwis/serwis-hero.jpg", alt: "Klimatyzacja zamontowana w mieszkaniu" },
-          { src: "/images/serwis/klimatyzator-samsung.jpg", alt: "Klimatyzator Samsung WindFree" },
-          { src: "/images/serwis/klimatyzator-mitsubishi.jpg", alt: "Klimatyzator Mitsubishi Electric" },
+        const sectionCaptions = [
+          "Klimatyzacja zamontowana w mieszkaniu",
+          "Klimatyzator Samsung WindFree",
+          "Klimatyzator Mitsubishi Electric",
         ];
-        const sectionImage = idx < sectionImages.length ? sectionImages[idx] : null;
+        const sectionCaption = idx < sectionCaptions.length ? sectionCaptions[idx] : null;
 
         return (
           <section key={idx} className="relative py-16 px-4 overflow-hidden">
             <Pattern className={`absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(600px_circle_at_${isEven ? 'center' : 'top'},white,transparent)]`} {...(Pattern === GridPattern ? { width: 40, height: 40 } : {})} />
             <div className="relative z-10 max-w-5xl mx-auto">
               <FadeIn delay={0.1}>
-                {sectionImage && isEven ? (
+                {sectionCaption && isEven ? (
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                     <div>
                       <h2 className="font-montserrat text-2xl md:text-3xl font-bold mb-6">
@@ -224,24 +217,14 @@ export default async function MontazPage({ params }: Props) {
                         ))}
                       </div>
                     </div>
-                    <div className="rounded-2xl overflow-hidden border border-white/10">
-                      <img
-                        src={sectionImage.src}
-                        alt={sectionImage.alt}
-                        className="w-full h-64 lg:h-full object-cover"
-                        loading="lazy"
-                      />
+                    <div className="rounded-2xl overflow-hidden border border-white/10 gradient-primary h-64 lg:h-full min-h-[16rem] flex items-end">
+                      <p className="text-white/80 font-montserrat font-bold text-sm p-4">{sectionCaption}</p>
                     </div>
                   </div>
-                ) : sectionImage && !isEven ? (
+                ) : sectionCaption && !isEven ? (
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                    <div className="rounded-2xl overflow-hidden border border-white/10 order-last lg:order-first">
-                      <img
-                        src={sectionImage.src}
-                        alt={sectionImage.alt}
-                        className="w-full h-64 lg:h-full object-cover"
-                        loading="lazy"
-                      />
+                    <div className="rounded-2xl overflow-hidden border border-white/10 gradient-primary h-64 lg:h-full min-h-[16rem] flex items-end order-last lg:order-first">
+                      <p className="text-white/80 font-montserrat font-bold text-sm p-4">{sectionCaption}</p>
                     </div>
                     <div>
                       <h2 className="font-montserrat text-2xl md:text-3xl font-bold mb-6">
@@ -309,31 +292,13 @@ export default async function MontazPage({ params }: Props) {
         <div className="max-w-5xl mx-auto">
           <FadeIn>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="relative rounded-2xl overflow-hidden border border-white/10">
-                <img
-                  src="/images/serwis/klimatyzator-samsung.jpg"
-                  alt="Klimatyzator Samsung WindFree"
-                  className="w-full h-64 object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <p className="text-white font-montserrat font-bold">Samsung WindFree</p>
-                  <p className="text-white/60 text-xs mt-0.5">Klimatyzacja bez bezpośredniego nawiewu</p>
-                </div>
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 gradient-primary h-64 flex flex-col items-center justify-center text-center p-6">
+                <p className="text-white font-montserrat font-bold text-2xl md:text-3xl mb-2">Samsung WindFree</p>
+                <p className="text-white/60 text-sm">Klimatyzacja bez bezpośredniego nawiewu</p>
               </div>
-              <div className="relative rounded-2xl overflow-hidden border border-white/10">
-                <img
-                  src="/images/serwis/klimatyzator-mitsubishi.jpg"
-                  alt="Klimatyzator Mitsubishi Electric"
-                  className="w-full h-64 object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <p className="text-white font-montserrat font-bold">Mitsubishi Electric</p>
-                  <p className="text-white/60 text-xs mt-0.5">Japońska precyzja i niezawodność</p>
-                </div>
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 gradient-primary h-64 flex flex-col items-center justify-center text-center p-6">
+                <p className="text-white font-montserrat font-bold text-2xl md:text-3xl mb-2">Mitsubishi Electric</p>
+                <p className="text-white/60 text-sm">Japońska precyzja i niezawodność</p>
               </div>
             </div>
           </FadeIn>
@@ -349,9 +314,9 @@ export default async function MontazPage({ params }: Props) {
         </FadeIn>
         <Marquee className="[--gap:2rem] [--duration:25s]" pauseOnHover>
           {brands.map((brand) => (
-            <Link key={brand.slug} href={`/produkty/${brand.slug}`} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-6 py-3 hover:bg-white/10 transition-colors shrink-0">
+            <Link key={brand.slug} href={`/produkty/${brand.slug}`} className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 px-6 py-3 hover:bg-white/10 transition-colors shrink-0">
+              <img src={brand.logo} alt={brand.name} className="h-8 w-auto object-contain" loading="lazy" />
               <span className="font-montserrat font-bold text-white/70 hover:text-white transition-colors">{brand.name}</span>
-              <span className="text-xs text-white/30">{brand.country}</span>
             </Link>
           ))}
         </Marquee>

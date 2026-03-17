@@ -6,7 +6,7 @@ export const brands: BrandInfo[] = [
     name: "Samsung",
     description:
       "Samsung to jeden z największych producentów klimatyzatorów na świecie, znany z innowacyjnej technologii Wind-Free, która eliminuje nieprzyjemne podmuchy zimnego powietrza. Klimatyzatory Samsung wyróżniają się zaawansowanym sterowaniem przez aplikację SmartThings, filtrami oczyszczającymi powietrze oraz niskim poziomem hałasu od 16 dB. Seria Wind-Free Elite, Avant i Comfort to flagowe modele cieszące się ogromną popularnością w Polsce.",
-    logo: "/images/brands/samsung-logo.jpg",
+    logo: "/images/brands/samsung-logo.png",
     country: "Korea Południowa",
   },
   {
@@ -30,7 +30,7 @@ export const brands: BrandInfo[] = [
     name: "Gree",
     description:
       "Gree Electric Appliances to największy producent klimatyzatorów na świecie pod względem wolumenu produkcji. W ofercie PBAC znajdują się linie Clivia, Fairy, Amber, Pular, Soyal i Lomo Luxury Plus — pokrywające segment od ekonomicznego po premium. Klimatyzatory Gree łączą konkurencyjną cenę z solidną jakością wykonania, oferując funkcje takie jak jonizacja powietrza, filtr Cold Plasma i sterowanie Wi-Fi.",
-    logo: "/images/brands/gree-logo.jpg",
+    logo: "/images/brands/gree-logo.png",
     country: "Chiny",
   },
   {
@@ -54,7 +54,7 @@ export const brands: BrandInfo[] = [
     name: "Kaisai",
     description:
       "Kaisai to marka klimatyzatorów produkowanych przez grupę Midea, dystrybuowana w Polsce przez firmę Klima-Therm. Modele Ice, Fly i Geo oferują prosty montaż, niski poziom hałasu i konkurencyjne ceny. Kaisai Ice Black to popularny wybór wśród klientów ceniących ciemny design, który komponuje się z nowoczesnymi wnętrzami. Wszystkie modele obsługują tryb grzania.",
-    logo: "/images/brands/kaisai-logo.jpg",
+    logo: "/images/brands/kaisai-logo.png",
     country: "Chiny",
   },
   {
@@ -70,7 +70,7 @@ export const brands: BrandInfo[] = [
     name: "Mitsubishi Electric",
     description:
       "Mitsubishi Electric oferuje klimatyzatory ścienne klasy premium, znane z niezawodności i zaawansowanych systemów filtracji powietrza. Seria Diamond to flagowa linia dostępna w kilku wariantach kolorystycznych — Natural White, Pearl White i Ruby Red. Model Premium White to sprawdzony bestseller łączący wysoką efektywność energetyczną z eleganckim wzornictwem.",
-    logo: "/images/brands/mitsubishi-logo.jpg",
+    logo: "/images/brands/mitsubishi-logo.png",
     country: "Japonia",
   },
   {

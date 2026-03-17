@@ -22,7 +22,7 @@ const brands = [
       "Klasa energetyczna A+++ w trybie chłodzenia",
     ],
     highlight: "Bestseller",
-    imageUrl: "/images/products/samsung-wind-free.png",
+    imageUrl: "/images/products/samsung-wind-free-elite.png",
     imageAlt: "Klimatyzator Samsung Wind-Free Elite — jednostka wewnętrzna",
   },
   {
@@ -41,7 +41,7 @@ const brands = [
       "Klasa energetyczna A+++ / SEER do 8,5",
     ],
     highlight: "Design premium",
-    imageUrl: "/images/products/lg-artcool.png",
+    imageUrl: "/images/products/lg-artcool-gallery.png",
     imageAlt: "Klimatyzator LG ArtCool Gallery — jednostka wewnętrzna",
   },
   {
@@ -60,7 +60,7 @@ const brands = [
       "Cicha praca od 18 dB(A)",
     ],
     highlight: "Japońska jakość",
-    imageUrl: "/images/products/toshiba-shorai.png",
+    imageUrl: "/images/products/toshiba-shorai-edge-white.png",
     imageAlt: "Klimatyzator Toshiba Shorai Edge — jednostka wewnętrzna",
   },
   {
@@ -79,7 +79,7 @@ const brands = [
       "Najlepszy stosunek ceny do jakości",
     ],
     highlight: "Najlepsza cena",
-    imageUrl: "/images/products/gree-clivia.png",
+    imageUrl: "/images/products/gree-clivia-silver.webp",
     imageAlt: "Klimatyzator Gree Clivia — jednostka wewnętrzna",
   },
 ];
