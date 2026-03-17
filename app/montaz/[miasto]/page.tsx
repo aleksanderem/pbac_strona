@@ -177,8 +177,10 @@ export default async function MontazPage({ params }: Props) {
       <section className="py-12 px-4">
         <div className="max-w-5xl mx-auto">
           <FadeIn>
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 gradient-primary h-64 sm:h-80 md:h-96 flex items-end">
-              <div className="p-6">
+            <div className="relative rounded-2xl overflow-hidden border border-white/10">
+              <img src="/images/montaz/montaz-hero.png" alt="Klimatyzator zamontowany na ścianie" className="w-full h-64 sm:h-80 md:h-96 object-cover" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
                 <p className="text-white/90 font-montserrat font-bold text-lg sm:text-xl">Profesjonalny montaż klimatyzacji</p>
                 <p className="text-white/60 text-sm mt-1">Wykonywany zgodnie z wytycznymi producenta przez certyfikowanych techników</p>
               </div>

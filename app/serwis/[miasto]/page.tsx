@@ -357,10 +357,12 @@ export default async function SerwisPage({ params }: Props) {
       <section className="py-12 px-4">
         <div className="max-w-5xl mx-auto">
           <FadeIn>
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 gradient-primary p-10 sm:p-16 text-center">
-              <div className="relative z-10">
-                <p className="text-white/90 font-montserrat font-bold text-xl sm:text-3xl mb-2">Kompleksowy serwis klimatyzacji</p>
-                <p className="text-white/70 text-sm sm:text-base">Przegląd, czyszczenie, dezynfekcja i naprawa — wszystkie marki</p>
+            <div className="relative rounded-2xl overflow-hidden border border-white/10">
+              <img src="/images/serwis/serwis-hero.jpg" alt="Serwis klimatyzacji — technik PBAC podczas przeglądu" className="w-full h-64 sm:h-80 md:h-96 object-cover" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="text-white/90 font-montserrat font-bold text-lg sm:text-xl">Kompleksowy serwis klimatyzacji</p>
+                <p className="text-white/60 text-sm mt-1">Przegląd, czyszczenie, dezynfekcja i naprawa — wszystkie marki</p>
               </div>
             </div>
           </FadeIn>
@@ -453,9 +455,13 @@ export default async function SerwisPage({ params }: Props) {
 
           {/* Czyszczenie image break */}
           <FadeIn>
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-r from-cyan-900/30 via-blue-900/20 to-indigo-900/30 p-8 mb-16 text-center">
-              <p className="text-white/80 font-montserrat font-bold text-lg">Profesjonalne czyszczenie i dezynfekcja</p>
-              <p className="text-white/50 text-sm mt-1">Mycie parownika, filtrów i odpływu skroplin preparatami biobójczymi</p>
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 mb-16">
+              <img src="/images/serwis/klimatyzator-gree.webp" alt="Czyszczenie i dezynfekcja klimatyzatora podczas serwisu" className="w-full h-56 sm:h-72 object-cover" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5">
+                <p className="text-white/90 font-montserrat font-bold">Profesjonalne czyszczenie i dezynfekcja</p>
+                <p className="text-white/60 text-xs mt-0.5">Mycie parownika, filtrów i odpływu skroplin preparatami biobójczymi</p>
+              </div>
             </div>
           </FadeIn>
 

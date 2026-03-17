@@ -48,10 +48,8 @@ export default function FounderPromise() {
           </FadeIn>
 
           <FadeIn direction="right" delay={0.2} className="lg:col-span-2 flex justify-center">
-            <div className="relative size-48 sm:size-56 rounded-full gradient-icon flex items-center justify-center shadow-2xl">
-              <span className="font-montserrat text-5xl sm:text-6xl font-bold text-white">
-                PB
-              </span>
+            <div className="relative size-48 sm:size-56 rounded-full overflow-hidden border-2 border-white/20 shadow-2xl">
+              <img src="/images/piotr-brzezinski.jpg" alt="Piotr Brzeziński — założyciel PBAC" className="w-full h-full object-cover" />
             </div>
           </FadeIn>
         </div>
