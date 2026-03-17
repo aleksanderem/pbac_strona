@@ -1,0 +1,40 @@
+# WordPress to Next.js URL redirects
+# Format: old-path new-path status-code
+
+# Products: /produkt/slug → /produkty (brand resolution needed at CDN or catch-all)
+/produkt/*                          /produkty              301
+/kategoria-produktu/*               /produkty              301
+/shop/                              /produkty              301
+/shop                               /produkty              301
+
+# Installation pages
+/montaz/montaz-klimatyzacji-warszawa/       /montaz/warszawa          301
+/montaz/montaz-klimatyzacji-krakow/         /montaz/krakow            301
+/montaz/montaz-klimatyzacji-siedlce/        /montaz/siedlce           301
+/montaz/montaz-klimatyzacji-wegrow/         /montaz/wegrow            301
+/montaz/montaz-klimatyzacji-minsk-mazowiecki/  /montaz/minsk-mazowiecki  301
+/montaz/montaz-klimatyzacji-biala-podlaska/   /montaz/biala-podlaska    301
+/montaz/montaz-klimatyzacji-otwock/         /montaz/otwock            301
+/montaz/montaz-klimatyzacji-piaseczno/      /montaz/piaseczno         301
+/montaz/montaz-klimatyzacji-grodzisk-mazowiecki/  /montaz/grodzisk-mazowiecki  301
+/montaz/montaz-klimatyzacji-legionowo/      /montaz/legionowo         301
+/montaz/montaz-klimatyzacji-lomianki/       /montaz/lomianki          301
+/montaz/montaz-klimatyzacji-nowy-dwor-mazowiecki/  /montaz/nowy-dwor-mazowiecki  301
+/montaz/montaz-klimatyzacji-pruszkow/       /montaz/pruszkow          301
+
+# Service pages
+/serwis/serwis-klimatyzacji-warszawa/  /serwis/warszawa    301
+
+# Other pages
+/kontakt-telefon-mail/              /kontakt               301
+/kontakt-telefon-mail               /kontakt               301
+/pompy-ciepla-warszawa/             /pompy-ciepla           301
+/pompy-ciepla-warszawa              /pompy-ciepla           301
+/wynajem-klimatyzatorow/            /wynajem-klimatyzatorow 301
+/homepage/                          /                       301
+/homepage                           /                       301
+
+# WordPress artifacts
+/wp-admin/*                         /                       301
+/wp-login.php                       /                       301
+/wp-content/*                       /                       404
