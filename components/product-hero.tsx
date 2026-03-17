@@ -8,12 +8,13 @@ const MagicRings = dynamic(() => import("@/components/MagicRings"), { ssr: false
 interface ProductHeroProps {
   imageUrl: string;
   imageAlt: string;
+  name?: string;
 }
 
 export default function ProductHero({ imageUrl, imageAlt }: ProductHeroProps) {
   return (
-    <div className="relative w-full min-h-[50vh] overflow-hidden">
-      {/* MagicRings background — full width */}
+    <div className="relative w-full flex flex-col items-center justify-center py-8 sm:py-12">
+      {/* MagicRings background — absolutely positioned behind everything */}
       <div className="absolute inset-0 z-0">
         <MagicRings
           color="#B31853"
@@ -32,20 +33,21 @@ export default function ProductHero({ imageUrl, imageAlt }: ProductHeroProps) {
           ringGap={1.5}
           fadeIn={0.7}
           fadeOut={0.5}
-          followMouse={false}
-          mouseInfluence={0.2}
-          hoverScale={1.2}
+          followMouse={true}
+          mouseInfluence={0.15}
+          hoverScale={1.1}
           parallax={0.05}
-          clickBurst={false}
+          clickBurst={true}
         />
       </div>
-      {/* Product image floating centered above rings */}
-      <div className="relative z-10 flex items-center justify-center h-full py-12">
+
+      {/* Product image — centered on top of rings */}
+      <div className="relative z-10 flex items-center justify-center min-h-[30vh] sm:min-h-[40vh]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={imageUrl}
           alt={imageAlt}
-          className="max-h-[40vh] max-w-[60%] object-contain drop-shadow-[0_8px_40px_rgba(179,24,83,0.3)]"
+          className="max-h-[35vh] sm:max-h-[45vh] max-w-[70%] object-contain drop-shadow-[0_8px_40px_rgba(179,24,83,0.3)]"
         />
       </div>
     </div>
