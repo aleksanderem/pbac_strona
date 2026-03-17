@@ -52,11 +52,6 @@ export default function ProductHero({ imageUrl, imageAlt, brandName, warranty }:
               {warranty}
             </span>
           )}
-          {brandName && (
-            <span className="text-sm font-medium text-white/60 uppercase tracking-widest">
-              {brandName}
-            </span>
-          )}
         </div>
 
         {/* Product image fills remaining space, centered */}
