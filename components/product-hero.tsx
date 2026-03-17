@@ -9,9 +9,10 @@ interface ProductHeroProps {
   imageUrl: string;
   imageAlt: string;
   brandName?: string;
+  warranty?: string;
 }
 
-export default function ProductHero({ imageUrl, imageAlt, brandName }: ProductHeroProps) {
+export default function ProductHero({ imageUrl, imageAlt, brandName, warranty }: ProductHeroProps) {
   return (
     <div className="relative w-full" style={{ height: "500px" }}>
       {/* MagicRings background */}
@@ -43,14 +44,20 @@ export default function ProductHero({ imageUrl, imageAlt, brandName }: ProductHe
 
       {/* Content layered on top — brand at top, product centered */}
       <div className="absolute inset-0 z-10 flex flex-col items-center">
-        {/* Brand name pinned to top */}
-        {brandName && (
-          <div className="pt-6">
+        {/* Warranty badge + brand name pinned to top */}
+        <div className="pt-6 flex flex-col items-center gap-2">
+          {warranty && (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-sm px-4 py-1.5 text-xs font-medium text-white/80">
+              <svg className="size-3.5 text-green-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+              {warranty}
+            </span>
+          )}
+          {brandName && (
             <span className="text-sm font-medium text-white/60 uppercase tracking-widest">
               {brandName}
             </span>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* Product image fills remaining space, centered */}
         <div className="flex-1 flex items-center justify-center px-4">
