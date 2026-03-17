@@ -61,19 +61,19 @@ export const greeProducts: Product[] = [
     powerRange: "2,5 – 6,2 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-pular-matt-gree-pular-1645080452.png",
+      "/images/products/gree-pular-matt.png",
     imageAlt: "Klimatyzator Gree Pular Matt",
     gallery: [
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-pular-matt-gree-pular-1645080452.png",
+        src: "/images/products/gree-pular-matt.png",
         alt: "Gree Pular Matt - widok z przodu",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-pular-matt-13211.jpg",
+        src: "/images/products/gree-pular-matt-gallery-1.jpg",
         alt: "Gree Pular Matt - jednostka zewnętrzna",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-pular-matt-13213.jpg",
+        src: "/images/products/gree-pular-matt-gallery-2.jpg",
         alt: "Gree Pular Matt - pilot zdalnego sterowania",
       },
     ],
@@ -127,19 +127,19 @@ export const greeProducts: Product[] = [
     powerRange: "2,5 – 6,2 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-pular-matt-gree-pular-1645080452.png",
+      "/images/products/gree-pular-matt.png",
     imageAlt: "Klimatyzator Gree Pular Matt",
     gallery: [
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-pular-matt-gree-pular-1645080452.png",
+        src: "/images/products/gree-pular-matt.png",
         alt: "Gree Pular Matt - widok z przodu",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-pular-matt-13211.jpg",
+        src: "/images/products/gree-pular-matt-gallery-1.jpg",
         alt: "Gree Pular Matt - jednostka zewnętrzna",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-pular-matt-13213.jpg",
+        src: "/images/products/gree-pular-matt-gallery-2.jpg",
         alt: "Gree Pular Matt - pilot zdalnego sterowania",
       },
     ],
@@ -193,23 +193,23 @@ export const greeProducts: Product[] = [
     powerRange: "2,7 – 7,1 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-silver-imageid.webp",
+      "/images/products/gree-clivia-silver.webp",
     imageAlt: "Klimatyzator Gree Clivia Silver",
     gallery: [
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-silver-imageid.webp",
+        src: "/images/products/gree-clivia-silver.webp",
         alt: "Gree Clivia Silver - widok z przodu",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-silver-gree-clivia-silver-17446.jpg",
+        src: "/images/products/gree-clivia-silver-gallery-1.jpg",
         alt: "Gree Clivia Silver - perspektywa",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-silver-gree-clivia-silver-7.webp",
+        src: "/images/products/gree-clivia-silver-gallery-2.webp",
         alt: "Gree Clivia Silver - detal",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-silver-gree-clivia-silver-6.webp",
+        src: "/images/products/gree-clivia-silver-gallery-3.webp",
         alt: "Gree Clivia Silver - widok boczny",
       },
     ],
@@ -263,23 +263,23 @@ export const greeProducts: Product[] = [
     powerRange: "2,7 – 7,1 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-navy-blue-imageid.webp",
+      "/images/products/gree-clivia-navy-blue.webp",
     imageAlt: "Klimatyzator Gree Clivia Navy Blue",
     gallery: [
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-navy-blue-imageid.webp",
+        src: "/images/products/gree-clivia-navy-blue.webp",
         alt: "Gree Clivia Navy Blue - widok z przodu",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-navy-blue-gree-clivia-navy-blue-17427.jpg",
+        src: "/images/products/gree-clivia-navy-blue-gallery-1.jpg",
         alt: "Gree Clivia Navy Blue - perspektywa",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-navy-blue-gree-clivia-navy-blue-1.webp",
+        src: "/images/products/gree-clivia-navy-blue-gallery-2.webp",
         alt: "Gree Clivia Navy Blue - detal",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-navy-blue-gree-clivia-navy-blue-2.webp",
+        src: "/images/products/gree-clivia-navy-blue-gallery-3.webp",
         alt: "Gree Clivia Navy Blue - widok boczny",
       },
     ],
@@ -333,23 +333,23 @@ export const greeProducts: Product[] = [
     powerRange: "2,7 – 7,1 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-white-17431.jpg",
+      "/images/products/gree-clivia-white.jpg",
     imageAlt: "Klimatyzator Gree Clivia White",
     gallery: [
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-white-17431.jpg",
+        src: "/images/products/gree-clivia-white.jpg",
         alt: "Gree Clivia White - widok z przodu",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-white-gree-clivia-white-klimatyzator-1706282655.png",
+        src: "/images/products/gree-clivia-white-gallery-1.png",
         alt: "Gree Clivia White - klimatyzator",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-white-gree-clivia-white-7.webp",
+        src: "/images/products/gree-clivia-white-gallery-2.webp",
         alt: "Gree Clivia White - detal",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-clivia-white-gree-clivia-white-2.webp",
+        src: "/images/products/gree-clivia-white-gallery-3.webp",
         alt: "Gree Clivia White - widok boczny",
       },
     ],
@@ -403,23 +403,23 @@ export const greeProducts: Product[] = [
     powerRange: "2,7 – 7,0 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-amber-standard-silver-gree-amber-standard-silver-14362.webp",
+      "/images/products/gree-amber-standard-silver.webp",
     imageAlt: "Klimatyzator Gree Amber Standard Silver",
     gallery: [
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-amber-standard-silver-gree-amber-standard-silver-14362.webp",
+        src: "/images/products/gree-amber-standard-silver.webp",
         alt: "Gree Amber Standard Silver - widok z przodu",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-amber-standard-silver-gree-amber-standard-silver-1616955399.webp",
+        src: "/images/products/gree-amber-standard-silver-gallery-1.webp",
         alt: "Gree Amber Standard Silver - perspektywa",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-amber-standard-silver-gree-amber-standard-silver-14360.webp",
+        src: "/images/products/gree-amber-standard-silver-gallery-2.webp",
         alt: "Gree Amber Standard Silver - detal",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-amber-standard-silver-gree-amber-standard-silver-grzalki-do-pracy-zimowej.webp",
+        src: "/images/products/gree-amber-standard-silver-gallery-3.webp",
         alt: "Gree Amber Standard Silver - grzałki do pracy zimowej",
       },
     ],
@@ -473,23 +473,23 @@ export const greeProducts: Product[] = [
     powerRange: "2,7 – 7,0 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-amber-prestige-14387.png",
+      "/images/products/gree-amber-prestige.png",
     imageAlt: "Klimatyzator Gree Amber Prestige",
     gallery: [
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-amber-prestige-14387.png",
+        src: "/images/products/gree-amber-prestige.png",
         alt: "Gree Amber Prestige - widok z przodu",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-amber-prestige-gree-amber-prestige-front-1616955069.png",
+        src: "/images/products/gree-amber-prestige-gallery-1.png",
         alt: "Gree Amber Prestige - front",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-amber-prestige-14388.jpg",
+        src: "/images/products/gree-amber-prestige-gallery-2.jpg",
         alt: "Gree Amber Prestige - widok boczny",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-amber-prestige-14385.jpg",
+        src: "/images/products/gree-amber-prestige-gallery-3.jpg",
         alt: "Gree Amber Prestige - detal",
       },
     ],
@@ -543,23 +543,23 @@ export const greeProducts: Product[] = [
     powerRange: "2,7 – 7,0 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-white-gree-fairy-white-1652171039.png",
+      "/images/products/gree-fairy-white.png",
     imageAlt: "Klimatyzator Gree Fairy White",
     gallery: [
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-white-gree-fairy-white-1652171039.png",
+        src: "/images/products/gree-fairy-white.png",
         alt: "Gree Fairy White - widok z przodu",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-white-16400.jpg",
+        src: "/images/products/gree-fairy-white-gallery-1.jpg",
         alt: "Gree Fairy White - perspektywa",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-white-16399.jpg",
+        src: "/images/products/gree-fairy-white-gallery-2.jpg",
         alt: "Gree Fairy White - detal",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-white-gree-fairy-white-jonizator-powietrza.webp",
+        src: "/images/products/gree-fairy-white-gallery-3.webp",
         alt: "Gree Fairy White - jonizator powietrza",
       },
     ],
@@ -613,23 +613,23 @@ export const greeProducts: Product[] = [
     powerRange: "2,7 – 7,0 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-silver-gree-fairy-silver-1618932258.png",
+      "/images/products/gree-fairy-silver.png",
     imageAlt: "Klimatyzator Gree Fairy Silver",
     gallery: [
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-silver-gree-fairy-silver-1618932258.png",
+        src: "/images/products/gree-fairy-silver.png",
         alt: "Gree Fairy Silver - widok z przodu",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-silver-13168.jpg",
+        src: "/images/products/gree-fairy-silver-gallery-1.jpg",
         alt: "Gree Fairy Silver - perspektywa",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-silver-13180.jpg",
+        src: "/images/products/gree-fairy-silver-gallery-2.jpg",
         alt: "Gree Fairy Silver - detal",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-silver-13177.jpg",
+        src: "/images/products/gree-fairy-silver-gallery-3.jpg",
         alt: "Gree Fairy Silver - widok boczny",
       },
     ],
@@ -683,27 +683,27 @@ export const greeProducts: Product[] = [
     powerRange: "2,7 – 7,0 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-dark-gree-fairy-dark-1618932259.png",
+      "/images/products/gree-fairy-dark.png",
     imageAlt: "Klimatyzator Gree Fairy Dark",
     gallery: [
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-dark-gree-fairy-dark-1618932259.png",
+        src: "/images/products/gree-fairy-dark.png",
         alt: "Gree Fairy Dark - widok z przodu",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-dark-13183.jpg",
+        src: "/images/products/gree-fairy-dark-gallery-1.jpg",
         alt: "Gree Fairy Dark - perspektywa",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-silver-13180.jpg",
+        src: "/images/products/gree-fairy-silver-gallery-2.jpg",
         alt: "Gree Fairy Dark - detal",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-dark-gree-fairy-dark-grzalka-tacy-skroplin.webp",
+        src: "/images/products/gree-fairy-dark-gallery-3.webp",
         alt: "Gree Fairy Dark - grzałka tacy skroplin",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-fairy-dark-13194.jpg",
+        src: "/images/products/gree-fairy-dark-gallery-4.jpg",
         alt: "Gree Fairy Dark - widok boczny",
       },
     ],
@@ -757,19 +757,19 @@ export const greeProducts: Product[] = [
     powerRange: "2,7 – 7,1 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-lomo-luxury-plus-14370.jpg",
+      "/images/products/gree-lomo-luxury-plus.jpg",
     imageAlt: "Klimatyzator Gree Lomo Luxury Plus",
     gallery: [
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-lomo-luxury-plus-14370.jpg",
+        src: "/images/products/gree-lomo-luxury-plus.jpg",
         alt: "Gree Lomo Luxury Plus - widok z przodu",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-lomo-luxury-plus-14374.jpg",
+        src: "/images/products/gree-lomo-luxury-plus-gallery-1.jpg",
         alt: "Gree Lomo Luxury Plus - perspektywa",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-lomo-luxury-plus-gree-lomo-luxury-plus-front-1616955098.png",
+        src: "/images/products/gree-lomo-luxury-plus-gallery-2.png",
         alt: "Gree Lomo Luxury Plus - front",
       },
     ],
@@ -822,23 +822,23 @@ export const greeProducts: Product[] = [
     powerRange: "2,7 – 5,3 kW",
     warranty: "3 lata + 5 lat sprężarka",
     imageUrl:
-      "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-soyal-gree-soyal-zestawy-1624370659.png",
+      "/images/products/gree-soyal.png",
     imageAlt: "Klimatyzator Gree Soyal",
     gallery: [
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-soyal-gree-soyal-zestawy-1624370659.png",
+        src: "/images/products/gree-soyal.png",
         alt: "Gree Soyal - zestawy",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-soyal-14043.png",
+        src: "/images/products/gree-soyal-gallery-1.png",
         alt: "Gree Soyal - widok z przodu",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-soyal-14042.jpg",
+        src: "/images/products/gree-soyal-gallery-2.jpg",
         alt: "Gree Soyal - perspektywa",
       },
       {
-        src: "https://pbac.pl/wp-content/uploads/2024/03/jachce.renj1b3t64-yjr3ovgyr61m.p.temp-site.link-gree-soyal-14039.jpg",
+        src: "/images/products/gree-soyal-gallery-3.jpg",
         alt: "Gree Soyal - detal",
       },
     ],
