@@ -1,12 +1,10 @@
 import type { Product, Brand } from "@/types";
+import { scrapedProducts } from "./products-scraped";
+// import { greeProducts } from "./products-gree";
+// import { lgToshibaProducts } from "./products-lg-toshiba";
 
-// Products data — populated from pbac.pl scraping
-// Samsung (5), LG (7), Toshiba (6), Haier (6), Gree (12),
-// AUX (8), Kaisai (4), Daikin (1), Mitsubishi Electric (5),
-// Mitsubishi Heavy (2), GE (2), Rotenso (1) = 59 total
-// TODO: Add remaining products as scraping agents complete
-
-export const products: Product[] = [
+// Samsung products inline (5), rest imported from sub-files
+const samsungProducts: Product[] = [
   // ═══════════════════════════════════════════════
   // SAMSUNG (5 products)
   // ═══════════════════════════════════════════════
@@ -208,6 +206,14 @@ export const products: Product[] = [
   },
 ];
 
+// Merge all product sources
+export const products: Product[] = [
+  ...samsungProducts,
+  ...scrapedProducts,
+  // ...greeProducts,
+  // ...lgToshibaProducts,
+];
+
 // Helper functions
 export function getAllProducts(): Product[] {
   return products;
@@ -226,9 +232,18 @@ export function getAllProductSlugs(): string[] {
 }
 
 export function getFeaturedProducts(): Product[] {
-  // Return a mix of bestsellers across brands
-  const featured = ["samsung-wind-free-elite", "samsung-cebu", "samsung-ar35"];
-  return products.filter((p) => featured.includes(p.slug)).slice(0, 6);
+  const featured = [
+    "samsung-wind-free-elite",
+    "samsung-cebu",
+    "aux-halo-deluxe",
+    "kaisai-ice-black",
+    "daikin-stylish-white",
+    "samsung-ar35",
+  ];
+  return featured
+    .map((slug) => products.find((p) => p.slug === slug))
+    .filter((p): p is Product => p !== undefined)
+    .slice(0, 6);
 }
 
 export function getProductBrands(): Brand[] {
