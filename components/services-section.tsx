@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Wrench, Settings, Flame, Clock } from "lucide-react";
 import FadeIn from "@/components/ui/fade-in";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { GridPattern } from "@/components/ui/grid-pattern";
+import { DotPattern } from "@/components/ui/dot-pattern";
 
 const iconMap = {
   Wrench,
@@ -41,10 +41,11 @@ const services = [
 export default function ServicesSection() {
   return (
     <section id="uslugi" className="relative py-20 px-4 overflow-hidden">
-      <GridPattern
-        className="absolute inset-0 z-0 fill-white/[0.03] [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
-        width={40}
-        height={40}
+      <DotPattern
+        width={20}
+        height={20}
+        cr={1}
+        className="absolute inset-x-0 top-0 h-[60%] fill-white/5 [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
       />
       <div className="relative z-10 max-w-7xl mx-auto">
         <FadeIn>

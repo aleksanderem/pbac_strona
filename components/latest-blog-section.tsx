@@ -1,5 +1,6 @@
 import Link from "next/link";
 import FadeIn from "@/components/ui/fade-in";
+import { StripedPattern } from "@/components/ui/striped-pattern";
 import ArticleCard from "@/components/article-card";
 import { getLatestArticles } from "@/lib/articles";
 
@@ -9,7 +10,12 @@ export default function LatestBlogSection() {
 
   return (
     <section id="blog" className="relative py-20 px-4 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+      <StripedPattern
+        width={12}
+        height={12}
+        className="absolute inset-x-0 top-0 h-[60%] z-0 text-white/25 [mask-image:radial-gradient(600px_circle_at_50%_30%,white,transparent)]"
+      />
+      <div className="relative z-10 max-w-7xl mx-auto">
         <FadeIn>
           <h2 className="font-montserrat text-4xl md:text-5xl font-bold text-center mb-4">
             Baza wiedzy

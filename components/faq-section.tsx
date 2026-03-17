@@ -5,7 +5,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { GridPattern } from "@/components/ui/grid-pattern";
+import { StripedPattern } from "@/components/ui/striped-pattern";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 import type { FAQ } from "@/types";
 
 export const homepageFaqs: FAQ[] = [
@@ -46,38 +47,36 @@ export const homepageFaqs: FAQ[] = [
 export default function FaqSection() {
   return (
     <section id="faq" className="relative py-20 px-4 overflow-hidden scroll-mt-20">
-      <GridPattern
-        className="absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
-        width={40}
-        height={40}
+      <StripedPattern
+        width={12}
+        height={12}
+        className="absolute inset-x-0 top-0 h-[60%] z-0 text-white/25 [mask-image:radial-gradient(600px_circle_at_50%_30%,white,transparent)]"
       />
       <div className="relative z-10 max-w-3xl mx-auto">
-        <FadeIn>
-          <h2 className="font-montserrat text-4xl md:text-5xl font-bold text-center mb-4">
-            Najczęściej zadawane pytania
-          </h2>
-          <p className="text-center text-white/60 text-lg mb-16">
-            Odpowiedzi na pytania, które najczęściej słyszymy od klientów
-          </p>
+        <FadeIn className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-16">
+          <h2>Najczęściej zadawane pytania</h2>
         </FadeIn>
 
-        <FadeIn delay={0.2}>
-          <Accordion type="single" collapsible className="space-y-3">
-            {homepageFaqs.map((faq, idx) => (
-              <AccordionItem
-                key={idx}
-                value={`faq-${idx}`}
-                className="border border-white/10 rounded-xl px-6 bg-white/5 backdrop-blur-sm"
-              >
-                <AccordionTrigger className="text-left font-montserrat font-bold text-sm sm:text-base py-5 hover:no-underline">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-white/60 text-sm leading-relaxed pb-5">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+        <FadeIn delay={0.2} className="relative rounded-2xl border border-white/10 p-2">
+          <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
+          <div className="relative rounded-xl bg-white/10 backdrop-blur-md p-4">
+            <Accordion type="single" collapsible className="space-y-2">
+              {homepageFaqs.map((faq, idx) => (
+                <AccordionItem
+                  key={idx}
+                  value={`faq-${idx}`}
+                  className="border-white/10 bg-white/5 rounded-xl px-6"
+                >
+                  <AccordionTrigger className="text-base text-white hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-white/60 leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </FadeIn>
       </div>
     </section>

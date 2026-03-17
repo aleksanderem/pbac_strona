@@ -35,7 +35,10 @@ export default function WhyPbacSection() {
   return (
     <section id="dlaczego-pbac" className="relative py-20 px-4 overflow-hidden">
       <DotPattern
-        className="absolute inset-0 z-0 fill-white/[0.03] [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
+        width={20}
+        height={20}
+        cr={1}
+        className="absolute inset-x-0 top-0 h-[60%] fill-white/5 [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
       />
       <div className="relative z-10 max-w-7xl mx-auto">
         <FadeIn>
