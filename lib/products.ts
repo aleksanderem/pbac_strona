@@ -1,6 +1,6 @@
 import type { Product, Brand } from "@/types";
 import { scrapedProducts } from "./products-scraped";
-// import { greeProducts } from "./products-gree";
+import { greeProducts } from "./products-gree";
 // import { lgToshibaProducts } from "./products-lg-toshiba";
 
 // Samsung products inline (5), rest imported from sub-files
@@ -210,7 +210,7 @@ const samsungProducts: Product[] = [
 export const products: Product[] = [
   ...samsungProducts,
   ...scrapedProducts,
-  // ...greeProducts,
+  ...greeProducts,
   // ...lgToshibaProducts,
 ];
 
