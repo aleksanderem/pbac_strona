@@ -17,8 +17,8 @@ export default function ProductHero({ imageUrl, imageAlt }: ProductHeroProps) {
       {/* MagicRings — exact reactbits.dev params */}
       <div style={{ position: "absolute", inset: 0 }}>
         <MagicRings
-          color="#fc42ff"
-          colorTwo="#42fcff"
+          color="#B31853"
+          colorTwo="#3D5EFF"
           ringCount={6}
           speed={1}
           attenuation={10}
@@ -47,7 +47,7 @@ export default function ProductHero({ imageUrl, imageAlt }: ProductHeroProps) {
         <img
           src={imageUrl}
           alt={imageAlt}
-          className="max-h-[350px] max-w-[400px] object-contain drop-shadow-[0_12px_60px_rgba(252,66,255,0.3)]"
+          className="max-h-[420px] max-w-[500px] object-contain drop-shadow-[0_12px_60px_rgba(179,24,83,0.3)]"
         />
       </div>
     </div>
