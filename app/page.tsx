@@ -7,10 +7,13 @@ import ServicesSection from "@/components/services-section";
 import { testimonials } from "@/lib/testimonials";
 import { homepageFaqs } from "@/components/faq-section";
 
+const BrandsSection = dynamic(() => import("@/components/brands-section"));
 const WhyPbacSection = dynamic(() => import("@/components/why-pbac-section"));
+const FeaturedProductsSection = dynamic(() => import("@/components/featured-products-section"));
 const HowWeWorkSection = dynamic(() => import("@/components/how-we-work-section"));
 const LocationsSection = dynamic(() => import("@/components/locations-section"));
 const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"));
+const LatestBlogSection = dynamic(() => import("@/components/latest-blog-section"));
 const QuoteForm = dynamic(() => import("@/components/quote-form"));
 const FaqSection = dynamic(() => import("@/components/faq-section"));
 const Footer = dynamic(() => import("@/components/footer"));
@@ -223,10 +226,13 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <ServicesSection />
+      <BrandsSection />
       <WhyPbacSection />
+      <FeaturedProductsSection />
       <HowWeWorkSection />
       <LocationsSection />
       <TestimonialsSection />
+      <LatestBlogSection />
       <QuoteForm />
       <FaqSection />
       <Footer />
