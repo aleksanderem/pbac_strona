@@ -104,3 +104,44 @@ Fixes applied:
 - Status: PASSING
 
 ---
+
+S0003. Task #13 serwis_miasto_content_expansion:
+- Massively expanded serwis/[miasto]/page.tsx from ~360 lines to ~580+ lines
+- Added 7 new content sections:
+  1. "Dlaczego regularny serwis jest niezbędny" - health risks, energy waste, warranty voiding (4 paragraphs)
+  2. "Co obejmuje przegląd klimatyzacji" - 7-step service process with detailed descriptions
+  3. "Kiedy wezwać serwis" - 6 warning sign cards with GlowingEffect
+  4. "Ile kosztuje serwis w [miasto]" - 5 pricing tiers with descriptions
+  5. "Serwisujemy wszystkie marki" - 6 brand-specific service cards (Samsung, LG, Toshiba, Gree, Daikin, Haier)
+  6. "Jak często serwisować" - 4 frequency tiers (residential/office/restaurant/server room)
+  7. "Jak wygląda serwis w [miasto]" - 4-step process with GlowingEffect cards
+- Enhanced hero with longer description mentioning all major brands
+- Added LocalBusiness schema with AggregateOffer pricing
+- Added OpenGraph metadata
+- Each page now has 2500-3000+ words of unique, valuable SEO content
+- Visual treatments: GridPattern, DotPattern, StripedPattern alternating, GlowingEffect cards
+
+S0003. Task #14 serwis_index_content_expansion:
+- Expanded serwis/page.tsx from ~123 lines to ~280+ lines
+- Added sections:
+  - Stats bar (500+ serwisów, 10+ marek, 4.9 ocena, od 250 zł)
+  - "Co obejmuje nasz serwis" - 6 GlowingEffect service cards
+  - "Dlaczego regularny serwis jest niezbędny" - prose + 4 warning cards
+  - "Cennik serwisu" - 5 pricing items with StripedPattern
+  - "Serwisujemy wszystkie marki" - 8 brand highlight cards
+  - Brands marquee
+  - Testimonials marquee (serwis-only)
+  - CTA with pricing mention
+- Added Service schema with AggregateOffer, OpenGraph
+
+S0003. Task #15 locations_serwis_faq_expansion:
+- Added serwis service to 7 more cities (was only Warszawa):
+  Otwock, Piaseczno, Grodzisk Mazowiecki, Legionowo, Łomianki, Nowy Dwór Mazowiecki, Pruszków
+- Total serwis cities: 8
+- Expanded Warszawa FAQs from 3 to 11 (added 8 serwis-specific questions)
+- Added 5+ serwis FAQs to each of the 7 new serwis cities
+- Added 5 new serwis testimonials (total serwis testimonials: 7)
+- Updated sitemap.ts: bumped serwis page priority from 0.7 to 0.8
+- All new FAQ content targets "serwis klimatyzacji [miasto]" keywords
+
+---

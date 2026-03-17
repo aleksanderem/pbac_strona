@@ -15,10 +15,10 @@ import HeroBackground from "@/components/hero-background";
 import { getAllBrands } from "@/lib/brands";
 import { testimonials } from "@/lib/testimonials";
 import {
-  Settings, MapPin, ArrowRight, Phone, CheckCircle, Star,
+  Settings, MapPin, ArrowRight, Phone, Star,
   Droplets, Thermometer, Wrench, ClipboardList, ShieldCheck,
-  Zap, Heart, Clock, BadgeCheck, AlertTriangle, CalendarCheck,
-  Award, Users, Bug, Wind,
+  Zap, Clock, BadgeCheck, CalendarCheck,
+  Award, Users, Bug,
 } from "lucide-react";
 import { getLocationsByService } from "@/lib/locations";
 

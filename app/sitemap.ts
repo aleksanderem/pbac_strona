@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/serwis/${l.slug}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.8,
     })
   );
 
@@ -82,7 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/serwis`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/kontakt`,
