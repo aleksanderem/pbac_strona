@@ -1,5 +1,5 @@
 {
-  "session_id": "S0002",
+  "session_id": "S0003",
   "date": "2026-03-17",
   "tasks": [
     {"id": 1, "name": "klimatyzacja_page", "status": "passing", "created_session": "S0002", "last_updated_session": "S0002"},
@@ -8,17 +8,21 @@
     {"id": 4, "name": "kontakt_page", "status": "passing", "created_session": "S0002", "last_updated_session": "S0002"},
     {"id": 5, "name": "produkty_page", "status": "passing", "created_session": "S0002", "last_updated_session": "S0002"},
     {"id": 6, "name": "produkty_marka_page", "status": "passing", "created_session": "S0002", "last_updated_session": "S0002"},
-    {"id": 7, "name": "produkty_marka_slug_page", "status": "passing", "created_session": "S0002", "last_updated_session": "S0002"},
+    {"id": 7, "name": "produkty_marka_slug_page", "status": "passing", "created_session": "S0002", "last_updated_session": "S0003"},
     {"id": 8, "name": "blog_page", "status": "passing", "created_session": "S0002", "last_updated_session": "S0002"},
     {"id": 9, "name": "blog_slug_page", "status": "passing", "created_session": "S0002", "last_updated_session": "S0002"},
     {"id": 10, "name": "serwis_index_page", "status": "passing", "created_session": "S0002", "last_updated_session": "S0002"},
     {"id": 11, "name": "serwis_miasto_page", "status": "passing", "created_session": "S0002", "last_updated_session": "S0002"},
-    {"id": 12, "name": "polityka_prywatnosci_page", "status": "passing", "created_session": "S0002", "last_updated_session": "S0002"}
+    {"id": 12, "name": "polityka_prywatnosci_page", "status": "passing", "created_session": "S0002", "last_updated_session": "S0002"},
+    {"id": 13, "name": "serwis_miasto_content_expansion", "status": "not_started", "created_session": "S0003", "last_updated_session": "S0003"},
+    {"id": 14, "name": "serwis_index_content_expansion", "status": "not_started", "created_session": "S0003", "last_updated_session": "S0003"},
+    {"id": 15, "name": "locations_serwis_faq_expansion", "status": "not_started", "created_session": "S0003", "last_updated_session": "S0003"},
+    {"id": 16, "name": "product_hero_magic_rings", "status": "passing", "created_session": "S0003", "last_updated_session": "S0003"}
   ],
-  "reason": "Upgraded all subpages to match homepage rich visual style",
-  "thinking_process": "Read homepage and montaz/[miasto] as reference for visual patterns, then systematically upgraded each page with matching visual elements. See tasks_progress_verbose.txt for details.",
-  "connected_tasks": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+  "reason": "Added task #16: Replace HeroBackground with MagicRings on product detail page hero",
+  "thinking_process": "Created ProductHero client component with dynamic MagicRings import (ssr:false), PBAC brand colors, product image layered on top with drop shadow. Removed HeroBackground and unused Image import from product page. Build passes 163 pages. See tasks_progress_verbose.txt.",
+  "connected_tasks": [7, 16],
   "how_to_test": [
-    {"id": 1, "name": "npm run build passes", "status": "done", "is_ok": true, "data_for_next_step": ["163 pages generated"], "session_id": "S0002"}
+    {"id": 1, "name": "npm run build passes", "status": "done", "is_ok": true, "data_for_next_step": ["163 pages generated"], "session_id": "S0003"}
   ]
 }

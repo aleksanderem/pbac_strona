@@ -166,3 +166,30 @@ Files modified:
   - /Users/alex/projects/pbac_main/app/serwis/[miasto]/page.tsx
   - /Users/alex/projects/pbac_main/app/polityka-prywatnosci/page.tsx
   - /Users/alex/projects/pbac_main/app/montaz/page.tsx (bonus)
+
+---
+
+=== SESSION S0003 START === 2026-03-17T20:00:00Z
+Focus: SEO content expansion + MagicRings product hero
+Continuing from: S0002 (completed)
+Active tasks: #13-16
+
+---
+
+S0003. Task #16 product_hero_magic_rings:
+- Created /Users/alex/projects/pbac_main/components/product-hero.tsx (client component)
+- Dynamically imports MagicRings with ssr:false
+- Imports MagicRings.css for the container styles
+- Uses PBAC brand colors: color="#B31853" colorTwo="#3D5EFF"
+- MagicRings fills the product image container as background (absolute inset-0 z-0)
+- Product image layered on top (z-10) with object-contain p-8 and drop-shadow
+- Container: aspect-square rounded-2xl border border-white/10 bg-black/40 overflow-hidden
+- Updated /Users/alex/projects/pbac_main/app/produkty/[marka]/[slug]/page.tsx:
+  - Replaced HeroBackground import with ProductHero import
+  - Removed <HeroBackground /> from hero section (no more full-section DarkVeil background)
+  - Replaced the static Image block with <ProductHero imageUrl imageAlt name />
+  - Removed unused `import Image from "next/image"`
+- Build verification: npm run build PASSED, 163 pages generated, 0 TypeScript errors
+- Status: PASSING
+
+---

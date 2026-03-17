@@ -13,11 +13,10 @@ import { AuroraText } from "@/components/ui/aurora-text";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { StripedPattern } from "@/components/ui/striped-pattern";
-import HeroBackground from "@/components/hero-background";
+import ProductHero from "@/components/product-hero";
 import ProductCard from "@/components/product-card";
 import ArticleCard from "@/components/article-card";
 import { Phone, CheckCircle, ShieldCheck, ArrowRight, Wrench, Settings } from "lucide-react";
-import Image from "next/image";
 import type { Brand } from "@/types";
 
 interface Props {
@@ -109,22 +108,17 @@ export default async function ProductPage({ params }: Props) {
 
       {/* ═══ HERO ═══ */}
       <section className="relative pt-28 pb-20 px-4 overflow-hidden">
-        <HeroBackground />
         <div className="relative z-10 max-w-6xl mx-auto">
           <Breadcrumb items={breadcrumbItems} />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-8">
-            {/* Image */}
+            {/* Image with MagicRings background */}
             <FadeIn>
-              <div className="relative aspect-square rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
-                <Image
-                  src={product.imageUrl}
-                  alt={product.imageAlt}
-                  fill
-                  className="object-contain p-8"
-                  priority
-                />
-              </div>
+              <ProductHero
+                imageUrl={product.imageUrl}
+                imageAlt={product.imageAlt}
+                name={product.name}
+              />
             </FadeIn>
 
             {/* Info */}
