@@ -14,9 +14,10 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { StripedPattern } from "@/components/ui/striped-pattern";
 import ProductHero from "@/components/product-hero";
+import ProductFeaturesBento from "@/components/product-features-bento";
 import ProductCard from "@/components/product-card";
 import ArticleCard from "@/components/article-card";
-import { Phone, CheckCircle, ShieldCheck, ArrowRight, Wrench, Settings } from "lucide-react";
+import { Phone, ArrowRight, Wrench, Settings } from "lucide-react";
 import type { Brand } from "@/types";
 
 interface Props {
@@ -218,53 +219,13 @@ export default async function ProductPage({ params }: Props) {
             </div>
           </FadeIn>
 
-          {/* Features */}
+          {/* Features + Advantages — MagicBento */}
           <div className="mt-12">
             <FadeIn>
-              <h2 className="font-montserrat text-2xl font-bold mb-6">Cechy i funkcje</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {product.features.map((f) => (
-                  <div key={f} className="flex items-start gap-3 text-white/70 text-sm">
-                    <CheckCircle className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
-                    {f}
-                  </div>
-                ))}
-              </div>
+              <h2 className="font-montserrat text-2xl font-bold mb-8 text-center">Cechy i funkcje</h2>
             </FadeIn>
+            <ProductFeaturesBento features={product.features} advantages={product.advantages} />
           </div>
-
-          {/* Advantages */}
-          {product.advantages.length > 0 && (
-            <div className="mt-12">
-              <FadeIn>
-                <h2 className="font-montserrat text-2xl font-bold mb-6">Kluczowe zalety</h2>
-              </FadeIn>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {product.advantages.map((adv, idx) => (
-                  <FadeIn key={adv.title} delay={idx * 0.1}>
-                    <div className="relative rounded-2xl border border-white/10 p-2 h-full">
-                      <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
-                      <div className="relative rounded-xl bg-white/10 backdrop-blur-md p-6 h-full">
-                        <h3 className="font-montserrat font-bold mb-2">{adv.title}</h3>
-                        <p className="text-sm text-white/60">{adv.desc}</p>
-                      </div>
-                    </div>
-                  </FadeIn>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Warranty */}
-          <FadeIn delay={0.2}>
-            <div className="mt-12 flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-6">
-              <ShieldCheck className="w-8 h-8 text-green-400 shrink-0" />
-              <div>
-                <div className="font-montserrat font-bold">Gwarancja</div>
-                <div className="text-sm text-white/60">{product.warranty}</div>
-              </div>
-            </div>
-          </FadeIn>
 
           {/* FAQ */}
           {product.faq && product.faq.length > 0 && (
