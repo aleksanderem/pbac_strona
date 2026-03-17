@@ -19,17 +19,26 @@ export type ProductCategory =
   | "podlogowy"
   | "przenosny";
 
-export interface ProductVariant {
+export interface ProductSpec {
+  label: string;
+  value: string;
+  icon: string;
+}
+
+export interface ProductModel {
+  name: string;
   power: string;
-  area: string;
-  price: number;
-  energyClassCool?: string;
-  energyClassHeat?: string;
+  energyClass: string;
+  noise: string;
+  phase: string;
+  price?: number;
+  area?: string;
 }
 
 export interface GalleryImage {
   src: string;
   alt: string;
+  caption?: string;
 }
 
 export interface Product {
@@ -38,21 +47,18 @@ export interface Product {
   brand: Brand;
   category: ProductCategory;
   tagline: string;
+  origin: string;
   description: string;
   descriptionLong: string[];
+  highlight: string;
   features: string[];
   advantages: { title: string; desc: string; icon: string }[];
-  specs: {
-    energyClass: string;
-    refrigerant: string;
-    noiseLevel: string;
-    wifi: boolean;
-    heating: boolean;
-    dimensions?: string;
-    weight?: string;
-  };
-  variants: ProductVariant[];
-  warranty: { standard: number; compressor: number };
+  specs: ProductSpec[];
+  models: ProductModel[];
+  refrigerant: string;
+  refrigerantNote: string;
+  powerRange: string;
+  warranty: string;
   imageUrl: string;
   imageAlt: string;
   gallery: GalleryImage[];
