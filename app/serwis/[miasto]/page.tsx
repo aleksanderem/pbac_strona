@@ -350,6 +350,27 @@ export default async function SerwisPage({ params }: Props) {
         </div>
       </section>
 
+      {/* ═══ FEATURE IMAGE — serwis hero ═══ */}
+      <section className="py-12 px-4">
+        <div className="max-w-5xl mx-auto">
+          <FadeIn>
+            <div className="relative rounded-2xl overflow-hidden border border-white/10">
+              <img
+                src="/images/serwis/serwis-hero.jpg"
+                alt="Serwis klimatyzacji — technik PBAC podczas przeglądu"
+                className="w-full h-64 sm:h-80 md:h-96 object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="text-white/90 font-montserrat font-bold text-lg sm:text-xl">Kompleksowy serwis klimatyzacji</p>
+                <p className="text-white/60 text-sm mt-1">Przegląd, czyszczenie, dezynfekcja i naprawa — wszystkie marki</p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* ═══ SECTION 1: Dlaczego regularny serwis jest niezbędny ═══ */}
       <section className="relative py-20 px-4 overflow-hidden">
         <GridPattern
@@ -433,6 +454,23 @@ export default async function SerwisPage({ params }: Props) {
               </FadeIn>
             ))}
           </div>
+
+          {/* Czyszczenie image break */}
+          <FadeIn>
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 mb-16">
+              <img
+                src="/images/serwis/serwis-czyszczenie.jpg"
+                alt="Czyszczenie i dezynfekcja klimatyzatora podczas serwisu"
+                className="w-full h-56 sm:h-72 object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5">
+                <p className="text-white/90 font-montserrat font-bold">Profesjonalne czyszczenie i dezynfekcja</p>
+                <p className="text-white/60 text-xs mt-0.5">Mycie parownika, filtrów i odpływu skroplin preparatami biobójczymi</p>
+              </div>
+            </div>
+          </FadeIn>
 
           {/* Detailed step-by-step */}
           <FadeIn className="mb-8">
@@ -629,6 +667,48 @@ export default async function SerwisPage({ params }: Props) {
             <p className="text-white/60 max-w-3xl mx-auto text-lg">
               Każda marka ma swoją specyfikę serwisową. Nasi technicy znają procedury producenta i dysponują odpowiednimi narzędziami diagnostycznymi.
             </p>
+          </FadeIn>
+
+          {/* Brand product images */}
+          <FadeIn delay={0.1}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10">
+                <img
+                  src="/images/serwis/klimatyzator-samsung.jpg"
+                  alt="Serwis klimatyzatora Samsung"
+                  className="w-full h-48 object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3">
+                  <p className="text-white font-montserrat font-bold text-sm">Samsung</p>
+                </div>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden border border-white/10">
+                <img
+                  src="/images/serwis/klimatyzator-mitsubishi.jpg"
+                  alt="Serwis klimatyzatora Mitsubishi Electric"
+                  className="w-full h-48 object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3">
+                  <p className="text-white font-montserrat font-bold text-sm">Mitsubishi</p>
+                </div>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden border border-white/10">
+                <img
+                  src="/images/serwis/klimatyzator-kaisai.jpg"
+                  alt="Serwis klimatyzatora Kaisai"
+                  className="w-full h-48 object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3">
+                  <p className="text-white font-montserrat font-bold text-sm">Kaisai</p>
+                </div>
+              </div>
+            </div>
           </FadeIn>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

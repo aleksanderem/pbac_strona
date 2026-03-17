@@ -60,88 +60,67 @@ S0003. Task #17 mega_menu_navbar:
 - Complete rewrite of /Users/alex/projects/pbac_main/components/navbar.tsx
 - Uses motion/react (AnimatePresence, motion.div) for all dropdown animations
 - Spring physics: stiffness 350, damping 28, mass 0.8 for snappy dropdown feel
-
-Desktop mega menu panels:
-1. Klimatyzacja (560px wide):
-   - Left column: 3 service links with lucide-react icons (Wrench, ThermometerSun, Building2) + descriptions
-   - Gradient icon backgrounds (from-cyan-500/20 to-blue-500/20)
-   - Right column: 5 featured brands (Samsung, Gree, Daikin, Kaisai, Mitsubishi) with logo images
-   - Bottom: "Zobacz wszystkie marki ->" link to /produkty
-
-2. Produkty (480px wide):
-   - Left: 2-column grid of 8 brands with logos from lib/brands.ts
-   - Right: Category quick links (Scienne, Multisplit, Kasetonowe)
-   - Bottom: "Wszystkie produkty ->" link
-
-3. Blog (520px wide):
-   - Left: 3 latest articles from getLatestArticles(3) with cover image thumbnails, titles, reading time
-   - Right: Up to 6 blog categories from getCategories()
-   - Bottom: "Wszystkie artykuly ->" link
-
-Direct links: Pompy ciepla, Kontakt
-CTA: Phone number gradient button (unchanged)
-
-Mobile implementation:
-- Full-screen slide-in panel from right (motion spring animation)
-- Backdrop overlay with blur
-- Collapsible sections for each dropdown (AnimatePresence with height animation)
-- Body scroll lock when menu open
-- Close on Escape key, outside click, route change
-
-Visual styling:
-- bg-black/95 backdrop-blur-xl on all dropdown panels
-- border border-white/10 on panels
-- rounded-2xl on dropdown panels
-- Gradient accent on icon containers (cyan-500/blue-500)
-- Active items: bg-white/10, hover: bg-white/5
-- Hover: text-cyan-300 on service labels and article titles
-- Section headers: text-white/40 uppercase tracking-wider
-
-Fixes applied:
-- Initial build failed: TypeScript error on ease string type in motion variants
-- Fixed by adding `as const` to all ease values ("easeIn" as const, "easeOut" as const, "spring" as const)
-- Rebuild: SUCCESS, all pages generated
 - Status: PASSING
 
 ---
 
-S0003. Task #13 serwis_miasto_content_expansion:
-- Massively expanded serwis/[miasto]/page.tsx from ~360 lines to ~580+ lines
-- Added 7 new content sections:
-  1. "Dlaczego regularny serwis jest niezbędny" - health risks, energy waste, warranty voiding (4 paragraphs)
-  2. "Co obejmuje przegląd klimatyzacji" - 7-step service process with detailed descriptions
-  3. "Kiedy wezwać serwis" - 6 warning sign cards with GlowingEffect
-  4. "Ile kosztuje serwis w [miasto]" - 5 pricing tiers with descriptions
-  5. "Serwisujemy wszystkie marki" - 6 brand-specific service cards (Samsung, LG, Toshiba, Gree, Daikin, Haier)
-  6. "Jak często serwisować" - 4 frequency tiers (residential/office/restaurant/server room)
-  7. "Jak wygląda serwis w [miasto]" - 4-step process with GlowingEffect cards
-- Enhanced hero with longer description mentioning all major brands
-- Added LocalBusiness schema with AggregateOffer pricing
-- Added OpenGraph metadata
-- Each page now has 2500-3000+ words of unique, valuable SEO content
-- Visual treatments: GridPattern, DotPattern, StripedPattern alternating, GlowingEffect cards
-
-S0003. Task #14 serwis_index_content_expansion:
-- Expanded serwis/page.tsx from ~123 lines to ~280+ lines
-- Added sections:
-  - Stats bar (500+ serwisów, 10+ marek, 4.9 ocena, od 250 zł)
-  - "Co obejmuje nasz serwis" - 6 GlowingEffect service cards
-  - "Dlaczego regularny serwis jest niezbędny" - prose + 4 warning cards
-  - "Cennik serwisu" - 5 pricing items with StripedPattern
-  - "Serwisujemy wszystkie marki" - 8 brand highlight cards
-  - Brands marquee
-  - Testimonials marquee (serwis-only)
-  - CTA with pricing mention
-- Added Service schema with AggregateOffer, OpenGraph
-
-S0003. Task #15 locations_serwis_faq_expansion:
-- Added serwis service to 7 more cities (was only Warszawa):
-  Otwock, Piaseczno, Grodzisk Mazowiecki, Legionowo, Łomianki, Nowy Dwór Mazowiecki, Pruszków
-- Total serwis cities: 8
-- Expanded Warszawa FAQs from 3 to 11 (added 8 serwis-specific questions)
-- Added 5+ serwis FAQs to each of the 7 new serwis cities
-- Added 5 new serwis testimonials (total serwis testimonials: 7)
-- Updated sitemap.ts: bumped serwis page priority from 0.7 to 0.8
-- All new FAQ content targets "serwis klimatyzacji [miasto]" keywords
+S0003. Tasks #13-15 serwis content expansion:
+- Massively expanded serwis/[miasto]/page.tsx with 7 new content sections
+- Expanded serwis index page with pricing/brands/service overview
+- Added serwis to 8 cities with 5-8 FAQs each, added testimonials
+- Status: PASSING
 
 ---
+
+=== SESSION S0004 START === 2026-03-17T22:00:00Z
+Focus: Three urgent fixes — mega menu wider dropdowns, montaz visual upgrade, serwis images
+Continuing from: S0003
+
+---
+
+S0004. Task #18 mega_menu_wider_dropdowns:
+- Klimatyzacja dropdown: w-[560px] → min-w-[720px]
+- Produkty dropdown: w-[480px] → min-w-[680px]
+- Blog dropdown: w-[520px] → min-w-[640px]
+- Klimatyzacja brand logo containers: size-12 → size-14, Image 56→64
+- Produkty brand logo containers: size-12 → size-14, Image 56→64
+- Klimatyzacja right column: w-[200px] → w-[260px]
+- Produkty quick links: w-[150px] → w-[180px]
+- Blog categories: w-[160px] → w-[190px]
+- Status: PASSING
+
+S0004. Task #19 montaz_visual_upgrade:
+- Added hero image break after stats bar using /images/montaz/montaz-hero.jpg
+- Content sections now use 2-column layouts with images for first 3 sections:
+  - Section 0 (even): text left + /images/serwis/serwis-hero.jpg right
+  - Section 1 (odd): /images/serwis/klimatyzator-samsung.jpg left + text right
+  - Section 2 (even): text left + /images/serwis/klimatyzator-mitsubishi.jpg right
+  - Remaining sections: full-width text (no image)
+- Stats bar upgraded: icons 12→16 size, numbers text-2xl→text-3xl/4xl, padding increased
+- FAQ now uses GlowingEffect + backdrop-blur accordion style (matching homepage/serwis)
+- Added brand images section before brands marquee (Samsung + Mitsubishi 2-col grid)
+- Status: PASSING
+
+S0004. Task #20 serwis_add_images:
+- Added /images/serwis/serwis-hero.jpg as feature image between stats bar and section 1
+  - Full-width rounded-2xl with gradient overlay, caption text
+- Added /images/serwis/serwis-czyszczenie.jpg inside section 2 "Co obejmuje przegląd"
+  - Between overview cards and detailed 7-step process
+- Added 3 brand images in section 5 "Serwisujemy wszystkie marki":
+  - /images/serwis/klimatyzator-samsung.jpg
+  - /images/serwis/klimatyzator-mitsubishi.jpg
+  - /images/serwis/klimatyzator-kaisai.jpg
+  - 3-column grid before the brand service note cards
+- All images use <img> tags (not next/image) as requested
+- All images have loading="lazy", alt text, rounded borders, gradient overlays
+- Status: PASSING
+
+Build verification: npm run build PASSED — 170 pages generated, 0 errors
+
+=== SESSION S0004 HANDOFF === 2026-03-17T22:30:00Z
+Status: completed
+Current state: All three fixes applied and verified
+Files modified:
+  - components/navbar.tsx (wider dropdowns, bigger brand logos)
+  - app/montaz/[miasto]/page.tsx (images, bigger stats, GlowingEffect FAQ)
+  - app/serwis/[miasto]/page.tsx (5 image sections added)

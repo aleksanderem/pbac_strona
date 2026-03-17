@@ -259,7 +259,7 @@ export default function Navbar() {
                     exit="exit"
                     className="absolute -left-4 top-full pt-2"
                   >
-                    <div className="w-[560px] bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50">
+                    <div className="min-w-[720px] bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50">
                       <div className="flex gap-6">
                         {/* Left column: Services */}
                         <div className="flex-1">
@@ -297,7 +297,7 @@ export default function Navbar() {
                         <div className="w-px bg-white/10" />
 
                         {/* Right column: Featured brands */}
-                        <div className="w-[200px]">
+                        <div className="w-[260px]">
                           <p className="text-xs font-medium uppercase tracking-wider text-white/40 mb-3">
                             Popularne marki
                           </p>
@@ -312,13 +312,13 @@ export default function Navbar() {
                                     : "hover:bg-white/5"
                                 }`}
                               >
-                                <div className="size-12 rounded-lg bg-white/10 overflow-hidden flex items-center justify-center shrink-0">
+                                <div className="size-14 rounded-lg bg-white/10 overflow-hidden flex items-center justify-center shrink-0">
                                   <Image
                                     src={brand.logo}
                                     alt={brand.name}
-                                    width={56}
-                                    height={56}
-                                    className="size-10 object-contain"
+                                    width={64}
+                                    height={64}
+                                    className="size-12 object-contain"
                                   />
                                 </div>
                                 <span className="text-sm text-white/70 group-hover:text-white transition-colors">
@@ -376,7 +376,7 @@ export default function Navbar() {
                     exit="exit"
                     className="absolute -left-4 top-full pt-2"
                   >
-                    <div className="w-[480px] bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50">
+                    <div className="min-w-[680px] bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50">
                       <div className="flex gap-6">
                         {/* Brands grid */}
                         <div className="flex-1">
@@ -394,13 +394,13 @@ export default function Navbar() {
                                     : "hover:bg-white/5"
                                 }`}
                               >
-                                <div className="size-12 rounded-lg bg-white/10 overflow-hidden flex items-center justify-center shrink-0">
+                                <div className="size-14 rounded-lg bg-white/10 overflow-hidden flex items-center justify-center shrink-0">
                                   <Image
                                     src={brand.logo}
                                     alt={brand.name}
-                                    width={56}
-                                    height={56}
-                                    className="size-10 object-contain"
+                                    width={64}
+                                    height={64}
+                                    className="size-12 object-contain"
                                   />
                                 </div>
                                 <span className="text-sm text-white/70 group-hover:text-white transition-colors">
@@ -415,7 +415,7 @@ export default function Navbar() {
                         <div className="w-px bg-white/10" />
 
                         {/* Quick links */}
-                        <div className="w-[150px]">
+                        <div className="w-[180px]">
                           <p className="text-xs font-medium uppercase tracking-wider text-white/40 mb-3">
                             Kategorie
                           </p>
@@ -482,7 +482,7 @@ export default function Navbar() {
                     exit="exit"
                     className="absolute -left-20 top-full pt-2"
                   >
-                    <div className="w-[520px] bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50">
+                    <div className="min-w-[640px] bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50">
                       <div className="flex gap-6">
                         {/* Recent articles */}
                         <div className="flex-1">
@@ -528,7 +528,7 @@ export default function Navbar() {
                         <div className="w-px bg-white/10" />
 
                         {/* Categories */}
-                        <div className="w-[160px]">
+                        <div className="w-[190px]">
                           <p className="text-xs font-medium uppercase tracking-wider text-white/40 mb-3">
                             Kategorie
                           </p>

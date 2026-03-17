@@ -150,17 +150,17 @@ export default async function MontazPage({ params }: Props) {
 
       {/* ═══ STATS BAR ═══ */}
       <section className="border-y border-white/10 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, idx) => (
               <FadeIn key={stat.label} delay={idx * 0.1}>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl gradient-icon flex items-center justify-center shrink-0">
-                    <stat.icon className="w-6 h-6 text-white" />
+                <div className="flex items-center gap-5">
+                  <div className="w-16 h-16 rounded-2xl gradient-icon flex items-center justify-center shrink-0">
+                    <stat.icon className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <div className="font-montserrat text-2xl font-bold"><AuroraText>{stat.number}</AuroraText></div>
-                    <div className="text-xs text-white/50">{stat.label}</div>
+                    <div className="font-montserrat text-3xl md:text-4xl font-bold"><AuroraText>{stat.number}</AuroraText></div>
+                    <div className="text-sm text-white/50">{stat.label}</div>
                   </div>
                 </div>
               </FadeIn>
@@ -169,25 +169,99 @@ export default async function MontazPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ═══ CONTENT SECTIONS with alternating patterns ═══ */}
+      {/* ═══ HERO IMAGE BREAK ═══ */}
+      <section className="py-12 px-4">
+        <div className="max-w-5xl mx-auto">
+          <FadeIn>
+            <div className="relative rounded-2xl overflow-hidden border border-white/10">
+              <img
+                src="/images/montaz/montaz-hero.jpg"
+                alt="Montaż klimatyzacji przez technika PBAC"
+                className="w-full h-64 sm:h-80 md:h-96 object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="text-white/90 font-montserrat font-bold text-lg sm:text-xl">Profesjonalny montaż klimatyzacji</p>
+                <p className="text-white/60 text-sm mt-1">Wykonywany zgodnie z wytycznymi producenta przez certyfikowanych techników</p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ═══ CONTENT SECTIONS with alternating patterns + images ═══ */}
       {location.sections.map((section, idx) => {
         const patterns = [GridPattern, DotPattern, StripedPattern, GridPattern, DotPattern, StripedPattern, GridPattern, DotPattern];
         const Pattern = patterns[idx % patterns.length];
         const isEven = idx % 2 === 0;
 
+        const sectionImages = [
+          { src: "/images/serwis/serwis-hero.jpg", alt: "Klimatyzacja zamontowana w mieszkaniu" },
+          { src: "/images/serwis/klimatyzator-samsung.jpg", alt: "Klimatyzator Samsung WindFree" },
+          { src: "/images/serwis/klimatyzator-mitsubishi.jpg", alt: "Klimatyzator Mitsubishi Electric" },
+        ];
+        const sectionImage = idx < sectionImages.length ? sectionImages[idx] : null;
+
         return (
           <section key={idx} className="relative py-16 px-4 overflow-hidden">
             <Pattern className={`absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(600px_circle_at_${isEven ? 'center' : 'top'},white,transparent)]`} {...(Pattern === GridPattern ? { width: 40, height: 40 } : {})} />
-            <div className="relative z-10 max-w-4xl mx-auto">
+            <div className="relative z-10 max-w-5xl mx-auto">
               <FadeIn delay={0.1}>
-                <h2 className="font-montserrat text-2xl md:text-3xl font-bold mb-6">
-                  {section.heading}
-                </h2>
-                <div className="text-white/70 leading-relaxed space-y-4">
-                  {section.content.split("\n\n").map((p, pIdx) => (
-                    <p key={pIdx}>{p}</p>
-                  ))}
-                </div>
+                {sectionImage && isEven ? (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                    <div>
+                      <h2 className="font-montserrat text-2xl md:text-3xl font-bold mb-6">
+                        {section.heading}
+                      </h2>
+                      <div className="text-white/70 leading-relaxed space-y-4">
+                        {section.content.split("\n\n").map((p, pIdx) => (
+                          <p key={pIdx}>{p}</p>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="rounded-2xl overflow-hidden border border-white/10">
+                      <img
+                        src={sectionImage.src}
+                        alt={sectionImage.alt}
+                        className="w-full h-64 lg:h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                ) : sectionImage && !isEven ? (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                    <div className="rounded-2xl overflow-hidden border border-white/10 order-last lg:order-first">
+                      <img
+                        src={sectionImage.src}
+                        alt={sectionImage.alt}
+                        className="w-full h-64 lg:h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <h2 className="font-montserrat text-2xl md:text-3xl font-bold mb-6">
+                        {section.heading}
+                      </h2>
+                      <div className="text-white/70 leading-relaxed space-y-4">
+                        {section.content.split("\n\n").map((p, pIdx) => (
+                          <p key={pIdx}>{p}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="max-w-4xl mx-auto">
+                    <h2 className="font-montserrat text-2xl md:text-3xl font-bold mb-6">
+                      {section.heading}
+                    </h2>
+                    <div className="text-white/70 leading-relaxed space-y-4">
+                      {section.content.split("\n\n").map((p, pIdx) => (
+                        <p key={pIdx}>{p}</p>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </FadeIn>
             </div>
           </section>
@@ -223,6 +297,42 @@ export default async function MontazPage({ params }: Props) {
               </FadeIn>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══ BRAND IMAGES SECTION ═══ */}
+      <section className="py-16 px-4">
+        <div className="max-w-5xl mx-auto">
+          <FadeIn>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10">
+                <img
+                  src="/images/serwis/klimatyzator-samsung.jpg"
+                  alt="Klimatyzator Samsung WindFree"
+                  className="w-full h-64 object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <p className="text-white font-montserrat font-bold">Samsung WindFree</p>
+                  <p className="text-white/60 text-xs mt-0.5">Klimatyzacja bez bezpośredniego nawiewu</p>
+                </div>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden border border-white/10">
+                <img
+                  src="/images/serwis/klimatyzator-mitsubishi.jpg"
+                  alt="Klimatyzator Mitsubishi Electric"
+                  className="w-full h-64 object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <p className="text-white font-montserrat font-bold">Mitsubishi Electric</p>
+                  <p className="text-white/60 text-xs mt-0.5">Japońska precyzja i niezawodność</p>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -303,7 +413,7 @@ export default async function MontazPage({ params }: Props) {
         </section>
       )}
 
-      {/* ═══ FAQ ACCORDION ═══ */}
+      {/* ═══ FAQ ACCORDION with GlowingEffect ═══ */}
       {location.faq.length > 0 && (
         <section className="relative py-20 px-4 overflow-hidden">
           <StripedPattern className="absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]" />
@@ -317,18 +427,23 @@ export default async function MontazPage({ params }: Props) {
               </p>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <Accordion type="single" collapsible className="space-y-3">
-                {location.faq.map((faq, idx) => (
-                  <AccordionItem key={idx} value={`faq-${idx}`} className="border border-white/10 rounded-xl px-6 bg-white/5 backdrop-blur-sm">
-                    <AccordionTrigger className="text-left font-montserrat font-bold text-sm sm:text-base py-5 hover:no-underline">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-white/60 text-sm leading-relaxed pb-5">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+              <div className="relative rounded-2xl border border-white/10 p-2">
+                <GlowingEffect spread={40} glow proximity={64} />
+                <div className="relative rounded-xl bg-white/10 backdrop-blur-md p-4">
+                  <Accordion type="single" collapsible className="space-y-2">
+                    {location.faq.map((faq, idx) => (
+                      <AccordionItem key={idx} value={`faq-${idx}`} className="border-white/10 bg-white/5 rounded-xl px-6">
+                        <AccordionTrigger className="text-left font-montserrat font-bold text-sm sm:text-base py-5 hover:no-underline">
+                          {faq.question}
+                        </AccordionTrigger>
+                        <AccordionContent className="text-white/60 text-sm leading-relaxed pb-5">
+                          {faq.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
+              </div>
             </FadeIn>
           </div>
         </section>
