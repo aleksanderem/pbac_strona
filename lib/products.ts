@@ -2,7 +2,7 @@ import type { Product, Brand } from "@/types";
 import { scrapedProducts } from "./products-scraped";
 import { greeProducts } from "./products-gree";
 import { haierProducts } from "./products-haier";
-// import { lgToshibaProducts } from "./products-lg-toshiba";
+import { lgToshibaProducts } from "./products-lg-toshiba";
 
 // Samsung products inline (5), rest imported from sub-files
 const samsungProducts: Product[] = [
@@ -213,7 +213,7 @@ export const products: Product[] = [
   ...scrapedProducts,
   ...greeProducts,
   ...haierProducts,
-  // ...lgToshibaProducts,
+  ...lgToshibaProducts,
 ];
 
 // Helper functions
@@ -236,11 +236,11 @@ export function getAllProductSlugs(): string[] {
 export function getFeaturedProducts(): Product[] {
   const featured = [
     "samsung-wind-free-elite",
+    "lg-artcool-gallery",
+    "toshiba-haori",
     "gree-clivia-silver",
-    "aux-halo-deluxe",
-    "kaisai-ice-black",
     "daikin-stylish-white",
-    "samsung-ar35",
+    "kaisai-ice-black",
   ];
   return featured
     .map((slug) => products.find((p) => p.slug === slug))
