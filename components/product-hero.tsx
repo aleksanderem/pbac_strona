@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import "@/components/MagicRings.css";
 
 const MagicRings = dynamic(() => import("@/components/MagicRings"), { ssr: false });
@@ -9,13 +8,12 @@ const MagicRings = dynamic(() => import("@/components/MagicRings"), { ssr: false
 interface ProductHeroProps {
   imageUrl: string;
   imageAlt: string;
-  name: string;
 }
 
-export default function ProductHero({ imageUrl, imageAlt, name }: ProductHeroProps) {
+export default function ProductHero({ imageUrl, imageAlt }: ProductHeroProps) {
   return (
-    <div className="relative aspect-square rounded-2xl border border-white/10 bg-black/40 overflow-hidden">
-      {/* MagicRings background */}
+    <div className="relative w-full min-h-[50vh] overflow-hidden">
+      {/* MagicRings background — full width */}
       <div className="absolute inset-0 z-0">
         <MagicRings
           color="#B31853"
@@ -27,7 +25,7 @@ export default function ProductHero({ imageUrl, imageAlt, name }: ProductHeroPro
           baseRadius={0.35}
           radiusStep={0.1}
           scaleRate={0.1}
-          opacity={0.6}
+          opacity={0.5}
           blur={0}
           noiseAmount={0.1}
           rotation={0}
@@ -41,14 +39,15 @@ export default function ProductHero({ imageUrl, imageAlt, name }: ProductHeroPro
           clickBurst={false}
         />
       </div>
-      {/* Product image floating above rings */}
-      <Image
-        src={imageUrl}
-        alt={imageAlt}
-        fill
-        className="relative z-10 object-contain p-8 drop-shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
-        priority
-      />
+      {/* Product image floating centered above rings */}
+      <div className="relative z-10 flex items-center justify-center h-full py-12">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={imageUrl}
+          alt={imageAlt}
+          className="max-h-[40vh] max-w-[60%] object-contain drop-shadow-[0_8px_40px_rgba(179,24,83,0.3)]"
+        />
+      </div>
     </div>
   );
 }

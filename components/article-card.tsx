@@ -1,13 +1,15 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Article } from "@/types";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { Snowflake } from "lucide-react";
 
 interface ArticleCardProps {
   article: Article;
 }
 
 export default function ArticleCard({ article }: ArticleCardProps) {
+  const hasImage = article.coverImage && !article.coverImage.startsWith("/images/blog/");
+
   return (
     <Link
       href={`/blog/${article.slug}`}
@@ -16,12 +18,18 @@ export default function ArticleCard({ article }: ArticleCardProps) {
       <GlowingEffect spread={40} glow proximity={64} />
       <div className="relative overflow-hidden rounded-xl bg-white/10 backdrop-blur-md">
         <div className="relative aspect-[16/9] overflow-hidden">
-          <Image
-            src={article.coverImage}
-            alt={article.coverAlt}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-          />
+          {hasImage ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={article.coverImage}
+              alt={article.coverAlt}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          ) : (
+            <div className="absolute inset-0 gradient-primary opacity-40 flex items-center justify-center">
+              <Snowflake className="w-12 h-12 text-white/20" />
+            </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
           <span className="absolute top-3 left-3 rounded-full bg-white/10 px-3 py-1 text-xs text-white/80 backdrop-blur-sm">
             {article.category}

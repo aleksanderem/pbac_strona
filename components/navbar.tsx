@@ -312,13 +312,13 @@ export default function Navbar() {
                                     : "hover:bg-white/5"
                                 }`}
                               >
-                                <div className="size-8 rounded-md bg-white/10 overflow-hidden flex items-center justify-center shrink-0">
+                                <div className="size-12 rounded-lg bg-white/10 overflow-hidden flex items-center justify-center shrink-0">
                                   <Image
                                     src={brand.logo}
                                     alt={brand.name}
-                                    width={32}
-                                    height={32}
-                                    className="size-6 object-contain"
+                                    width={56}
+                                    height={56}
+                                    className="size-10 object-contain"
                                   />
                                 </div>
                                 <span className="text-sm text-white/70 group-hover:text-white transition-colors">
@@ -394,13 +394,13 @@ export default function Navbar() {
                                     : "hover:bg-white/5"
                                 }`}
                               >
-                                <div className="size-8 rounded-md bg-white/10 overflow-hidden flex items-center justify-center shrink-0">
+                                <div className="size-12 rounded-lg bg-white/10 overflow-hidden flex items-center justify-center shrink-0">
                                   <Image
                                     src={brand.logo}
                                     alt={brand.name}
-                                    width={32}
-                                    height={32}
-                                    className="size-6 object-contain"
+                                    width={56}
+                                    height={56}
+                                    className="size-10 object-contain"
                                   />
                                 </div>
                                 <span className="text-sm text-white/70 group-hover:text-white transition-colors">
@@ -687,13 +687,13 @@ export default function Navbar() {
                               className="flex items-center gap-3 px-3 py-2 text-sm text-white/60 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
                               onClick={() => setMobileOpen(false)}
                             >
-                              <div className="size-6 rounded bg-white/10 overflow-hidden flex items-center justify-center">
+                              <div className="size-10 rounded-lg bg-white/10 overflow-hidden flex items-center justify-center">
                                 <Image
                                   src={brand.logo}
                                   alt={brand.name}
-                                  width={24}
-                                  height={24}
-                                  className="size-5 object-contain"
+                                  width={48}
+                                  height={48}
+                                  className="size-8 object-contain"
                                 />
                               </div>
                               {brand.name}
@@ -754,13 +754,13 @@ export default function Navbar() {
                               }`}
                               onClick={() => setMobileOpen(false)}
                             >
-                              <div className="size-6 rounded bg-white/10 overflow-hidden flex items-center justify-center">
+                              <div className="size-10 rounded-lg bg-white/10 overflow-hidden flex items-center justify-center">
                                 <Image
                                   src={brand.logo}
                                   alt={brand.name}
-                                  width={24}
-                                  height={24}
-                                  className="size-5 object-contain"
+                                  width={48}
+                                  height={48}
+                                  className="size-8 object-contain"
                                 />
                               </div>
                               {brand.name}
