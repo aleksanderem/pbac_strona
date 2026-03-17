@@ -14,10 +14,9 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { StripedPattern } from "@/components/ui/striped-pattern";
 import ProductHero from "@/components/product-hero";
-import ProductFeaturesBento from "@/components/product-features-bento";
 import ProductCard from "@/components/product-card";
 import ArticleCard from "@/components/article-card";
-import { Phone, ArrowRight, Wrench, Settings } from "lucide-react";
+import { Phone, CheckCircle, ArrowRight, Wrench, Settings } from "lucide-react";
 import type { Brand } from "@/types";
 
 interface Props {
@@ -219,13 +218,39 @@ export default async function ProductPage({ params }: Props) {
             </div>
           </FadeIn>
 
-          {/* Features + Advantages — MagicBento */}
+          {/* Features */}
           <div className="mt-12">
             <FadeIn>
-              <h2 className="font-montserrat text-2xl font-bold mb-8 text-center">Cechy i funkcje</h2>
+              <h2 className="font-montserrat text-2xl font-bold mb-6">Cechy i funkcje</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {product.features.map((f) => (
+                  <div key={f} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
+                    <CheckCircle className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+                    <span className="text-white/80 text-sm leading-relaxed">{f}</span>
+                  </div>
+                ))}
+              </div>
             </FadeIn>
-            <ProductFeaturesBento features={product.features} advantages={product.advantages} />
           </div>
+
+          {/* Advantages */}
+          {product.advantages.length > 0 && (
+            <div className="mt-12">
+              <FadeIn>
+                <h2 className="font-montserrat text-2xl font-bold mb-6">Kluczowe zalety</h2>
+              </FadeIn>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {product.advantages.map((adv, idx) => (
+                  <FadeIn key={adv.title} delay={idx * 0.1}>
+                    <div className="rounded-xl border border-white/10 bg-white/5 p-5 h-full">
+                      <h3 className="font-montserrat font-bold mb-2">{adv.title}</h3>
+                      <p className="text-sm text-white/60 leading-relaxed">{adv.desc}</p>
+                    </div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* FAQ */}
           {product.faq && product.faq.length > 0 && (
