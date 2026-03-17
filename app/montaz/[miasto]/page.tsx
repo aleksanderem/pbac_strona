@@ -1,13 +1,31 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { getLocationBySlug, getLocationsByService } from "@/lib/locations";
+import Link from "next/link";
+import { getLocationBySlug, getLocationsByService, getAllLocations } from "@/lib/locations";
+import { getAllBrands } from "@/lib/brands";
+import HeroBackground from "@/components/hero-background";
+import { testimonials } from "@/lib/testimonials";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Breadcrumb, { buildBreadcrumbSchema } from "@/components/breadcrumb";
 import JsonLd from "@/components/json-ld";
 import FadeIn from "@/components/ui/fade-in";
+import { AuroraText } from "@/components/ui/aurora-text";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { GridPattern } from "@/components/ui/grid-pattern";
-import { MapPin, Phone, CheckCircle } from "lucide-react";
+import { DotPattern } from "@/components/ui/dot-pattern";
+import { StripedPattern } from "@/components/ui/striped-pattern";
+import { Marquee } from "@/components/ui/marquee";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
+  MapPin, Phone, CheckCircle, Star, Wrench, ShieldCheck,
+  ClipboardList, Thermometer, Snowflake, Settings, Award, Users,
+} from "lucide-react";
 
 interface Props {
   params: Promise<{ miasto: string }>;
@@ -34,10 +52,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+const processSteps = [
+  { icon: Phone, title: "Kontakt i wycena", desc: "Bezpłatna wycena na podstawie metrażu, zdjęć i potrzeb. Wycena w 24h." },
+  { icon: ClipboardList, title: "Dobór urządzenia", desc: "Specjalista dobiera klimatyzator dopasowany do pomieszczenia i budżetu." },
+  { icon: Wrench, title: "Montaż", desc: "Profesjonalna instalacja zgodna z wytycznymi producenta. 4-8h pracy." },
+  { icon: ShieldCheck, title: "Uruchomienie i gwarancja", desc: "Konfiguracja, szkolenie obsługi, pełna gwarancja." },
+];
+
+const stats = [
+  { icon: Users, number: "500+", label: "Montaży" },
+  { icon: Award, number: "10+", label: "Marek" },
+  { icon: Star, number: "4.9", label: "Ocena" },
+  { icon: ShieldCheck, number: "5 lat", label: "Gwarancja" },
+];
+
 export default async function MontazPage({ params }: Props) {
   const { miasto } = await params;
   const location = getLocationBySlug(miasto);
   if (!location || !location.services.includes("montaz")) notFound();
+
+  const brands = getAllBrands();
+  const allLocations = getAllLocations().filter((l) => l.slug !== location.slug && l.services.includes("montaz"));
+  const cityTestimonials = testimonials.filter((t) => t.service === "montaz").slice(0, 6);
 
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },
@@ -50,21 +86,10 @@ export default async function MontazPage({ params }: Props) {
     "@type": "Service",
     name: `Montaż klimatyzacji ${location.name}`,
     description: location.description,
-    provider: {
-      "@type": "HVACBusiness",
-      "@id": "https://pbac.pl/#localbusiness",
-      name: "PBAC",
-      telephone: "+48503151802",
-    },
-    areaServed: {
-      "@type": "City",
-      name: location.name,
-      containedInPlace: {
-        "@type": "AdministrativeArea",
-        name: location.region,
-      },
-    },
+    provider: { "@type": "HVACBusiness", "@id": "https://pbac.pl/#localbusiness", name: "PBAC", telephone: "+48503151802" },
+    areaServed: { "@type": "City", name: location.name, containedInPlace: { "@type": "AdministrativeArea", name: location.region } },
     serviceType: "Montaż klimatyzacji",
+    offers: { "@type": "AggregateOffer", priceCurrency: "PLN", lowPrice: 4000, highPrice: 15000 },
   };
 
   const localBusinessSchema = {
@@ -75,112 +100,277 @@ export default async function MontazPage({ params }: Props) {
     telephone: "+48503151802",
     email: "montaz@pbac.pl",
     areaServed: { "@type": "City", name: location.name },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: location.coordinates.lat,
-      longitude: location.coordinates.lng,
-    },
+    geo: { "@type": "GeoCoordinates", latitude: location.coordinates.lat, longitude: location.coordinates.lng },
+    aggregateRating: { "@type": "AggregateRating", ratingValue: 4.9, bestRating: 5, reviewCount: cityTestimonials.length || 10 },
   };
+
+  const faqSchema = location.faq.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: location.faq.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  } : null;
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <JsonLd data={[serviceSchema, localBusinessSchema, buildBreadcrumbSchema(breadcrumbItems)]} />
+      <JsonLd data={[serviceSchema, localBusinessSchema, buildBreadcrumbSchema(breadcrumbItems), ...(faqSchema ? [faqSchema] : [])]} />
       <Navbar />
 
-      <section className="relative pt-28 pb-20 px-4 overflow-hidden">
-        <GridPattern
-          className="absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
-          width={40}
-          height={40}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto">
+      {/* ═══ HERO with DarkVeil ═══ */}
+      <section className="relative min-h-[60vh] flex items-end overflow-hidden">
+        <HeroBackground />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 pb-16 pt-32 w-full">
           <Breadcrumb items={breadcrumbItems} />
-
           <FadeIn>
             <div className="flex items-center gap-3 mt-6 mb-4">
-              <MapPin className="w-6 h-6 text-white/40" />
+              <MapPin className="w-5 h-5 text-white/50" />
               <span className="text-white/50 text-sm">{location.region}</span>
             </div>
-            <h1 className="font-montserrat text-4xl md:text-5xl font-bold mb-6">
-              Montaż klimatyzacji {location.name}
+            <h1 className="font-montserrat text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+              Montaż klimatyzacji <AuroraText>{location.name}</AuroraText>
             </h1>
-            <p className="text-lg text-white/70 leading-relaxed mb-12">
+            <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-3xl mb-8">
               {location.description}
             </p>
-          </FadeIn>
-
-          {location.sections.map((section, idx) => (
-            <FadeIn key={idx} delay={idx * 0.1}>
-              <div className="mb-10">
-                <h2 className="font-montserrat text-2xl font-bold mb-4">
-                  {section.heading}
-                </h2>
-                <p className="text-white/70 leading-relaxed">
-                  {section.content}
-                </p>
-              </div>
-            </FadeIn>
-          ))}
-
-          <FadeIn delay={0.3}>
-            <div className="rounded-xl border border-white/10 bg-white/5 p-8 mb-12">
-              <h2 className="font-montserrat text-2xl font-bold mb-6">
-                Dlaczego PBAC w {location.name}?
-              </h2>
-              <ul className="space-y-3">
-                {[
-                  "Bezpłatna wycena i doradztwo w doborze urządzenia",
-                  "Ponad 10 marek klimatyzatorów w ofercie",
-                  "Montaż zgodny z wytycznymi producenta",
-                  "Gwarancja na urządzenie i instalację",
-                  "Serwis pogwarancyjny i przeglądy okresowe",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-white/70">
-                    <CheckCircle className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href="tel:+48503151802" className="inline-flex items-center justify-center gap-2 gradient-button text-white rounded-full px-8 py-4 font-bold text-sm transition-opacity hover:opacity-90">
+                <Phone className="w-4 h-4" />
+                +48 503 151 802
+              </a>
+              <a href="/#wycena" className="inline-flex items-center justify-center border border-white/20 text-white rounded-full px-8 py-4 font-bold text-sm hover:bg-white/10 transition-colors">
+                Bezpłatna wycena
+              </a>
             </div>
           </FadeIn>
+        </div>
+      </section>
 
-          {location.faq.length > 0 && (
-            <FadeIn delay={0.4}>
-              <h2 className="font-montserrat text-2xl font-bold mb-6">
+      {/* ═══ STATS BAR ═══ */}
+      <section className="border-y border-white/10 bg-white/[0.02]">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((stat, idx) => (
+              <FadeIn key={stat.label} delay={idx * 0.1}>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl gradient-icon flex items-center justify-center shrink-0">
+                    <stat.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <div className="font-montserrat text-2xl font-bold"><AuroraText>{stat.number}</AuroraText></div>
+                    <div className="text-xs text-white/50">{stat.label}</div>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ CONTENT SECTIONS with alternating patterns ═══ */}
+      {location.sections.map((section, idx) => {
+        const patterns = [GridPattern, DotPattern, StripedPattern, GridPattern, DotPattern, StripedPattern, GridPattern, DotPattern];
+        const Pattern = patterns[idx % patterns.length];
+        const isEven = idx % 2 === 0;
+
+        return (
+          <section key={idx} className="relative py-16 px-4 overflow-hidden">
+            <Pattern className={`absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(600px_circle_at_${isEven ? 'center' : 'top'},white,transparent)]`} {...(Pattern === GridPattern ? { width: 40, height: 40 } : {})} />
+            <div className="relative z-10 max-w-4xl mx-auto">
+              <FadeIn delay={0.1}>
+                <h2 className="font-montserrat text-2xl md:text-3xl font-bold mb-6">
+                  {section.heading}
+                </h2>
+                <div className="text-white/70 leading-relaxed space-y-4">
+                  {section.content.split("\n\n").map((p, pIdx) => (
+                    <p key={pIdx}>{p}</p>
+                  ))}
+                </div>
+              </FadeIn>
+            </div>
+          </section>
+        );
+      })}
+
+      {/* ═══ PROCESS STEPS with GlowingEffect ═══ */}
+      <section className="relative py-20 px-4 overflow-hidden">
+        <GridPattern className="absolute inset-0 z-0 fill-white/[0.03] [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]" width={40} height={40} />
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <FadeIn>
+            <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-center mb-4">
+              Jak wygląda montaż w <AuroraText>{location.name}</AuroraText>?
+            </h2>
+            <p className="text-center text-white/60 text-lg mb-12 max-w-2xl mx-auto">
+              Od kontaktu do uruchomienia klimatyzacji — 4 proste kroki
+            </p>
+          </FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {processSteps.map((step, idx) => (
+              <FadeIn key={step.title} delay={idx * 0.15}>
+                <div className="relative rounded-2xl border border-white/10 p-2 h-full">
+                  <GlowingEffect spread={40} glow proximity={64} />
+                  <div className="relative rounded-xl bg-white/10 backdrop-blur-md p-6 h-full">
+                    <div className="font-montserrat text-5xl font-bold text-white/5 mb-2">0{idx + 1}</div>
+                    <div className="w-12 h-12 rounded-xl gradient-icon flex items-center justify-center mb-4">
+                      <step.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="font-montserrat text-lg font-bold mb-2">{step.title}</h3>
+                    <p className="text-sm text-white/60">{step.desc}</p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ BRANDS MARQUEE ═══ */}
+      <section className="py-12 overflow-hidden border-y border-white/10">
+        <FadeIn>
+          <h2 className="font-montserrat text-2xl font-bold text-center mb-8 px-4">
+            Montujemy klimatyzatory <AuroraText>najlepszych marek</AuroraText>
+          </h2>
+        </FadeIn>
+        <Marquee className="[--gap:2rem] [--duration:25s]" pauseOnHover>
+          {brands.map((brand) => (
+            <Link key={brand.slug} href={`/produkty/${brand.slug}`} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-6 py-3 hover:bg-white/10 transition-colors shrink-0">
+              <span className="font-montserrat font-bold text-white/70 hover:text-white transition-colors">{brand.name}</span>
+              <span className="text-xs text-white/30">{brand.country}</span>
+            </Link>
+          ))}
+        </Marquee>
+      </section>
+
+      {/* ═══ WHY PBAC with GlowingEffect cards ═══ */}
+      <section className="relative py-20 px-4 overflow-hidden">
+        <DotPattern className="absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]" />
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <FadeIn>
+            <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-center mb-12">
+              Dlaczego <AuroraText>PBAC</AuroraText> w {location.name}?
+            </h2>
+          </FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: CheckCircle, title: "Bezpłatna wycena w 24h", desc: "Wyślij metraż i zdjęcia — przygotujemy wycenę z doborem urządzenia w ciągu jednego dnia roboczego." },
+              { icon: Award, title: "Ponad 10 marek w ofercie", desc: "Samsung, LG, Toshiba, Gree, Daikin, Haier, AUX, Kaisai, Mitsubishi — dobieramy markę do potrzeb i budżetu." },
+              { icon: Wrench, title: "Montaż zgodny ze standardami", desc: "Każda instalacja realizowana zgodnie z wytycznymi producenta. Próba szczelności, próżnia, uruchomienie z protokołem." },
+              { icon: ShieldCheck, title: "Gwarancja do 10 lat", desc: "Gwarancja producenta na urządzenie i osobna gwarancja PBAC na instalację. Serwis pogwarancyjny bez ograniczeń." },
+              { icon: Settings, title: "Serwis i przeglądy", desc: "Regularny serwis przedłuża żywotność klimatyzatora. Oferujemy przeglądy sezonowe i umowy serwisowe dla firm." },
+              { icon: Thermometer, title: "Chłodzenie i grzanie", desc: "Wszystkie montowane przez nas klimatyzatory posiadają funkcję grzania — pompa ciepła powietrze-powietrze." },
+            ].map((item, idx) => (
+              <FadeIn key={item.title} delay={idx * 0.1}>
+                <div className="relative rounded-2xl border border-white/10 p-2 h-full">
+                  <GlowingEffect spread={40} glow proximity={64} />
+                  <div className="relative rounded-xl bg-white/10 backdrop-blur-md p-6 h-full">
+                    <item.icon className="w-8 h-8 text-white/60 mb-4" />
+                    <h3 className="font-montserrat text-lg font-bold mb-2">{item.title}</h3>
+                    <p className="text-sm text-white/60 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ TESTIMONIALS ═══ */}
+      {cityTestimonials.length > 0 && (
+        <section className="py-16 overflow-hidden">
+          <FadeIn>
+            <h2 className="font-montserrat text-3xl font-bold text-center mb-10 px-4">
+              Opinie klientów z {location.name} i okolic
+            </h2>
+          </FadeIn>
+          <Marquee className="[--gap:1.5rem] [--duration:35s]" pauseOnHover>
+            {cityTestimonials.map((t) => (
+              <div key={t.name} className="w-80 shrink-0 rounded-xl border border-white/10 bg-white/5 p-6">
+                <div className="flex gap-0.5 mb-3">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className={`w-4 h-4 ${i < t.rating ? "fill-yellow-400 text-yellow-400" : "text-white/20"}`} />
+                  ))}
+                </div>
+                <p className="text-white/70 text-sm leading-relaxed mb-4">&ldquo;{t.body}&rdquo;</p>
+                <div className="flex items-center justify-between">
+                  <span className="font-montserrat text-sm font-bold">{t.name}</span>
+                  {t.location && <span className="text-xs text-white/40">{t.location}</span>}
+                </div>
+              </div>
+            ))}
+          </Marquee>
+        </section>
+      )}
+
+      {/* ═══ FAQ ACCORDION ═══ */}
+      {location.faq.length > 0 && (
+        <section className="relative py-20 px-4 overflow-hidden">
+          <StripedPattern className="absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]" />
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <FadeIn>
+              <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-center mb-4">
                 Najczęstsze pytania — {location.name}
               </h2>
-              <div className="space-y-4 mb-12">
-                {location.faq.map((faq, idx) => (
-                  <div key={idx} className="rounded-xl border border-white/10 bg-white/5 p-6">
-                    <h3 className="font-montserrat font-bold mb-2">{faq.question}</h3>
-                    <p className="text-white/60 text-sm leading-relaxed">{faq.answer}</p>
-                  </div>
-                ))}
-              </div>
+              <p className="text-center text-white/60 mb-12">
+                Odpowiedzi na pytania klientów z {location.name} i okolic
+              </p>
             </FadeIn>
-          )}
+            <FadeIn delay={0.2}>
+              <Accordion type="single" collapsible className="space-y-3">
+                {location.faq.map((faq, idx) => (
+                  <AccordionItem key={idx} value={`faq-${idx}`} className="border border-white/10 rounded-xl px-6 bg-white/5 backdrop-blur-sm">
+                    <AccordionTrigger className="text-left font-montserrat font-bold text-sm sm:text-base py-5 hover:no-underline">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-white/60 text-sm leading-relaxed pb-5">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </FadeIn>
+          </div>
+        </section>
+      )}
 
-          <FadeIn delay={0.5}>
-            <div className="gradient-primary rounded-xl p-8 text-center">
-              <h2 className="font-montserrat text-2xl font-bold mb-3">
+      {/* ═══ OTHER LOCATIONS ═══ */}
+      <section className="py-16 px-4 border-t border-white/10">
+        <div className="max-w-7xl mx-auto">
+          <FadeIn>
+            <h2 className="font-montserrat text-2xl font-bold mb-8">
+              Montaż klimatyzacji w innych miastach
+            </h2>
+          </FadeIn>
+          <div className="flex flex-wrap gap-3">
+            {allLocations.map((l) => (
+              <Link key={l.slug} href={`/montaz/${l.slug}`} className="rounded-full border border-white/10 px-4 py-2 text-sm text-white/50 hover:text-white hover:border-white/30 transition-colors">
+                {l.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ CTA GRADIENT ═══ */}
+      <section className="px-4 pb-20">
+        <div className="max-w-4xl mx-auto">
+          <FadeIn>
+            <div className="gradient-primary rounded-2xl p-10 md:p-14 text-center">
+              <Snowflake className="w-10 h-10 text-white/80 mx-auto mb-4" />
+              <h2 className="font-montserrat text-3xl md:text-4xl font-bold mb-4">
                 Zamów montaż klimatyzacji w {location.name}
               </h2>
-              <p className="text-white/80 mb-6">
-                Zadzwoń lub wypełnij formularz — bezpłatna wycena w 24h
+              <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+                Zadzwoń lub wypełnij formularz — przygotujemy bezpłatną wycenę w ciągu 24 godzin
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
-                  href="tel:+48503151802"
-                  className="inline-flex items-center gap-2 bg-white text-black rounded-full px-8 py-3 font-bold text-sm hover:bg-white/90 transition-colors"
-                >
+                <a href="tel:+48503151802" className="inline-flex items-center gap-2 bg-white text-black rounded-full px-10 py-4 font-bold text-sm hover:bg-white/90 transition-colors">
                   <Phone className="w-4 h-4" />
                   +48 503 151 802
                 </a>
-                <a
-                  href="/#wycena"
-                  className="inline-flex items-center gap-2 border border-white/30 text-white rounded-full px-8 py-3 font-bold text-sm hover:bg-white/10 transition-colors"
-                >
-                  Formularz wyceny
+                <a href="/#wycena" className="inline-flex items-center gap-2 border border-white/30 text-white rounded-full px-10 py-4 font-bold text-sm hover:bg-white/10 transition-colors">
+                  Formularz wyceny online
                 </a>
               </div>
             </div>
