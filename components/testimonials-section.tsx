@@ -65,65 +65,47 @@ export default function TestimonialsSection() {
           </p>
         </FadeIn>
 
-        <div className="relative flex h-[550px] w-screen left-1/2 -translate-x-1/2 flex-row items-center justify-center gap-5 overflow-hidden [perspective:500px]">
-          <div
-            className="flex flex-row items-center gap-5"
-            style={{
-              transform:
-                "translateX(0px) translateY(0px) translateZ(-30px) rotateX(12deg) rotateY(-6deg) rotateZ(12deg)",
-            }}
-          >
-            <Marquee pauseOnHover vertical className="[--duration:60s]">
-              {firstRow.map((review) => (
-                <ReviewCard key={review.name} {...review} />
-              ))}
-            </Marquee>
-            <Marquee reverse pauseOnHover className="[--duration:60s]" vertical>
-              {secondRow.map((review) => (
-                <ReviewCard key={review.name} {...review} />
-              ))}
-            </Marquee>
-            <Marquee pauseOnHover className="[--duration:60s]" vertical>
-              {secondRow.map((review) => (
-                <ReviewCard key={review.name + "-2"} {...review} />
-              ))}
-            </Marquee>
-            <Marquee reverse pauseOnHover className="[--duration:60s]" vertical>
-              {firstRow.map((review) => (
-                <ReviewCard key={review.name + "-3"} {...review} />
-              ))}
-            </Marquee>
-            <Marquee pauseOnHover className="[--duration:60s]" vertical>
-              {firstRow.map((review) => (
-                <ReviewCard key={review.name + "-4"} {...review} />
-              ))}
-            </Marquee>
-            <Marquee reverse pauseOnHover className="[--duration:60s]" vertical>
-              {secondRow.map((review) => (
-                <ReviewCard key={review.name + "-5"} {...review} />
-              ))}
-            </Marquee>
-            <Marquee pauseOnHover className="[--duration:60s]" vertical>
-              {secondRow.map((review) => (
-                <ReviewCard key={review.name + "-6"} {...review} />
-              ))}
-            </Marquee>
-            <Marquee reverse pauseOnHover className="[--duration:60s]" vertical>
-              {firstRow.map((review) => (
-                <ReviewCard key={review.name + "-7"} {...review} />
-              ))}
-            </Marquee>
-            <Marquee pauseOnHover className="[--duration:60s]" vertical>
-              {secondRow.map((review) => (
-                <ReviewCard key={review.name + "-8"} {...review} />
-              ))}
-            </Marquee>
-            <Marquee reverse pauseOnHover className="[--duration:60s]" vertical>
-              {firstRow.map((review) => (
-                <ReviewCard key={review.name + "-9"} {...review} />
-              ))}
-            </Marquee>
-          </div>
+        {/* Desktop: 4 vertical marquees */}
+        <div className="relative hidden md:flex h-[500px] w-screen left-1/2 -translate-x-1/2 flex-row items-center justify-center gap-5 overflow-hidden">
+          <Marquee pauseOnHover vertical className="[--duration:60s]">
+            {firstRow.map((review) => (
+              <ReviewCard key={review.name} {...review} />
+            ))}
+          </Marquee>
+          <Marquee reverse pauseOnHover vertical className="[--duration:60s]">
+            {secondRow.map((review) => (
+              <ReviewCard key={review.name} {...review} />
+            ))}
+          </Marquee>
+          <Marquee pauseOnHover vertical className="[--duration:60s]">
+            {firstRow.map((review) => (
+              <ReviewCard key={review.name + "-rev"} {...review} />
+            ))}
+          </Marquee>
+          <Marquee reverse pauseOnHover vertical className="[--duration:60s]">
+            {secondRow.map((review) => (
+              <ReviewCard key={review.name + "-rev"} {...review} />
+            ))}
+          </Marquee>
+
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-black" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black" />
+        </div>
+
+        {/* Mobile: 2 horizontal marquees */}
+        <div className="relative flex md:hidden h-[400px] w-screen left-1/2 -translate-x-1/2 flex-col items-center justify-center gap-4 overflow-hidden">
+          <Marquee pauseOnHover className="[--duration:40s]">
+            {firstRow.map((review) => (
+              <ReviewCard key={review.name} {...review} />
+            ))}
+          </Marquee>
+          <Marquee reverse pauseOnHover className="[--duration:40s]">
+            {secondRow.map((review) => (
+              <ReviewCard key={review.name} {...review} />
+            ))}
+          </Marquee>
 
           <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-black" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black" />

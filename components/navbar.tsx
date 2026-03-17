@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, X, ChevronDown, ChevronRight, Phone, Wrench, ThermometerSun, Building2, BookOpen, Tag, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Wrench, ThermometerSun, Building2, BookOpen, Tag, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getLatestArticles, getCategories } from "@/lib/articles";
 import { brands } from "@/lib/brands";
@@ -259,7 +259,7 @@ export default function Navbar() {
                     exit="exit"
                     className="absolute -left-4 top-full pt-2"
                   >
-                    <div className="min-w-[720px] bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50">
+                    <div className="w-[680px] max-w-[calc(100vw-2rem)] z-50 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50">
                       <div className="flex gap-6">
                         {/* Left column: Services */}
                         <div className="flex-1">
@@ -376,7 +376,7 @@ export default function Navbar() {
                     exit="exit"
                     className="absolute -left-4 top-full pt-2"
                   >
-                    <div className="min-w-[680px] bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50">
+                    <div className="w-[640px] max-w-[calc(100vw-2rem)] z-50 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50">
                       <div className="flex gap-6">
                         {/* Brands grid */}
                         <div className="flex-1">
@@ -480,9 +480,9 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="absolute -left-20 top-full pt-2"
+                    className="absolute right-0 top-full pt-2"
                   >
-                    <div className="min-w-[640px] bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50">
+                    <div className="w-[560px] max-w-[calc(100vw-2rem)] z-50 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-2xl shadow-black/50">
                       <div className="flex gap-6">
                         {/* Recent articles */}
                         <div className="flex-1">
@@ -613,7 +613,7 @@ export default function Navbar() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
               style={{ top: 64 }}
               onClick={() => setMobileOpen(false)}
             />
@@ -624,10 +624,20 @@ export default function Navbar() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed inset-y-0 right-0 w-full max-w-sm bg-black/95 backdrop-blur-xl border-l border-white/10 lg:hidden overflow-y-auto"
+              className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-black/95 backdrop-blur-xl border-l border-white/10 lg:hidden overflow-y-auto"
               style={{ top: 64 }}
             >
               <div className="p-5 flex flex-col gap-1">
+                {/* Close button */}
+                <button
+                  type="button"
+                  className="self-end mb-2 flex items-center gap-2 px-3 py-2 text-sm text-white/70 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                  aria-label="Zamknij menu"
+                >
+                  Zamknij
+                  <X className="size-5" />
+                </button>
                 {/* ── Mobile: Klimatyzacja ───────────────────────────── */}
                 <div>
                   <button

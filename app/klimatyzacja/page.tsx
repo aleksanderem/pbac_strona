@@ -24,6 +24,8 @@ import {
 } from "lucide-react";
 
 const QuoteForm = dynamic(() => import("@/components/quote-form"));
+const DetailedInstallation = dynamic(() => import("@/components/detailed-installation"));
+const PricingTable = dynamic(() => import("@/components/pricing-table"));
 
 export const metadata: Metadata = {
   title: "Klimatyzacja — Montaż i Serwis Warszawa | PBAC",
@@ -267,6 +269,12 @@ export default function KlimatyzacjaPage() {
           </div>
         </div>
       </section>
+
+      {/* ═══ DETAILED INSTALLATION ═══ */}
+      <DetailedInstallation />
+
+      {/* ═══ PRICING TABLE ═══ */}
+      <PricingTable />
 
       {/* ═══ QUOTE FORM ═══ */}
       <QuoteForm />

@@ -162,7 +162,7 @@ export default function QuoteForm() {
     setErrors([]);
     setStatus("loading");
     try {
-      const res = await fetch("https://formspree.io/f/FORM_ID", {
+      const res = await fetch("https://formsubmit.co/ajax/biuro@pbac.pl", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(formData),

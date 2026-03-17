@@ -124,3 +124,72 @@ Files modified:
   - components/navbar.tsx (wider dropdowns, bigger brand logos)
   - app/montaz/[miasto]/page.tsx (images, bigger stats, GlowingEffect FAQ)
   - app/serwis/[miasto]/page.tsx (5 image sections added)
+
+---
+
+=== SESSION S0006 START === 2026-03-17T23:30:00Z
+Focus: Simplify testimonials section + add Warsaw districts to montaz pages
+Continuing from: S0005 (completed)
+Active tasks: #21, #22
+
+---
+
+S0006. Task #21 testimonials_simplify:
+- Rewrote /Users/alex/projects/pbac_main/components/testimonials-section.tsx
+- Removed 3D CSS transforms entirely (rotateX/rotateY/rotateZ and perspective)
+- Desktop (md+): 4 vertical marquees in hidden md:flex container, h-[500px]
+- Mobile (<md): 2 horizontal marquees in flex md:hidden container, h-[400px]
+- Status: PASSING
+
+S0006. Task #22 montaz_warsaw_districts:
+- Added conditional section to /Users/alex/projects/pbac_main/app/montaz/[miasto]/page.tsx
+- Only renders when miasto === "warszawa"
+- 18 districts displayed as flex-wrap centered badges
+- Status: PASSING
+
+=== SESSION S0006 HANDOFF === 2026-03-17T23:35:00Z
+Status: completed
+Files modified:
+  - components/testimonials-section.tsx (simplified marquees, removed 3D, responsive)
+  - app/montaz/[miasto]/page.tsx (Warsaw districts section added)
+
+---
+
+=== SESSION S0007 START === 2026-03-17T23:50:00Z
+Focus: Fix mega menu responsive issues and article card fallbacks
+Continuing from: S0006 (completed)
+Active tasks: #23, #24
+
+---
+
+S0007. Task #23 navbar_responsive_fixes:
+- Klimatyzacja dropdown: min-w-[720px] → w-[680px] max-w-[calc(100vw-2rem)] z-50
+- Produkty dropdown: min-w-[680px] → w-[640px] max-w-[calc(100vw-2rem)] z-50
+- Blog dropdown: min-w-[640px] → w-[560px] max-w-[calc(100vw-2rem)] z-50
+- Blog dropdown positioning: -left-20 → right-0 (anchor to right edge since Blog is rightmost nav item)
+- Mobile backdrop: added z-40
+- Mobile slide-in panel: added z-50
+- Added visible close button to mobile panel ("Zamknij" text + X icon, self-end aligned)
+- Status: PASSING
+
+S0007. Task #24 article_card_fallback_fix:
+- Removed the broken hasImage check: `!article.coverImage.startsWith("/images/blog/")` which prevented ALL blog images from showing
+- New hasImage: simple `!!article.coverImage`
+- Removed Snowflake import (no longer used)
+- New fallback design (always rendered as base layer behind image):
+  - Category-based gradient background (blue-cyan for Klimatyzatory, green for Pompy ciepla, amber for Serwis, violet for Montaz)
+  - Subtle dot pattern overlay at 7% opacity (radial-gradient CSS)
+  - Large semi-transparent category text (3.5rem, 6% opacity, font-black uppercase)
+  - Decorative gradient-icon glow in bottom-right corner (blur-2xl, 20% opacity)
+- Z-layer stacking: gradient fallback at base, image at z-10, gradient-to-t overlay at z-20, category badge at z-30
+- Initially added onError handler to hide broken images, but article-card is a Server Component so event handlers are illegal — removed it
+- The gradient fallback is always rendered underneath so even if image fails to load, the card still looks good
+- Build: npm run build PASSED — 170 pages, 0 errors
+- Status: PASSING
+
+=== SESSION S0007 HANDOFF === 2026-03-18T00:10:00Z
+Status: completed
+Current state: Both visual fixes applied and verified
+Files modified:
+  - components/navbar.tsx (dropdown widths, max-w viewport clamp, z-index, blog right-0, mobile close button)
+  - components/article-card.tsx (removed startsWith hack, gradient fallback design, z-layer stacking)

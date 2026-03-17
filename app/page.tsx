@@ -15,6 +15,10 @@ const ChartsSection = dynamic(() => import("@/components/charts-section"));
 const WhyPbacSection = dynamic(() => import("@/components/why-pbac-section"));
 const FeaturedProductsSection = dynamic(() => import("@/components/featured-products-section"));
 const HowItWorks = dynamic(() => import("@/components/how-it-works"));
+const PricingTable = dynamic(() => import("@/components/pricing-table"));
+const ServiceTabs = dynamic(() => import("@/components/service-tabs"));
+const FounderPromise = dynamic(() => import("@/components/founder-promise"));
+const CertificatesSection = dynamic(() => import("@/components/certificates-section"));
 const LocationsSection = dynamic(() => import("@/components/locations-section"));
 const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"));
 const LatestBlogSection = dynamic(() => import("@/components/latest-blog-section"));
@@ -236,8 +240,12 @@ export default function Home() {
       <ChartsSection />
       <FeaturedProductsSection />
       <HowItWorks />
+      <PricingTable />
+      <ServiceTabs />
       <ComparisonTable />
       <WhyPbacSection />
+      <FounderPromise />
+      <CertificatesSection />
       <LocationsSection />
       <TestimonialsSection />
       <LatestBlogSection />
