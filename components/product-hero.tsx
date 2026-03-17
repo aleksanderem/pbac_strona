@@ -60,7 +60,7 @@ export default function ProductHero({ imageUrl, imageAlt, brandName, warranty }:
           <img
             src={imageUrl}
             alt={imageAlt}
-            className="max-h-[400px] max-w-[600px] object-contain drop-shadow-[0_12px_60px_rgba(179,24,83,0.3)]"
+            className="max-h-[400px] max-w-[800px] w-full object-contain drop-shadow-[0_12px_60px_rgba(179,24,83,0.3)]"
           />
         </div>
       </div>
