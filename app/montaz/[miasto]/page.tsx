@@ -150,12 +150,6 @@ export default async function MontazPage({ params }: Props) {
               <p className="text-lg sm:text-xl text-white/70 leading-relaxed mb-10">
                 {location.description}
               </p>
-              <p className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                Klimatyzacja do mieszkania od 4 000 zł
-              </p>
-              <p className="text-lg text-white/60 mb-8">
-                z montażem za 0 zł
-              </p>
               <a href="tel:+48503151802" className="inline-flex items-center justify-center gap-2 bg-white text-black rounded-full px-8 py-4 font-bold text-sm hover:bg-white/90 transition-colors">
                 <Phone className="w-4 h-4" />
                 +48 503 151 802
