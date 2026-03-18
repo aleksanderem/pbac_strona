@@ -139,6 +139,9 @@ export default async function MontazPage({ params }: Props) {
             <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-3xl mb-8">
               {location.description}
             </p>
+            <p className="text-2xl sm:text-3xl font-bold text-white mb-6">
+              Montaż od <span className="text-white">4 000 zł</span> <span className="text-white/50 text-lg">brutto z urządzeniem</span>
+            </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a href="tel:+48503151802" className="inline-flex items-center justify-center gap-2 gradient-button text-white rounded-full px-8 py-4 font-bold text-sm transition-opacity hover:opacity-90">
                 <Phone className="w-4 h-4" />
@@ -289,19 +292,22 @@ export default async function MontazPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ═══ BRAND IMAGES SECTION ═══ */}
-      <section className="py-16 px-4">
-        <div className="max-w-5xl mx-auto">
+      {/* ═══ MID-PAGE CTA ═══ */}
+      <section className="py-12 px-4">
+        <div className="max-w-3xl mx-auto text-center">
           <FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 gradient-primary h-64 flex flex-col items-center justify-center text-center p-6">
-                <p className="text-white font-montserrat font-bold text-2xl md:text-3xl mb-2">Samsung WindFree</p>
-                <p className="text-white/60 text-sm">Klimatyzacja bez bezpośredniego nawiewu</p>
-              </div>
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 gradient-primary h-64 flex flex-col items-center justify-center text-center p-6">
-                <p className="text-white font-montserrat font-bold text-2xl md:text-3xl mb-2">Mitsubishi Electric</p>
-                <p className="text-white/60 text-sm">Japońska precyzja i niezawodność</p>
-              </div>
+            <h2 className="font-montserrat text-2xl sm:text-3xl font-bold mb-4">
+              Gotowy na montaż?
+            </h2>
+            <p className="text-white/60 mb-6">Bezpłatna wycena w 24h. Montaż w ciągu 3-7 dni od zamówienia.</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a href="tel:+48503151802" className="inline-flex items-center justify-center gap-2 gradient-button text-white rounded-full px-8 py-4 font-bold text-sm">
+                <Phone className="w-4 h-4" />
+                Zadzwoń teraz
+              </a>
+              <a href="/#wycena" className="inline-flex items-center justify-center border border-white/20 text-white rounded-full px-8 py-4 font-bold text-sm hover:bg-white/10 transition-colors">
+                Formularz wyceny
+              </a>
             </div>
           </FadeIn>
         </div>
@@ -330,7 +336,7 @@ export default async function MontazPage({ params }: Props) {
         <div className="relative z-10 max-w-7xl mx-auto">
           <FadeIn>
             <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-center mb-12">
-              Dlaczego <AuroraText>PBAC</AuroraText> w {location.name}?
+              Dlaczego klienci wybierają <AuroraText>PBAC</AuroraText> w {location.name}?
             </h2>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -418,10 +424,10 @@ export default async function MontazPage({ params }: Props) {
           <div className="relative z-10 max-w-3xl mx-auto">
             <FadeIn>
               <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-center mb-4">
-                Najczęstsze pytania — {location.name}
+                Najczęstsze pytania przed montażem — {location.name}
               </h2>
               <p className="text-center text-white/60 mb-12">
-                Odpowiedzi na pytania klientów z {location.name} i okolic
+                Odpowiedzi na najczęstsze wątpliwości naszych klientów
               </p>
             </FadeIn>
             <FadeIn delay={0.2}>

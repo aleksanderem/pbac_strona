@@ -29,7 +29,7 @@ import {
   Settings, Phone, CheckCircle, Star, ShieldCheck,
   Wrench, Droplets, Thermometer, ClipboardList, Award, Users,
   ArrowRight, AlertTriangle, Zap, Heart, Clock, BadgeCheck,
-  CircleDollarSign, CalendarCheck, Volume2, ThermometerSun,
+  CircleDollarSign, CalendarCheck, ThermometerSun,
   Bug, Wind,
 } from "lucide-react";
 
@@ -107,39 +107,6 @@ const detailedServiceSteps = [
     icon: ShieldCheck,
     title: "Dezynfekcja środkiem antygrzybicznym",
     desc: "Końcowym etapem serwisu jest dezynfekcja parownika i kanałów nawiewowych specjalistycznym preparatem biobójczym, zatwierdzonym do stosowania w systemach klimatyzacyjnych. Środek eliminuje bakterie, grzyby pleśniowe, drożdże i alergeny, które rozwijają się w wilgotnym środowisku wymiennika ciepła. Dezynfekcja jest szczególnie ważna dla alergików i rodzin z małymi dziećmi.",
-  },
-];
-
-const warningSignItems = [
-  {
-    icon: Volume2,
-    title: "Nietypowe dźwięki",
-    desc: "Trzaski, buczenie, piszczenie lub stukanie mogą wskazywać na zużyte łożyska wentylatora, luzujące się elementy obudowy lub problem ze sprężarką. Każdy nowy, powtarzający się dźwięk to sygnał wymagający diagnostyki.",
-  },
-  {
-    icon: Wind,
-    title: "Nieprzyjemny zapach",
-    desc: "Stęchły, pleśniowy lub kwaśny zapach z nawiewu to znak, że na parowniku lub w tackce ociekowej rozwinęły się kolonie grzybów i bakterii. Oprócz dyskomfortu stanowią realne zagrożenie zdrowotne, szczególnie dla alergików i astmatyków.",
-  },
-  {
-    icon: ThermometerSun,
-    title: "Słabsze chłodzenie lub grzanie",
-    desc: "Jeśli klimatyzator nie osiąga ustawionej temperatury lub potrzebuje na to znacznie więcej czasu niż wcześniej, prawdopodobną przyczyną jest brak czynnika chłodniczego, zabrudzone wymienniki lub usterka sprężarki inwerterowej.",
-  },
-  {
-    icon: Droplets,
-    title: "Wycieki wody",
-    desc: "Woda kapiąca z jednostki wewnętrznej to najczęściej zatkany odpływ skroplin lub uszkodzona pompka kondensatu. Problem narasta stopniowo — im dłużej jest ignorowany, tym większe ryzyko zalania ściany i podłogi, a także rozwoju pleśni.",
-  },
-  {
-    icon: AlertTriangle,
-    title: "Kody błędów na wyświetlaczu",
-    desc: "Migające diody LED lub kody błędów na pilocie/panelu jednostki wewnętrznej to sygnały diagnostyczne producenta. Oznaczają konkretne usterki — od problemów z czujnikiem temperatury po awarię płyty sterującej. Nie ignoruj ich, nawet jeśli klimatyzator nadal działa.",
-  },
-  {
-    icon: Zap,
-    title: "Wyższe rachunki za prąd",
-    desc: "Nagły wzrost zużycia energii elektrycznej przy niezmienionym użytkowaniu klimatyzatora wskazuje na spadek jego wydajności. Najczęstsze przyczyny to brak czynnika, zabrudzone filtry lub wymienniki, a także usterka inwertera — każda z nich wymaga serwisu.",
   },
 ];
 
@@ -319,6 +286,9 @@ export default async function SerwisPage({ params }: Props) {
             <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-3xl mb-8">
               Oferujemy kompleksowy serwis klimatyzacji w {location.name}: okresowe przeglądy, czyszczenie i dezynfekcja filtrów, uzupełnianie czynnika chłodniczego, diagnostyka usterek oraz naprawy. Serwisujemy klimatyzatory wszystkich marek — Samsung, LG, Toshiba, Gree, Daikin, Haier i inne. Regularny serwis przedłuża żywotność urządzenia, obniża rachunki za prąd i zapewnia czyste powietrze w pomieszczeniu.
             </p>
+            <p className="text-2xl sm:text-3xl font-bold text-white mb-6">
+              Serwis od <span className="text-white">250 zł</span> <span className="text-white/50 text-lg">przegląd z czyszczeniem</span>
+            </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a href="tel:+48503151802" className="inline-flex items-center justify-center gap-2 gradient-button text-white rounded-full px-8 py-4 font-bold text-sm transition-opacity hover:opacity-90">
                 <Phone className="w-4 h-4" />
@@ -390,12 +360,18 @@ export default async function SerwisPage({ params }: Props) {
               <p>
                 Klimatyzator pracujący bez regularnego serwisu staje się zagrożeniem zdrowotnym i finansowym. Wewnątrz jednostki wewnętrznej panuje wilgotne, ciemne środowisko — idealne warunki do rozwoju bakterii, grzybów pleśniowych i drożdży. Badania Narodowego Instytutu Zdrowia Publicznego wskazują, że zaniedbane klimatyzatory mogą być siedliskiem Legionelli, Aspergillusa i Staphylococcusa, które rozpylane z nawiewem trafiają bezpośrednio do dróg oddechowych domowników. Objawy to chroniczny katar, kaszel, podrażnienie oczu, bóle głowy, a u osób z astmą — zaostrzenie choroby. Szczególnie narażone są dzieci, osoby starsze i alergicy.
               </p>
+              <div className="my-6 rounded-xl border border-amber-500/20 bg-amber-500/5 p-5">
+                <p className="text-amber-200/80 text-sm font-medium">Czy wiesz, że brudny klimatyzator zużywa nawet 30% więcej energii? Regularny serwis to nie koszt — to oszczędność.</p>
+              </div>
               <p>
                 Aspekt finansowy jest równie istotny. Zabrudzone filtry i wymienniki ciepła zmuszają sprężarkę do intensywniejszej pracy, aby osiągnąć ustawioną temperaturę. Według danych Europejskiego Stowarzyszenia Producentów Klimatyzacji (EPEE), brudny klimatyzator zużywa o 20–30% więcej energii elektrycznej niż urządzenie po serwisie. Przy rocznym koszcie prądu za klimatyzację wynoszącym 400–800 zł, zaniedbanie serwisu oznacza przepłacanie 80–240 zł rocznie — kwota, która szybko przekracza koszt samego przeglądu.
               </p>
               <p>
                 Żywotność klimatyzatora bez serwisu skraca się dramatycznie. Producenci projektują urządzenia na 10–15 lat eksploatacji, ale brak konserwacji redukuje ten czas do 5–7 lat. Zużyte łożyska wentylatorów, zatkane odpływy skroplin i niedobór czynnika chłodniczego prowadzą do awarii sprężarki — najdroższego komponentu, którego wymiana kosztuje 2000–5000 zł, czyli często więcej niż nowy klimatyzator.
               </p>
+              <div className="my-6 rounded-xl border border-amber-500/20 bg-amber-500/5 p-5">
+                <p className="text-amber-200/80 text-sm font-medium">Awaria sprężarki to koszt 2000–5000 zł. Roczny serwis kosztuje od 250 zł. Matematyka jest prosta.</p>
+              </div>
               <p>
                 Warto pamiętać również o warunkach gwarancji. Większość producentów — Samsung, LG, Toshiba, Gree, Daikin — wymaga w regulaminie gwarancji corocznego przeglądu serwisowego wykonanego przez autoryzowaną firmę. Brak udokumentowanego serwisu może być podstawą do odmowy uznania reklamacji gwarancyjnej. Każdy nasz przegląd kończy się protokołem, który stanowi dowód wykonanej konserwacji.
               </p>
@@ -517,54 +493,22 @@ export default async function SerwisPage({ params }: Props) {
               ))}
             </div>
           </FadeIn>
-        </div>
-      </section>
 
-      {/* ═══ SECTION 3: Kiedy wezwać serwis — sygnały ostrzegawcze ═══ */}
-      <section className="relative py-20 px-4 overflow-hidden">
-        <StripedPattern
-          width={12}
-          height={12}
-          className="absolute inset-x-0 top-0 h-[60%] z-0 text-white/25 [mask-image:radial-gradient(600px_circle_at_50%_30%,white,transparent)]"
-        />
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <FadeIn className="text-center mb-16">
-            <h2 className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold mb-4">
-              Kiedy wezwać <AuroraText>serwis klimatyzacji</AuroraText> w {location.name}?
-            </h2>
-            <p className="text-white/60 max-w-3xl mx-auto text-lg">
-              Nie czekaj na awarię. Te sygnały ostrzegawcze oznaczają, że Twój klimatyzator potrzebuje interwencji serwisowej.
-            </p>
-          </FadeIn>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {warningSignItems.map((item, idx) => (
-              <FadeIn key={item.title} delay={idx * 0.1}>
-                <div className="relative rounded-2xl border border-white/10 p-2 h-full">
-                  <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
-                  <div className="relative rounded-xl bg-white/10 backdrop-blur-md p-6 h-full">
-                    <div className="w-10 h-10 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-4">
-                      <item.icon className="w-5 h-5 text-red-400" />
-                    </div>
-                    <h3 className="font-montserrat text-base font-bold mb-2">{item.title}</h3>
-                    <p className="text-sm text-white/60 leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-          <FadeIn delay={0.6}>
-            <div className="mt-12 text-center">
-              <p className="text-white/50 text-sm mb-4">Zauważyłeś któryś z tych symptomów? Nie zwlekaj — im szybciej zareagujesz, tym niższy koszt naprawy.</p>
-              <a href="tel:+48503151802" className="inline-flex items-center gap-2 gradient-button text-white rounded-full px-8 py-4 font-bold text-sm transition-opacity hover:opacity-90">
+          {/* Mid-page CTA */}
+          <FadeIn>
+            <div className="mt-12 rounded-2xl gradient-primary p-8 sm:p-12 text-center">
+              <h3 className="font-montserrat text-2xl font-bold mb-3">Zarezerwuj serwis klimatyzacji</h3>
+              <p className="text-white/70 mb-6">Przegląd trwa 1-2 godziny. Termin zwykle w ciągu 2-5 dni roboczych.</p>
+              <a href="tel:+48503151802" className="inline-flex items-center justify-center gap-2 bg-white text-black rounded-full px-8 py-4 font-bold text-sm hover:bg-white/90 transition-colors">
                 <Phone className="w-4 h-4" />
-                Zadzwoń: 503 151 802
+                Umów serwis: 503 151 802
               </a>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* ═══ SECTION 4: Ile kosztuje serwis w [miasto] ═══ */}
+      {/* ═══ SECTION: Ile kosztuje serwis w [miasto] ═══ */}
       <section className="relative py-20 px-4 overflow-hidden">
         <DotPattern
           width={20}
@@ -876,9 +820,9 @@ export default async function SerwisPage({ params }: Props) {
           <div className="relative z-10 max-w-3xl mx-auto">
             <FadeIn className="text-center mb-12">
               <h2 className="font-montserrat text-3xl md:text-4xl font-bold mb-4">
-                Najczęstsze pytania — serwis klimatyzacji {location.name}
+                Najczęstsze pytania o serwis klimatyzacji
               </h2>
-              <p className="text-white/60">Odpowiedzi na pytania klientów z {location.name} i okolic</p>
+              <p className="text-white/60">Odpowiedzi na pytania, które najczęściej słyszymy od klientów</p>
             </FadeIn>
             <FadeIn delay={0.2}>
               <div className="relative rounded-2xl border border-white/10 p-2">
