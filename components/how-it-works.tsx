@@ -1,79 +1,72 @@
 "use client";
 
-import { StripedPattern } from "@/components/ui/striped-pattern";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
-import FadeIn from "@/components/ui/fade-in";
+import { cn } from "@/lib/utils";
+import { Phone, Settings, Wrench, ShieldCheck } from "lucide-react";
 
-const steps = [
+const features = [
   {
-    number: "01",
     title: "Kontakt i wycena",
-    description:
-      "Zadzwoń lub wypełnij formularz — przygotujemy bezpłatną wycenę montażu klimatyzacji.",
+    description: "Zadzwoń lub wypełnij formularz — przygotujemy bezpłatną wycenę montażu klimatyzacji w ciągu 24h.",
+    icon: <Phone className="w-6 h-6" />,
   },
   {
-    number: "02",
     title: "Dobór klimatyzatora",
-    description:
-      "Nasi specjaliści dobiorą optymalny model na podstawie metrażu, rozkładu pomieszczeń i Twoich potrzeb.",
+    description: "Nasi specjaliści dobiorą optymalny model na podstawie metrażu, rozkładu pomieszczeń i Twoich potrzeb.",
+    icon: <Settings className="w-6 h-6" />,
   },
   {
-    number: "03",
     title: "Profesjonalny montaż",
-    description:
-      "Certyfikowani instalatorzy wykonają montaż zgodnie z najwyższymi standardami producenta.",
+    description: "Certyfikowani instalatorzy wykonają montaż zgodnie z najwyższymi standardami producenta. Próba szczelności i uruchomienie w cenie.",
+    icon: <Wrench className="w-6 h-6" />,
   },
   {
-    number: "04",
     title: "Serwis i gwarancja",
-    description:
-      "Zapewniamy pełen serwis gwarancyjny i pogwarancyjny — przeglądy, czyszczenie, naprawy.",
+    description: "Zapewniamy pełen serwis gwarancyjny i pogwarancyjny — przeglądy, czyszczenie, naprawy. Gwarancja do 10 lat.",
+    icon: <ShieldCheck className="w-6 h-6" />,
   },
 ];
 
+function Feature({ title, description, icon, index }: { title: string; description: string; icon: React.ReactNode; index: number }) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col lg:border-r py-10 relative group/feature border-white/10",
+        (index === 0 || index === 4) && "lg:border-l border-white/10",
+        index < 4 && "lg:border-b border-white/10"
+      )}
+    >
+      {index < 4 && (
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-white/5 to-transparent pointer-events-none" />
+      )}
+      <div className="mb-4 relative z-10 px-10 text-white/50">
+        {icon}
+      </div>
+      <div className="text-lg font-bold mb-2 relative z-10 px-10">
+        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-white/20 group-hover/feature:bg-[#3D5EFF] transition-all duration-200 origin-center" />
+        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-white font-montserrat">
+          {title}
+        </span>
+      </div>
+      <p className="text-sm text-white/60 max-w-xs relative z-10 px-10">
+        {description}
+      </p>
+    </div>
+  );
+}
+
 export default function HowItWorks() {
   return (
-    <section id="jak-dzialamy" className="relative py-20 px-4 overflow-hidden">
-      <StripedPattern
-        width={12}
-        height={12}
-        className="absolute inset-x-0 top-0 h-[60%] z-0 text-white/25 [mask-image:radial-gradient(600px_circle_at_50%_30%,white,transparent)]"
-      />
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <FadeIn className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-16">
-          <h2>Jak działamy?</h2>
-        </FadeIn>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-          {/* Connecting line (desktop only) */}
-          <div className="hidden lg:block absolute top-16 left-[12.5%] right-[12.5%] h-px bg-white/10" />
-
-          {steps.map((step, index) => (
-            <FadeIn
-              key={step.number}
-              delay={index * 0.15}
-              className="relative rounded-2xl border border-white/10 p-2"
-            >
-              <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
-              <div className="relative rounded-xl bg-white/10 backdrop-blur-md p-6 text-center">
-              <span
-                className="font-montserrat text-5xl md:text-6xl font-bold inline-block mb-4"
-                style={{
-                  background: "linear-gradient(120deg, #3D5EFF 0%, #DF396F 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                {step.number}
-              </span>
-              <h3 className="font-montserrat text-lg font-bold mb-2">
-                {step.title}
-              </h3>
-              <p className="text-white/60 text-sm leading-relaxed max-w-xs mx-auto">
-                {step.description}
-              </p>
-              </div>
-            </FadeIn>
+    <section id="jak-dzialamy" className="py-20 px-4">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
+          Jak działamy?
+        </h2>
+        <p className="text-white/50 text-center mb-12 max-w-2xl mx-auto">
+          Od pierwszego kontaktu do uruchomienia klimatyzacji — 4 proste kroki
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10">
+          {features.map((feature, index) => (
+            <Feature key={feature.title} {...feature} index={index} />
           ))}
         </div>
       </div>
