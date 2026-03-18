@@ -25,7 +25,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 gradient-primary opacity-40" />
       <div className="absolute inset-0 bg-black/20" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
         <div
           className="mb-6 animate-[fadeInUp_0.6s_ease-out_both]"
         >

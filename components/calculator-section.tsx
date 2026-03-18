@@ -75,7 +75,7 @@ export default function CalculatorSection() {
         cr={1}
         className="absolute inset-x-0 top-0 h-[60%] z-0 fill-white/5 [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
       />
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto">
         <FadeIn className="text-center mb-12">
           <h2 className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
             Ile zaoszczędzisz z <AuroraText>klimatyzacją</AuroraText>?

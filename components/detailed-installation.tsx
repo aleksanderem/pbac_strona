@@ -119,7 +119,7 @@ export default function DetailedInstallation() {
 
   return (
     <section className="py-20 px-4">
-      <div className="mx-auto w-full max-w-5xl">
+      <div className="mx-auto w-full max-w-7xl">
         <div className="mb-12">
           <h2 className="mb-4 font-montserrat text-2xl sm:text-4xl font-bold text-white">
             Przebieg montażu

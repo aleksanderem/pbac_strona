@@ -52,7 +52,7 @@ export default function FaqSection() {
         height={12}
         className="absolute inset-x-0 top-0 h-[60%] z-0 text-white/25 [mask-image:radial-gradient(600px_circle_at_50%_30%,white,transparent)]"
       />
-      <div className="relative z-10 max-w-3xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto">
         <FadeIn className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-16">
           <h2>Najczęściej zadawane pytania</h2>
         </FadeIn>
