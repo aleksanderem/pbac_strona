@@ -125,9 +125,38 @@ export default async function ProductPage({ params }: Props) {
           />
         </FadeIn>
 
+        {/* Product title + info centered below */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pb-12">
+          <FadeIn delay={0.1}>
+            <h1 className="font-montserrat text-4xl md:text-5xl lg:text-6xl font-bold mb-3">
+              {product.name}
+            </h1>
+            <p className="text-lg sm:text-xl text-white/60 mb-4">{product.tagline}</p>
+            {lowestPrice && (
+              <p className="text-2xl sm:text-3xl font-bold mb-8">
+                od <span className="text-white">{lowestPrice.toLocaleString("pl-PL")} zł</span>
+              </p>
+            )}
+          </FadeIn>
+
+          {/* Specs grid */}
+          <FadeIn delay={0.2}>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
+              {product.specs.filter((spec) => spec.label !== "Gwarancja").map((spec) => (
+                <div key={spec.label} className="relative rounded-2xl border border-white/15 p-1">
+                  <GlowingEffect spread={40} glow proximity={64} />
+                  <div className="relative rounded-xl bg-white/10 backdrop-blur-sm p-5 text-center">
+                    <div className="text-xs text-white/50 mb-2 uppercase tracking-wider font-medium">{spec.label}</div>
+                    <div className="text-xl font-bold text-white">{spec.value}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
       </section>
 
-      {/* ═══ PRODUCT DETAILS: Gallery left, Info right ═══ */}
+      {/* ═══ PRODUCT DETAILS: Gallery left, Variant selector + CTA right ═══ */}
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -140,35 +169,15 @@ export default async function ProductPage({ params }: Props) {
               />
             </FadeIn>
 
-            {/* RIGHT: Info */}
+            {/* RIGHT: Variant selector + CTA */}
             <div>
               <FadeIn delay={0.1}>
-                <h1 className="font-montserrat text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
-                  {product.name}
-                </h1>
-                <p className="text-lg text-white/60 mb-6">{product.tagline}</p>
-              </FadeIn>
-
-              {/* Variant selector + price */}
-              <FadeIn delay={0.15}>
+                <h2 className="font-montserrat text-2xl font-bold mb-6">Wybierz wariant</h2>
                 <ProductVariantSelector models={product.models} />
               </FadeIn>
 
-              {/* Specs grid */}
               <FadeIn delay={0.2}>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8 mt-8">
-                  {product.specs.filter((spec) => spec.label !== "Gwarancja").map((spec) => (
-                    <div key={spec.label} className="rounded-xl border border-white/15 bg-white/5 p-4">
-                      <div className="text-xs text-white/50 mb-1 uppercase tracking-wider font-medium">{spec.label}</div>
-                      <div className="text-lg font-bold text-white">{spec.value}</div>
-                    </div>
-                  ))}
-                </div>
-              </FadeIn>
-
-              {/* CTA */}
-              <FadeIn delay={0.3}>
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex flex-col sm:flex-row gap-3 mt-8">
                   <a
                     href="tel:+48503151802"
                     className="inline-flex items-center justify-center gap-2 gradient-button text-white rounded-full px-8 py-4 font-bold text-sm transition-opacity hover:opacity-90"
