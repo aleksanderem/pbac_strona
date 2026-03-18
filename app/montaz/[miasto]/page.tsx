@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getLocationBySlug, getLocationsByService, getAllLocations } from "@/lib/locations";
 import { getAllBrands } from "@/lib/brands";
 import dynamic from "next/dynamic";
-import HeroBackground from "@/components/hero-background";
+import LightPillarHero from "@/components/light-pillar-hero";
 
 const PricingTable = dynamic(() => import("@/components/pricing-table"));
 const DetailedInstallation = dynamic(() => import("@/components/detailed-installation"));
@@ -123,9 +123,9 @@ export default async function MontazPage({ params }: Props) {
       <JsonLd data={[serviceSchema, localBusinessSchema, buildBreadcrumbSchema(breadcrumbItems), ...(faqSchema ? [faqSchema] : [])]} />
       <Navbar />
 
-      {/* ═══ HERO with DarkVeil ═══ */}
+      {/* ═══ HERO with LightPillar ═══ */}
       <section className="relative min-h-[60vh] flex items-end overflow-hidden">
-        <HeroBackground />
+        <LightPillarHero />
         <div className="relative z-10 max-w-7xl mx-auto px-4 pb-16 pt-32 w-full">
           <Breadcrumb items={breadcrumbItems} />
           <FadeIn>
