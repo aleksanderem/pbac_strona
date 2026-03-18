@@ -153,7 +153,7 @@ export default async function MontazPage({ params }: Props) {
             {/* Right: Contact form */}
             <FadeIn delay={0.2}>
               <div className="rounded-2xl border border-white/15 bg-black/40 backdrop-blur-xl p-8">
-                <h2 className="font-montserrat text-xl font-bold mb-6">Umów się na bezpłatną wycenę</h2>
+                <h2 className="font-montserrat text-xl font-bold mb-6">Umów się na bezpłatną wycenę w miejscu montażu</h2>
                 <form action="https://formsubmit.co/ajax/biuro@pbac.pl" method="POST" className="space-y-4">
                   <div>
                     <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Imię</label>
