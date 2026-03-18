@@ -250,7 +250,6 @@ export default function Home() {
       <LocationsSection />
       <TestimonialsSection />
       <LatestBlogSection />
-      <QuoteForm />
       <ContactSection />
       <FaqSection />
       <Footer />
