@@ -198,7 +198,7 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ═══ DESCRIPTION ═══ */}
+      {/* ═══ DESCRIPTION (left) + FEATURES (right) ═══ */}
       <section className="relative py-16 px-4 overflow-hidden">
         <DotPattern
           width={20}
@@ -206,35 +206,22 @@ export default async function ProductPage({ params }: Props) {
           cr={1}
           className="absolute inset-x-0 top-0 h-[60%] fill-white/5 [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
         />
-        <div className="relative z-10 max-w-6xl mx-auto">
-          <FadeIn>
-            <h2 className="font-montserrat text-2xl font-bold mb-6">Opis</h2>
-            <div className="space-y-6 text-white/70 leading-relaxed max-w-4xl">
-              {product.descriptionLong.map((p, i) => (
-                <div key={i}>
-                  <p>{p}</p>
-                  {/* Insert gallery image after 1st and 3rd paragraph */}
-                  {(i === 0 || i === 2) && product.gallery && product.gallery[i === 0 ? 0 : 1] && (
-                    <div className="my-8 rounded-2xl overflow-hidden border border-white/10">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={product.gallery[i === 0 ? 0 : 1].src}
-                        alt={product.gallery[i === 0 ? 0 : 1].alt || `${product.name} — szczegóły`}
-                        className="w-full h-64 sm:h-80 object-contain bg-white/5 p-4"
-                        loading="lazy"
-                      />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-
-          {/* Features */}
-          <div className="mt-12">
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* LEFT: Description */}
             <FadeIn>
+              <h2 className="font-montserrat text-2xl font-bold mb-6">Opis</h2>
+              <div className="space-y-5 text-white/70 leading-relaxed">
+                {product.descriptionLong.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            </FadeIn>
+
+            {/* RIGHT: Features */}
+            <FadeIn delay={0.1}>
               <h2 className="font-montserrat text-2xl font-bold mb-6">Cechy i funkcje</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-3">
                 {product.features.map((f) => (
                   <div key={f} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
                     <CheckCircle className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
