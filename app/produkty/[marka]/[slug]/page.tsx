@@ -15,6 +15,7 @@ import { DotPattern } from "@/components/ui/dot-pattern";
 import { StripedPattern } from "@/components/ui/striped-pattern";
 import ProductHero from "@/components/product-hero";
 import ProductGallery from "@/components/product-gallery";
+import ProductVariantSelector from "@/components/product-variant-selector";
 import ProductCard from "@/components/product-card";
 import ArticleCard from "@/components/article-card";
 import { Phone, CheckCircle, ArrowRight, Wrench, Settings } from "lucide-react";
@@ -124,89 +125,67 @@ export default async function ProductPage({ params }: Props) {
           />
         </FadeIn>
 
-        {/* Product title + info centered below */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pb-20">
-          <FadeIn delay={0.1}>
-            <h1 className="font-montserrat text-4xl md:text-5xl lg:text-6xl font-bold mb-3">
-              {product.name}
-            </h1>
-            <p className="text-lg sm:text-xl text-white/60 mb-4">{product.tagline}</p>
-            {lowestPrice && (
-              <p className="text-2xl sm:text-3xl font-bold mb-8">
-                od <span className="text-white">{lowestPrice.toLocaleString("pl-PL")} zł</span>
-              </p>
-            )}
-          </FadeIn>
+      </section>
 
-          {/* Specs grid */}
-          <FadeIn delay={0.2}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
-              {product.specs.filter((spec) => spec.label !== "Gwarancja").map((spec) => (
-                <div key={spec.label} className="relative rounded-2xl border border-white/15 p-1">
-                  <GlowingEffect spread={40} glow proximity={64} />
-                  <div className="relative rounded-xl bg-white/10 backdrop-blur-sm p-5 text-center">
-                    <div className="text-xs text-white/50 mb-2 uppercase tracking-wider font-medium">{spec.label}</div>
-                    <div className="text-xl font-bold text-white">{spec.value}</div>
-                  </div>
+      {/* ═══ PRODUCT DETAILS: Gallery left, Info right ═══ */}
+      <section className="py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* LEFT: Gallery */}
+            <FadeIn>
+              <ProductGallery
+                images={product.gallery || []}
+                mainImage={product.imageUrl}
+                productName={product.name}
+              />
+            </FadeIn>
+
+            {/* RIGHT: Info */}
+            <div>
+              <FadeIn delay={0.1}>
+                <h1 className="font-montserrat text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
+                  {product.name}
+                </h1>
+                <p className="text-lg text-white/60 mb-6">{product.tagline}</p>
+              </FadeIn>
+
+              {/* Variant selector + price */}
+              <FadeIn delay={0.15}>
+                <ProductVariantSelector models={product.models} />
+              </FadeIn>
+
+              {/* Specs grid */}
+              <FadeIn delay={0.2}>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8 mt-8">
+                  {product.specs.filter((spec) => spec.label !== "Gwarancja").map((spec) => (
+                    <div key={spec.label} className="rounded-xl border border-white/15 bg-white/5 p-4">
+                      <div className="text-xs text-white/50 mb-1 uppercase tracking-wider font-medium">{spec.label}</div>
+                      <div className="text-lg font-bold text-white">{spec.value}</div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </FadeIn>
+              </FadeIn>
 
-          {/* CTA */}
-          <FadeIn delay={0.3}>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
-              <a
-                href="tel:+48503151802"
-                className="inline-flex items-center justify-center gap-2 gradient-button text-white rounded-full px-10 py-4 font-bold text-sm transition-opacity hover:opacity-90"
-              >
-                <Phone className="w-4 h-4" />
-                Zapytaj o ten produkt
-              </a>
-              <a
-                href="/#wycena"
-                className="inline-flex items-center justify-center gap-2 border border-white/20 text-white rounded-full px-10 py-4 font-bold text-sm hover:bg-white/10 transition-colors"
-              >
-                Bezpłatna wycena
-              </a>
+              {/* CTA */}
+              <FadeIn delay={0.3}>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="tel:+48503151802"
+                    className="inline-flex items-center justify-center gap-2 gradient-button text-white rounded-full px-8 py-4 font-bold text-sm transition-opacity hover:opacity-90"
+                  >
+                    <Phone className="w-4 h-4" />
+                    Zapytaj o ten produkt
+                  </a>
+                  <a
+                    href="/#wycena"
+                    className="inline-flex items-center justify-center gap-2 border border-white/20 text-white rounded-full px-8 py-4 font-bold text-sm hover:bg-white/10 transition-colors"
+                  >
+                    Bezpłatna wycena
+                  </a>
                 </div>
               </FadeIn>
             </div>
-      </section>
-
-      {/* ═══ GALLERY ═══ */}
-      {product.gallery && product.gallery.length > 0 && (
-        <ProductGallery
-          images={product.gallery}
-          mainImage={product.imageUrl}
-          productName={product.name}
-        />
-      )}
-
-      {/* ═══ VARIANTS ═══ */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <FadeIn>
-            <h2 className="font-montserrat text-2xl sm:text-3xl font-bold mb-6 text-center">Dostępne warianty</h2>
-            <div className="space-y-3">
-              {product.models.map((model) => (
-                <div key={model.name} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-5">
-                  <div>
-                    <div className="font-bold">{model.power}</div>
-                    {model.area && <div className="text-sm text-white/40">{model.area}</div>}
-                  </div>
-                  <div className="text-right">
-                    {model.price ? (
-                      <div className="font-bold text-xl">{model.price.toLocaleString("pl-PL")} zł</div>
-                    ) : (
-                      <div className="text-sm text-white/50">Zapytaj o cenę</div>
-                    )}
-                    <div className="text-xs text-white/40">{model.energyClass}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
 
