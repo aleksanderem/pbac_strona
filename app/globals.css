@@ -169,6 +169,12 @@
   html {
     scroll-behavior: smooth;
   }
+  .maplibregl-popup-content {
+    @apply bg-transparent! shadow-none! p-0! rounded-none!;
+  }
+  .maplibregl-popup-tip {
+    @apply hidden!;
+  }
 }
 
 /* PBAC Custom Gradient Utilities */

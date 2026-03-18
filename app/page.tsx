@@ -20,6 +20,7 @@ const ServiceTabs = dynamic(() => import("@/components/service-tabs"));
 const FounderPromise = dynamic(() => import("@/components/founder-promise"));
 const CertificatesSection = dynamic(() => import("@/components/certificates-section"));
 const LocationsSection = dynamic(() => import("@/components/locations-section"));
+const ServiceAreaMap = dynamic(() => import("@/components/service-area-map"));
 const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"));
 const LatestBlogSection = dynamic(() => import("@/components/latest-blog-section"));
 const CTASection = dynamic(() => import("@/components/cta-section"));
@@ -248,6 +249,7 @@ export default function Home() {
       <FounderPromise />
       <CertificatesSection />
       <LocationsSection />
+      <ServiceAreaMap variant="montaz" />
       <TestimonialsSection />
       <LatestBlogSection />
       <CTASection />
