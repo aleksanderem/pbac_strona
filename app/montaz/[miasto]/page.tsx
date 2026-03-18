@@ -5,6 +5,7 @@ import { getLocationBySlug, getLocationsByService, getAllLocations } from "@/lib
 import { getAllBrands } from "@/lib/brands";
 import dynamic from "next/dynamic";
 import LightPillarHero from "@/components/light-pillar-hero";
+import StatsGlassIcons from "@/components/stats-glass-icons";
 
 const PricingTable = dynamic(() => import("@/components/pricing-table"));
 const DetailedInstallation = dynamic(() => import("@/components/detailed-installation"));
@@ -182,24 +183,10 @@ export default async function MontazPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ═══ STATS BAR ═══ */}
-      <section className="border-y border-white/10 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, idx) => (
-              <FadeIn key={stat.label} delay={idx * 0.1}>
-                <div className="flex items-center gap-5">
-                  <div className="w-14 h-14 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center shrink-0">
-                    <stat.icon className="w-6 h-6 text-white/70" />
-                  </div>
-                  <div>
-                    <div className="font-montserrat text-3xl md:text-4xl font-bold text-white">{stat.number}</div>
-                    <div className="text-sm text-white/50">{stat.label}</div>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+      {/* ═══ STATS BAR — GlassIcons ═══ */}
+      <section className="border-y border-white/10 bg-white/[0.02] py-8">
+        <div className="max-w-4xl mx-auto px-4">
+          <StatsGlassIcons variant="montaz" />
         </div>
       </section>
 
