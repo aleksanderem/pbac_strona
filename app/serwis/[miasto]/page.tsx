@@ -336,7 +336,7 @@ export default async function SerwisPage({ params }: Props) {
 
       {/* ═══ STATS BAR ═══ */}
       <section className="border-y border-white/10 bg-white/[0.02]">
-        <div className="max-w-5xl mx-auto px-4 py-10">
+        <div className="max-w-7xl mx-auto px-4 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { number: "1000+", label: "Serwisów wykonanych" },
@@ -355,7 +355,7 @@ export default async function SerwisPage({ params }: Props) {
 
       {/* ═══ FEATURE IMAGE — serwis hero ═══ */}
       <section className="py-12 px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
             <div className="relative rounded-2xl overflow-hidden border border-white/10">
               <img src="/images/serwis/serwis-hero.jpg" alt="Serwis klimatyzacji — technik PBAC podczas przeglądu" className="w-full h-64 sm:h-80 md:h-96 object-cover" loading="lazy" />
@@ -376,12 +376,12 @@ export default async function SerwisPage({ params }: Props) {
           height={40}
           className="absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(700px_circle_at_center,white,transparent)]"
         />
-        <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative z-10 max-w-7xl mx-auto">
           <FadeIn className="text-center mb-16">
             <h2 className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold mb-4">
               Dlaczego regularny serwis klimatyzacji jest niezbędny?
             </h2>
-            <p className="text-white/60 max-w-3xl mx-auto text-lg">
+            <p className="text-white/60 max-w-7xl mx-auto text-lg">
               Klimatyzator to urządzenie, które wymaga okresowej konserwacji — tak jak samochód wymaga wymiany oleju i filtrów
             </p>
           </FadeIn>
@@ -438,7 +438,7 @@ export default async function SerwisPage({ params }: Props) {
             <h2 className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold mb-4">
               Co obejmuje przegląd <AuroraText>klimatyzacji</AuroraText>?
             </h2>
-            <p className="text-white/60 max-w-3xl mx-auto text-lg">
+            <p className="text-white/60 max-w-7xl mx-auto text-lg">
               Szczegółowy, 7-etapowy proces serwisowy — od diagnostyki elektrycznej po dezynfekcję. Każdy krok wykonywany przez certyfikowanego technika.
             </p>
           </FadeIn>
@@ -478,7 +478,7 @@ export default async function SerwisPage({ params }: Props) {
             </h3>
             <p className="text-white/50 text-center text-sm">Każdy etap wykonywany zgodnie z procedurami producenta urządzenia</p>
           </FadeIn>
-          <div className="space-y-4 max-w-4xl mx-auto">
+          <div className="space-y-4 max-w-7xl mx-auto">
             {detailedServiceSteps.map((step, idx) => (
               <FadeIn key={step.title} delay={idx * 0.05}>
                 <div className="flex gap-4 sm:gap-6 rounded-xl border border-white/10 bg-white/5 p-5 sm:p-6">
@@ -501,7 +501,7 @@ export default async function SerwisPage({ params }: Props) {
 
           {/* Checklist */}
           <FadeIn delay={0.4}>
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-7xl mx-auto">
               {[
                 "Czyszczenie i dezynfekcja filtrów powietrza",
                 "Mycie parownika preparatem pianotwórczym",
@@ -546,12 +546,12 @@ export default async function SerwisPage({ params }: Props) {
           cr={1}
           className="absolute inset-x-0 bottom-0 h-[60%] fill-white/5 [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
         />
-        <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative z-10 max-w-7xl mx-auto">
           <FadeIn className="text-center mb-16">
             <h2 className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold mb-4">
               Ile kosztuje serwis klimatyzacji w <AuroraText>{location.name}</AuroraText>?
             </h2>
-            <p className="text-white/60 max-w-3xl mx-auto text-lg">
+            <p className="text-white/60 max-w-7xl mx-auto text-lg">
               Transparentne ceny bez ukrytych kosztów. Dojazd w obrębie {location.name} wliczony w cenę usługi.
             </p>
           </FadeIn>
@@ -631,7 +631,7 @@ export default async function SerwisPage({ params }: Props) {
             <h2 className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold mb-4">
               Serwisujemy klimatyzatory <AuroraText>wszystkich marek</AuroraText>
             </h2>
-            <p className="text-white/60 max-w-3xl mx-auto text-lg">
+            <p className="text-white/60 max-w-7xl mx-auto text-lg">
               Każda marka ma swoją specyfikę serwisową. Nasi technicy znają procedury producenta i dysponują odpowiednimi narzędziami diagnostycznymi.
             </p>
           </FadeIn>
@@ -706,12 +706,12 @@ export default async function SerwisPage({ params }: Props) {
           height={12}
           className="absolute inset-x-0 bottom-0 h-[60%] z-0 text-white/25 [mask-image:radial-gradient(600px_circle_at_50%_70%,white,transparent)]"
         />
-        <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative z-10 max-w-7xl mx-auto">
           <FadeIn className="text-center mb-16">
             <h2 className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold mb-4">
               Jak często serwisować <AuroraText>klimatyzację</AuroraText>?
             </h2>
-            <p className="text-white/60 max-w-3xl mx-auto text-lg">
+            <p className="text-white/60 max-w-7xl mx-auto text-lg">
               Częstotliwość serwisu zależy od intensywności użytkowania i rodzaju obiektu. Poniżej znajdziesz zalecenia dla różnych typów budynków.
             </p>
           </FadeIn>
@@ -756,12 +756,12 @@ export default async function SerwisPage({ params }: Props) {
           cr={1}
           className="absolute inset-x-0 top-0 h-[50%] fill-white/5 [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
         />
-        <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative z-10 max-w-7xl mx-auto">
           <FadeIn className="text-center mb-16">
             <h2 className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold mb-4">
               Jak wygląda serwis klimatyzacji w <AuroraText>{location.name}</AuroraText>?
             </h2>
-            <p className="text-white/60 max-w-3xl mx-auto text-lg">
+            <p className="text-white/60 max-w-7xl mx-auto text-lg">
               Od kontaktu do czystego, sprawnego klimatyzatora — cały proces krok po kroku
             </p>
           </FadeIn>
@@ -852,7 +852,7 @@ export default async function SerwisPage({ params }: Props) {
             height={12}
             className="absolute inset-x-0 top-0 h-[60%] z-0 text-white/25 [mask-image:radial-gradient(600px_circle_at_50%_30%,white,transparent)]"
           />
-          <div className="relative z-10 max-w-3xl mx-auto">
+          <div className="relative z-10 max-w-7xl mx-auto">
             <FadeIn className="text-center mb-12">
               <h2 className="font-montserrat text-3xl md:text-4xl font-bold mb-4">
                 Najczęstsze pytania o serwis klimatyzacji
@@ -927,7 +927,7 @@ export default async function SerwisPage({ params }: Props) {
 
       {/* ═══ CTA ═══ */}
       <section className="px-4 pb-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
             <div className="gradient-primary rounded-2xl p-10 md:p-14 text-center">
               <Settings className="w-10 h-10 text-white/80 mx-auto mb-4" />

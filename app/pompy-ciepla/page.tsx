@@ -119,7 +119,7 @@ export default function PompyCieplaPage() {
 
       {/* ═══ DETAILS ═══ */}
       <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
             <div className="space-y-6 text-white/70 leading-relaxed">
               <p className="text-lg">
@@ -135,7 +135,7 @@ export default function PompyCieplaPage() {
 
       {/* ═══ CTA ═══ */}
       <section className="px-4 pb-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
             <div className="gradient-primary rounded-2xl p-10 md:p-14 text-center">
               <Flame className="w-10 h-10 text-white/80 mx-auto mb-4" />

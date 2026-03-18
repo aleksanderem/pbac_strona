@@ -172,7 +172,7 @@ export default function WynajemPage() {
           height={12}
           className="absolute inset-x-0 top-0 h-[60%] z-0 text-white/25 [mask-image:radial-gradient(600px_circle_at_50%_30%,white,transparent)]"
         />
-        <div className="relative z-10 max-w-3xl mx-auto">
+        <div className="relative z-10 max-w-7xl mx-auto">
           <FadeIn className="text-center mb-12">
             <h2 className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold mb-4">
               Najczęstsze pytania
@@ -202,7 +202,7 @@ export default function WynajemPage() {
 
       {/* ═══ CTA ═══ */}
       <section className="px-4 pb-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
             <div className="gradient-primary rounded-2xl p-10 md:p-14 text-center">
               <Clock className="w-10 h-10 text-white/80 mx-auto mb-4" />

@@ -100,7 +100,7 @@ export default async function ArticlePage({ params }: Props) {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30" />
           </div>
-          <div className="relative z-10 max-w-3xl mx-auto px-4 pb-16 pt-32 w-full">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 pb-16 pt-32 w-full">
             <Breadcrumb items={breadcrumbItems} />
             <FadeIn>
               <div className="mt-6 mb-4 flex items-center gap-3 text-sm text-white/60">
@@ -122,7 +122,7 @@ export default async function ArticlePage({ params }: Props) {
       {/* ═══ FALLBACK HEADER (no cover image) ═══ */}
       {!article.coverImage && (
         <section className="pt-28 pb-8 px-4">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <Breadcrumb items={breadcrumbItems} />
             <FadeIn>
               <div className="mt-6 mb-4 flex items-center gap-3 text-sm text-white/50">
@@ -148,7 +148,7 @@ export default async function ArticlePage({ params }: Props) {
           height={12}
           className="absolute inset-x-0 top-0 h-[60%] z-0 text-white/25 [mask-image:radial-gradient(600px_circle_at_50%_30%,white,transparent)]"
         />
-        <div className="relative z-10 max-w-3xl mx-auto">
+        <div className="relative z-10 max-w-7xl mx-auto">
           {/* Article content — all content is from our own lib/articles.ts, not user input */}
           <FadeIn>
             <div className="space-y-8">

@@ -190,7 +190,7 @@ export default async function MontazPage({ params }: Props) {
 
       {/* ═══ STATS BAR ═══ */}
       <section className="border-y border-white/10 bg-white/[0.02]">
-        <div className="max-w-5xl mx-auto px-4 py-10">
+        <div className="max-w-7xl mx-auto px-4 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { number: "500+", label: "Montaży zrealizowanych" },
@@ -209,7 +209,7 @@ export default async function MontazPage({ params }: Props) {
 
       {/* ═══ HERO IMAGE BREAK ═══ */}
       <section className="py-12 px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
             <div className="relative rounded-2xl overflow-hidden border border-white/10">
               <img src="/images/montaz/montaz-hero.png" alt="Klimatyzator zamontowany na ścianie" className="w-full h-64 sm:h-80 md:h-96 object-cover" loading="lazy" />
@@ -239,7 +239,7 @@ export default async function MontazPage({ params }: Props) {
         return (
           <section key={idx} className="relative py-16 px-4 overflow-hidden">
             <Pattern className={`absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(600px_circle_at_${isEven ? 'center' : 'top'},white,transparent)]`} {...(Pattern === GridPattern ? { width: 40, height: 40 } : {})} />
-            <div className="relative z-10 max-w-5xl mx-auto">
+            <div className="relative z-10 max-w-7xl mx-auto">
               <FadeIn delay={0.1}>
                 {sectionImage ? (
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
@@ -282,7 +282,7 @@ export default async function MontazPage({ params }: Props) {
                     )}
                   </div>
                 ) : (
-                  <div className="max-w-4xl mx-auto">
+                  <div className="max-w-7xl mx-auto">
                     <h2 className="font-montserrat text-2xl md:text-3xl font-bold mb-6">
                       {section.heading}
                     </h2>
@@ -333,7 +333,7 @@ export default async function MontazPage({ params }: Props) {
 
       {/* ═══ MID-PAGE CTA ═══ */}
       <section className="py-12 px-4">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto text-center">
           <FadeIn>
             <h2 className="font-montserrat text-2xl sm:text-3xl font-bold mb-4">
               Gotowy na montaż?
@@ -432,7 +432,7 @@ export default async function MontazPage({ params }: Props) {
       {/* ═══ WARSAW DISTRICTS ═══ */}
       {miasto === "warszawa" && (
         <section className="py-16 px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <FadeIn>
               <h2 className="font-montserrat text-2xl md:text-3xl font-bold text-center mb-8">
                 Działamy we wszystkich dzielnicach <AuroraText>Warszawy</AuroraText>
@@ -460,7 +460,7 @@ export default async function MontazPage({ params }: Props) {
       {location.faq.length > 0 && (
         <section className="relative py-20 px-4 overflow-hidden">
           <StripedPattern className="absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]" />
-          <div className="relative z-10 max-w-3xl mx-auto">
+          <div className="relative z-10 max-w-7xl mx-auto">
             <FadeIn>
               <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-center mb-4">
                 Najczęstsze pytania przed montażem — {location.name}
@@ -512,7 +512,7 @@ export default async function MontazPage({ params }: Props) {
 
       {/* ═══ CTA GRADIENT ═══ */}
       <section className="px-4 pb-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
             <div className="gradient-primary rounded-2xl p-10 md:p-14 text-center">
               <Snowflake className="w-10 h-10 text-white/80 mx-auto mb-4" />

@@ -167,7 +167,7 @@ export default function SerwisIndexPage() {
             <h2 className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold mb-4">
               Co obejmuje nasz <AuroraText>serwis</AuroraText>?
             </h2>
-            <p className="text-white/60 max-w-3xl mx-auto text-lg">
+            <p className="text-white/60 max-w-7xl mx-auto text-lg">
               Kompleksowa obsługa serwisowa klimatyzatorów — od czyszczenia po naprawy awaryjne
             </p>
           </FadeIn>
@@ -195,7 +195,7 @@ export default function SerwisIndexPage() {
           height={40}
           className="absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(700px_circle_at_center,white,transparent)]"
         />
-        <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative z-10 max-w-7xl mx-auto">
           <FadeIn className="text-center mb-12">
             <h2 className="font-montserrat text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
               Dlaczego regularny serwis jest <AuroraText>niezbędny</AuroraText>?
@@ -239,7 +239,7 @@ export default function SerwisIndexPage() {
           height={12}
           className="absolute inset-x-0 top-0 h-[60%] z-0 text-white/25 [mask-image:radial-gradient(600px_circle_at_50%_30%,white,transparent)]"
         />
-        <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative z-10 max-w-7xl mx-auto">
           <FadeIn className="text-center mb-16">
             <h2 className="font-montserrat text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
               Cennik serwisu <AuroraText>klimatyzacji</AuroraText>
@@ -409,7 +409,7 @@ export default function SerwisIndexPage() {
 
       {/* ═══ CTA ═══ */}
       <section className="px-4 pb-20">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
             <div className="gradient-primary rounded-2xl p-10 md:p-14 text-center">
               <Settings className="w-10 h-10 text-white/80 mx-auto mb-4" />
