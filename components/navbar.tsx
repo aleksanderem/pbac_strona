@@ -4,14 +4,12 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X, ChevronDown, Phone, Wrench, ThermometerSun, Building2, BookOpen, Tag, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getLatestArticles, getCategories } from "@/lib/articles";
 import { brands } from "@/lib/brands";
 
-const DarkVeil = dynamic(() => import("@/components/dark-veil"), { ssr: false });
 
 const PHONE_NUMBER = "+48 503 151 802";
 const PHONE_HREF = "tel:+48503151802";
@@ -195,18 +193,9 @@ export default function Navbar() {
       role="navigation"
       aria-label="Nawigacja główna"
     >
-      {/* DarkVeil animated background */}
+      {/* Navbar background */}
       <div className="absolute inset-0 overflow-hidden">
-        <DarkVeil
-          hueShift={230}
-          noiseIntensity={0.06}
-          scanlineIntensity={0.3}
-          speed={0.8}
-          scanlineFrequency={0}
-          warpAmount={0.35}
-          resolutionScale={0.5}
-        />
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -5,7 +5,6 @@ import { getLocationBySlug, getLocationsByService, getAllLocations } from "@/lib
 import { getAllBrands } from "@/lib/brands";
 import dynamic from "next/dynamic";
 import LightPillarHero from "@/components/light-pillar-hero";
-import StatsGlassIcons from "@/components/stats-glass-icons";
 import CircularText from "@/components/CircularText";
 
 const PricingTable = dynamic(() => import("@/components/pricing-table"));

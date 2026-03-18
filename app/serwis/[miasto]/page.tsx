@@ -6,7 +6,6 @@ import { getAllBrands } from "@/lib/brands";
 import { testimonials } from "@/lib/testimonials";
 import dynamic from "next/dynamic";
 import LightPillarHero from "@/components/light-pillar-hero";
-import StatsGlassIcons from "@/components/stats-glass-icons";
 import CircularText from "@/components/CircularText";
 
 const PricingTable = dynamic(() => import("@/components/pricing-table"));
