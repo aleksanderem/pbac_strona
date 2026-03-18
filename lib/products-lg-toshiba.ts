@@ -133,9 +133,10 @@ export const lgToshibaProducts: Product[] = [
     description:
       "Klimatyzator ścienny LG Deluxe to połączenie kompaktowej konstrukcji, wysokiej efektywności energetycznej i cichej pracy. Osiągając klasę A++ zarówno w trybie chłodzenia, jak i grzania dzięki sprężarce DUAL Inverter i czynnikowi R32, stanowi ekonomiczne i przyjazne dla środowiska rozwiązanie. Złota powłoka Gold Fin na lamelach wymiennika zapewnia dodatkową trwałość i ochronę.",
     descriptionLong: [
-      "Klimatyzator ścienny LG Deluxe to połączenie kompaktowej konstrukcji, wysokiej efektywności energetycznej i cichej pracy.",
-      "Osiągając klasę A++ zarówno w trybie chłodzenia, jak i grzania dzięki zaawansowanej sprężarce DUAL Inverter i ekologicznemu czynnikowi R32, stanowi ekonomiczne i przyjazne dla środowiska rozwiązanie.",
-      "Niski poziom hałasu od 19 dB zapewnia komfortowe użytkowanie. Złota powłoka Gold Fin na lamelach wymiennika ciepła zwiększa trwałość i odporność na korozję. Na sprężarkę producent udziela 10-letniej gwarancji.",
+      "LG Deluxe to propozycja dla tych, którzy oczekują premium osiągów w klasycznej, eleganckiej formie. Model ten osiąga SEER 7,0 i SCOP 4,3, co przekłada się na klasę energetyczną A++ zarówno w chłodzeniu, jak i grzaniu. Jednostka wewnętrzna o wymiarach 998 x 345 x 210 mm mieści zaawansowany wymiennik ciepła pokryty złotą powłoką Gold Fin, która zwiększa odporność na korozję i przedłuża żywotność urządzenia — szczególnie istotne w warunkach miejskich, gdzie powietrze zawiera więcej zanieczyszczeń.",
+      "Sprężarka DUAL Inverter objęta jest 10-letnią gwarancją producenta — jedną z najdłuższych na rynku. W połączeniu z ekologicznym czynnikiem R32 zapewnia cichą i stabilną pracę z poziomem hałasu od zaledwie 19 dB w trybie nocnym. Technologia UVnano sterylizuje powietrze przechodzące przez wymiennik, eliminując do 99,99% bakterii na łopatkach wentylatora.",
+      "Jonizator Plasmaster Ionizer+ generuje ponad 3 miliony jonów ujemnych na centymetr sześcienny, neutralizując alergeny, pyłki i drobne cząsteczki unoszące się w powietrzu. Dla alergików i rodzin z małymi dziećmi to funkcja, która realnie wpływa na jakość życia. Automatyczne oczyszczanie wnętrza jednostki zapobiega rozwojowi pleśni i grzybów.",
+      "Sterowanie przez aplikację LG ThinQ z wbudowanym modułem Wi-Fi pozwala na zdalne zarządzanie temperaturą i harmonogramem pracy. Deluxe jest dostępny w czterech wariantach mocy od 2,5 do 6,6 kW, obsługując pomieszczenia od 20 do nawet 90 m². Na tle konkurencji wyróżnia się idealnym balansem między ceną, efektywnością energetyczną i jakością filtracji powietrza.",
     ],
     highlight: "A++/A++ i Gold Fin",
     features: [
@@ -190,9 +191,9 @@ export const lgToshibaProducts: Product[] = [
     description:
       "LG DualCool to jeden z najnowszych klimatyzatorów ściennych SPLIT od koreańskiego giganta. Wyróżnia się zaawansowanym systemem oczyszczania powietrza, który skutecznie wykrywa i neutralizuje zanieczyszczenia. Sprężarka Dual Inverter zapewnia klasę A++ dla chłodzenia i A+ dla grzania, przekładając się na znaczące ograniczenie zużycia prądu.",
     descriptionLong: [
-      "LG DualCool to jeden z najnowszych klimatyzatorów ściennych SPLIT od koreańskiego giganta, wyróżniający się zaawansowanym systemem oczyszczania powietrza.",
-      "System skutecznie wykrywa i neutralizuje zanieczyszczenia, a w układzie chłodniczym zastosowano wydajny i ekologiczny czynnik R32.",
-      "Sprężarka Dual Inverter z 10-letnią gwarancją zapewnia klasę A++ dla chłodzenia i A+ dla grzania. Smukła, biała obudowa idealnie komponuje się w różnorodnych wnętrzach.",
+      "Seria DualCool od LG łączy zaawansowane oczyszczanie powietrza z klimatyzacją w jednym urządzeniu. Wbudowany system filtracji wykrywa i neutralizuje cząsteczki zanieczyszczeń — pyłki, kurz, alergeny i mikroorganizmy — co czyni ten model szczególnie wartościowym w miastach o podwyższonym stężeniu smogu. SEER 6,6 i SCOP 4,0 zapewniają klasę A++ w chłodzeniu i A+ w grzaniu.",
+      "Sprężarka DUAL Inverter pracuje z maksymalną wydajnością przy minimalnym zużyciu energii i hałasie. Poziom ciśnienia akustycznego jednostki wewnętrznej wynosi od 21 dB(A) — zbliżony do szmeru liści na wietrze. Jednostka zewnętrzna o wymiarach 717 x 495 x 230 mm jest jedną z najbardziej kompaktowych w swojej klasie, co ułatwia montaż na balkonach i elewacjach z ograniczoną przestrzenią.",
+      "Na sprężarkę producent udziela aż 10-letniej gwarancji, co jest wyrazem zaufania do trwałości zastosowanej konstrukcji. Ekologiczny czynnik R32 zapewnia wyższą wydajność chłodniczą niż starszy R410A, przy jednoczesnym obniżeniu wpływu na efekt cieplarniany o ponad 70%. Wbudowany moduł Wi-Fi pozwala sterować urządzeniem przez aplikację LG ThinQ z dowolnego miejsca.",
     ],
     highlight: "Oczyszczanie powietrza i Dual Inverter",
     features: [
@@ -359,9 +360,10 @@ export const lgToshibaProducts: Product[] = [
     description:
       "LG Artcool Gallery to niezwykły klimatyzator ścienno-sufitowy, który pełni również funkcję estetyczną. Wyposażony w czarną ramę umożliwiającą personalizację ulubionym obrazem czy zdjęciem, stanowi idealne połączenie praktyczności i elegancji. Sprężarka Dual Inverter z 10-letnią gwarancją oraz czynnik R32 zapewniają klasę A++ dla chłodzenia i A+ dla grzania.",
     descriptionLong: [
-      "LG Artcool Gallery to niezwykły klimatyzator ścienno-sufitowy, który nie tylko zapewnia odpowiednie warunki termiczne, ale także pełni funkcję estetyczną.",
-      "Wyposażony w czarną ramę umożliwiającą personalizację ulubionym obrazem czy zdjęciem, stanowi idealne połączenie praktyczności i elegancji.",
-      "Smukła i minimalistyczna konstrukcja kryje zaawansowane podzespoły — sprężarkę Dual Inverter z 10-letnią gwarancją oraz ekologiczny czynnik R32. Klasa A++ dla chłodzenia i A+ dla grzania.",
+      "Żaden inny klimatyzator na rynku nie łączy sztuki z klimatyzacją tak jak LG Artcool Gallery. Przedni panel urządzenia mieści wymienną ramkę, w której można umieścić własne zdjęcie, reprodukcję obrazu lub grafikę — klimatyzator staje się elementem dekoracyjnym wnętrza, a nie sprzętem, który trzeba ukrywać. To rozwiązanie docenili projektanci wnętrz na całym świecie, a sam model zdobył liczne nagrody za wzornictwo.",
+      "Pod minimalistyczną, kwadratową obudową kryje się sprawdzona technologia LG. Sprężarka DUAL Inverter z 10-letnią gwarancją producenta zapewnia stabilną i energooszczędną pracę, osiągając SEER 6,6 i SCOP 4,0 (klasa A++ w chłodzeniu, A+ w grzaniu). Maksymalny przepływ powietrza sięga 9,0 m³/min, a zdolność osuszania wynosi 1,3 l/h — parametry, które gwarantują skuteczne działanie nawet w wilgotne, upalne dni.",
+      "Trójstronny nawiew rozprowadza powietrze w trzech kierunkach jednocześnie, zapewniając szybkie i równomierne schłodzenie całego pomieszczenia. Funkcja Mocne Chłodzenie przyspiesza osiągnięcie docelowej temperatury, a system automatycznego oczyszczania utrzymuje wnętrze jednostki w czystości, eliminując drobnoustroje.",
+      "Sterowanie Wi-Fi przez aplikację LG ThinQ umożliwia zarządzanie klimatyzatorem z poziomu smartfona. Czynnik R32 o niskim współczynniku GWP minimalizuje wpływ na środowisko. Artcool Gallery jest dostępny w wariantach 2,5 i 3,5 kW — idealny do salonów, gabinetów i przestrzeni, gdzie estetyka ma równie duże znaczenie co komfort termiczny.",
     ],
     highlight: "Wymienna ramka na obraz",
     features: [
@@ -478,9 +480,10 @@ export const lgToshibaProducts: Product[] = [
     description:
       "Toshiba Shorai Edge White to najnowsza propozycja klimatyzatora ściennego, łącząca elegancki design z doskonałą wydajnością. Dostępny w ośmiu wariantach wydajnościowych, działa na czynniku R32 z klasą energetyczną A+++/A+++. Filtr Ultra Pure zapewnia wysoką jakość oczyszczenia powietrza, a technologia nawiewu HADA-Care podnosi komfort użytkowania.",
     descriptionLong: [
-      "Toshiba Shorai Edge White to najnowsza propozycja klimatyzatora ściennego, łącząca elegancki design z doskonałą wydajnością.",
-      "Dostępny w ośmiu wariantach wydajnościowych, działa na czynniku R32 z klasą energetyczną A+++/A+++. Filtr Ultra Pure zapewnia wysoką jakość oczyszczenia powietrza.",
-      "Innowacyjna technologia nawiewu HADA-Care i wbudowany moduł WiFi umożliwiają pełną zdalną kontrolę nad urządzeniem, zapewniając wygodę i łatwość obsługi.",
+      "Shorai Edge to flagowa seria ściennych klimatyzatorów Toshiba, która osiąga imponujące wartości SEER 8,5 i SCOP 5,1 w wariancie 2,0 kW — jedne z najwyższych na rynku. Każdy model w serii spełnia wymagania klasy A+++ zarówno w chłodzeniu, jak i grzaniu, co w skali sezonu przekłada się na roczne zużycie energii na poziomie zaledwie 104 kWh w trybie chłodzenia.",
+      "Technologia nawiewu HADA-Care (z japońskiego 'hada' oznacza 'skóra') została zaprojektowana z myślą o delikatnym, nieskoncentrowanym strumieniu powietrza, który nie wysusza skóry i nie powoduje dyskomfortu. Filtr Ultra Pure PM2.5 wychwytuje do 94% drobnych cząstek stałych, pyłków i alergenów, a wymiennik ciepła z powłoką Magic Coil utrudnia gromadzenie się zanieczyszczeń, zachowując pełną wydajność przez lata.",
+      "Seria Shorai Edge White oferuje siedem wariantów mocy od 2,0 do 7,0 kW, dzięki czemu pokrywa potrzeby zarówno niewielkich sypialni (od 10 m²), jak i obszernych salonów czy biur (do 70 m²). Rotacyjne sprężarki inwerterowe Toshiba słyną z niezawodności — producent udziela 5-letniej gwarancji na całe urządzenie. Poziom hałasu od 19 dB(A) w trybie cichym zapewnia komfort nocą.",
+      "Wbudowany moduł Wi-Fi umożliwia zdalne sterowanie przez aplikację mobilną, a programator tygodniowy pozwala precyzyjnie zaplanować harmonogram pracy na cały tydzień. Czynnik R32 zapewnia wysoką efektywność termodynamiczną przy niskim wpływie na środowisko. Shorai Edge White to wybór dla osób, które szukają najwyższej klasy energetycznej bez kompromisów w kwestii komfortu i jakości powietrza.",
     ],
     highlight: "A+++/A+++ i Ultra Pure",
     features: [
@@ -538,9 +541,9 @@ export const lgToshibaProducts: Product[] = [
     description:
       "Klimatyzator ścienny Toshiba Shorai Edge Black pracuje na czynniku R32, zapewniając doskonałą wydajność w trybie chłodzenia i ogrzewania przy klasie A+++/A+++. Eleganckie czarne wykończenie z matową powłoką dodaje stylu każdemu wnętrzu. Rotacyjne sprężarki inwerterowe umożliwiają pracę w szerokim zakresie temperatur przez cały rok.",
     descriptionLong: [
-      "Klimatyzator ścienny Toshiba Shorai Edge Black pracuje na czynniku R32, zapewniając doskonałą wydajność w trybie chłodzenia i ogrzewania przy klasie energetycznej A+++/A+++.",
-      "Eleganckie czarne wykończenie krawędziowe z matową powłoką dodaje stylu każdemu wnętrzu, oferując osiem wariantów wydajnościowych.",
-      "Rotacyjne sprężarki inwerterowe Toshiba umożliwiają pracę w najwyższych klasach energetycznych i szerokim zakresie temperatur, zapewniając komfort przez cały rok.",
+      "Czarna wersja Shorai Edge to odpowiedź Toshiby na rosnące zapotrzebowanie na klimatyzatory, które są nie tylko wydajne, ale też stanowią świadomy element wystroju. Matowe czarne wykończenie krawędziowe nadaje urządzeniu charakter premium i doskonale komponuje się z ciemnymi akcentami we wnętrzach — od industrialnych loftów po minimalistyczne apartamenty. Parametry techniczne pozostają identyczne z wersją białą: SEER do 8,5 i SCOP do 5,1, klasa A+++/A+++.",
+      "Jednostka wewnętrzna wyposażona jest w filtr Ultra Pure PM2.5, technologię nawiewu HADA-Care zapewniającą delikatny, nieskoncentrowany strumień powietrza, oraz powłokę Magic Coil na wymienniku ciepła, która utrudnia gromadzenie się zanieczyszczeń i pleśni. Rotacyjne sprężarki inwerterowe Toshiba są jednymi z najcichszych na rynku — poziom hałasu od 19 dB(A) pozwala na komfortowy sen bez konieczności wyłączania urządzenia.",
+      "Siedem wariantów mocy od 2,0 do 7,0 kW pokrywa szeroki zakres zastosowań. Klimatyzator pracuje efektywnie w temperaturach zewnętrznych od -15°C do +46°C, co oznacza, że sprawdzi się jako źródło ciepła również w okresie przejściowym. Wbudowany moduł Wi-Fi i 5-letnia gwarancja producenta dopełniają pakiet premium.",
     ],
     highlight: "Czarny mat i A+++/A+++",
     features: [
@@ -598,9 +601,10 @@ export const lgToshibaProducts: Product[] = [
     description:
       "Klimatyzator Toshiba Haori to symbol nieograniczonych możliwości personalizacji, doskonałej wydajności oraz cichej pracy. Unikalny design z tekstylnym pokryciem frontu dostępnym w dwóch kolorach umożliwia pełną adaptację wyglądu. Klasa A+++ w trybach chłodzenia i ogrzewania, cicha praca od 19 dB, filtr Ultra Pure oraz jonizator plazmowy zapewniają czyste powietrze.",
     descriptionLong: [
-      "Klimatyzator Toshiba Haori to symbol nieograniczonych możliwości personalizacji, doskonałej wydajności oraz cichej i efektywnej pracy.",
-      "Unikalny design z tekstylnym pokryciem frontu w dwóch kolorach — ciemnoszarym i jasnoszarym — umożliwia pełną adaptację wyglądu do indywidualnych preferencji.",
-      "Klasa A+++ w trybach chłodzenia i ogrzewania, cicha praca od 19 dB, filtr Toshiba Ultra Pure oraz jonizator plazmowy zapewniają czyste i zdrowe powietrze. Technologia Magic Coil utrzymuje czystość wymiennika.",
+      "Toshiba Haori to jedyny klimatyzator na rynku z wymiennym tekstylnym panelem przednim — rozwiązanie, które do tej pory nie istniało w żadnym innym urządzeniu tego typu. Nazwa 'haori' nawiązuje do tradycyjnego japońskiego okrycia wierzchniego, a sam koncept polega na tym, że front klimatyzatora pokryty jest tkaniną, którą można zmienić odpowiednio do wystroju pomieszczenia. W zestawie dostępne są dwa kolory — jasnoszary i ciemnoszary — ale Toshiba oferuje też dodatkowe warianty do osobnego zakupu.",
+      "Pod designerską fasadą kryje się technologia najwyższej klasy. SEER 8,6 i SCOP 5,1 plasują Haori w absolutnej czołówce rynku pod względem efektywności energetycznej (klasa A+++/A+++ w obu trybach). Jednostka wewnętrzna o wymiarach 987 x 300 x 210 mm mieści filtr Ultra Pure PM2.5 wychwytujący do 94% drobnych cząstek stałych oraz jonizator plazmowy, który neutralizuje wirusy i bakterie na poziomie mikronowym.",
+      "Technologia Magic Coil to specjalna powłoka na wymienniku ciepła, która utrudnia przyleganie zabrudzeń i pleśni, wydłużając okres między przeglądami serwisowymi. Funkcja Quiet redukuje hałas jednostki wewnętrznej do 19 dB(A), a jednostka zewnętrzna generuje zaledwie 37–44 dB(A) — jedne z najniższych wartości w klasie premium.",
+      "Haori dostępny jest w trzech wariantach mocy: 2,5 kW, 3,5 kW i 4,6 kW, co pokrywa pomieszczenia od 20 do 50 m². Wbudowany moduł Wi-Fi, 5-letnia gwarancja producenta i ekologiczny czynnik R32 dopełniają obraz klimatyzatora, który jest tak samo piękny, jak skuteczny.",
     ],
     highlight: "Tekstylny front i A+++",
     features: [
@@ -654,9 +658,10 @@ export const lgToshibaProducts: Product[] = [
     description:
       "Toshiba Daiseikai 9 to kolejny krok naprzód w świecie klimatyzacji domowej. Elegancki i nowoczesny design, klasa A+++/A+++ zapewniająca maksymalne oszczędności energii, oraz zaawansowany system filtracji Plasma Ion Charger dbający o jakość powietrza. Niesamowicie ciche działanie, rozbudowany programator tygodniowy i opcjonalne sterowanie WiFi.",
     descriptionLong: [
-      "Toshiba Daiseikai 9 to flagowy model klimatyzatora ściennego, stanowiący kolejny krok naprzód w świecie klimatyzacji domowej.",
-      "Elegancki design, klasa A+++/A+++ zapewniająca maksymalne oszczędności energii, oraz system filtracji Plasma Ion Charger dbający o jakość powietrza.",
-      "Niesamowicie ciche działanie, funkcja kominka, rozbudowany programator tygodniowy i opcjonalne WiFi sprawiają, że zarządzanie klimatyzacją staje się wygodne i efektywne.",
+      "Daiseikai 9 to absolutna perła w portfolio Toshiby — model, w którym japońska precyzja inżynieryjna spotyka się z bezkompromisową efektywnością. Współczynnik SEER sięga imponujących 8,5–10,6 w zależności od wariantu mocy, a SCOP wynosi 4,6–5,2. To jedne z najwyższych wartości wśród klimatyzatorów ściennych dostępnych na polskim rynku, przekładające się na klasę energetyczną A+++ w obu trybach pracy.",
+      "Podwójna sprężarka rotacyjna DC to serce urządzenia — zapewnia wyjątkową stabilność pracy i pozwala na precyzyjne utrzymanie temperatury z dokładnością do 0,5°C. System filtracji Plasma Ion Charger aktywnie oczyszcza powietrze, generując jony, które neutralizują wirusy, bakterie, pyłki i zapachy. Jednostka wewnętrzna pracuje z poziomem hałasu od zaledwie 20 dB(A), a jednostka zewnętrzna — od 43 dB(A), co jest wartością imponującą przy tak dużej wydajności.",
+      "Unikalna funkcja kominka nawiewa ciepłe powietrze z dolnej krawędzi jednostki, symulując poczucie ciepła znane z tradycyjnych kominków — komfortowe rozwiązanie na chłodne wieczory. Rozbudowany programator tygodniowy pozwala zaplanować pracę klimatyzatora na każdy dzień tygodnia osobno. Nawiew 3D z automatyczną regulacją żaluzji poziomych i pionowych zapewnia równomierne rozprowadzenie powietrza.",
+      "Daiseikai 9 dostępny jest w trzech wariantach mocy: 2,5 kW, 3,5 kW i 4,5 kW. Moduł Wi-Fi oferowany jest jako opcja. Czynnik R32 i 5-letnia gwarancja producenta potwierdzają, że to urządzenie stworzone z myślą o wieloletniej, bezawaryjnej eksploatacji. Wybór dla najbardziej wymagających użytkowników, którzy oczekują od klimatyzatora absolutnej ciszy, najwyższej efektywności i nieskazitelnej jakości powietrza.",
     ],
     highlight: "Flagowy A+++/A+++ z Plasma Ion",
     features: [

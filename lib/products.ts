@@ -18,9 +18,10 @@ const samsungProducts: Product[] = [
     origin: "Samsung Climate Solutions",
     description: "Samsung Wind-Free™ Elite to flagowy klimatyzator ścienny Samsung z technologią Wind-Free™ eliminującą nieprzyjemne przeciągi i zapewniającą ciszę od 16 dB.",
     descriptionLong: [
-      "Samsung Wind-Free™ Elite to jeden z najnowszych modeli koreańskiego producenta. Wyposażony w funkcję AI Auto Comfort, automatycznie dostosowuje swoją pracę do aktualnych warunków panujących w pomieszczeniu.",
-      "Wyróżniającą cechą urządzenia jest technologia Wind-Free™, która eliminuje nieprzyjemne przeciągi powietrza i zapewnia wyjątkowo niski poziom hałasu — od zaledwie 16 dB.",
-      "Klimatyzator osiąga najwyższą klasę efektywności energetycznej A+++ w trybie grzania i A++ w chłodzeniu. Sterowanie przez aplikację SmartThings z dowolnego miejsca.",
+      "Flagowa seria Wind-Free Elite należy do absolutnej czołówki klimatyzatorów dostępnych na polskim rynku. Osiąga współczynnik SEER 8,5 i SCOP 5,1 — wartości, które przekładają się na klasę energetyczną A+++ w trybie grzania i A++ w chłodzeniu. W praktyce oznacza to jedno z najniższych zużyć energii wśród urządzeń tej kategorii, co w skali roku może oznaczać kilkaset złotych oszczędności na rachunkach.",
+      "Sercem urządzenia jest opatentowana technologia Wind-Free, która rozprowadza schłodzone powietrze przez 23 000 mikrootworów w panelu przednim. Dzięki temu klimatyzator eliminuje uczucie przeciągu — powietrze rozchodzi się delikatnie i równomiernie, niemal niezauważalnie. Poziom hałasu jednostki wewnętrznej w trybie Wind-Free spada do zaledwie 16 dB(A), co jest ciszej niż odgłos spadającego liścia. To czyni go doskonałym wyborem do sypialni, gabinetów i pokoi dziecięcych.",
+      "Funkcja AI Auto Comfort wykorzystuje algorytmy sztucznej inteligencji do analizy warunków panujących w pomieszczeniu — temperatury, wilgotności i obecności osób — a następnie automatycznie dobiera optymalne parametry pracy. Pilot SolarCell ładuje się energią słoneczną, eliminując potrzebę wymiany baterii. Filtr Tri-Care o właściwościach antybakteryjnych, antywirusowych i antyalergicznych dba o czystość nawiewanego powietrza.",
+      "Sterowanie odbywa się wygodnie przez aplikację SmartThings, która umożliwia zdalne zarządzanie klimatyzatorem z poziomu smartfona — także poza domem. Jednostka wewnętrzna o wymiarach 889 x 299 x 215 mm jest kompaktowa i dyskretna. Samsung udziela 3-letniej gwarancji na całe urządzenie oraz dodatkowych 5 lat na sprężarkę, co potwierdza trwałość i niezawodność konstrukcji.",
     ],
     highlight: "Flagowy model",
     features: [
@@ -73,8 +74,10 @@ const samsungProducts: Product[] = [
     origin: "Samsung Climate Solutions",
     description: "Samsung Wind-Free™ Avant z technologią Wind-Free™ rozprowadzającą powietrze na dystansie do 15 metrów. Cisza od 16 dB, klasa A++, czynnik R32.",
     descriptionLong: [
-      "Samsung Wind-Free™ Avant to zaawansowany klimatyzator z zasięgiem nawiewu do 15 metrów.",
-      "Poziom hałasu od 16 dB, klasa energetyczna A++ w obu trybach. Czujnik ruchu MDS optymalizuje kierunek nawiewu.",
+      "W ofercie Samsung model Avant zajmuje pozycję pomiędzy flagowym Elite a budżetowym Comfort — i dla wielu użytkowników stanowi optymalny kompromis. Przy SEER 7,3 i SCOP 4,6 osiąga klasę energetyczną A++ zarówno w chłodzeniu, jak i grzaniu, a jednocześnie oferuje pełen pakiet technologii Wind-Free w cenie o kilkaset złotych niższej niż Elite.",
+      "Zasięg nawiewu do 15 metrów wyróżnia Avant na tle konkurencji — powietrze dociera równomiernie nawet do odległych zakątków dużych pomieszczeń. Czujnik ruchu MDS (Motion Detection Sensor) wykrywa obecność osób w pomieszczeniu i automatycznie kieruje strumień powietrza tak, aby nie wiał bezpośrednio na użytkownika. Gdy pomieszczenie jest puste, klimatyzator przechodzi w tryb oszczędzania energii.",
+      "Jednostka wewnętrzna o wymiarach 889 x 299 x 215 mm zachowuje kompaktową formę identyczną jak w modelu Elite. Dostępne warianty mocy od 2,5 do 6,5 kW pozwalają dobrać odpowiedni model do pomieszczeń od 20 aż do 90 m². Filtr Tri-Care zapewnia ochronę antybakteryjną, antywirusową i antyalergiczną, a funkcja samoczyszczenia Self-Cleaning automatycznie osusza wymiennik ciepła po zakończeniu pracy, zapobiegając rozwojowi pleśni.",
+      "Sterowanie przez aplikację SmartThings umożliwia zdalne włączanie klimatyzatora w drodze z pracy — wracasz do idealnie schłodzonego mieszkania. Avant korzysta z ekologicznego czynnika R32 o niskim potencjale tworzenia efektu cieplarnianego (GWP 675) i pracuje z poziomem hałasu od zaledwie 16 dB(A), co w trybie Wind-Free czyni go praktycznie niesłyszalnym.",
     ],
     highlight: "Zasięg 15 metrów",
     features: ["Wind-Free™ do 15m", "AI Auto Comfort z WiFi", "Cisza od 16 dB", "Klasa A++", "SmartThings", "Czujnik ruchu MDS"],
@@ -111,7 +114,12 @@ const samsungProducts: Product[] = [
     tagline: "23 000 mikrootworów — chłodzenie bez przeciągów w przystępnej cenie",
     origin: "Samsung Climate Solutions",
     description: "Samsung Wind-Free™ Comfort z 23 000 mikrootworami, ciszą od 19 dB i klasą A++. Najlepszy stosunek ceny do technologii Wind-Free™.",
-    descriptionLong: ["Samsung Wind-Free™ Comfort to model oferujący technologię WindFree™ w najkorzystniejszej cenie. 23 000 mikrootworów rozprowadza powietrze cicho i równomiernie."],
+    descriptionLong: [
+      "Nie każdy potrzebuje flagowego modelu, aby cieszyć się chłodzeniem bez przeciągów. Samsung Wind-Free Comfort przenosi opatentowaną technologię 23 000 mikrootworów do segmentu cenowego poniżej 6 000 zł, czyniąc bezprzeciągowe chłodzenie dostępnym dla znacznie szerszego grona odbiorców. Przy SEER 6,4–6,8 i SCOP 3,8–4,0 osiąga klasę A++ w chłodzeniu i A+ w grzaniu.",
+      "Panel przedni z 23 000 mikrootworami rozprowadza schłodzone powietrze delikatnie i równomiernie — bez koncentracji strumienia w jednym kierunku. Poziom hałasu od 19 dB(A) w trybie cichym jest porównywalny z szeptem, dzięki czemu Comfort sprawdza się również w sypialniach. Jednostka wewnętrzna o wymiarach 820 x 299 x 215 mm (model 3,5 kW) jest nieco kompaktowa niż modele Avant i Elite.",
+      "Funkcja AI Auto Cooling inteligentnie zarządza mocą chłodzenia w zależności od warunków w pomieszczeniu. Do dyspozycji użytkownika jest również tryb Good Sleep, który stopniowo dostosowuje temperaturę w nocy zgodnie z naturalnym rytmem snu. Sterowanie odbywa się przez aplikację SmartThings z wbudowanym modułem Wi-Fi.",
+      "Comfort to idealna propozycja dla osób, które szukają sprawdzonej technologii Samsung Wind-Free bez nadpłacania za funkcje premium. Cztery warianty mocy — od 2,5 do 6,5 kW — pokrywają pomieszczenia od 20 do 90 m². Czynnik chłodniczy R32 zapewnia wysoką wydajność przy minimalnym wpływie na środowisko.",
+    ],
     highlight: "23 000 mikrootworów",
     features: ["WindFree™ 23 000 mikrootworów", "AI Auto Cooling", "Cisza od 19 dB", "Klasa A++/A+", "SmartThings"],
     advantages: [
