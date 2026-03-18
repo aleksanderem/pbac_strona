@@ -14,6 +14,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { StripedPattern } from "@/components/ui/striped-pattern";
 import ProductHero from "@/components/product-hero";
+import ProductGallery from "@/components/product-gallery";
 import ProductCard from "@/components/product-card";
 import ArticleCard from "@/components/article-card";
 import { Phone, CheckCircle, ArrowRight, Wrench, Settings } from "lucide-react";
@@ -173,6 +174,15 @@ export default async function ProductPage({ params }: Props) {
             </div>
       </section>
 
+      {/* ═══ GALLERY ═══ */}
+      {product.gallery && product.gallery.length > 0 && (
+        <ProductGallery
+          images={product.gallery}
+          mainImage={product.imageUrl}
+          productName={product.name}
+        />
+      )}
+
       {/* ═══ VARIANTS ═══ */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
@@ -211,9 +221,23 @@ export default async function ProductPage({ params }: Props) {
         <div className="relative z-10 max-w-6xl mx-auto">
           <FadeIn>
             <h2 className="font-montserrat text-2xl font-bold mb-6">Opis</h2>
-            <div className="space-y-4 text-white/70 leading-relaxed max-w-3xl">
+            <div className="space-y-6 text-white/70 leading-relaxed max-w-4xl">
               {product.descriptionLong.map((p, i) => (
-                <p key={i}>{p}</p>
+                <div key={i}>
+                  <p>{p}</p>
+                  {/* Insert gallery image after 1st and 3rd paragraph */}
+                  {(i === 0 || i === 2) && product.gallery && product.gallery[i === 0 ? 0 : 1] && (
+                    <div className="my-8 rounded-2xl overflow-hidden border border-white/10">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={product.gallery[i === 0 ? 0 : 1].src}
+                        alt={product.gallery[i === 0 ? 0 : 1].alt || `${product.name} — szczegóły`}
+                        className="w-full h-64 sm:h-80 object-contain bg-white/5 p-4"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </FadeIn>
