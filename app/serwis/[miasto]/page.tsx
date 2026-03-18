@@ -271,34 +271,61 @@ export default async function SerwisPage({ params }: Props) {
       <Navbar />
 
       {/* ═══ HERO with LightPillar ═══ */}
-      <section className="relative min-h-[60vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
         <LightPillarHero />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 pb-16 pt-32 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-32 w-full">
           <Breadcrumb items={breadcrumbItems} />
-          <FadeIn>
-            <div className="flex items-center gap-3 mt-6 mb-4">
-              <Settings className="w-5 h-5 text-white/50" />
-              <span className="text-white/50 text-sm">Serwis klimatyzacji</span>
-            </div>
-            <h1 className="font-montserrat text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white">
-              Serwis klimatyzacji {location.name}
-            </h1>
-            <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-3xl mb-8">
-              Oferujemy kompleksowy serwis klimatyzacji w {location.name}: okresowe przeglądy, czyszczenie i dezynfekcja filtrów, uzupełnianie czynnika chłodniczego, diagnostyka usterek oraz naprawy. Serwisujemy klimatyzatory wszystkich marek — Samsung, LG, Toshiba, Gree, Daikin, Haier i inne. Regularny serwis przedłuża żywotność urządzenia, obniża rachunki za prąd i zapewnia czyste powietrze w pomieszczeniu.
-            </p>
-            <p className="text-2xl sm:text-3xl font-bold text-white mb-6">
-              Serwis od <span className="text-white">250 zł</span> <span className="text-white/50 text-lg">przegląd z czyszczeniem</span>
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-8">
+            {/* Left: Text */}
+            <FadeIn>
+              <div className="flex items-center gap-3 mb-6">
+                <Settings className="w-5 h-5 text-white/50" />
+                <span className="text-white/50 text-sm">Serwis klimatyzacji</span>
+              </div>
+              <h1 className="font-montserrat text-4xl sm:text-5xl md:text-6xl font-bold mb-8 text-white">
+                Serwis klimatyzacji {location.name}
+              </h1>
+              <p className="text-lg text-white/70 leading-relaxed mb-10">
+                Przeglądy, czyszczenie, dezynfekcja i naprawy klimatyzatorów wszystkich marek. Serwisujemy Samsung, LG, Toshiba, Gree, Daikin, Haier i inne.
+              </p>
+              <p className="text-2xl sm:text-3xl font-bold text-white mb-8">
+                Serwis od 250 zł <span className="text-white/50 text-lg">przegląd z czyszczeniem</span>
+              </p>
               <a href="tel:+48503151802" className="inline-flex items-center justify-center gap-2 bg-white text-black rounded-full px-8 py-4 font-bold text-sm hover:bg-white/90 transition-colors">
                 <Phone className="w-4 h-4" />
                 +48 503 151 802
               </a>
-              <a href="/#wycena" className="inline-flex items-center justify-center border-2 border-white text-white rounded-full px-8 py-4 font-bold text-sm hover:bg-white/10 transition-colors">
-                Formularz wyceny
-              </a>
-            </div>
-          </FadeIn>
+            </FadeIn>
+
+            {/* Right: Contact form */}
+            <FadeIn delay={0.2}>
+              <div className="rounded-2xl border border-white/15 bg-black/40 backdrop-blur-xl p-8">
+                <h2 className="font-montserrat text-xl font-bold mb-6">Umów serwis klimatyzacji</h2>
+                <form action="https://formsubmit.co/ajax/biuro@pbac.pl" method="POST" className="space-y-4">
+                  <div>
+                    <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Imię</label>
+                    <input type="text" name="name" required className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30" placeholder="Jan Kowalski" />
+                  </div>
+                  <div>
+                    <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Telefon</label>
+                    <input type="tel" name="phone" required className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30" placeholder="+48 500 000 000" />
+                  </div>
+                  <div>
+                    <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Marka klimatyzatora</label>
+                    <input type="text" name="brand" className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30" placeholder="np. Samsung, LG" />
+                  </div>
+                  <div>
+                    <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Opis problemu</label>
+                    <textarea name="message" rows={3} className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30 resize-none" placeholder="Co się dzieje z klimatyzatorem?" />
+                  </div>
+                  <input type="hidden" name="_subject" value={`Serwis klimatyzacji — ${location.name}`} />
+                  <button type="submit" className="w-full bg-white text-black rounded-xl px-6 py-4 font-bold text-sm hover:bg-white/90 transition-colors">
+                    Umów serwis
+                  </button>
+                </form>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
