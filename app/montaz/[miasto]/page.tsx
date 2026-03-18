@@ -6,6 +6,7 @@ import { getAllBrands } from "@/lib/brands";
 import dynamic from "next/dynamic";
 import LightPillarHero from "@/components/light-pillar-hero";
 import StatsGlassIcons from "@/components/stats-glass-icons";
+import CircularText from "@/components/CircularText";
 
 const PricingTable = dynamic(() => import("@/components/pricing-table"));
 const DetailedInstallation = dynamic(() => import("@/components/detailed-installation"));
@@ -127,6 +128,10 @@ export default async function MontazPage({ params }: Props) {
       {/* ═══ HERO with LightPillar ═══ */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
         <LightPillarHero />
+        {/* Circular text badge */}
+        <div className="absolute top-32 right-8 lg:right-16 z-20 hidden md:block">
+          <CircularText text="MONTAŻ * GRATIS * " onHover="speedUp" spinDuration={20} />
+        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-32 w-full">
           <Breadcrumb items={breadcrumbItems} />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-8">
