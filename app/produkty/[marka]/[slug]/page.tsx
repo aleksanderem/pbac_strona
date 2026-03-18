@@ -5,6 +5,7 @@ import { getAllProducts, getProductBySlug, getLowestPrice, getProductsByBrand } 
 import { getBrandBySlug } from "@/lib/brands";
 import { getLatestArticles } from "@/lib/articles";
 import Navbar from "@/components/navbar";
+import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
 import Breadcrumb, { buildBreadcrumbSchema } from "@/components/breadcrumb";
 import JsonLd from "@/components/json-ld";
@@ -370,6 +371,7 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </div>
 
+      <ContactSection />
       <Footer />
     </main>
   );

@@ -11,6 +11,7 @@ const PricingTable = dynamic(() => import("@/components/pricing-table"));
 const DetailedInstallation = dynamic(() => import("@/components/detailed-installation"));
 import { testimonials } from "@/lib/testimonials";
 import Navbar from "@/components/navbar";
+import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
 import Breadcrumb, { buildBreadcrumbSchema } from "@/components/breadcrumb";
 import JsonLd from "@/components/json-ld";
@@ -538,6 +539,7 @@ export default async function MontazPage({ params }: Props) {
       <DetailedInstallation />
       <PricingTable />
 
+      <ContactSection />
       <Footer />
     </main>
   );

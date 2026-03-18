@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Navbar from "@/components/navbar";
+import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
 import Breadcrumb, { buildBreadcrumbSchema } from "@/components/breadcrumb";
 import JsonLd from "@/components/json-ld";
@@ -134,12 +135,13 @@ export default function KontaktPage() {
             </div>
 
             <div>
-              <QuoteForm />
+              
             </div>
           </div>
         </div>
       </section>
 
+      <ContactSection />
       <Footer />
     </main>
   );

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Navbar from "@/components/navbar";
+import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
 import Breadcrumb, { buildBreadcrumbSchema } from "@/components/breadcrumb";
 import JsonLd from "@/components/json-ld";
@@ -59,6 +60,7 @@ export default function PolitykaPrywatnosciPage() {
           </div>
         </div>
       </section>
+      <ContactSection />
       <Footer />
     </main>
   );

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getArticleBySlug, getAllArticleSlugs, getRelatedArticles } from "@/lib/articles";
 import { getAuthorBySlug } from "@/lib/authors";
 import Navbar from "@/components/navbar";
+import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
 import Breadcrumb, { buildBreadcrumbSchema } from "@/components/breadcrumb";
 import ArticleCard from "@/components/article-card";
@@ -243,6 +244,7 @@ export default async function ArticlePage({ params }: Props) {
         </section>
       )}
 
+      <ContactSection />
       <Footer />
     </main>
   );
