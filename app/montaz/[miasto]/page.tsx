@@ -129,7 +129,7 @@ export default async function MontazPage({ params }: Props) {
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
         <LightPillarHero />
         {/* Circular text badge */}
-        <div className="absolute top-32 right-8 lg:right-16 z-20 hidden md:block">
+        <div className="absolute top-40 right-12 xl:right-24 z-20 hidden lg:block opacity-80">
           <CircularText text="MONTAŻ * GRATIS * " onHover="speedUp" spinDuration={20} />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-32 w-full">
@@ -141,14 +141,20 @@ export default async function MontazPage({ params }: Props) {
                 <MapPin className="w-5 h-5 text-white/50" />
                 <span className="text-white/50 text-sm">{location.region}</span>
               </div>
+              <span className="inline-block rounded-full bg-green-500/20 border border-green-500/30 px-4 py-1.5 text-sm font-bold text-green-300 mb-6">
+                Montaż gratis
+              </span>
               <h1 className="font-montserrat text-4xl sm:text-5xl md:text-6xl font-bold mb-8 text-white">
                 Montaż klimatyzacji {location.name}
               </h1>
               <p className="text-lg sm:text-xl text-white/70 leading-relaxed mb-10">
                 {location.description}
               </p>
-              <p className="text-2xl sm:text-3xl font-bold text-white mb-8">
-                Montaż od 4 000 zł <span className="text-white/50 text-lg">brutto z urządzeniem</span>
+              <p className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                Klimatyzacja do mieszkania od 4 000 zł
+              </p>
+              <p className="text-lg text-white/60 mb-8">
+                z montażem za 0 zł
               </p>
               <a href="tel:+48503151802" className="inline-flex items-center justify-center gap-2 bg-white text-black rounded-full px-8 py-4 font-bold text-sm hover:bg-white/90 transition-colors">
                 <Phone className="w-4 h-4" />
@@ -188,10 +194,22 @@ export default async function MontazPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ═══ STATS BAR — GlassIcons ═══ */}
-      <section className="border-y border-white/10 bg-white/[0.02] py-8">
-        <div className="max-w-4xl mx-auto px-4">
-          <StatsGlassIcons variant="montaz" />
+      {/* ═══ STATS BAR ═══ */}
+      <section className="border-y border-white/10 bg-white/[0.02]">
+        <div className="max-w-5xl mx-auto px-4 py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { number: "500+", label: "Montaży zrealizowanych" },
+              { number: "10+", label: "Marek w ofercie" },
+              { number: "4.9", label: "Ocena klientów" },
+              { number: "5 lat", label: "Gwarancja na instalację" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <div className="font-montserrat text-3xl md:text-4xl font-bold text-white mb-1">{stat.number}</div>
+                <div className="text-sm text-white/50">{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

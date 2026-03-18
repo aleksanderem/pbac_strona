@@ -334,10 +334,22 @@ export default async function SerwisPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ═══ STATS BAR — GlassIcons ═══ */}
-      <section className="border-y border-white/10 bg-white/[0.02] py-8">
-        <div className="max-w-4xl mx-auto px-4">
-          <StatsGlassIcons variant="serwis" />
+      {/* ═══ STATS BAR ═══ */}
+      <section className="border-y border-white/10 bg-white/[0.02]">
+        <div className="max-w-5xl mx-auto px-4 py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { number: "1000+", label: "Serwisów wykonanych" },
+              { number: "2-5 dni", label: "Czas realizacji" },
+              { number: "10+", label: "Serwisowanych marek" },
+              { number: "od 250 zł", label: "Cena przeglądu" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <div className="font-montserrat text-3xl md:text-4xl font-bold text-white mb-1">{stat.number}</div>
+                <div className="text-sm text-white/50">{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
