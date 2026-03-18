@@ -198,49 +198,57 @@ export default async function MontazPage({ params }: Props) {
         const Pattern = patterns[idx % patterns.length];
         const isEven = idx % 2 === 0;
 
-        const sectionCaptions = [
-          "Klimatyzacja zamontowana w mieszkaniu",
-          "Klimatyzator Samsung WindFree",
-          "Klimatyzator Mitsubishi Electric",
+        const sectionImages = [
+          { src: "/images/montaz/montaz-blok.jpg", alt: "Klimatyzacja zamontowana w mieszkaniu" },
+          { src: "/images/montaz/montaz-biuro.jpg", alt: "Klimatyzacja w biurze" },
+          { src: "/images/montaz/montaz-dom.jpg", alt: "Klimatyzacja w domu" },
         ];
-        const sectionCaption = idx < sectionCaptions.length ? sectionCaptions[idx] : null;
+        const sectionImage = idx < sectionImages.length ? sectionImages[idx] : null;
 
         return (
           <section key={idx} className="relative py-16 px-4 overflow-hidden">
             <Pattern className={`absolute inset-0 z-0 fill-white/[0.02] [mask-image:radial-gradient(600px_circle_at_${isEven ? 'center' : 'top'},white,transparent)]`} {...(Pattern === GridPattern ? { width: 40, height: 40 } : {})} />
             <div className="relative z-10 max-w-5xl mx-auto">
               <FadeIn delay={0.1}>
-                {sectionCaption && isEven ? (
+                {sectionImage ? (
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                    <div>
-                      <h2 className="font-montserrat text-2xl md:text-3xl font-bold mb-6">
-                        {section.heading}
-                      </h2>
-                      <div className="text-white/70 leading-relaxed space-y-4">
-                        {section.content.split("\n\n").map((p, pIdx) => (
-                          <p key={pIdx}>{p}</p>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="rounded-2xl overflow-hidden border border-white/10 gradient-primary h-64 lg:h-full min-h-[16rem] flex items-end">
-                      <p className="text-white/80 font-montserrat font-bold text-sm p-4">{sectionCaption}</p>
-                    </div>
-                  </div>
-                ) : sectionCaption && !isEven ? (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                    <div className="rounded-2xl overflow-hidden border border-white/10 gradient-primary h-64 lg:h-full min-h-[16rem] flex items-end order-last lg:order-first">
-                      <p className="text-white/80 font-montserrat font-bold text-sm p-4">{sectionCaption}</p>
-                    </div>
-                    <div>
-                      <h2 className="font-montserrat text-2xl md:text-3xl font-bold mb-6">
-                        {section.heading}
-                      </h2>
-                      <div className="text-white/70 leading-relaxed space-y-4">
-                        {section.content.split("\n\n").map((p, pIdx) => (
-                          <p key={pIdx}>{p}</p>
-                        ))}
-                      </div>
-                    </div>
+                    {isEven ? (
+                      <>
+                        <div>
+                          <h2 className="font-montserrat text-2xl md:text-3xl font-bold mb-6">
+                            {section.heading}
+                          </h2>
+                          <div className="text-white/70 leading-relaxed space-y-4">
+                            {section.content.split("\n\n").map((p, pIdx) => (
+                              <p key={pIdx}>{p}</p>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="relative rounded-2xl overflow-hidden border border-white/10">
+                          <img src={sectionImage.src} alt={sectionImage.alt} className="w-full h-64 lg:h-full min-h-[16rem] object-cover" loading="lazy" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                          <p className="absolute bottom-4 left-4 text-white/80 font-montserrat font-bold text-sm">{sectionImage.alt}</p>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="relative rounded-2xl overflow-hidden border border-white/10 order-last lg:order-first">
+                          <img src={sectionImage.src} alt={sectionImage.alt} className="w-full h-64 lg:h-full min-h-[16rem] object-cover" loading="lazy" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                          <p className="absolute bottom-4 left-4 text-white/80 font-montserrat font-bold text-sm">{sectionImage.alt}</p>
+                        </div>
+                        <div>
+                          <h2 className="font-montserrat text-2xl md:text-3xl font-bold mb-6">
+                            {section.heading}
+                          </h2>
+                          <div className="text-white/70 leading-relaxed space-y-4">
+                            {section.content.split("\n\n").map((p, pIdx) => (
+                              <p key={pIdx}>{p}</p>
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    )}
                   </div>
                 ) : (
                   <div className="max-w-4xl mx-auto">

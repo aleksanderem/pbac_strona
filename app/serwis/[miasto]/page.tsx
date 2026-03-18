@@ -609,9 +609,14 @@ export default async function SerwisPage({ params }: Props) {
           {/* Brand product images */}
           <FadeIn delay={0.1}>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
-              {["Samsung", "Mitsubishi", "Kaisai"].map((brand) => (
-                <div key={brand} className="relative rounded-2xl overflow-hidden border border-white/10 gradient-primary p-8 flex items-center justify-center h-48">
-                  <p className="text-white font-montserrat font-bold text-2xl">{brand}</p>
+              {[
+                { src: "/images/products/samsung-wind-free-elite.png", name: "Samsung" },
+                { src: "/images/products/lg-artcool-gallery.png", name: "LG" },
+                { src: "/images/products/toshiba-shorai-edge-white.png", name: "Toshiba" },
+              ].map((brand) => (
+                <div key={brand.name} className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 h-48 flex flex-col items-center justify-center p-4">
+                  <img src={brand.src} alt={`Serwis klimatyzatora ${brand.name}`} className="h-28 object-contain mb-3" loading="lazy" />
+                  <p className="text-white font-montserrat font-bold text-sm">{brand.name}</p>
                 </div>
               ))}
             </div>
