@@ -22,7 +22,7 @@ const CertificatesSection = dynamic(() => import("@/components/certificates-sect
 const LocationsSection = dynamic(() => import("@/components/locations-section"));
 const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"));
 const LatestBlogSection = dynamic(() => import("@/components/latest-blog-section"));
-const QuoteForm = dynamic(() => import("@/components/quote-form"));
+const CTASection = dynamic(() => import("@/components/cta-section"));
 const ContactSection = dynamic(() => import("@/components/contact-section"));
 const FaqSection = dynamic(() => import("@/components/faq-section"));
 const Footer = dynamic(() => import("@/components/footer"));
@@ -250,6 +250,7 @@ export default function Home() {
       <LocationsSection />
       <TestimonialsSection />
       <LatestBlogSection />
+      <CTASection />
       <ContactSection />
       <FaqSection />
       <Footer />
