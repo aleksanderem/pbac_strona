@@ -133,8 +133,8 @@ export default async function MontazPage({ params }: Props) {
               <MapPin className="w-5 h-5 text-white/50" />
               <span className="text-white/50 text-sm">{location.region}</span>
             </div>
-            <h1 className="font-montserrat text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-              Montaż klimatyzacji <AuroraText>{location.name}</AuroraText>
+            <h1 className="font-montserrat text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white">
+              Montaż klimatyzacji {location.name}
             </h1>
             <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-3xl mb-8">
               {location.description}
@@ -143,11 +143,11 @@ export default async function MontazPage({ params }: Props) {
               Montaż od <span className="text-white">4 000 zł</span> <span className="text-white/50 text-lg">brutto z urządzeniem</span>
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="tel:+48503151802" className="inline-flex items-center justify-center gap-2 gradient-button text-white rounded-full px-8 py-4 font-bold text-sm transition-opacity hover:opacity-90">
+              <a href="tel:+48503151802" className="inline-flex items-center justify-center gap-2 bg-white text-black rounded-full px-8 py-4 font-bold text-sm hover:bg-white/90 transition-colors">
                 <Phone className="w-4 h-4" />
                 +48 503 151 802
               </a>
-              <a href="/#wycena" className="inline-flex items-center justify-center border border-white/20 text-white rounded-full px-8 py-4 font-bold text-sm hover:bg-white/10 transition-colors">
+              <a href="/#wycena" className="inline-flex items-center justify-center border-2 border-white text-white rounded-full px-8 py-4 font-bold text-sm hover:bg-white/10 transition-colors">
                 Bezpłatna wycena
               </a>
             </div>
@@ -162,11 +162,11 @@ export default async function MontazPage({ params }: Props) {
             {stats.map((stat, idx) => (
               <FadeIn key={stat.label} delay={idx * 0.1}>
                 <div className="flex items-center gap-5">
-                  <div className="w-16 h-16 rounded-2xl gradient-icon flex items-center justify-center shrink-0">
-                    <stat.icon className="w-8 h-8 text-white" />
+                  <div className="w-14 h-14 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center shrink-0">
+                    <stat.icon className="w-6 h-6 text-white/70" />
                   </div>
                   <div>
-                    <div className="font-montserrat text-3xl md:text-4xl font-bold"><AuroraText>{stat.number}</AuroraText></div>
+                    <div className="font-montserrat text-3xl md:text-4xl font-bold text-white">{stat.number}</div>
                     <div className="text-sm text-white/50">{stat.label}</div>
                   </div>
                 </div>

@@ -280,8 +280,8 @@ export default async function SerwisPage({ params }: Props) {
               <Settings className="w-5 h-5 text-white/50" />
               <span className="text-white/50 text-sm">Serwis klimatyzacji</span>
             </div>
-            <h1 className="font-montserrat text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-              Serwis klimatyzacji <AuroraText>{location.name}</AuroraText>
+            <h1 className="font-montserrat text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white">
+              Serwis klimatyzacji {location.name}
             </h1>
             <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-3xl mb-8">
               Oferujemy kompleksowy serwis klimatyzacji w {location.name}: okresowe przeglądy, czyszczenie i dezynfekcja filtrów, uzupełnianie czynnika chłodniczego, diagnostyka usterek oraz naprawy. Serwisujemy klimatyzatory wszystkich marek — Samsung, LG, Toshiba, Gree, Daikin, Haier i inne. Regularny serwis przedłuża żywotność urządzenia, obniża rachunki za prąd i zapewnia czyste powietrze w pomieszczeniu.
@@ -290,11 +290,11 @@ export default async function SerwisPage({ params }: Props) {
               Serwis od <span className="text-white">250 zł</span> <span className="text-white/50 text-lg">przegląd z czyszczeniem</span>
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="tel:+48503151802" className="inline-flex items-center justify-center gap-2 gradient-button text-white rounded-full px-8 py-4 font-bold text-sm transition-opacity hover:opacity-90">
+              <a href="tel:+48503151802" className="inline-flex items-center justify-center gap-2 bg-white text-black rounded-full px-8 py-4 font-bold text-sm hover:bg-white/90 transition-colors">
                 <Phone className="w-4 h-4" />
                 +48 503 151 802
               </a>
-              <a href="/#wycena" className="inline-flex items-center justify-center border border-white/20 text-white rounded-full px-8 py-4 font-bold text-sm hover:bg-white/10 transition-colors">
+              <a href="/#wycena" className="inline-flex items-center justify-center border-2 border-white text-white rounded-full px-8 py-4 font-bold text-sm hover:bg-white/10 transition-colors">
                 Formularz wyceny
               </a>
             </div>
@@ -309,11 +309,11 @@ export default async function SerwisPage({ params }: Props) {
             {stats.map((stat, idx) => (
               <FadeIn key={stat.label} delay={idx * 0.1}>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl gradient-icon flex items-center justify-center shrink-0">
-                    <stat.icon className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center shrink-0">
+                    <stat.icon className="w-6 h-6 text-white/70" />
                   </div>
                   <div>
-                    <div className="font-montserrat text-2xl font-bold"><AuroraText>{stat.number}</AuroraText></div>
+                    <div className="font-montserrat text-2xl font-bold text-white">{stat.number}</div>
                     <div className="text-xs text-white/50">{stat.label}</div>
                   </div>
                 </div>
@@ -349,7 +349,7 @@ export default async function SerwisPage({ params }: Props) {
         <div className="relative z-10 max-w-4xl mx-auto">
           <FadeIn className="text-center mb-16">
             <h2 className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold mb-4">
-              Dlaczego regularny <AuroraText>serwis klimatyzacji</AuroraText> jest niezbędny?
+              Dlaczego regularny serwis klimatyzacji jest niezbędny?
             </h2>
             <p className="text-white/60 max-w-3xl mx-auto text-lg">
               Klimatyzator to urządzenie, które wymaga okresowej konserwacji — tak jak samochód wymaga wymiany oleju i filtrów
