@@ -65,7 +65,7 @@ export const greeProducts: Product[] = [
     imageAlt: "Klimatyzator Gree Pular Matt",
     gallery: [
       {
-        src: "/images/products/gree-pular-matt.png",
+        src: "/images/products/gree-pular-matt-gallery-0.png",
         alt: "Gree Pular Matt - widok z przodu",
       },
       {
@@ -197,7 +197,7 @@ export const greeProducts: Product[] = [
     imageAlt: "Klimatyzator Gree Clivia Silver",
     gallery: [
       {
-        src: "/images/products/gree-clivia-silver.webp",
+        src: "/images/products/gree-clivia-silver-gallery-0.webp",
         alt: "Gree Clivia Silver - widok z przodu",
       },
       {
@@ -267,7 +267,7 @@ export const greeProducts: Product[] = [
     imageAlt: "Klimatyzator Gree Clivia Navy Blue",
     gallery: [
       {
-        src: "/images/products/gree-clivia-navy-blue.webp",
+        src: "/images/products/gree-clivia-navy-blue-gallery-0.webp",
         alt: "Gree Clivia Navy Blue - widok z przodu",
       },
       {
@@ -337,7 +337,7 @@ export const greeProducts: Product[] = [
     imageAlt: "Klimatyzator Gree Clivia White",
     gallery: [
       {
-        src: "/images/products/gree-clivia-white.jpg",
+        src: "/images/products/gree-clivia-white-gallery-0.jpg",
         alt: "Gree Clivia White - widok z przodu",
       },
       {
@@ -407,7 +407,7 @@ export const greeProducts: Product[] = [
     imageAlt: "Klimatyzator Gree Amber Standard Silver",
     gallery: [
       {
-        src: "/images/products/gree-amber-standard-silver.webp",
+        src: "/images/products/gree-amber-standard-silver-gallery-0.webp",
         alt: "Gree Amber Standard Silver - widok z przodu",
       },
       {
@@ -477,7 +477,7 @@ export const greeProducts: Product[] = [
     imageAlt: "Klimatyzator Gree Amber Prestige",
     gallery: [
       {
-        src: "/images/products/gree-amber-prestige.png",
+        src: "/images/products/gree-amber-prestige-gallery-0.png",
         alt: "Gree Amber Prestige - widok z przodu",
       },
       {
@@ -547,7 +547,7 @@ export const greeProducts: Product[] = [
     imageAlt: "Klimatyzator Gree Fairy White",
     gallery: [
       {
-        src: "/images/products/gree-fairy-white.png",
+        src: "/images/products/gree-fairy-white-gallery-0.png",
         alt: "Gree Fairy White - widok z przodu",
       },
       {
@@ -617,7 +617,7 @@ export const greeProducts: Product[] = [
     imageAlt: "Klimatyzator Gree Fairy Silver",
     gallery: [
       {
-        src: "/images/products/gree-fairy-silver.png",
+        src: "/images/products/gree-fairy-silver-gallery-0.png",
         alt: "Gree Fairy Silver - widok z przodu",
       },
       {
@@ -687,7 +687,7 @@ export const greeProducts: Product[] = [
     imageAlt: "Klimatyzator Gree Fairy Dark",
     gallery: [
       {
-        src: "/images/products/gree-fairy-dark.png",
+        src: "/images/products/gree-fairy-dark-gallery-0.png",
         alt: "Gree Fairy Dark - widok z przodu",
       },
       {
@@ -695,7 +695,7 @@ export const greeProducts: Product[] = [
         alt: "Gree Fairy Dark - perspektywa",
       },
       {
-        src: "/images/products/gree-fairy-silver-gallery-2.jpg",
+        src: "/images/products/gree-fairy-dark-gallery-2.jpg",
         alt: "Gree Fairy Dark - detal",
       },
       {
@@ -761,7 +761,7 @@ export const greeProducts: Product[] = [
     imageAlt: "Klimatyzator Gree Lomo Luxury Plus",
     gallery: [
       {
-        src: "/images/products/gree-lomo-luxury-plus.jpg",
+        src: "/images/products/gree-lomo-luxury-plus-gallery-0.jpg",
         alt: "Gree Lomo Luxury Plus - widok z przodu",
       },
       {
@@ -826,7 +826,7 @@ export const greeProducts: Product[] = [
     imageAlt: "Klimatyzator Gree Soyal",
     gallery: [
       {
-        src: "/images/products/gree-soyal.png",
+        src: "/images/products/gree-soyal-gallery-0.png",
         alt: "Gree Soyal - zestawy",
       },
       {

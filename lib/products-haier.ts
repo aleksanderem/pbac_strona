@@ -72,7 +72,6 @@ export const haierProducts: Product[] = [
       { src: "/images/products/haier-flexis-plus-white-matt-gallery-6.jpg", alt: "Haier Flexis Plus White Matt — widok dolny" },
       { src: "/images/products/haier-flexis-plus-white-matt-gallery-7.jpg", alt: "Haier Flexis Plus White Matt — montaż" },
       { src: "/images/products/haier-flexis-plus-white-matt-gallery-8.jpg", alt: "Haier Flexis Plus White Matt — wnętrze" },
-      { src: "/images/products/haier-flexis-plus-white-matt-gallery-9.jpg", alt: "Haier Flexis Plus White Matt — filtr" },
     ],
   },
   {
@@ -420,7 +419,6 @@ export const haierProducts: Product[] = [
       { src: "/images/products/haier-flexis-plus-white-matt-2-gallery-6.jpg", alt: "Haier Flexis Plus White Matt — widok dolny" },
       { src: "/images/products/haier-flexis-plus-white-matt-2-gallery-7.jpg", alt: "Haier Flexis Plus White Matt — montaż" },
       { src: "/images/products/haier-flexis-plus-white-matt-2-gallery-8.jpg", alt: "Haier Flexis Plus White Matt — wnętrze" },
-      { src: "/images/products/haier-flexis-plus-white-matt-2-gallery-9.jpg", alt: "Haier Flexis Plus White Matt — filtr" },
     ],
   },
 ];
