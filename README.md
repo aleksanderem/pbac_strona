@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PBAC — Klimatyzacja i Pompy Ciepła Warszawa
 
-## Getting Started
+Strona firmowa PBAC — montaż i serwis klimatyzacji oraz pomp ciepła w Warszawie i okolicach. Projekt oparty o Next.js 16 (App Router) z React 19, TypeScript, Tailwind CSS 4 i shadcn/ui.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Next.js 16.1 (App Router, RSC, Turbopack)
+- React 19
+- TypeScript 5
+- Tailwind CSS 4 + tw-animate-css
+- shadcn/ui (Radix UI)
+- MapLibre GL (mapa stref obsługi)
+- Motion (animacje)
+- Three.js / OGL (efekty 3D)
+- Lucide React (ikony)
+
+## Struktura projektu
+
+```
+app/                      Next.js App Router — strony i layout
+  blog/                   Wpisy blogowe
+  klimatyzacja/           Landing: klimatyzacja
+  pompy-ciepla/           Landing: pompy ciepła
+  montaz/                 Landing: montaż
+  serwis/                 Landing: serwis
+  wynajem-klimatyzatorow/ Landing: wynajem
+  produkty/               Katalog produktów
+  kontakt/                Strona kontaktowa
+  polityka-prywatnosci/
+components/               Komponenty React (sekcje, UI, mapa)
+lib/                      Utility, dane (testimonials, faq)
+public/                   Assety statyczne
+types/                    Definicje typów
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Uruchomienie lokalne
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Aplikacja uruchomi się pod `http://localhost:3000`.
 
-## Learn More
+## Build produkcyjny
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## SEO
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Strona zawiera komplet metadanych SEO, `sitemap.ts`, `robots.ts`, `manifest.ts`, structured data (JSON-LD) oraz Open Graph / Twitter Cards. Canonical URL: `https://pbac.pl`.
 
-## Deploy on Vercel
+## Licencja
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Projekt prywatny — wszystkie prawa zastrzeżone PBAC.
