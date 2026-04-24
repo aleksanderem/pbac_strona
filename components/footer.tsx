@@ -7,6 +7,7 @@ const uslugiLinks = [
   { label: "Pompy ciepła", href: "/pompy-ciepla" },
   { label: "Wynajem klimatyzatorów", href: "/wynajem-klimatyzatorow" },
   { label: "Produkty", href: "/produkty" },
+  { label: "Partner: PlayAir Pruszków", href: "/playair" },
 ];
 
 const lokalizacjeLinks = [

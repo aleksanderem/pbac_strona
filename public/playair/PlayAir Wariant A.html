@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>PlayAir — Wariant A (Sibling)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Chivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #000; font-family: 'Chivo', sans-serif; color: #fff; }
+  * { box-sizing: border-box; }
+  .tweaks-panel { position: fixed; bottom: 20px; right: 20px; background: rgba(20,18,16,0.95); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 18px; width: 240px; color: #fff; font-family: -apple-system, sans-serif; font-size: 13px; z-index: 1000; box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+  .tweaks-panel h4 { margin: 0 0 14px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 600; }
+  .tweaks-panel label { display: block; font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .tweaks-panel .seg { display: flex; gap: 4px; background: rgba(255,255,255,0.05); border-radius: 8px; padding: 3px; }
+  .tweaks-panel .seg button { flex: 1; padding: 7px 10px; border: 0; background: transparent; color: rgba(255,255,255,0.7); border-radius: 6px; cursor: pointer; font-size: 11px; font-family: inherit; }
+  .tweaks-panel .seg button.active { background: rgba(255,255,255,0.12); color: #fff; }
+  .variant-badge { position: fixed; top: 20px; left: 20px; z-index: 1000; padding: 8px 14px; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); border-radius: 999px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.8); font-family: Montserrat, sans-serif; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+  .variant-badge a { color: rgba(255,255,255,0.5); text-decoration: none; }
+  .variant-badge a:hover { color: #fff; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<div class="variant-badge">
+  <span>A · Sibling</span>
+  <span style="width:1px;height:12px;background:rgba(255,255,255,0.2);"></span>
+  <a href="PlayAir Wariant B.html">→ Wariant B</a>
+  <span style="width:1px;height:12px;background:rgba(255,255,255,0.2);"></span>
+  <a href="PlayAir — Index.html">Index</a>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="components/playair-sections.jsx"></script>
+<script type="text/babel" src="components/playair-landing-a.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const TWEAKS = /*EDITMODE-BEGIN*/{
+  "accent": "pbac"
+}/*EDITMODE-END*/;
+
+function App() {
+  const [accent, setAccent] = React.useState(TWEAKS.accent || 'pbac');
+  const [tweaksOpen, setTweaksOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      if (!e.data || !e.data.type) return;
+      if (e.data.type === '__activate_edit_mode') setTweaksOpen(true);
+      if (e.data.type === '__deactivate_edit_mode') setTweaksOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const updateAccent = (v) => {
+    setAccent(v);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accent: v } }, '*');
+  };
+
+  return (
+    <>
+      <PlayAirLandingA accent={accent} />
+      {tweaksOpen && (
+        <div className="tweaks-panel">
+          <h4>Tweaks</h4>
+          <label>Akcent kolorystyczny</label>
+          <div className="seg">
+            <button className={accent === 'pbac' ? 'active' : ''} onClick={() => updateAccent('pbac')}>PBAC</button>
+            <button className={accent === 'cyan' ? 'active' : ''} onClick={() => updateAccent('cyan')}>Cyan</button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

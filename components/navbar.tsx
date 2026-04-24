@@ -558,6 +558,12 @@ export default function Navbar() {
               Pompy ciepła
             </Link>
             <Link
+              href="/playair"
+              className={navButtonClass(isActive(pathname, "/playair"))}
+            >
+              PlayAir Pruszków
+            </Link>
+            <Link
               href="/kontakt"
               className={navButtonClass(isActive(pathname, "/kontakt"))}
             >
@@ -848,6 +854,17 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                 >
                   Pompy ciepła
+                </Link>
+                <Link
+                  href="/playair"
+                  className={`px-3 py-3 text-sm font-medium rounded-xl transition-colors ${
+                    isActive(pathname, "/playair")
+                      ? "text-white bg-white/10"
+                      : "text-white/70 hover:text-white hover:bg-white/5"
+                  }`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  PlayAir Pruszków
                 </Link>
                 <Link
                   href="/kontakt"
