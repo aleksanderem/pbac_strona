@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, X, ChevronDown, Phone, Wrench, ThermometerSun, Building2, BookOpen, Tag, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Wrench, ThermometerSun, Building2, BookOpen, Tag, ArrowRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getLatestArticles, getCategories } from "@/lib/articles";
 import { brands } from "@/lib/brands";
@@ -33,6 +33,12 @@ const klimatyzacjaServices = [
     description: "Wynajem na wydarzenia i biura",
     href: "/wynajem-klimatyzatorow",
     icon: Building2,
+  },
+  {
+    label: "Pruszków + 30 km",
+    description: "Partner PlayAir — lokalna ekipa montażowa",
+    href: "/playair",
+    icon: MapPin,
   },
 ];
 
@@ -172,7 +178,8 @@ export default function Navbar() {
     isActive(pathname, "/klimatyzacja") ||
     isActive(pathname, "/serwis") ||
     isActive(pathname, "/wynajem-klimatyzatorow") ||
-    isActive(pathname, "/montaz");
+    isActive(pathname, "/montaz") ||
+    isActive(pathname, "/playair");
   const isProduktyActive = isActive(pathname, "/produkty");
   const isBlogActive = isActive(pathname, "/blog");
 
@@ -558,12 +565,6 @@ export default function Navbar() {
               Pompy ciepła
             </Link>
             <Link
-              href="/playair"
-              className={navButtonClass(isActive(pathname, "/playair"))}
-            >
-              PlayAir Pruszków
-            </Link>
-            <Link
               href="/kontakt"
               className={navButtonClass(isActive(pathname, "/kontakt"))}
             >
@@ -854,17 +855,6 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                 >
                   Pompy ciepła
-                </Link>
-                <Link
-                  href="/playair"
-                  className={`px-3 py-3 text-sm font-medium rounded-xl transition-colors ${
-                    isActive(pathname, "/playair")
-                      ? "text-white bg-white/10"
-                      : "text-white/70 hover:text-white hover:bg-white/5"
-                  }`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  PlayAir Pruszków
                 </Link>
                 <Link
                   href="/kontakt"

@@ -440,7 +440,7 @@ export default function PlayAirPage() {
           width={24}
           height={24}
           cr={1}
-          className="absolute inset-0 fill-white/[0.06] [mask-image:radial-gradient(900px_circle_at_50%_20%,#ffffff66,transparent)]"
+          className="absolute inset-0 fill-white/[0.025] [mask-image:radial-gradient(900px_circle_at_50%_20%,#ffffff66,transparent)]"
         />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -718,7 +718,7 @@ export default function PlayAirPage() {
           width={20}
           height={20}
           cr={1}
-          className="absolute inset-x-0 top-0 h-[60%] fill-white/5 [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
+          className="absolute inset-x-0 top-0 h-[60%] fill-white/[0.02] [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
         />
         <div className="relative max-w-7xl mx-auto">
           <FadeIn>
@@ -947,7 +947,7 @@ export default function PlayAirPage() {
           width={20}
           height={20}
           cr={1}
-          className="absolute inset-x-0 top-0 h-[60%] fill-white/5 [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
+          className="absolute inset-x-0 top-0 h-[60%] fill-white/[0.02] [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
         />
         <div className="relative z-10 max-w-7xl mx-auto">
           <FadeIn>
@@ -996,7 +996,7 @@ export default function PlayAirPage() {
           width={24}
           height={24}
           cr={1}
-          className="absolute inset-x-0 top-0 h-[80%] fill-white/[0.04] [mask-image:radial-gradient(700px_circle_at_30%_40%,white,transparent)]"
+          className="absolute inset-x-0 top-0 h-[80%] fill-white/[0.018] [mask-image:radial-gradient(700px_circle_at_30%_40%,white,transparent)]"
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
@@ -1147,7 +1147,7 @@ export default function PlayAirPage() {
           width={20}
           height={20}
           cr={1}
-          className="absolute inset-x-0 top-0 h-[60%] fill-white/5 [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
+          className="absolute inset-x-0 top-0 h-[60%] fill-white/[0.02] [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
         />
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-20">
@@ -1292,7 +1292,7 @@ export default function PlayAirPage() {
           width={20}
           height={20}
           cr={1}
-          className="absolute inset-x-0 top-0 h-[60%] fill-white/5 [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
+          className="absolute inset-x-0 top-0 h-[60%] fill-white/[0.02] [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
         />
         <div className="relative z-10 max-w-7xl mx-auto">
           <FadeIn className="text-center mb-16">
@@ -1434,7 +1434,7 @@ export default function PlayAirPage() {
               width={20}
               height={20}
               cr={1}
-              className="absolute inset-0 fill-white/10 [mask-image:radial-gradient(500px_circle_at_20%_50%,white,transparent)]"
+              className="absolute inset-0 fill-white/[0.04] [mask-image:radial-gradient(500px_circle_at_20%_50%,white,transparent)]"
             />
             <Image
               src="/playair/assets/playair-logo.svg"
