@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Breadcrumb, { buildBreadcrumbSchema } from "@/components/breadcrumb";
 import JsonLd from "@/components/json-ld";
@@ -14,13 +13,6 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import StickyPhone from "@/components/sticky-phone";
 import {
   Phone,
@@ -423,7 +415,66 @@ export default function PlayAirPage() {
   return (
     <main className="min-h-screen bg-black text-white overflow-hidden">
       <JsonLd data={[serviceSchema, buildBreadcrumbSchema(breadcrumbItems)]} />
-      <Navbar />
+
+      {/* ═══ PLAYAIR HEADER ═══ */}
+      <header className="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <Link
+            href="/playair"
+            className="flex items-center gap-3 group"
+            aria-label="PlayAir Pruszków — strona główna"
+          >
+            <Image
+              src="/playair/assets/playair-logo.svg"
+              alt="PlayAir"
+              width={120}
+              height={40}
+              priority
+              className="h-7 w-auto"
+            />
+            <span className="hidden sm:inline-block h-5 w-px bg-white/15" />
+            <span className="hidden sm:inline-block text-[10px] tracking-[0.22em] uppercase text-white/55 group-hover:text-white/80 transition-colors">
+              Pruszków
+            </span>
+          </Link>
+
+          <nav className="hidden md:flex items-center gap-7 text-[13px] text-white/65">
+            <a href="#uslugi" className="hover:text-white transition-colors">
+              Usługi
+            </a>
+            <a href="#strefa" className="hover:text-white transition-colors">
+              Strefa
+            </a>
+            <a href="#cennik" className="hover:text-white transition-colors">
+              Cennik
+            </a>
+            <a href="#opinie" className="hover:text-white transition-colors">
+              Opinie
+            </a>
+            <a href="#faq" className="hover:text-white transition-colors">
+              FAQ
+            </a>
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              className="hidden lg:inline-flex items-center text-[10px] tracking-[0.18em] uppercase text-white/40 hover:text-white/80 transition-colors"
+            >
+              Partner&nbsp;PBAC
+            </Link>
+            <a
+              href={PHONE_HREF}
+              className="inline-flex items-center gap-2 rounded-full gradient-button text-white px-4 sm:px-5 h-9 text-[11px] sm:text-xs font-bold tracking-wider uppercase hover:opacity-90 transition-opacity"
+              aria-label={`Zadzwoń: ${PHONE_NUMBER}`}
+            >
+              <Phone className="size-3.5" />
+              <span className="hidden sm:inline">{PHONE_NUMBER}</span>
+              <span className="sm:hidden">Zadzwoń</span>
+            </a>
+          </div>
+        </div>
+      </header>
 
       {/* ═══ HERO — SPLIT ═══ */}
       <section className="relative pt-28 pb-24 border-b border-white/5 overflow-hidden">
@@ -545,9 +596,28 @@ export default function PlayAirPage() {
 
                     <form
                       className="flex flex-col gap-3.5"
-                      action="#"
-                      method="post"
+                      action="https://formsubmit.co/biuro@pbac.pl"
+                      method="POST"
                     >
+                      <input
+                        type="hidden"
+                        name="_subject"
+                        value="PlayAir Pruszków — zgłoszenie z formularza"
+                      />
+                      <input
+                        type="hidden"
+                        name="_next"
+                        value="https://pbac.pl/playair?sent=1"
+                      />
+                      <input type="hidden" name="_template" value="table" />
+                      <input type="hidden" name="_captcha" value="false" />
+                      <input
+                        type="text"
+                        name="_honey"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        className="hidden"
+                      />
                       <div>
                         <Label
                           htmlFor="pa-name"
@@ -558,6 +628,8 @@ export default function PlayAirPage() {
                         <Input
                           id="pa-name"
                           name="name"
+                          required
+                          autoComplete="name"
                           placeholder="Jan Kowalski"
                           className="bg-white/[0.05] border-white/10 text-white placeholder:text-white/30 h-11"
                         />
@@ -574,6 +646,8 @@ export default function PlayAirPage() {
                             id="pa-phone"
                             name="phone"
                             type="tel"
+                            required
+                            autoComplete="tel"
                             placeholder="+48 692 981 431"
                             className="bg-white/[0.05] border-white/10 text-white placeholder:text-white/30 h-11"
                           />
@@ -585,40 +659,63 @@ export default function PlayAirPage() {
                           >
                             Miasto
                           </Label>
-                          <Select name="city">
-                            <SelectTrigger className="bg-white/[0.05] border-white/10 text-white h-11 w-full">
-                              <SelectValue placeholder="Pruszków" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {zoneCities.map((c) => (
-                                <SelectItem key={c} value={c}>
-                                  {c}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
+                          <select
+                            id="pa-city"
+                            name="city"
+                            defaultValue="Pruszków"
+                            className="bg-white/[0.05] border border-white/10 text-white h-11 w-full rounded-md px-3 text-sm focus:outline-none focus:ring-2 focus:ring-white/30"
+                          >
+                            {zoneCities.map((c) => (
+                              <option key={c} value={c} className="bg-black">
+                                {c}
+                              </option>
+                            ))}
+                          </select>
                         </div>
+                      </div>
+                      <div>
+                        <Label
+                          htmlFor="pa-email"
+                          className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-1.5 block"
+                        >
+                          Email <span className="text-white/30">(opcjonalnie)</span>
+                        </Label>
+                        <Input
+                          id="pa-email"
+                          name="email"
+                          type="email"
+                          autoComplete="email"
+                          placeholder="jan@example.com"
+                          className="bg-white/[0.05] border-white/10 text-white placeholder:text-white/30 h-11"
+                        />
                       </div>
                       <div>
                         <Label className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-1.5 block">
                           Usługa
                         </Label>
                         <div className="grid grid-cols-2 gap-1.5">
-                          {["Klimatyzacja", "Pompa ciepła", "Serwis", "Rekuperacja"].map(
-                            (s, i) => (
-                              <button
-                                type="button"
-                                key={s}
-                                className={
-                                  i === 0
-                                    ? "gradient-primary text-white text-xs font-medium px-3 py-2.5 rounded-lg border-0"
-                                    : "bg-white/[0.05] border border-white/10 text-white/90 text-xs font-medium px-3 py-2.5 rounded-lg hover:bg-white/10 transition-colors"
-                                }
-                              >
+                          {[
+                            "Klimatyzacja",
+                            "Pompa ciepła",
+                            "Serwis",
+                            "Rekuperacja",
+                          ].map((s, i) => (
+                            <label
+                              key={s}
+                              className="relative cursor-pointer"
+                            >
+                              <input
+                                type="radio"
+                                name="service"
+                                value={s}
+                                defaultChecked={i === 0}
+                                className="peer sr-only"
+                              />
+                              <span className="block text-center text-xs font-medium px-3 py-2.5 rounded-lg border border-white/10 bg-white/[0.05] text-white/90 hover:bg-white/10 peer-checked:gradient-primary peer-checked:border-transparent peer-checked:text-white transition-colors">
                                 {s}
-                              </button>
-                            )
-                          )}
+                              </span>
+                            </label>
+                          ))}
                         </div>
                       </div>
                       <Button
@@ -654,7 +751,7 @@ export default function PlayAirPage() {
       </section>
 
       {/* ═══ USŁUGI — EDITORIAL LIST ═══ */}
-      <section className="relative py-28 overflow-hidden">
+      <section id="uslugi" className="relative py-28 overflow-hidden scroll-mt-20">
         <StripedPattern
           width={12}
           height={12}
@@ -766,7 +863,7 @@ export default function PlayAirPage() {
       </section>
 
       {/* ═══ STREFA — LOCAL HERO ═══ */}
-      <section className="relative py-28 overflow-hidden">
+      <section id="strefa" className="relative py-28 overflow-hidden scroll-mt-20">
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1A337F]/15 to-transparent pointer-events-none"
@@ -1052,7 +1149,7 @@ export default function PlayAirPage() {
       </section>
 
       {/* ═══ CENNIK — EDITORIAL TABLE ═══ */}
-      <section className="relative py-28 bg-white/[0.02] overflow-hidden border-y border-white/5">
+      <section id="cennik" className="relative py-28 bg-white/[0.02] overflow-hidden border-y border-white/5 scroll-mt-20">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(179,24,83,0.1),transparent_60%)]"
@@ -1341,7 +1438,7 @@ export default function PlayAirPage() {
       </section>
 
       {/* ═══ OPINIE + FAQ ═══ */}
-      <section className="relative py-28 overflow-hidden">
+      <section id="opinie" className="relative py-28 overflow-hidden scroll-mt-20">
         <StripedPattern
           width={12}
           height={12}
@@ -1384,7 +1481,7 @@ export default function PlayAirPage() {
           </div>
 
           {/* FAQ */}
-          <div>
+          <div id="faq" className="scroll-mt-20">
             <div className="text-[11px] tracking-[0.2em] uppercase text-white/40 mb-4">
               § 06 — FAQ
             </div>
