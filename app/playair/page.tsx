@@ -116,8 +116,8 @@ interface Faq {
   a: string;
 }
 
-const PHONE_NUMBER = "+48 504 ___ ___";
-const PHONE_HREF = "tel:+48504000000";
+const PHONE_NUMBER = "+48 692 981 431";
+const PHONE_HREF = "tel:+48692981431";
 
 const heroStats: Array<[string, string]> = [
   ["847", "montaży"],
@@ -347,19 +347,19 @@ const pricingTiers: PricingTier[] = [
 
 const reviews: Review[] = [
   {
-    q: "Pomiar w poniedziałek, montaż w sobotę. Chłopaki zostawili porządek taki, że żona nie uwierzyła że cokolwiek robili.",
-    n: "Marcin W.",
-    l: "Pruszków · dom",
+    q: "Po 3 latach użytkowania klimatyzacja zaczęła dziwnie pachnieć. Serwis przyjechał następnego dnia, wymienił filtry i wykonał dezynfekcję. Problem zniknął od razu.",
+    n: "Ewa Szymańska",
+    l: "Pruszków · serwis",
   },
   {
-    q: "Miałem dwie wyceny z Warszawy — PlayAir wyszedł taniej i kontakt w ciągu godziny, nie dnia.",
-    n: "Anna K.",
-    l: "Piastów · mieszkanie",
+    q: "Zamontowali mi dwa klimatyzatory LG ArtCool w domu jednorodzinnym. Fachowe doradztwo przy doborze mocy, szybki termin realizacji. Cena zgodna z wyceną, bez niespodzianek.",
+    n: "Anna Wiśniewska",
+    l: "Piaseczno · dom",
   },
   {
-    q: "Pompa ciepła drugi rok, rachunek za prąd w porównaniu do starego gazu — niebo a ziemia.",
-    n: "Tomek R.",
-    l: "Nadarzyn · dom",
+    q: "Montaż pompy ciepła i klimatyzacji w nowym domu. Ogarnęli wszystko kompleksowo — dobór urządzeń, instalacja hydrauliczna i elektryczna, uruchomienie. Gorąco polecam!",
+    n: "Robert Jabłoński",
+    l: "Grodzisk Maz. · dom",
   },
 ];
 
@@ -485,6 +485,24 @@ export default function PlayAirPage() {
               </p>
 
               <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <a
+                  href={PHONE_HREF}
+                  aria-label={`Zadzwoń: ${PHONE_NUMBER}`}
+                  className="group inline-flex items-center gap-3 px-5 py-3 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white/[0.08] hover:border-white/40 transition-colors"
+                >
+                  <span className="size-9 rounded-full gradient-icon flex items-center justify-center">
+                    <Phone className="size-4 text-white" />
+                  </span>
+                  <span className="flex flex-col">
+                    <span className="text-[10px] tracking-[0.18em] uppercase text-white/50">
+                      Zadzwoń teraz
+                    </span>
+                    <span className="font-montserrat text-base font-bold tracking-tight">
+                      {PHONE_NUMBER}
+                    </span>
+                  </span>
+                </a>
+                <div className="h-8 w-px bg-white/10" />
                 <div className="flex items-center gap-3">
                   <span className="text-[10px] tracking-[0.2em] uppercase text-white/40">
                     Partner
@@ -556,7 +574,7 @@ export default function PlayAirPage() {
                             id="pa-phone"
                             name="phone"
                             type="tel"
-                            placeholder="+48 504…"
+                            placeholder="+48 692 981 431"
                             className="bg-white/[0.05] border-white/10 text-white placeholder:text-white/30 h-11"
                           />
                         </div>
@@ -1126,14 +1144,26 @@ export default function PlayAirPage() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center mb-24">
             <FadeIn direction="left" className="lg:col-span-3">
               <p className="text-white/70 text-base sm:text-lg leading-relaxed">
-                Jesteśmy z Pruszkowa. PlayAir założyłem po 12 latach robienia
-                klimatyzacji i pomp ciepła — najpierw u innych, potem z partnerskim
-                zapleczem <span className="text-white/90 font-semibold">PBAC</span>.
-                Nie jesteśmy kolejnym adresem na trasie — jesteśmy sąsiadami. Kiedy
-                coś nie działa, odbieramy telefon. Kiedy kończymy montaż, sprzątamy
-                jak u siebie. Jedyne, z czym u nas nie wyjdziesz, to poczucie, że
-                ktoś Cię olał.
+                Jesteśmy z Pruszkowa. PlayAir powstał z myślą o lokalnej społeczności
+                — z certyfikowanym zapleczem instalacyjnym i serwisowym{" "}
+                <span className="text-white/90 font-semibold">PBAC</span>. Nie jesteśmy
+                kolejnym adresem na trasie — jesteśmy sąsiadami. Kiedy coś nie działa,
+                odbieramy telefon. Kiedy kończymy montaż, sprzątamy jak u siebie.
+                Jedyne, z czym u nas nie wyjdziesz, to poczucie, że ktoś Cię olał.
               </p>
+              <div className="mt-6 flex flex-wrap items-center gap-4">
+                <a
+                  href={PHONE_HREF}
+                  className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors"
+                >
+                  <Phone className="size-4" />
+                  <span className="font-montserrat font-bold">{PHONE_NUMBER}</span>
+                </a>
+                <span className="h-4 w-px bg-white/15" />
+                <span className="text-sm text-white/55">
+                  Pomiar w 48 h · darmowy dojazd
+                </span>
+              </div>
             </FadeIn>
 
             <FadeIn
@@ -1141,23 +1171,28 @@ export default function PlayAirPage() {
               delay={0.2}
               className="lg:col-span-2 flex justify-center"
             >
-              <div
-                aria-hidden="true"
-                className="relative size-48 sm:size-56 rounded-full overflow-hidden border-2 border-white/20 shadow-2xl bg-gradient-to-br from-[#1A337F]/40 via-[#3D5EFF]/30 to-[#B31853]/40 flex items-center justify-center"
-              >
-                <div
-                  className="absolute inset-0 opacity-30"
-                  style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(45deg, rgba(255,255,255,0.08) 0 6px, transparent 6px 12px)",
-                  }}
-                />
-                <div className="relative font-montserrat text-center px-4">
-                  <div className="text-xs uppercase tracking-[0.2em] text-white/40 mb-1">
-                    Założyciel
+              <div className="relative w-full max-w-sm">
+                <div className="gradient-primary absolute -inset-4 blur-[60px] opacity-25 rounded-[40px] pointer-events-none" />
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
+                  <Image
+                    src="/images/montaz/montaz-dom.jpg"
+                    alt="Realizacja PlayAir — montaż klimatyzacji w domu jednorodzinnym"
+                    fill
+                    sizes="(max-width: 768px) 90vw, 360px"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-white/60 mb-1">
+                      Lokalny zespół
+                    </div>
+                    <div className="font-montserrat text-xl font-bold leading-tight">
+                      Pruszków + 12 okolic
+                    </div>
+                    <div className="text-xs text-white/70 mt-1">
+                      Certyfikowani instalatorzy · zaplecze PBAC
+                    </div>
                   </div>
-                  <div className="text-2xl font-bold">Jan Kowalski</div>
-                  <div className="text-xs text-white/60 mt-1">12 lat w HVAC</div>
                 </div>
               </div>
             </FadeIn>
