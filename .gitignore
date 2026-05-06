@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local Claude tooling / planning artifacts (not for repo)
+.claude/
+docs/superpowers/
