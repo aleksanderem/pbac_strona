@@ -999,39 +999,54 @@ export default function PlayAirPage() {
           className="absolute inset-x-0 top-0 h-[80%] fill-white/[0.04] [mask-image:radial-gradient(700px_circle_at_30%_40%,white,transparent)]"
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-[0.8fr_2fr] gap-12 mb-20">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
             <div>
               <div className="text-[11px] tracking-[0.2em] uppercase text-white/40 mb-4">
-                § 03
+                § 03 — Proces
               </div>
-              <div className="font-montserrat text-sm font-bold tracking-[0.1em] uppercase text-white/60">
-                Proces
-              </div>
+              <h2 className="font-montserrat text-4xl sm:text-5xl md:text-6xl font-bold tracking-[-0.03em] leading-[1]">
+                Od telefonu do chłodnego powietrza —{" "}
+                <AuroraText className="font-montserrat">siedem dni.</AuroraText>
+              </h2>
             </div>
-            <h2 className="font-montserrat text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold tracking-[-0.03em] leading-[1]">
-              Od telefonu do chłodnego powietrza —{" "}
-              <AuroraText className="font-montserrat">siedem dni.</AuroraText>
-            </h2>
+            <p className="text-sm text-white/55 max-w-[320px] leading-relaxed">
+              Pięć kroków, jeden zespół, jeden telefon. Bez przekazywania między
+              działami.
+            </p>
           </div>
 
-          <div className="relative pl-10">
-            <div className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent" />
-            {processSteps.map((s, i) => (
-              <FadeIn key={s.t} delay={i * 0.05}>
-                <div className="relative pb-14 pl-8">
-                  <div className="gradient-icon absolute -left-10 top-0 size-4 rounded-full shadow-[0_0_0_4px_#000]" />
-                  <div className="text-[11px] tracking-[0.2em] uppercase text-white/50 mb-1.5">
-                    {s.d}
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="hidden lg:block absolute left-0 right-0 top-[26px] h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"
+            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+              {processSteps.map((s, i) => (
+                <FadeIn key={s.t} delay={i * 0.06}>
+                  <div className="relative h-full">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="relative size-[52px] shrink-0 rounded-full gradient-primary flex items-center justify-center font-montserrat text-lg font-bold ring-4 ring-black">
+                        {String(i + 1).padStart(2, "0")}
+                      </div>
+                      <div className="text-[10px] tracking-[0.2em] uppercase text-white/50 font-bold">
+                        {s.d}
+                      </div>
+                    </div>
+                    <div className="relative rounded-2xl border border-white/10 p-2 h-[calc(100%-72px)]">
+                      <GlowingEffect spread={30} glow proximity={48} />
+                      <div className="relative rounded-xl bg-white/[0.04] backdrop-blur-md p-5 h-full">
+                        <h3 className="font-montserrat text-lg font-bold tracking-tight mb-2 leading-tight">
+                          {s.t}
+                        </h3>
+                        <p className="text-[13px] text-white/60 leading-relaxed">
+                          {s.x}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="font-montserrat text-2xl font-bold tracking-tight mb-2">
-                    {s.t}
-                  </h3>
-                  <p className="text-[15px] text-white/60 leading-relaxed max-w-[560px]">
-                    {s.x}
-                  </p>
-                </div>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1135,62 +1150,103 @@ export default function PlayAirPage() {
           className="absolute inset-x-0 top-0 h-[60%] fill-white/5 [mask-image:radial-gradient(700px,#ffffff45,#00000000)]"
         />
         <div className="relative z-10 max-w-7xl mx-auto">
-          <FadeIn className="font-montserrat text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-16">
-            <h2>
-              Nasza <AuroraText>obietnica</AuroraText>!
-            </h2>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center mb-24">
-            <FadeIn direction="left" className="lg:col-span-3">
-              <p className="text-white/70 text-base sm:text-lg leading-relaxed">
-                Jesteśmy z Pruszkowa. PlayAir powstał z myślą o lokalnej społeczności
-                — z certyfikowanym zapleczem instalacyjnym i serwisowym{" "}
-                <span className="text-white/90 font-semibold">PBAC</span>. Nie jesteśmy
-                kolejnym adresem na trasie — jesteśmy sąsiadami. Kiedy coś nie działa,
-                odbieramy telefon. Kiedy kończymy montaż, sprzątamy jak u siebie.
-                Jedyne, z czym u nas nie wyjdziesz, to poczucie, że ktoś Cię olał.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-20">
+            <FadeIn direction="left" className="lg:col-span-7">
+              <div className="text-[11px] tracking-[0.2em] uppercase text-white/40 mb-4">
+                § 07 — Lokalny zespół
+              </div>
+              <h2 className="font-montserrat text-4xl sm:text-5xl md:text-6xl font-bold tracking-[-0.03em] leading-[1] mb-6">
+                Nasza <AuroraText className="font-montserrat">obietnica</AuroraText>.
+              </h2>
+              <p className="text-white/70 text-base sm:text-lg leading-relaxed mb-6">
+                Jesteśmy z Pruszkowa. PlayAir powstał z myślą o lokalnej
+                społeczności — z certyfikowanym zapleczem instalacyjnym
+                i serwisowym{" "}
+                <span className="text-white/90 font-semibold">PBAC</span>. Nie
+                jesteśmy kolejnym adresem na trasie — jesteśmy sąsiadami. Kiedy
+                coś nie działa, odbieramy telefon. Kiedy kończymy montaż,
+                sprzątamy jak u siebie.
               </p>
-              <div className="mt-6 flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap items-center gap-4">
                 <a
                   href={PHONE_HREF}
-                  className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white/[0.08] hover:border-white/40 transition-colors"
                 >
-                  <Phone className="size-4" />
-                  <span className="font-montserrat font-bold">{PHONE_NUMBER}</span>
+                  <Phone className="size-4 text-white/80" />
+                  <span className="font-montserrat font-bold text-sm">
+                    {PHONE_NUMBER}
+                  </span>
                 </a>
-                <span className="h-4 w-px bg-white/15" />
                 <span className="text-sm text-white/55">
                   Pomiar w 48 h · darmowy dojazd
                 </span>
               </div>
             </FadeIn>
 
-            <FadeIn
-              direction="right"
-              delay={0.2}
-              className="lg:col-span-2 flex justify-center"
-            >
-              <div className="relative w-full max-w-sm">
-                <div className="gradient-primary absolute -inset-4 blur-[60px] opacity-25 rounded-[40px] pointer-events-none" />
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
-                  <Image
-                    src="/images/montaz/montaz-dom.jpg"
-                    alt="Realizacja PlayAir — montaż klimatyzacji w domu jednorodzinnym"
-                    fill
-                    sizes="(max-width: 768px) 90vw, 360px"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-5">
-                    <div className="text-[10px] uppercase tracking-[0.2em] text-white/60 mb-1">
-                      Lokalny zespół
+            <FadeIn direction="right" delay={0.2} className="lg:col-span-5">
+              <div className="relative">
+                <div className="gradient-primary absolute -inset-6 blur-[80px] opacity-25 rounded-[40px] pointer-events-none" />
+                <div className="relative rounded-2xl border border-white/10 p-2">
+                  <GlowingEffect spread={40} glow proximity={64} />
+                  <div className="relative rounded-xl bg-white/[0.04] backdrop-blur-xl p-7">
+                    <div className="flex items-baseline gap-3 mb-1">
+                      <span className="font-montserrat text-6xl font-bold tracking-[-0.04em]">
+                        <AuroraText className="font-montserrat">5 lat</AuroraText>
+                      </span>
+                      <span className="text-sm text-white/55">
+                        gwarancji na montaż
+                      </span>
                     </div>
-                    <div className="font-montserrat text-xl font-bold leading-tight">
-                      Pruszków + 12 okolic
-                    </div>
-                    <div className="text-xs text-white/70 mt-1">
-                      Certyfikowani instalatorzy · zaplecze PBAC
+                    <p className="text-[13px] text-white/60 leading-relaxed mb-6">
+                      Pełna gwarancja producenta plus dodatkowa gwarancja
+                      partnerska PBAC na każdą instalację PlayAir.
+                    </p>
+                    <div className="h-px bg-white/10 mb-5" />
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="flex items-start gap-2.5">
+                        <ShieldCheck className="size-4 text-white/70 mt-0.5 shrink-0" />
+                        <div>
+                          <div className="text-[11px] font-bold tracking-wider uppercase text-white/85">
+                            F-GAZ
+                          </div>
+                          <div className="text-[11px] text-white/45 leading-snug">
+                            Certyfikat instalatora
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2.5">
+                        <Zap className="size-4 text-white/70 mt-0.5 shrink-0" />
+                        <div>
+                          <div className="text-[11px] font-bold tracking-wider uppercase text-white/85">
+                            SEP do 1 kV
+                          </div>
+                          <div className="text-[11px] text-white/45 leading-snug">
+                            Uprawnienia elektryczne
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2.5">
+                        <Award className="size-4 text-white/70 mt-0.5 shrink-0" />
+                        <div>
+                          <div className="text-[11px] font-bold tracking-wider uppercase text-white/85">
+                            Autoryzacje
+                          </div>
+                          <div className="text-[11px] text-white/45 leading-snug">
+                            Samsung · LG · Daikin · MHI
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2.5">
+                        <BadgeCheck className="size-4 text-white/70 mt-0.5 shrink-0" />
+                        <div>
+                          <div className="text-[11px] font-bold tracking-wider uppercase text-white/85">
+                            Partner PBAC
+                          </div>
+                          <div className="text-[11px] text-white/45 leading-snug">
+                            Zaplecze instalacyjne
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
