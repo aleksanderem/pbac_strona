@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // Atlas → external Postgres has WAN latency; default 60s/page SSG timeout
+  // blew up the build, give it 5 min per page and serialize to keep DB
+  // connection pool from thrashing.
+  staticPageGenerationTimeout: 300,
+  experimental: {
+    workerThreads: false,
+    cpus: 1,
+  },
 };
 
 export default withPayload(nextConfig, { devBundleServerPackages: false });
