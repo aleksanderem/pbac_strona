@@ -17,6 +17,8 @@ import {
   getAllBrandsAsync,
 } from "@/lib/cms";
 
+export const revalidate = 60;  // refresh CMS data on demand within 60s for live preview
+
 export const metadata: Metadata = {
   title: "Klimatyzatory — Katalog produktów | PBAC",
   description: "Katalog klimatyzatorów: Samsung, LG, Toshiba, Gree, Daikin, Haier, AUX, Kaisai. Ceny, specyfikacje, porównanie. Bezpłatna wycena.",

@@ -41,6 +41,8 @@ interface Props {
   params: Promise<{ miasto: string }>;
 }
 
+export const revalidate = 60;  // refresh CMS data on demand within 60s for live preview
+
 export async function generateStaticParams() {
   const locs = await getLocationsByServiceAsync("montaz");
   return locs.map((l) => ({ miasto: l.slug }));

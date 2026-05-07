@@ -29,6 +29,8 @@ const FaqSection = dynamic(() => import("@/components/faq-section"));
 const Footer = dynamic(() => import("@/components/footer"));
 const StickyPhone = dynamic(() => import("@/components/sticky-phone"));
 
+export const revalidate = 60;  // refresh CMS data on demand within 60s for live preview
+
 export const metadata: Metadata = {
   title: "PBAC — Klimatyzacja, Pompy Ciepła | Montaż i Serwis Warszawa",
   description:

@@ -30,6 +30,8 @@ const QuoteForm = dynamic(() => import("@/components/quote-form"));
 const DetailedInstallation = dynamic(() => import("@/components/detailed-installation"));
 const PricingTable = dynamic(() => import("@/components/pricing-table"));
 
+export const revalidate = 60;  // refresh CMS data on demand within 60s for live preview
+
 export const metadata: Metadata = {
   title: "Klimatyzacja — Montaż i Serwis Warszawa | PBAC",
   description: "Profesjonalny montaż i serwis klimatyzacji w Warszawie. Split, multisplit, kasetonowe. Samsung, LG, Toshiba, Gree, Daikin. Bezpłatna wycena.",

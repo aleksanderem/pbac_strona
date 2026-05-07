@@ -43,6 +43,8 @@ const LatestBlogSection = dynamic(
 );
 const ContactSection = dynamic(() => import("@/components/contact-section"));
 
+export const revalidate = 60;  // refresh CMS data on demand within 60s for live preview
+
 export const metadata: Metadata = {
   title: "PlayAir — Klimatyzacja Pruszków i okolice | Partner PBAC",
   description:

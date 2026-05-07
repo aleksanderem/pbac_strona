@@ -24,6 +24,8 @@ interface Props {
   params: Promise<{ marka: string }>;
 }
 
+export const revalidate = 60;  // refresh CMS data on demand within 60s for live preview
+
 export async function generateStaticParams() {
   const brands = await getProductBrandsAsync();
   return brands.map((brand) => ({ marka: brand }));

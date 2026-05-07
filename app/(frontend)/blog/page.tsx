@@ -11,6 +11,8 @@ import HeroBackground from "@/components/hero-background";
 import BlogFilter from "@/components/blog-filter";
 import { getAllArticlesAsync, getCategoriesAsync } from "@/lib/cms";
 
+export const revalidate = 60;  // refresh CMS data on demand within 60s for live preview
+
 export const metadata: Metadata = {
   title: "Blog — Baza wiedzy o klimatyzacji | PBAC",
   description: "Poradniki, artykuły i porady dotyczące klimatyzacji: dobór, montaż, serwis, oszczędzanie energii. Baza wiedzy PBAC.",
