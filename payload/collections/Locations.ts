@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { locationUrl } from "../livePreviewUrl";
 
 export const Locations: CollectionConfig = {
   slug: "locations",
@@ -6,6 +7,7 @@ export const Locations: CollectionConfig = {
   admin: {
     useAsTitle: "name",
     defaultColumns: ["name", "region", "slug"],
+    livePreview: { url: locationUrl },
   },
   access: { read: () => true },
   fields: [

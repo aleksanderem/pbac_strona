@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { articleUrl } from "../livePreviewUrl";
 
 export const Articles: CollectionConfig = {
   slug: "articles",
@@ -7,6 +8,7 @@ export const Articles: CollectionConfig = {
     useAsTitle: "title",
     defaultColumns: ["title", "category", "publishedAt", "slug"],
     listSearchableFields: ["title", "slug", "excerpt"],
+    livePreview: { url: articleUrl },
   },
   access: {
     read: () => true,

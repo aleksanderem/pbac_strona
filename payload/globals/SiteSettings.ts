@@ -1,9 +1,13 @@
 import type { GlobalConfig } from "payload";
+import { homeUrl } from "../livePreviewUrl";
 
 export const SiteSettings: GlobalConfig = {
   slug: "site-settings",
   label: "Ustawienia globalne",
   access: { read: () => true },
+  admin: {
+    livePreview: { url: homeUrl },
+  },
   fields: [
     {
       name: "phonePrimary",

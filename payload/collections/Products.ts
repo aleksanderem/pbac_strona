@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { productUrl } from "../livePreviewUrl";
 
 export const Products: CollectionConfig = {
   slug: "products",
@@ -7,6 +8,7 @@ export const Products: CollectionConfig = {
     useAsTitle: "name",
     defaultColumns: ["name", "brand", "category", "slug"],
     listSearchableFields: ["name", "slug", "tagline"],
+    livePreview: { url: productUrl },
   },
   access: { read: () => true },
   fields: [

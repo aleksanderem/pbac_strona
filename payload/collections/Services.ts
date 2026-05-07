@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { serviceUrl } from "../livePreviewUrl";
 
 export const Services: CollectionConfig = {
   slug: "services",
@@ -6,6 +7,7 @@ export const Services: CollectionConfig = {
   admin: {
     useAsTitle: "name",
     defaultColumns: ["name", "slug"],
+    livePreview: { url: serviceUrl },
   },
   access: { read: () => true },
   fields: [
