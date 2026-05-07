@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Zap, Flame } from "lucide-react";
+import { Zap, Flame, Calculator, TrendingDown, Thermometer } from "lucide-react";
 import dynamic from "next/dynamic";
 const CostRaceChart = dynamic(() => import("@/components/cost-race-chart"), { ssr: false });
 import { Card, CardContent } from "@/components/ui/card";
@@ -97,8 +97,7 @@ export default function CalculatorSection() {
               <CardContent className="pt-6 space-y-6">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="size-10 rounded-xl gradient-icon flex items-center justify-center">
-                    {/* @ts-expect-error web component */}
-                    <easier-icon name="calculator" variant="twotone" corners="rounded" size="20" color="#ffffff" />
+                    <Calculator className="size-5 text-white" />
                   </div>
                   <h3 className="font-montserrat font-bold text-lg text-white">
                     Parametry Twojego lokalu
@@ -187,8 +186,10 @@ export default function CalculatorSection() {
                 <div className="relative rounded-xl bg-white/10 backdrop-blur-md p-4 space-y-4 h-full flex flex-col">
                   {/* Savings highlight */}
                   <div className="gradient-primary rounded-xl p-6 text-center">
-                    {/* @ts-expect-error web component */}
-                    <easier-icon name="chart-decrease" variant="twotone" corners="rounded" size="32" color="#ffffff" style={{ display: "block", margin: "0 auto 8px" }} />
+                    <TrendingDown
+                      className="size-8 text-white mx-auto mb-2"
+                      style={{ display: "block" }}
+                    />
                     <p className="text-white/80 text-sm">Roczna oszczędność</p>
                     <p className="font-montserrat text-4xl font-bold text-white mt-1">
                       {formatPLN(result.savings)} zł
@@ -248,8 +249,7 @@ export default function CalculatorSection() {
                 <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
                 <div className="relative rounded-xl bg-white/10 backdrop-blur-md p-6 h-full flex items-center justify-center">
                   <div className="text-center text-white/30">
-                    {/* @ts-expect-error web component */}
-                    <easier-icon name="calculator" variant="twotone" corners="rounded" size="64" color="rgba(255,255,255,0.3)" className="mx-auto mb-4" />
+                    <Calculator className="size-16 mx-auto mb-4" />
                     <p className="font-montserrat text-lg">
                       Uzupełnij dane i kliknij &quot;Oblicz&quot;
                     </p>
@@ -272,8 +272,7 @@ export default function CalculatorSection() {
             <div className="relative rounded-xl bg-white/10 backdrop-blur-md p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="size-10 rounded-xl gradient-icon flex items-center justify-center">
-                  {/* @ts-expect-error web component */}
-                  <easier-icon name="thermometer" variant="twotone" corners="rounded" size="20" color="#ffffff" />
+                  <Thermometer className="size-5 text-white" />
                 </div>
                 <div>
                   <h3 className="font-montserrat font-bold text-lg text-white">

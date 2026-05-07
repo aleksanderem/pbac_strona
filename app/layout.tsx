@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Montserrat, Chivo } from "next/font/google";
-import Script from "next/script";
 import JsonLd from "@/components/json-ld";
 import "./globals.css";
 
@@ -56,10 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl" className="dark">
-      <head>
-        <link rel="preconnect" href="https://ezicons.com" />
-        <link rel="dns-prefetch" href="https://ezicons.com" />
-      </head>
+      <head />
       <body
         className={`${montserrat.variable} ${chivo.variable} font-chivo bg-black text-white antialiased`}
       >
@@ -114,11 +110,6 @@ export default function RootLayout({
           }}
         />
         {children}
-        <Script
-          src="https://ezicons.com/sdk.js"
-          data-key="iek_oYNmSmglKJTtwcB1AHUMdI2XDxW98DHP"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );
