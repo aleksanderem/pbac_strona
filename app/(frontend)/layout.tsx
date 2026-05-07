@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Chivo } from "next/font/google";
 import JsonLd from "@/components/json-ld";
-import "./globals.css";
+import "../globals.css";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
