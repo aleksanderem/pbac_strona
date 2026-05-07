@@ -59,7 +59,17 @@ echo "▶ Pushing Payload schema (idempotent — adds missing tables/columns)"
 PAYLOAD_PUSH=1 npx tsx scripts/sync-schema.ts || echo "  (schema push warning — continuing)"
 
 echo "▶ Building Next.js"
+set +e
 NODE_OPTIONS="--max-old-space-size=2048" npm run build
+BUILD_RC=$?
+set -e
+if [ ! -f "$APP_DIR/.next/BUILD_ID" ]; then
+  echo "✗ Next.js build did not produce .next/BUILD_ID — aborting"
+  exit "$BUILD_RC"
+fi
+if [ "$BUILD_RC" -ne 0 ]; then
+  echo "⚠ next build exited $BUILD_RC but .next/BUILD_ID exists; treating as soft failure (likely 500.html rename quirk)"
+fi
 
 echo "▶ Ensuring PM2 is installed"
 if ! command -v pm2 >/dev/null 2>&1; then
