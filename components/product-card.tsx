@@ -1,3 +1,5 @@
+import { formatPLN } from "@/lib/utils";
+
 import Link from "next/link";
 import type { Product } from "@/types";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
@@ -53,7 +55,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="flex items-center justify-between">
             {lowestPrice ? (
               <span className="text-lg font-bold text-white">
-                od {lowestPrice.toLocaleString("pl-PL")} zł
+                od {formatPLN(lowestPrice)} zł
               </span>
             ) : (
               <span className="text-sm text-white/50">Zapytaj o cenę</span>

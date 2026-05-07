@@ -1,5 +1,7 @@
 "use client";
 
+import { formatPLN } from "@/lib/utils";
+
 import { useRef, useEffect, useState } from "react";
 import { TrendingDown, Leaf } from "lucide-react";
 import { AuroraText } from "@/components/ui/aurora-text";
@@ -112,7 +114,7 @@ export default function ChartsSection() {
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-white/70">{item.label}</span>
                     <span className="font-montserrat font-bold" style={{ color: item.color }}>
-                      {item.value.toLocaleString("pl-PL")} zł
+                      {formatPLN(item.value)} zł
                     </span>
                   </div>
                   <AnimatedBar

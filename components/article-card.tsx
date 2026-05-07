@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Article } from "@/types";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { formatPLDate } from "@/lib/utils";
 
 // Category → gradient mapping for fallback card backgrounds
 const categoryGradients: Record<string, string> = {
@@ -69,11 +70,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           </p>
           <div className="flex items-center gap-3 text-xs text-white/40">
             <time dateTime={article.date}>
-              {new Date(article.date).toLocaleDateString("pl-PL", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}
+              {formatPLDate(article.date)}
             </time>
             <span>·</span>
             <span>{article.readingTime} min czytania</span>

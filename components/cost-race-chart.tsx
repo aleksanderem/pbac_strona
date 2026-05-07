@@ -1,5 +1,7 @@
 "use client";
 
+import { formatPLN } from "@/lib/utils";
+
 import { useRef, useState, useEffect } from "react";
 
 const COMPARISON_RATES = [
@@ -71,7 +73,7 @@ export default function CostRaceChart({ area = 60, insulationMult = 1 }: CostRac
                   <span className="text-white/70">{source.name}</span>
                 </div>
                 <span className="font-montserrat font-bold text-green-400 tabular-nums">
-                  +{source.totalSavings.toLocaleString("pl-PL")} zł
+                  +{formatPLN(source.totalSavings)} zł
                 </span>
               </div>
               <div className="h-3 w-full rounded-full bg-white/5 overflow-hidden">
@@ -85,8 +87,8 @@ export default function CostRaceChart({ area = 60, insulationMult = 1 }: CostRac
                 />
               </div>
               <div className="flex justify-between text-xs text-white/30">
-                <span>{source.savingsPerYear.toLocaleString("pl-PL")} zł/rok taniej</span>
-                <span>{source.annualCost.toLocaleString("pl-PL")} vs {acAnnual.toLocaleString("pl-PL")} zł/rok</span>
+                <span>{formatPLN(source.savingsPerYear)} zł/rok taniej</span>
+                <span>{formatPLN(source.annualCost)} vs {formatPLN(acAnnual)} zł/rok</span>
               </div>
             </div>
           );

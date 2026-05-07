@@ -9,6 +9,7 @@ import {
   getBrandBySlugAsync,
   getLatestArticlesAsync,
 } from "@/lib/cms";
+import { formatPLN } from "@/lib/utils";
 import Navbar from "@/components/navbar";
 import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
@@ -40,9 +41,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlugAsync(slug);
   if (!product) return {};
+  const lowestPriceMeta = getLowestPrice(product);
   return {
     title: `${product.name} — Klimatyzator | PBAC Warszawa`,
-    description: `${product.tagline}. ${product.powerRange}, czynnik ${product.refrigerant}. Montaż Warszawa. Cena od ${getLowestPrice(product)?.toLocaleString("pl-PL")} zł.`,
+    description: `${product.tagline}. ${product.powerRange}, czynnik ${product.refrigerant}. Montaż Warszawa.${lowestPriceMeta ? ` Cena od ${formatPLN(lowestPriceMeta)} zł.` : ""}`,
     alternates: { canonical: `/produkty/${product.brand}/${slug}` },
     openGraph: {
       title: `${product.name} — Klimatyzator | PBAC`,
@@ -143,7 +145,7 @@ export default async function ProductPage({ params }: Props) {
             <p className="text-lg sm:text-xl text-white/60 mb-4">{product.tagline}</p>
             {lowestPrice && (
               <p className="text-2xl sm:text-3xl font-bold mb-8">
-                od <span className="text-white">{lowestPrice.toLocaleString("pl-PL")} zł</span>
+                od <span className="text-white">{formatPLN(lowestPrice)} zł</span>
               </p>
             )}
           </FadeIn>

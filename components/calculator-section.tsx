@@ -15,7 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn, formatPLN } from "@/lib/utils";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
@@ -191,7 +191,7 @@ export default function CalculatorSection() {
                     <easier-icon name="chart-decrease" variant="twotone" corners="rounded" size="32" color="#ffffff" style={{ display: "block", margin: "0 auto 8px" }} />
                     <p className="text-white/80 text-sm">Roczna oszczędność</p>
                     <p className="font-montserrat text-4xl font-bold text-white mt-1">
-                      {result.savings.toLocaleString("pl-PL")} zł
+                      {formatPLN(result.savings)} zł
                     </p>
                     <p className="text-white/70 text-sm mt-1">
                       to {result.savingsPercent}% mniej niż {result.methodLabel.toLowerCase()}
@@ -205,7 +205,7 @@ export default function CalculatorSection() {
                         Obecna metoda
                       </p>
                       <p className="font-montserrat text-2xl font-bold text-red-400">
-                        {result.currentCost.toLocaleString("pl-PL")} zł
+                        {formatPLN(result.currentCost)} zł
                       </p>
                       <p className="text-white/40 text-xs mt-1">rocznie</p>
                     </div>
@@ -215,7 +215,7 @@ export default function CalculatorSection() {
                         Klimatyzacja
                       </p>
                       <p className="font-montserrat text-2xl font-bold text-green-400">
-                        {result.acCost.toLocaleString("pl-PL")} zł
+                        {formatPLN(result.acCost)} zł
                       </p>
                       <p className="text-white/40 text-xs mt-1">rocznie</p>
                     </div>
@@ -227,7 +227,7 @@ export default function CalculatorSection() {
                       Oszczędności w ciągu 10 lat
                     </p>
                     <p className="font-montserrat text-3xl font-bold text-white">
-                      {result.savingsIn10Years.toLocaleString("pl-PL")} zł
+                      {formatPLN(result.savingsIn10Years)} zł
                     </p>
                     <p className="text-white/50 text-sm mt-2">
                       Przy obecnych cenach energii. Klimatyzacja z pompą ciepła

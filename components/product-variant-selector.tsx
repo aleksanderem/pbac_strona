@@ -1,5 +1,7 @@
 "use client";
 
+import { formatPLN } from "@/lib/utils";
+
 import { useState } from "react";
 
 interface Model {
@@ -53,7 +55,7 @@ export default function ProductVariantSelector({ models }: ProductVariantSelecto
         {selected.price ? (
           <>
             <span className="text-3xl sm:text-4xl font-bold text-white">
-              {selected.price.toLocaleString("pl-PL")} zł
+              {formatPLN(selected.price)} zł
             </span>
             <span className="text-sm text-white/40">brutto z montażem</span>
           </>

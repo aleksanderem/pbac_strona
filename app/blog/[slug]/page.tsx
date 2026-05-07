@@ -18,6 +18,7 @@ import { StripedPattern } from "@/components/ui/striped-pattern";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { formatPLDate } from "@/lib/utils";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -111,7 +112,7 @@ export default async function ArticlePage({ params }: Props) {
               <div className="mt-6 mb-4 flex items-center gap-3 text-sm text-white/60">
                 <span className="rounded-full bg-white/10 px-3 py-1 text-xs backdrop-blur-sm">{article.category}</span>
                 <time dateTime={article.date}>
-                  {new Date(article.date).toLocaleDateString("pl-PL", { day: "numeric", month: "long", year: "numeric" })}
+                  {formatPLDate(article.date)}
                 </time>
                 <span>·</span>
                 <span>{article.readingTime} min czytania</span>
@@ -133,7 +134,7 @@ export default async function ArticlePage({ params }: Props) {
               <div className="mt-6 mb-4 flex items-center gap-3 text-sm text-white/50">
                 <span className="rounded-full bg-white/10 px-3 py-1 text-xs">{article.category}</span>
                 <time dateTime={article.date}>
-                  {new Date(article.date).toLocaleDateString("pl-PL", { day: "numeric", month: "long", year: "numeric" })}
+                  {formatPLDate(article.date)}
                 </time>
                 <span>·</span>
                 <span>{article.readingTime} min czytania</span>
