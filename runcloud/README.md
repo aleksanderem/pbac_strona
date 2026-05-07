@@ -29,12 +29,15 @@ Without this webhook, autoDeploy never fires. You can also trigger deploy by pus
 SSH (RunCloud Console → Server → Web SSH) or use RunCloud File Manager as user `runcloud`:
 
 ```bash
-cat > /home/runcloud/.env.pbac <<'EOF'
-DATABASE_URI=postgres://postgres:1gy4RpxVeg5e06OEXEQn8tQLd1GyD4HvrpVX4oC3YQGVmiroiLyLbKt8Ei7jTzDv@46.225.152.204:5433/postgres
-PAYLOAD_SECRET=ursVIlyySFE1rl3cja4mqDHGP5aYFKYwM+iM9kgRl14=
+cat > /home/runcloud/.env.pbac <<EOF
+DATABASE_URI=<paste-postgres-connection-string>
+PAYLOAD_SECRET=<generate-with-openssl-rand-base64-32>
 EOF
 chmod 600 /home/runcloud/.env.pbac
 ```
+
+Use the values from your local `.env.local` (gitignored). **Do not** commit the
+actual credentials — this README must not contain them.
 
 `deploy.sh` sources this file and writes `.env.local` for the build/runtime. The file is outside the webapp dir so it survives `git reset --hard`.
 
