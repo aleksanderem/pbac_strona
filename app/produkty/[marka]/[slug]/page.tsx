@@ -1,9 +1,14 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
-import { getAllProducts, getProductBySlug, getLowestPrice, getProductsByBrand } from "@/lib/products";
-import { getBrandBySlug } from "@/lib/brands";
-import { getLatestArticles } from "@/lib/articles";
+import {
+  getAllProductsAsync,
+  getProductBySlugAsync,
+  getLowestPrice,
+  getProductsByBrandAsync,
+  getBrandBySlugAsync,
+  getLatestArticlesAsync,
+} from "@/lib/cms";
 import Navbar from "@/components/navbar";
 import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
@@ -27,12 +32,13 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getAllProducts().map((p) => ({ marka: p.brand, slug: p.slug }));
+  const all = await getAllProductsAsync();
+  return all.map((p) => ({ marka: p.brand, slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlugAsync(slug);
   if (!product) return {};
   return {
     title: `${product.name} — Klimatyzator | PBAC Warszawa`,
@@ -49,13 +55,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug, marka } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlugAsync(slug);
   if (!product || product.brand !== marka) notFound();
 
-  const brand = getBrandBySlug(marka);
+  const brand = await getBrandBySlugAsync(marka);
   const lowestPrice = getLowestPrice(product);
-  const otherProducts = getProductsByBrand(marka as Brand).filter((p) => p.slug !== slug).slice(0, 3);
-  const latestArticles = getLatestArticles(3);
+  const otherProducts = (await getProductsByBrandAsync(marka as Brand))
+    .filter((p) => p.slug !== slug)
+    .slice(0, 3);
+  const latestArticles = await getLatestArticlesAsync(3);
 
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },

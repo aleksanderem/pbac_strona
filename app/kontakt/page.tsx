@@ -12,7 +12,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import HeroBackground from "@/components/hero-background";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { getAllLocations } from "@/lib/locations";
+import { getAllLocationsAsync } from "@/lib/cms";
 
 const QuoteForm = dynamic(() => import("@/components/quote-form"));
 
@@ -29,8 +29,8 @@ const contactInfo = [
   { icon: Clock, label: "Godziny", value: "Pn–Pt 08:00–18:00" },
 ];
 
-export default function KontaktPage() {
-  const locations = getAllLocations();
+export default async function KontaktPage() {
+  const locations = await getAllLocationsAsync();
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },
     { name: "Kontakt" },

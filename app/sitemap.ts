@@ -1,14 +1,19 @@
 import type { MetadataRoute } from "next";
-import { getAllLocations, getLocationsByService } from "@/lib/locations";
-import { getAllProducts, getProductBrands } from "@/lib/products";
-import { getAllArticles } from "@/lib/articles";
+import {
+  getAllLocationsAsync,
+  getLocationsByServiceAsync,
+  getAllProductsAsync,
+  getProductBrandsAsync,
+  getAllArticlesAsync,
+} from "@/lib/cms";
 
 export const dynamic = "force-static";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://pbac.pl";
 
-  const montazLocations: MetadataRoute.Sitemap = getAllLocations()
+  const allLocations = await getAllLocationsAsync();
+  const montazLocations: MetadataRoute.Sitemap = allLocations
     .filter((l) => l.services.includes("montaz"))
     .map((l) => ({
       url: `${baseUrl}/montaz/${l.slug}`,
@@ -17,30 +22,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
-  const serwisLocations: MetadataRoute.Sitemap = getLocationsByService("serwis").map(
-    (l) => ({
-      url: `${baseUrl}/serwis/${l.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    })
-  );
+  const serwisLocs = await getLocationsByServiceAsync("serwis");
+  const serwisLocations: MetadataRoute.Sitemap = serwisLocs.map((l) => ({
+    url: `${baseUrl}/serwis/${l.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
 
-  const brandPages: MetadataRoute.Sitemap = getProductBrands().map((brand) => ({
+  const brands = await getProductBrandsAsync();
+  const brandPages: MetadataRoute.Sitemap = brands.map((brand) => ({
     url: `${baseUrl}/produkty/${brand}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
-  const productPages: MetadataRoute.Sitemap = getAllProducts().map((p) => ({
+  const allProducts = await getAllProductsAsync();
+  const productPages: MetadataRoute.Sitemap = allProducts.map((p) => ({
     url: `${baseUrl}/produkty/${p.brand}/${p.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: 0.6,
   }));
 
-  const articlePages: MetadataRoute.Sitemap = getAllArticles().map((a) => ({
+  const allArticles = await getAllArticlesAsync();
+  const articlePages: MetadataRoute.Sitemap = allArticles.map((a) => ({
     url: `${baseUrl}/blog/${a.slug}`,
     lastModified: a.date ? new Date(a.date) : new Date(),
     changeFrequency: "monthly",

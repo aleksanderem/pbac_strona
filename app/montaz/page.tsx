@@ -12,7 +12,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import HeroBackground from "@/components/hero-background";
 import { MapPin, ArrowRight } from "lucide-react";
-import { getLocationsByService } from "@/lib/locations";
+import { getLocationsByServiceAsync } from "@/lib/cms";
 
 export const metadata: Metadata = {
   title: "Montaż klimatyzacji — Warszawa i okolice | PBAC",
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/montaz" },
 };
 
-export default function MontazIndexPage() {
-  const montazLocations = getLocationsByService("montaz");
+export default async function MontazIndexPage() {
+  const montazLocations = await getLocationsByServiceAsync("montaz");
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },
     { name: "Montaż klimatyzacji" },

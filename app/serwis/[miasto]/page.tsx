@@ -1,9 +1,12 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
-import { getLocationBySlug, getLocationsByService } from "@/lib/locations";
-import { getAllBrands } from "@/lib/brands";
-import { testimonials } from "@/lib/testimonials";
+import {
+  getLocationBySlugAsync,
+  getLocationsByServiceAsync,
+  getAllBrandsAsync,
+  getAllTestimonialsAsync,
+} from "@/lib/cms";
 import dynamic from "next/dynamic";
 import LightPillarHero from "@/components/light-pillar-hero";
 import CircularText from "@/components/CircularText";
@@ -40,12 +43,13 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getLocationsByService("serwis").map((l) => ({ miasto: l.slug }));
+  const locs = await getLocationsByServiceAsync("serwis");
+  return locs.map((l) => ({ miasto: l.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { miasto } = await params;
-  const location = getLocationBySlug(miasto);
+  const location = await getLocationBySlugAsync(miasto);
   if (!location) return {};
   return {
     title: `Serwis klimatyzacji ${location.name} — przegląd, czyszczenie, naprawa | PBAC`,
@@ -210,12 +214,16 @@ const frequencyData = [
 
 export default async function SerwisPage({ params }: Props) {
   const { miasto } = await params;
-  const location = getLocationBySlug(miasto);
+  const location = await getLocationBySlugAsync(miasto);
   if (!location || !location.services.includes("serwis")) notFound();
 
-  const brands = getAllBrands();
-  const allSerwisLocations = getLocationsByService("serwis").filter((l) => l.slug !== location.slug);
-  const serwisTestimonials = testimonials.filter((t) => t.service === "serwis").slice(0, 6);
+  const brands = await getAllBrandsAsync();
+  const allSerwisLocations = (await getLocationsByServiceAsync("serwis"))
+    .filter((l) => l.slug !== location.slug);
+  const allTestimonials = await getAllTestimonialsAsync();
+  const serwisTestimonials = allTestimonials
+    .filter((t) => t.service === "serwis")
+    .slice(0, 6);
 
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },
