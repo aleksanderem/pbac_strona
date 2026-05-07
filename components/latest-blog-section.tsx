@@ -2,10 +2,10 @@ import Link from "next/link";
 import FadeIn from "@/components/ui/fade-in";
 import { StripedPattern } from "@/components/ui/striped-pattern";
 import ArticleCard from "@/components/article-card";
-import { getLatestArticles } from "@/lib/articles";
+import { getLatestArticlesAsync } from "@/lib/cms";
 
-export default function LatestBlogSection() {
-  const latest = getLatestArticles(3);
+export default async function LatestBlogSection() {
+  const latest = await getLatestArticlesAsync(3);
   if (latest.length === 0) return null;
 
   return (

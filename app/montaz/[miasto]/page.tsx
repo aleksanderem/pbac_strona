@@ -1,15 +1,19 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
-import { getLocationBySlug, getLocationsByService, getAllLocations } from "@/lib/locations";
-import { getAllBrands } from "@/lib/brands";
+import {
+  getLocationBySlugAsync,
+  getLocationsByServiceAsync,
+  getAllLocationsAsync,
+  getAllBrandsAsync,
+  getAllTestimonialsAsync,
+} from "@/lib/cms";
 import dynamic from "next/dynamic";
 import LightPillarHero from "@/components/light-pillar-hero";
 import CircularText from "@/components/CircularText";
 
 const PricingTable = dynamic(() => import("@/components/pricing-table"));
 const DetailedInstallation = dynamic(() => import("@/components/detailed-installation"));
-import { testimonials } from "@/lib/testimonials";
 import Navbar from "@/components/navbar";
 import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
@@ -38,12 +42,13 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getLocationsByService("montaz").map((l) => ({ miasto: l.slug }));
+  const locs = await getLocationsByServiceAsync("montaz");
+  return locs.map((l) => ({ miasto: l.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { miasto } = await params;
-  const location = getLocationBySlug(miasto);
+  const location = await getLocationBySlugAsync(miasto);
   if (!location) return {};
   return {
     title: location.metaTitle,
@@ -74,12 +79,16 @@ const stats = [
 
 export default async function MontazPage({ params }: Props) {
   const { miasto } = await params;
-  const location = getLocationBySlug(miasto);
+  const location = await getLocationBySlugAsync(miasto);
   if (!location || !location.services.includes("montaz")) notFound();
 
-  const brands = getAllBrands();
-  const allLocations = getAllLocations().filter((l) => l.slug !== location.slug && l.services.includes("montaz"));
-  const cityTestimonials = testimonials.filter((t) => t.service === "montaz").slice(0, 6);
+  const brands = await getAllBrandsAsync();
+  const allLocations = (await getAllLocationsAsync())
+    .filter((l) => l.slug !== location.slug && l.services.includes("montaz"));
+  const allTestimonials = await getAllTestimonialsAsync();
+  const cityTestimonials = allTestimonials
+    .filter((t) => t.service === "montaz")
+    .slice(0, 6);
 
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },

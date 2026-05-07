@@ -11,8 +11,11 @@ import { StripedPattern } from "@/components/ui/striped-pattern";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import HeroBackground from "@/components/hero-background";
 import ProductCard from "@/components/product-card";
-import { getAllProducts, getFeaturedProducts } from "@/lib/products";
-import { getAllBrands } from "@/lib/brands";
+import {
+  getAllProductsAsync,
+  getFeaturedProductsAsync,
+  getAllBrandsAsync,
+} from "@/lib/cms";
 
 export const metadata: Metadata = {
   title: "Klimatyzatory — Katalog produktów | PBAC",
@@ -20,10 +23,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/produkty" },
 };
 
-export default function ProduktyPage() {
-  const products = getAllProducts();
-  const featured = getFeaturedProducts();
-  const brands = getAllBrands();
+export default async function ProduktyPage() {
+  const products = await getAllProductsAsync();
+  const featured = await getFeaturedProductsAsync();
+  const brands = await getAllBrandsAsync();
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },
     { name: "Produkty" },

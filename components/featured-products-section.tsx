@@ -2,10 +2,10 @@ import Link from "next/link";
 import FadeIn from "@/components/ui/fade-in";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import ProductCard from "@/components/product-card";
-import { getFeaturedProducts } from "@/lib/products";
+import { getFeaturedProductsAsync } from "@/lib/cms";
 
-export default function FeaturedProductsSection() {
-  const featured = getFeaturedProducts();
+export default async function FeaturedProductsSection() {
+  const featured = await getFeaturedProductsAsync();
   if (featured.length === 0) return null;
 
   return (

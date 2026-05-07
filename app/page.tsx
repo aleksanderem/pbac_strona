@@ -6,7 +6,7 @@ import HeroSection from "@/components/hero-section";
 import ServicesSection from "@/components/services-section";
 import BenefitsSection from "@/components/benefits-section";
 import BrandsSection from "@/components/brands-section";
-import { testimonials } from "@/lib/testimonials";
+import { getAllTestimonialsAsync } from "@/lib/cms";
 import { homepageFaqs } from "@/components/faq-section";
 
 const CalculatorSection = dynamic(() => import("@/components/calculator-section"));
@@ -52,7 +52,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const testimonials = await getAllTestimonialsAsync();
   const ratingValue =
     Math.round(
       (testimonials.reduce((sum, t) => sum + t.rating, 0) /

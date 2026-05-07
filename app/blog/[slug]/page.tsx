@@ -1,8 +1,12 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
-import { getArticleBySlug, getAllArticleSlugs, getRelatedArticles } from "@/lib/articles";
-import { getAuthorBySlug } from "@/lib/authors";
+import {
+  getArticleBySlugAsync,
+  getAllArticleSlugsAsync,
+  getRelatedArticlesAsync,
+  getAuthorBySlugAsync,
+} from "@/lib/cms";
 import Navbar from "@/components/navbar";
 import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
@@ -20,12 +24,13 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getAllArticleSlugs().map((slug) => ({ slug }));
+  const slugs = await getAllArticleSlugsAsync();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = await getArticleBySlugAsync(slug);
   if (!article) return {};
   return {
     title: `${article.title} | PBAC`,
@@ -44,11 +49,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = await getArticleBySlugAsync(slug);
   if (!article) notFound();
 
-  const author = getAuthorBySlug(article.authorSlug);
-  const related = getRelatedArticles(article.relatedSlugs);
+  const author = await getAuthorBySlugAsync(article.authorSlug);
+  const related = await getRelatedArticlesAsync(article.relatedSlugs);
 
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },

@@ -2,9 +2,10 @@ import Link from "next/link";
 import FadeIn from "@/components/ui/fade-in";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { MapPin } from "lucide-react";
-import { locations } from "@/lib/locations";
+import { getAllLocationsAsync } from "@/lib/cms";
 
-export default function LocationsSection() {
+export default async function LocationsSection() {
+  const locations = await getAllLocationsAsync();
   return (
     <section id="lokalizacje" className="relative py-20 px-4 overflow-hidden">
       <DotPattern

@@ -11,8 +11,12 @@ import { AuroraText } from "@/components/ui/aurora-text";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import HeroBackground from "@/components/hero-background";
 import ProductCard from "@/components/product-card";
-import { getProductsByBrand, getProductBrands } from "@/lib/products";
-import { getAllBrands, getBrandBySlug } from "@/lib/brands";
+import {
+  getProductsByBrandAsync,
+  getProductBrandsAsync,
+  getAllBrandsAsync,
+  getBrandBySlugAsync,
+} from "@/lib/cms";
 import type { Brand } from "@/types";
 import { ArrowRight } from "lucide-react";
 
@@ -21,14 +25,15 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getProductBrands().map((brand) => ({ marka: brand }));
+  const brands = await getProductBrandsAsync();
+  return brands.map((brand) => ({ marka: brand }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { marka } = await params;
-  const brand = getBrandBySlug(marka);
+  const brand = await getBrandBySlugAsync(marka);
   if (!brand) return {};
-  const count = getProductsByBrand(marka as Brand).length;
+  const count = (await getProductsByBrandAsync(marka as Brand)).length;
   return {
     title: `Klimatyzatory ${brand.name} — ${count} modeli | PBAC`,
     description: `Katalog klimatyzatorów ${brand.name} w ofercie PBAC. ${count} modeli z cenami i specyfikacjami. Montaż Warszawa.`,
@@ -38,13 +43,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BrandPage({ params }: Props) {
   const { marka } = await params;
-  const brand = getBrandBySlug(marka);
+  const brand = await getBrandBySlugAsync(marka);
   if (!brand) notFound();
 
-  const brandProducts = getProductsByBrand(marka as Brand);
+  const brandProducts = await getProductsByBrandAsync(marka as Brand);
   if (brandProducts.length === 0) notFound();
 
-  const allBrands = getAllBrands().filter((b) => b.slug !== marka);
+  const allBrands = (await getAllBrandsAsync()).filter((b) => b.slug !== marka);
 
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },

@@ -14,15 +14,17 @@ import { StripedPattern } from "@/components/ui/striped-pattern";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { Marquee } from "@/components/ui/marquee";
 import HeroBackground from "@/components/hero-background";
-import { getAllBrands } from "@/lib/brands";
-import { testimonials } from "@/lib/testimonials";
+import {
+  getAllBrandsAsync,
+  getAllTestimonialsAsync,
+  getLocationsByServiceAsync,
+} from "@/lib/cms";
 import {
   Settings, MapPin, ArrowRight, Phone, Star,
   Droplets, Thermometer, Wrench, ClipboardList, ShieldCheck,
   Zap, Clock, BadgeCheck, CalendarCheck,
   Award, Users, Bug,
 } from "lucide-react";
-import { getLocationsByService } from "@/lib/locations";
 
 export const metadata: Metadata = {
   title: "Serwis klimatyzacji — przegląd, czyszczenie, naprawa | PBAC",
@@ -64,10 +66,13 @@ const brandHighlights = [
   { brand: "Kaisai / AUX", detail: "Przeglądy ekonomicznych modeli, wymiana filtrów" },
 ];
 
-export default function SerwisIndexPage() {
-  const serwisLocations = getLocationsByService("serwis");
-  const brands = getAllBrands();
-  const serwisTestimonials = testimonials.filter((t) => t.service === "serwis").slice(0, 6);
+export default async function SerwisIndexPage() {
+  const serwisLocations = await getLocationsByServiceAsync("serwis");
+  const brands = await getAllBrandsAsync();
+  const allTestimonials = await getAllTestimonialsAsync();
+  const serwisTestimonials = allTestimonials
+    .filter((t) => t.service === "serwis")
+    .slice(0, 6);
 
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },

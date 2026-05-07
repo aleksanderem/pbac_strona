@@ -68,6 +68,15 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
+    media: Media;
+    authors: Author;
+    categories: Category;
+    articles: Article;
+    brands: Brand;
+    products: Product;
+    locations: Location;
+    services: Service;
+    testimonials: Testimonial;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -76,6 +85,15 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    authors: AuthorsSelect<false> | AuthorsSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    articles: ArticlesSelect<false> | ArticlesSelect<true>;
+    brands: BrandsSelect<false> | BrandsSelect<true>;
+    products: ProductsSelect<false> | ProductsSelect<true>;
+    locations: LocationsSelect<false> | LocationsSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -85,8 +103,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'site-settings': SiteSetting;
+  };
+  globalsSelect: {
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -144,6 +166,332 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  alt?: string | null;
+  caption?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    card?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tablet?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    desktop?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "authors".
+ */
+export interface Author {
+  id: number;
+  slug: string;
+  name: string;
+  role?: string | null;
+  description?: string | null;
+  image?: (number | null) | Media;
+  /**
+   * Używane tylko gdy nie ustawiono uploadu w polu 'Zdjęcie'. Pozwala wskazać plik z public/.
+   */
+  imageUrl?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  slug: string;
+  name: string;
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles".
+ */
+export interface Article {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt: string;
+  summary?: string | null;
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Stara struktura sekcji z importu. Nowe artykuły pisz w polu 'Treść artykułu' powyżej.
+   */
+  sections?:
+    | {
+        heading: string;
+        content: string;
+        id?: string | null;
+      }[]
+    | null;
+  category: number | Category;
+  /**
+   * Tekstowa nazwa kategorii (z importu, fallback gdy brak relacji).
+   */
+  categoryName?: string | null;
+  author?: (number | null) | Author;
+  /**
+   * Tekstowy fallback, jeśli relacja nie jest ustawiona.
+   */
+  authorSlug?: string | null;
+  publishedAt: string;
+  readingTime?: number | null;
+  metaDescription?: string | null;
+  relatedArticles?: (number | Article)[] | null;
+  relatedSlugs?:
+    | {
+        slug: string;
+        id?: string | null;
+      }[]
+    | null;
+  coverImage?: (number | null) | Media;
+  /**
+   * Używane gdy nie wybrano uploadu. Format: /images/blog/...
+   */
+  coverImageUrl?: string | null;
+  coverAlt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "brands".
+ */
+export interface Brand {
+  id: number;
+  slug: string;
+  name: string;
+  description: string;
+  country?: string | null;
+  logo?: (number | null) | Media;
+  /**
+   * Używane tylko gdy nie ustawiono uploadu w polu 'Logo'. Format: /images/brands/samsung-logo.png.
+   */
+  logoUrl?: string | null;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products".
+ */
+export interface Product {
+  id: number;
+  slug: string;
+  name: string;
+  tagline: string;
+  origin: string;
+  highlight: string;
+  brand: number | Brand;
+  brandSlug?: string | null;
+  category: 'scienny' | 'multisplit' | 'kasetonowy' | 'kanalowy' | 'podlogowy' | 'przenosny';
+  description: string;
+  descriptionLong?:
+    | {
+        paragraph: string;
+        id?: string | null;
+      }[]
+    | null;
+  features?:
+    | {
+        feature: string;
+        id?: string | null;
+      }[]
+    | null;
+  advantages?:
+    | {
+        title: string;
+        desc: string;
+        icon: string;
+        id?: string | null;
+      }[]
+    | null;
+  powerRange: string;
+  refrigerant: string;
+  refrigerantNote?: string | null;
+  warranty: string;
+  specs?:
+    | {
+        label: string;
+        value: string;
+        icon: string;
+        id?: string | null;
+      }[]
+    | null;
+  models?:
+    | {
+        name: string;
+        power: string;
+        energyClass: string;
+        noise: string;
+        phase: string;
+        price?: number | null;
+        area?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  image?: (number | null) | Media;
+  imageUrl?: string | null;
+  imageAlt: string;
+  gallery?:
+    | {
+        image?: (number | null) | Media;
+        src?: string | null;
+        alt: string;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  faq?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations".
+ */
+export interface Location {
+  id: number;
+  slug: string;
+  name: string;
+  region: string;
+  services: ('montaz' | 'serwis')[];
+  description: string;
+  sections?:
+    | {
+        heading: string;
+        content: string;
+        id?: string | null;
+      }[]
+    | null;
+  faq?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
+  metaTitle: string;
+  metaDescription: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: number;
+  slug: string;
+  name: string;
+  shortDescription: string;
+  longDescription: string;
+  icon: string;
+  steps?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  faq?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  link: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: number;
+  name: string;
+  body: string;
+  rating: number;
+  location?: string | null;
+  service?: ('montaz' | 'serwis' | 'wynajem') | null;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -165,10 +513,47 @@ export interface PayloadKv {
  */
 export interface PayloadLockedDocument {
   id: number;
-  document?: {
-    relationTo: 'users';
-    value: number | User;
-  } | null;
+  document?:
+    | ({
+        relationTo: 'users';
+        value: number | User;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'authors';
+        value: number | Author;
+      } | null)
+    | ({
+        relationTo: 'categories';
+        value: number | Category;
+      } | null)
+    | ({
+        relationTo: 'articles';
+        value: number | Article;
+      } | null)
+    | ({
+        relationTo: 'brands';
+        value: number | Brand;
+      } | null)
+    | ({
+        relationTo: 'products';
+        value: number | Product;
+      } | null)
+    | ({
+        relationTo: 'locations';
+        value: number | Location;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: number | Service;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: number | Testimonial;
+      } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
@@ -237,6 +622,303 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+  alt?: T;
+  caption?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        card?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        tablet?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        desktop?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "authors_select".
+ */
+export interface AuthorsSelect<T extends boolean = true> {
+  slug?: T;
+  name?: T;
+  role?: T;
+  description?: T;
+  image?: T;
+  imageUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories_select".
+ */
+export interface CategoriesSelect<T extends boolean = true> {
+  slug?: T;
+  name?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles_select".
+ */
+export interface ArticlesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  summary?: T;
+  body?: T;
+  sections?:
+    | T
+    | {
+        heading?: T;
+        content?: T;
+        id?: T;
+      };
+  category?: T;
+  categoryName?: T;
+  author?: T;
+  authorSlug?: T;
+  publishedAt?: T;
+  readingTime?: T;
+  metaDescription?: T;
+  relatedArticles?: T;
+  relatedSlugs?:
+    | T
+    | {
+        slug?: T;
+        id?: T;
+      };
+  coverImage?: T;
+  coverImageUrl?: T;
+  coverAlt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "brands_select".
+ */
+export interface BrandsSelect<T extends boolean = true> {
+  slug?: T;
+  name?: T;
+  description?: T;
+  country?: T;
+  logo?: T;
+  logoUrl?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products_select".
+ */
+export interface ProductsSelect<T extends boolean = true> {
+  slug?: T;
+  name?: T;
+  tagline?: T;
+  origin?: T;
+  highlight?: T;
+  brand?: T;
+  brandSlug?: T;
+  category?: T;
+  description?: T;
+  descriptionLong?:
+    | T
+    | {
+        paragraph?: T;
+        id?: T;
+      };
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  advantages?:
+    | T
+    | {
+        title?: T;
+        desc?: T;
+        icon?: T;
+        id?: T;
+      };
+  powerRange?: T;
+  refrigerant?: T;
+  refrigerantNote?: T;
+  warranty?: T;
+  specs?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        icon?: T;
+        id?: T;
+      };
+  models?:
+    | T
+    | {
+        name?: T;
+        power?: T;
+        energyClass?: T;
+        noise?: T;
+        phase?: T;
+        price?: T;
+        area?: T;
+        id?: T;
+      };
+  image?: T;
+  imageUrl?: T;
+  imageAlt?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        src?: T;
+        alt?: T;
+        caption?: T;
+        id?: T;
+      };
+  faq?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations_select".
+ */
+export interface LocationsSelect<T extends boolean = true> {
+  slug?: T;
+  name?: T;
+  region?: T;
+  services?: T;
+  description?: T;
+  sections?:
+    | T
+    | {
+        heading?: T;
+        content?: T;
+        id?: T;
+      };
+  faq?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  coordinates?:
+    | T
+    | {
+        lat?: T;
+        lng?: T;
+      };
+  metaTitle?: T;
+  metaDescription?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  slug?: T;
+  name?: T;
+  shortDescription?: T;
+  longDescription?: T;
+  icon?: T;
+  steps?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  faq?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  link?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  name?: T;
+  body?: T;
+  rating?: T;
+  location?: T;
+  service?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -274,6 +956,46 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  phonePrimary: string;
+  phonePlayair?: string | null;
+  email: string;
+  address?: string | null;
+  socialMedia?: {
+    facebook?: string | null;
+    instagram?: string | null;
+    linkedin?: string | null;
+    youtube?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  phonePrimary?: T;
+  phonePlayair?: T;
+  email?: T;
+  address?: T;
+  socialMedia?:
+    | T
+    | {
+        facebook?: T;
+        instagram?: T;
+        linkedin?: T;
+        youtube?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

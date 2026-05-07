@@ -9,7 +9,7 @@ import { AuroraText } from "@/components/ui/aurora-text";
 import { StripedPattern } from "@/components/ui/striped-pattern";
 import HeroBackground from "@/components/hero-background";
 import BlogFilter from "@/components/blog-filter";
-import { getAllArticles, getCategories } from "@/lib/articles";
+import { getAllArticlesAsync, getCategoriesAsync } from "@/lib/cms";
 
 export const metadata: Metadata = {
   title: "Blog — Baza wiedzy o klimatyzacji | PBAC",
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/blog" },
 };
 
-export default function BlogPage() {
-  const articles = getAllArticles();
-  const categories = getCategories();
+export default async function BlogPage() {
+  const articles = await getAllArticlesAsync();
+  const categories = await getCategoriesAsync();
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },
     { name: "Blog" },

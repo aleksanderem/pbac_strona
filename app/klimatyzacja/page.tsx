@@ -15,10 +15,12 @@ import { Marquee } from "@/components/ui/marquee";
 import HeroBackground from "@/components/hero-background";
 import ProductCard from "@/components/product-card";
 import ArticleCard from "@/components/article-card";
-import { getFeaturedProducts } from "@/lib/products";
-import { getLatestArticles } from "@/lib/articles";
-import { getAllBrands } from "@/lib/brands";
-import { testimonials } from "@/lib/testimonials";
+import {
+  getFeaturedProductsAsync,
+  getLatestArticlesAsync,
+  getAllBrandsAsync,
+  getAllTestimonialsAsync,
+} from "@/lib/cms";
 import {
   Snowflake, Thermometer, Wifi, Volume2, ShieldCheck, Wind,
   Phone, Star, ArrowRight,
@@ -43,11 +45,14 @@ const features = [
   { icon: ShieldCheck, title: "Gwarancja do 10 lat", desc: "Gwarancja producenta na urządzenie + osobna gwarancja PBAC na instalację" },
 ];
 
-export default function KlimatyzacjaPage() {
-  const featured = getFeaturedProducts().slice(0, 4);
-  const latestArticles = getLatestArticles(3);
-  const brands = getAllBrands();
-  const montazTestimonials = testimonials.filter((t) => t.service === "montaz").slice(0, 6);
+export default async function KlimatyzacjaPage() {
+  const featured = (await getFeaturedProductsAsync()).slice(0, 4);
+  const latestArticles = await getLatestArticlesAsync(3);
+  const brands = await getAllBrandsAsync();
+  const allTestimonials = await getAllTestimonialsAsync();
+  const montazTestimonials = allTestimonials
+    .filter((t) => t.service === "montaz")
+    .slice(0, 6);
 
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },
