@@ -55,6 +55,9 @@ chmod 600 "$APP_DIR/.env.local"
 echo "▶ Installing dependencies"
 npm install --legacy-peer-deps --no-audit --no-fund
 
+echo "▶ Pushing Payload schema (idempotent — adds missing tables/columns)"
+PAYLOAD_PUSH=1 npx tsx scripts/sync-schema.ts || echo "  (schema push warning — continuing)"
+
 echo "▶ Building Next.js"
 NODE_OPTIONS="--max-old-space-size=2048" npm run build
 

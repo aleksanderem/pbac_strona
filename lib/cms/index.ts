@@ -338,3 +338,11 @@ export const getSiteSettingsAsync = cache(async () => {
     slug: "site-settings",
   });
 });
+
+// ─── PlayAir landing global ────────────────────────────────────────────
+export const getPlayairLandingAsync = cache(async () => {
+  const payload = await getPayload();
+  return payload.findGlobal({
+    slug: "playair-landing",
+  });
+});

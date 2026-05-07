@@ -17,6 +17,7 @@ import { Services } from "./payload/collections/Services";
 import { Testimonials } from "./payload/collections/Testimonials";
 import { Users } from "./payload/collections/Users";
 import { SiteSettings } from "./payload/globals/SiteSettings";
+import { PlayairLanding } from "./payload/globals/PlayairLanding";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -56,7 +57,7 @@ export default buildConfig({
     Services,
     Testimonials,
   ],
-  globals: [SiteSettings],
+  globals: [SiteSettings, PlayairLanding],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
@@ -68,6 +69,7 @@ export default buildConfig({
       max: 3,
       idleTimeoutMillis: 10_000,
     },
+    push: process.env.PAYLOAD_PUSH === "1",
   }),
   i18n: {
     supportedLanguages: { pl, en },

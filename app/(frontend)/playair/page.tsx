@@ -14,6 +14,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import StickyPhone from "@/components/sticky-phone";
+import { getPlayairLandingAsync } from "@/lib/cms";
+import type { LucideIcon } from "lucide-react";
 import {
   Phone,
   Star,
@@ -34,6 +36,13 @@ import {
   Zap,
   BadgeCheck,
 } from "lucide-react";
+
+const ICONS: Record<string, LucideIcon> = {
+  Snowflake, Thermometer, Volume2, Wallet, Leaf, Smartphone,
+  Users, Award, MapPin, Shield, ShieldCheck, Zap, BadgeCheck,
+};
+const iconOf = (name: string | null | undefined): LucideIcon =>
+  (name && ICONS[name]) || Snowflake;
 
 const CalculatorSection = dynamic(
   () => import("@/components/calculator-section")
@@ -391,7 +400,77 @@ const founderAntiPromises = [
   },
 ];
 
-export default function PlayAirPage() {
+export default async function PlayAirPage() {
+  const cms = await getPlayairLandingAsync();
+  // Adapter: when a CMS field is empty/null, fall back to the in-file const.
+  // Keep the existing JSX variable names — only the source changes.
+  const heroBadge = cms.heroBadge ?? "Wolne terminy w tym tygodniu · Pruszków + 12 okolic";
+  const heroTitle1 = cms.heroTitle1 ?? "Klimat,";
+  const heroTitle2 = cms.heroTitle2 ?? "który grzeje.";
+  const heroTitle3 = cms.heroTitle3 ?? "Dosłownie.";
+  const heroIntro = cms.heroIntro ?? "PlayAir — klimatyzacja, pompy ciepła i rekuperacja dla domów i mieszkań na południu i zachodzie Warszawy. Lokalny zespół. Zaplecze partnerskie PBAC.";
+  const heroStatsCms: Array<[string, string]> =
+    cms.heroStats?.length
+      ? cms.heroStats.map((s) => [s.value, s.label] as [string, string])
+      : heroStats;
+  const heroFormTitle = cms.heroFormTitle ?? "Darmowy, bez zobowiązań";
+  const heroFormSubtitle = cms.heroFormSubtitle ?? "Pomiar u Ciebie";
+  const servicesCms: Service[] = cms.services?.length
+    ? cms.services.map((s) => ({ n: s.number, t: s.title, d: s.description, tags: (s.tags ?? []).map((t) => t.tag) }))
+    : services;
+  const servicesH1 = cms.servicesHeading1 ?? "Robimy pięć rzeczy.";
+  const servicesH2 = cms.servicesHeading2 ?? "I robimy je porządnie.";
+  const benefitsHeading = cms.benefitsHeading ?? "Dlaczego klimatyzacja?";
+  const benefitsIntro = cms.benefitsIntro ?? "Sześć konkretnych powodów, dla których warto zainwestować w nowoczesny klimatyzator — bez marketingowego ściemniania.";
+  const benefitsCms: Benefit[] = cms.benefits?.length
+    ? cms.benefits.map((b) => ({ icon: iconOf(b.icon), title: b.title, description: b.description }))
+    : benefits;
+  const zoneCitiesCms: string[] = cms.zoneCities?.length
+    ? cms.zoneCities.map((c) => c.name)
+    : zoneCities;
+  const whyHeading = cms.whyHeading ?? "Dlaczego PlayAir?";
+  const whyIntro = cms.whyIntro ?? "Lokalny zespół z zapleczem PBAC — liczby, które budują zaufanie w okolicach Pruszkowa.";
+  const whyStatsCms: Stat[] = cms.whyStats?.length
+    ? cms.whyStats.map((s) => ({ icon: iconOf(s.icon), number: s.number, label: s.label, description: s.description }))
+    : whyStats;
+  const processHeading = cms.processHeading ?? "Od telefonu do chłodnego powietrza — siedem dni.";
+  const processIntro = cms.processIntro ?? "Pięć kroków, jeden zespół, jeden telefon. Bez przekazywania między działami.";
+  const processStepsCms: ProcessStep[] = cms.processSteps?.length
+    ? cms.processSteps.map((s) => ({ d: s.day, t: s.title, x: s.description }))
+    : processSteps;
+  const pricingH1 = cms.pricingHeading1 ?? "Trzy klasy.";
+  const pricingH2 = cms.pricingHeading2 ?? "Jedna jakość montażu.";
+  const pricingNote = cms.pricingNote ?? "Ceny orientacyjne dla jednego pomieszczenia do 40 m². Ostateczna cena po darmowym pomiarze.";
+  const pricingTiersCms: PricingTier[] = cms.pricingTiers?.length
+    ? cms.pricingTiers.map((p) => ({ tier: p.tier, price: p.price, desc: p.description, feats: (p.features ?? []).map((f) => f.feature), featured: !!p.featured }))
+    : pricingTiers;
+  const promiseHeading = cms.promiseHeading ?? "Nasza obietnica.";
+  const promiseText = cms.promiseText ?? "Jesteśmy z Pruszkowa. PlayAir powstał z myślą o lokalnej społeczności — z certyfikowanym zapleczem instalacyjnym i serwisowym PBAC. Nie jesteśmy kolejnym adresem na trasie — jesteśmy sąsiadami. Kiedy coś nie działa, odbieramy telefon. Kiedy kończymy montaż, sprzątamy jak u siebie.";
+  const promiseAntiHeading = cms.promiseAntiHeading ?? "Współpracując z nami, nie dowiesz się co to jest";
+  const founderAntiPromisesCms = cms.founderAntiPromises?.length
+    ? cms.founderAntiPromises.map((p) => ({ title: p.title, text: p.text }))
+    : founderAntiPromises;
+  const certificatesHeading = cms.certificatesHeading ?? "Certyfikaty i gwarancja jakości";
+  const certificatesIntro = cms.certificatesIntro ?? "PlayAir montuje zgodnie z wymogami producentów i prawa UE — w tle mamy zaplecze certyfikowane PBAC. Każdy montaż to pełna dokumentacja i gwarancja.";
+  const certificatesCms: Certificate[] = cms.certificates?.length
+    ? cms.certificates.map((c) => ({ icon: iconOf(c.icon), title: c.title, description: c.description }))
+    : certificates;
+  const reviewsHeading = cms.reviewsHeading ?? "4.9 / 5";
+  const reviewsSubheading = cms.reviewsSubheading ?? "na podstawie 180 opinii Google";
+  const reviewsCms: Review[] = cms.reviews?.length
+    ? cms.reviews.map((r) => ({ q: r.quote, n: r.name, l: r.location }))
+    : reviews;
+  const faqHeading = cms.faqHeading ?? "Najczęstsze pytania.";
+  const faqsCms: Faq[] = cms.faqs?.length
+    ? cms.faqs.map((f) => ({ q: f.question, a: f.answer }))
+    : faqs;
+  const ctaHeading1 = cms.ctaHeading1 ?? "Pomiar w tym tygodniu.";
+  const ctaHeading2 = cms.ctaHeading2 ?? "Chłodne lato pewne.";
+  const ctaButton = cms.ctaButton ?? "Umów pomiar";
+  const ctaFooterNote = cms.ctaFooterNote ?? "Darmowy dojazd w strefie Pruszków + 12 okolic";
+  const phoneNumber = cms.phoneNumber ?? PHONE_NUMBER;
+  const phoneHref = cms.phoneHref ?? PHONE_HREF;
+
   const breadcrumbItems = [
     { name: "Strona główna", href: "/" },
     { name: "Partnerzy", href: "/playair" },
@@ -466,12 +545,12 @@ export default function PlayAirPage() {
               Partner&nbsp;PBAC
             </Link>
             <a
-              href={PHONE_HREF}
+              href={phoneHref}
               className="inline-flex items-center gap-2 rounded-full gradient-button text-white px-4 sm:px-5 h-9 text-[11px] sm:text-xs font-bold tracking-wider uppercase hover:opacity-90 transition-opacity"
-              aria-label={`Zadzwoń: ${PHONE_NUMBER}`}
+              aria-label={`Zadzwoń: ${phoneNumber}`}
             >
               <Phone className="size-3.5" />
-              <span className="hidden sm:inline">{PHONE_NUMBER}</span>
+              <span className="hidden sm:inline">{phoneNumber}</span>
               <span className="sm:hidden">Zadzwoń</span>
             </a>
           </div>
@@ -539,8 +618,8 @@ export default function PlayAirPage() {
 
               <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
                 <a
-                  href={PHONE_HREF}
-                  aria-label={`Zadzwoń: ${PHONE_NUMBER}`}
+                  href={phoneHref}
+                  aria-label={`Zadzwoń: ${phoneNumber}`}
                   className="group inline-flex items-center gap-3 px-5 py-3 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white/[0.08] hover:border-white/40 transition-colors"
                 >
                   <span className="size-9 rounded-full gradient-icon flex items-center justify-center">
@@ -551,7 +630,7 @@ export default function PlayAirPage() {
                       Zadzwoń teraz
                     </span>
                     <span className="font-montserrat text-base font-bold tracking-tight">
-                      {PHONE_NUMBER}
+                      {phoneNumber}
                     </span>
                   </span>
                 </a>
@@ -667,7 +746,7 @@ export default function PlayAirPage() {
                             defaultValue="Pruszków"
                             className="bg-white/[0.05] border border-white/10 text-white h-11 w-full rounded-md px-3 text-sm focus:outline-none focus:ring-2 focus:ring-white/30"
                           >
-                            {zoneCities.map((c) => (
+                            {zoneCitiesCms.map((c) => (
                               <option key={c} value={c} className="bg-black">
                                 {c}
                               </option>
@@ -738,7 +817,7 @@ export default function PlayAirPage() {
 
           {/* Ticker stats */}
           <div className="mt-16 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-5 gap-6">
-            {heroStats.map(([n, l]) => (
+            {heroStatsCms.map(([n, l]) => (
               <div key={l} className="flex items-baseline gap-2.5">
                 <div className="font-montserrat text-2xl font-bold tracking-tight">
                   {n}
@@ -777,7 +856,7 @@ export default function PlayAirPage() {
           </div>
 
           <div className="flex flex-col">
-            {services.map((s, i) => (
+            {servicesCms.map((s, i) => (
               <Link
                 key={s.n}
                 href="/klimatyzacja"
@@ -831,7 +910,7 @@ export default function PlayAirPage() {
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefits.map((b, i) => {
+            {benefitsCms.map((b, i) => {
               const Icon = b.icon;
               return (
                 <FadeIn
@@ -1025,7 +1104,7 @@ export default function PlayAirPage() {
                 </div>
               </div>
               <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-1.5">
-                {zoneCities.map((m) => (
+                {zoneCitiesCms.map((m) => (
                   <div
                     key={m}
                     className="text-xs text-white/60 px-3 py-1.5 flex items-center gap-2"
@@ -1060,7 +1139,7 @@ export default function PlayAirPage() {
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyStats.map((stat, idx) => {
+            {whyStatsCms.map((stat, idx) => {
               const Icon = stat.icon;
               return (
                 <FadeIn key={stat.label} delay={idx * 0.1}>
@@ -1120,7 +1199,7 @@ export default function PlayAirPage() {
               className="hidden lg:block absolute left-0 right-0 top-[26px] h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
-              {processSteps.map((s, i) => (
+              {processStepsCms.map((s, i) => (
                 <FadeIn key={s.t} delay={i * 0.06}>
                   <div className="relative h-full">
                     <div className="flex items-center gap-3 mb-4">
@@ -1177,13 +1256,13 @@ export default function PlayAirPage() {
           </div>
 
           <div className="grid md:grid-cols-3 border border-white/10 rounded-2xl overflow-hidden bg-black/40 backdrop-blur-sm">
-            {pricingTiers.map((p, i) => (
+            {pricingTiersCms.map((p, i) => (
               <div
                 key={p.tier}
                 className={`relative p-10 ${
                   i < 2 ? "md:border-r md:border-white/10" : ""
                 } ${
-                  i < pricingTiers.length - 1
+                  i < pricingTiersCms.length - 1
                     ? "border-b md:border-b-0 border-white/10"
                     : ""
                 } ${p.featured ? "gradient-primary" : ""}`}
@@ -1268,12 +1347,12 @@ export default function PlayAirPage() {
               </p>
               <div className="flex flex-wrap items-center gap-4">
                 <a
-                  href={PHONE_HREF}
+                  href={phoneHref}
                   className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white/[0.08] hover:border-white/40 transition-colors"
                 >
                   <Phone className="size-4 text-white/80" />
                   <span className="font-montserrat font-bold text-sm">
-                    {PHONE_NUMBER}
+                    {phoneNumber}
                   </span>
                 </a>
                 <span className="text-sm text-white/55">
@@ -1358,7 +1437,7 @@ export default function PlayAirPage() {
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {founderAntiPromises.map((item, index) => (
+            {founderAntiPromisesCms.map((item, index) => (
               <FadeIn
                 key={item.title}
                 delay={index * 0.15}
@@ -1406,7 +1485,7 @@ export default function PlayAirPage() {
           </FadeIn>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {certificates.map((cert, index) => {
+            {certificatesCms.map((cert, index) => {
               const Icon = cert.icon;
               return (
                 <FadeIn
@@ -1460,7 +1539,7 @@ export default function PlayAirPage() {
               </span>
             </h2>
             <div className="flex flex-col gap-4">
-              {reviews.map((t) => (
+              {reviewsCms.map((t) => (
                 <div
                   key={t.n}
                   className="relative rounded-2xl border border-white/10 p-2"
@@ -1493,7 +1572,7 @@ export default function PlayAirPage() {
             <div className="relative rounded-2xl border border-white/10 p-2">
               <GlowingEffect spread={30} glow proximity={48} />
               <div className="relative rounded-xl bg-white/[0.04] backdrop-blur-md px-6 py-2">
-                {faqs.map((f, i) => (
+                {faqsCms.map((f, i) => (
                   <details
                     key={f.q}
                     className="group border-t border-white/10 py-5 first:border-t-0 [&[open]_.faq-plus]:rotate-45"
@@ -1561,9 +1640,9 @@ export default function PlayAirPage() {
                   variant="outline"
                   className="h-14 rounded-full border-white/30 bg-transparent text-white hover:bg-white/5 px-7 text-[13px] font-bold tracking-[0.1em] uppercase"
                 >
-                  <a href={PHONE_HREF} aria-label={`Zadzwoń: ${PHONE_NUMBER}`}>
+                  <a href={phoneHref} aria-label={`Zadzwoń: ${phoneNumber}`}>
                     <Phone className="size-4" />
-                    {PHONE_NUMBER}
+                    {phoneNumber}
                   </a>
                 </Button>
               </div>

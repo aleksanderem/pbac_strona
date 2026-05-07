@@ -105,9 +105,11 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'site-settings': SiteSetting;
+    'playair-landing': PlayairLanding;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    'playair-landing': PlayairLandingSelect<false> | PlayairLandingSelect<true>;
   };
   locale: null;
   widgets: {
@@ -978,6 +980,144 @@ export interface SiteSetting {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "playair-landing".
+ */
+export interface PlayairLanding {
+  id: number;
+  heroBadge?: string | null;
+  heroTitle1?: string | null;
+  heroTitle2?: string | null;
+  heroTitle3?: string | null;
+  heroIntro?: string | null;
+  heroStats?:
+    | {
+        value: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  heroFormTitle?: string | null;
+  heroFormSubtitle?: string | null;
+  servicesHeading1?: string | null;
+  servicesHeading2?: string | null;
+  services?:
+    | {
+        number: string;
+        title: string;
+        description: string;
+        tags?:
+          | {
+              tag: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  benefitsHeading?: string | null;
+  benefitsIntro?: string | null;
+  benefits?:
+    | {
+        icon: string;
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  zoneCities?:
+    | {
+        name: string;
+        id?: string | null;
+      }[]
+    | null;
+  whyHeading?: string | null;
+  whyIntro?: string | null;
+  whyStats?:
+    | {
+        icon: string;
+        number: string;
+        label: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  processHeading?: string | null;
+  processIntro?: string | null;
+  processSteps?:
+    | {
+        day: string;
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  pricingHeading1?: string | null;
+  pricingHeading2?: string | null;
+  pricingNote?: string | null;
+  pricingTiers?:
+    | {
+        tier: string;
+        price: string;
+        description: string;
+        features?:
+          | {
+              feature: string;
+              id?: string | null;
+            }[]
+          | null;
+        featured?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  promiseHeading?: string | null;
+  promiseText?: string | null;
+  promiseAntiHeading?: string | null;
+  founderAntiPromises?:
+    | {
+        title: string;
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  certificatesHeading?: string | null;
+  certificatesIntro?: string | null;
+  certificates?:
+    | {
+        icon: string;
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  reviewsHeading?: string | null;
+  reviewsSubheading?: string | null;
+  reviews?:
+    | {
+        quote: string;
+        name: string;
+        location: string;
+        id?: string | null;
+      }[]
+    | null;
+  faqHeading?: string | null;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  ctaHeading1?: string | null;
+  ctaHeading2?: string | null;
+  ctaButton?: string | null;
+  ctaFooterNote?: string | null;
+  phoneNumber?: string | null;
+  phoneHref?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings_select".
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
@@ -993,6 +1133,144 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         linkedin?: T;
         youtube?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "playair-landing_select".
+ */
+export interface PlayairLandingSelect<T extends boolean = true> {
+  heroBadge?: T;
+  heroTitle1?: T;
+  heroTitle2?: T;
+  heroTitle3?: T;
+  heroIntro?: T;
+  heroStats?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  heroFormTitle?: T;
+  heroFormSubtitle?: T;
+  servicesHeading1?: T;
+  servicesHeading2?: T;
+  services?:
+    | T
+    | {
+        number?: T;
+        title?: T;
+        description?: T;
+        tags?:
+          | T
+          | {
+              tag?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  benefitsHeading?: T;
+  benefitsIntro?: T;
+  benefits?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  zoneCities?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
+  whyHeading?: T;
+  whyIntro?: T;
+  whyStats?:
+    | T
+    | {
+        icon?: T;
+        number?: T;
+        label?: T;
+        description?: T;
+        id?: T;
+      };
+  processHeading?: T;
+  processIntro?: T;
+  processSteps?:
+    | T
+    | {
+        day?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  pricingHeading1?: T;
+  pricingHeading2?: T;
+  pricingNote?: T;
+  pricingTiers?:
+    | T
+    | {
+        tier?: T;
+        price?: T;
+        description?: T;
+        features?:
+          | T
+          | {
+              feature?: T;
+              id?: T;
+            };
+        featured?: T;
+        id?: T;
+      };
+  promiseHeading?: T;
+  promiseText?: T;
+  promiseAntiHeading?: T;
+  founderAntiPromises?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        id?: T;
+      };
+  certificatesHeading?: T;
+  certificatesIntro?: T;
+  certificates?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  reviewsHeading?: T;
+  reviewsSubheading?: T;
+  reviews?:
+    | T
+    | {
+        quote?: T;
+        name?: T;
+        location?: T;
+        id?: T;
+      };
+  faqHeading?: T;
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  ctaHeading1?: T;
+  ctaHeading2?: T;
+  ctaButton?: T;
+  ctaFooterNote?: T;
+  phoneNumber?: T;
+  phoneHref?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
