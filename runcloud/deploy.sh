@@ -49,6 +49,9 @@ echo "▶ Writing .env.local"
 cat > "$APP_DIR/.env.local" <<EOF
 DATABASE_URI=${DATABASE_URI}
 PAYLOAD_SECRET=${PAYLOAD_SECRET}
+RESEND_API_KEY=${RESEND_API_KEY:-}
+LEAD_INBOX=${LEAD_INBOX:-biuro@pbac.pl}
+LEAD_FROM=${LEAD_FROM:-PBAC Leads <leads@mailer.kolabogroup.pl>}
 EOF
 chmod 600 "$APP_DIR/.env.local"
 
