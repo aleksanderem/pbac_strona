@@ -558,7 +558,7 @@ export default async function PlayAirPage() {
       </header>
 
       {/* ═══ HERO — SPLIT ═══ */}
-      <section className="relative pt-28 pb-24 border-b border-white/5 overflow-hidden">
+      <section id="wycena" className="relative pt-28 pb-24 border-b border-white/5 overflow-hidden scroll-mt-20">
         {/* Decorative gradient glows */}
         <div
           aria-hidden="true"
@@ -1304,6 +1304,7 @@ export default async function PlayAirPage() {
                   ))}
                 </ul>
                 <Button
+                  asChild
                   className={
                     p.featured
                       ? "mt-8 w-full h-11 bg-white text-black hover:bg-white/90 rounded-lg text-xs font-bold uppercase tracking-[0.1em]"
@@ -1311,7 +1312,7 @@ export default async function PlayAirPage() {
                   }
                   variant={p.featured ? "default" : "outline"}
                 >
-                  Wybierz →
+                  <a href="#wycena">Wybierz →</a>
                 </Button>
               </div>
             ))}
@@ -1632,8 +1633,13 @@ export default async function PlayAirPage() {
                 <span className="text-white/70">Chłodne lato pewne.</span>
               </h2>
               <div className="flex flex-wrap gap-3 mt-10">
-                <Button className="h-14 rounded-full bg-white text-black hover:bg-white/90 px-7 text-[13px] font-bold tracking-[0.1em] uppercase">
-                  Umów pomiar <ArrowRight className="size-4" />
+                <Button
+                  asChild
+                  className="h-14 rounded-full bg-white text-black hover:bg-white/90 px-7 text-[13px] font-bold tracking-[0.1em] uppercase"
+                >
+                  <a href="#wycena">
+                    Umów pomiar <ArrowRight className="size-4" />
+                  </a>
                 </Button>
                 <Button
                   asChild
