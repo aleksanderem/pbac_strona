@@ -18,6 +18,7 @@ import {
   PlayairCTAButton,
   PlayairQuoteModal,
 } from "@/components/playair/quote-cta";
+import PlayairHeroForm from "@/components/playair/hero-form";
 import { getPlayairLandingAsync } from "@/lib/cms";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -679,140 +680,7 @@ export default async function PlayAirPage() {
                       Darmowy, bez zobowiązań
                     </h3>
 
-                    <form
-                      className="flex flex-col gap-3.5"
-                      action="https://formsubmit.co/biuro@pbac.pl"
-                      method="POST"
-                    >
-                      <input
-                        type="hidden"
-                        name="_subject"
-                        value="PlayAir Pruszków — zgłoszenie z formularza"
-                      />
-                      <input
-                        type="hidden"
-                        name="_next"
-                        value="https://pbac.pl/playair?sent=1"
-                      />
-                      <input type="hidden" name="_template" value="table" />
-                      <input type="hidden" name="_captcha" value="false" />
-                      <input
-                        type="text"
-                        name="_honey"
-                        tabIndex={-1}
-                        autoComplete="off"
-                        className="hidden"
-                      />
-                      <div>
-                        <Label
-                          htmlFor="pa-name"
-                          className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-1.5 block"
-                        >
-                          Imię
-                        </Label>
-                        <Input
-                          id="pa-name"
-                          name="name"
-                          required
-                          autoComplete="name"
-                          placeholder="Jan Kowalski"
-                          className="bg-white/[0.05] border-white/10 text-white placeholder:text-white/30 h-11"
-                        />
-                      </div>
-                      <div className="grid grid-cols-2 gap-2.5">
-                        <div>
-                          <Label
-                            htmlFor="pa-phone"
-                            className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-1.5 block"
-                          >
-                            Telefon
-                          </Label>
-                          <Input
-                            id="pa-phone"
-                            name="phone"
-                            type="tel"
-                            required
-                            autoComplete="tel"
-                            placeholder="+48 692 981 431"
-                            className="bg-white/[0.05] border-white/10 text-white placeholder:text-white/30 h-11"
-                          />
-                        </div>
-                        <div>
-                          <Label
-                            htmlFor="pa-city"
-                            className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-1.5 block"
-                          >
-                            Miasto
-                          </Label>
-                          <select
-                            id="pa-city"
-                            name="city"
-                            defaultValue="Pruszków"
-                            className="bg-white/[0.05] border border-white/10 text-white h-11 w-full rounded-md px-3 text-sm focus:outline-none focus:ring-2 focus:ring-white/30"
-                          >
-                            {zoneCitiesCms.map((c) => (
-                              <option key={c} value={c} className="bg-black">
-                                {c}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
-                      <div>
-                        <Label
-                          htmlFor="pa-email"
-                          className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-1.5 block"
-                        >
-                          Email <span className="text-white/30">(opcjonalnie)</span>
-                        </Label>
-                        <Input
-                          id="pa-email"
-                          name="email"
-                          type="email"
-                          autoComplete="email"
-                          placeholder="jan@example.com"
-                          className="bg-white/[0.05] border-white/10 text-white placeholder:text-white/30 h-11"
-                        />
-                      </div>
-                      <div>
-                        <Label className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-1.5 block">
-                          Usługa
-                        </Label>
-                        <div className="grid grid-cols-2 gap-1.5">
-                          {[
-                            "Klimatyzacja",
-                            "Pompa ciepła",
-                            "Serwis",
-                            "Rekuperacja",
-                          ].map((s, i) => (
-                            <label
-                              key={s}
-                              className="relative cursor-pointer"
-                            >
-                              <input
-                                type="radio"
-                                name="service"
-                                value={s}
-                                defaultChecked={i === 0}
-                                className="peer sr-only"
-                              />
-                              <span className="block text-center text-xs font-medium px-3 py-2.5 rounded-lg border border-white/10 bg-white/[0.05] text-white/90 hover:bg-white/10 peer-checked:gradient-primary peer-checked:border-transparent peer-checked:text-white transition-colors">
-                                {s}
-                              </span>
-                            </label>
-                          ))}
-                        </div>
-                      </div>
-                      <Button
-                        type="submit"
-                        className="gradient-button mt-2 h-12 rounded-lg text-white text-xs font-bold tracking-[0.08em] uppercase hover:opacity-90"
-                      >
-                        Umów wizytę →
-                      </Button>
-                      <p className="text-[11px] text-white/40 text-center">
-                        Odpowiadamy w ciągu 60 minut w godz. pracy
-                      </p>
-                    </form>
+                    <PlayairHeroForm zoneCities={zoneCitiesCms} />
                   </div>
                 </div>
               </div>

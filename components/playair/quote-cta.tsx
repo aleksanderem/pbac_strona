@@ -117,18 +117,29 @@ export function PlayairQuoteModal() {
     formData.forEach((v, k) => {
       payload[k] = typeof v === "string" ? v : "";
     });
+    const body = {
+      ...payload,
+      source: "playair-modal",
+      subject,
+      context: context.kind,
+      packageName: context.kind === "package" ? context.packageName : undefined,
+    };
+
     try {
-      // formsubmit.co/ajax is blocked by Cloudflare CORS preflight from
-      // browsers; the plain endpoint with no-cors still delivers, we just
-      // can't read the response — so trust the network call and show
-      // success optimistically.
-      const body = new FormData();
-      Object.entries(payload).forEach(([k, v]) => body.append(k, v));
-      await fetch("https://formsubmit.co/biuro@pbac.pl", {
+      const res = await fetch("/api/lead", {
         method: "POST",
-        mode: "no-cors",
-        body,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
       });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        setStatus("error");
+        setErrorMsg(
+          (data && typeof data.error === "string" ? data.error : null) ||
+            "Nie udało się wysłać formularza. Spróbuj ponownie lub zadzwoń."
+        );
+        return;
+      }
       setStatus("success");
     } catch {
       setStatus("error");
@@ -182,16 +193,9 @@ export function PlayairQuoteModal() {
             </p>
 
             <form className="space-y-4" onSubmit={handleSubmit}>
-              <input type="hidden" name="_subject" value={subject} />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="kontekst" value={context.kind} />
-              {context.kind === "package" && (
-                <input type="hidden" name="pakiet" value={context.packageName} />
-              )}
               <input
                 type="text"
-                name="_honey"
+                name="honeypot"
                 tabIndex={-1}
                 autoComplete="off"
                 className="hidden"

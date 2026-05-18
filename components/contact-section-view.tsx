@@ -263,17 +263,26 @@ export default function ContactSectionView({
   async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
-    const body = new FormData(e.currentTarget);
+    const fd = new FormData(e.currentTarget);
+    const payload: Record<string, string> = { source: "contact-section" };
+    fd.forEach((v, k) => {
+      payload[k] = typeof v === "string" ? v : "";
+    });
     try {
-      await fetch("https://formsubmit.co/biuro@pbac.pl", {
+      const res = await fetch("/api/lead", {
         method: "POST",
-        mode: "no-cors",
-        body,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        setStatus("idle");
+        return;
+      }
+      setStatus("success");
     } catch {
-      // no-cors fetch only throws on hard network failures
+      setStatus("idle");
     }
-    setStatus("success");
   }
 
   return (
@@ -305,9 +314,8 @@ export default function ContactSectionView({
                 </div>
               ) : (
               <form onSubmit={handleContactSubmit} className="space-y-4">
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" />
+                <input type="hidden" name="subject" value="Kontakt ze strony pbac.pl" />
+                <input type="text" name="honeypot" tabIndex={-1} autoComplete="off" className="hidden" />
                 <div>
                   <label htmlFor="contact-name" className="block text-sm leading-6 font-medium text-white/60">Imię i nazwisko</label>
                   <div className="mt-2">
@@ -336,7 +344,6 @@ export default function ContactSectionView({
                   </div>
                 </div>
 
-                <input type="hidden" name="_subject" value="Kontakt ze strony pbac.pl" />
 
                 <div className="mt-8">
                   <button type="submit" disabled={status === "loading"} className="flex w-full items-center justify-center rounded-full bg-white px-4 py-4 text-sm font-bold text-black transition duration-200 hover:bg-white/90 disabled:opacity-50">

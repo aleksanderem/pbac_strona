@@ -162,20 +162,20 @@ export default function QuoteForm() {
     setErrors([]);
     setStatus("loading");
     try {
-      // formsubmit.co/ajax is blocked by Cloudflare CORS preflight; the
-      // plain endpoint with no-cors still delivers the payload.
-      const body = new FormData();
-      Object.entries(formData).forEach(([k, v]) => {
-        body.append(k, typeof v === "boolean" ? (v ? "tak" : "nie") : String(v));
-      });
-      body.append("_subject", "Wycena ze strony pbac.pl");
-      body.append("_template", "table");
-      body.append("_captcha", "false");
-      await fetch("https://formsubmit.co/biuro@pbac.pl", {
+      const res = await fetch("/api/lead", {
         method: "POST",
-        mode: "no-cors",
-        body,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "home-quote-form",
+          subject: "Wycena ze strony pbac.pl",
+          ...formData,
+        }),
       });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        setStatus("error");
+        return;
+      }
       setStatus("success");
     } catch {
       setStatus("error");

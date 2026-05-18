@@ -43,17 +43,26 @@ function QuoteModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
-    const body = new FormData(e.currentTarget);
+    const fd = new FormData(e.currentTarget);
+    const payload: Record<string, string> = { source: "home-cta-modal" };
+    fd.forEach((v, k) => {
+      payload[k] = typeof v === "string" ? v : "";
+    });
     try {
-      await fetch("https://formsubmit.co/biuro@pbac.pl", {
+      const res = await fetch("/api/lead", {
         method: "POST",
-        mode: "no-cors",
-        body,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        setStatus("idle");
+        return;
+      }
+      setStatus("success");
     } catch {
-      // no-cors fetch never throws on HTTP errors; only catch network failures
+      setStatus("idle");
     }
-    setStatus("success");
   }
 
   return (
@@ -79,10 +88,8 @@ function QuoteModal({ open, onClose }: { open: boolean; onClose: () => void }) {
             <h2 className="font-montserrat text-2xl font-bold mb-2">Zamów darmową wycenę</h2>
             <p className="text-white/50 text-sm mb-6">Odpowiemy w ciągu 24h</p>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <input type="hidden" name="_subject" value="Darmowa wycena — pbac.pl" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" />
+              <input type="hidden" name="subject" value="Darmowa wycena — pbac.pl" />
+              <input type="text" name="honeypot" tabIndex={-1} autoComplete="off" className="hidden" />
               <div>
                 <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Imię</label>
                 <input type="text" name="name" required placeholder="Jan Kowalski" className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30" />
