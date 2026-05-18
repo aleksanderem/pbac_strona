@@ -118,19 +118,17 @@ export function PlayairQuoteModal() {
       payload[k] = typeof v === "string" ? v : "";
     });
     try {
-      const res = await fetch("https://formsubmit.co/ajax/biuro@pbac.pl", {
+      // formsubmit.co/ajax is blocked by Cloudflare CORS preflight from
+      // browsers; the plain endpoint with no-cors still delivers, we just
+      // can't read the response — so trust the network call and show
+      // success optimistically.
+      const body = new FormData();
+      Object.entries(payload).forEach(([k, v]) => body.append(k, v));
+      await fetch("https://formsubmit.co/biuro@pbac.pl", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
+        mode: "no-cors",
+        body,
       });
-      if (!res.ok) {
-        setStatus("error");
-        setErrorMsg("Nie udało się wysłać formularza. Spróbuj ponownie lub zadzwoń.");
-        return;
-      }
       setStatus("success");
     } catch {
       setStatus("error");

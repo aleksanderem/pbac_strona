@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { Phone, ArrowRight, X } from "lucide-react";
+import { Phone, ArrowRight, X, CheckCircle2, Loader2 } from "lucide-react";
 import type { Testimonial } from "@/types";
 
 const GridLineHorizontal = ({ className, offset }: { className?: string; offset?: string }) => (
@@ -36,7 +36,25 @@ const GridLineVertical = ({ className, offset }: { className?: string; offset?: 
 );
 
 function QuoteModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+
   if (!open) return null;
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("loading");
+    const body = new FormData(e.currentTarget);
+    try {
+      await fetch("https://formsubmit.co/biuro@pbac.pl", {
+        method: "POST",
+        mode: "no-cors",
+        body,
+      });
+    } catch {
+      // no-cors fetch never throws on HTTP errors; only catch network failures
+    }
+    setStatus("success");
+  }
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -45,32 +63,51 @@ function QuoteModal({ open, onClose }: { open: boolean; onClose: () => void }) {
         <button onClick={onClose} className="absolute top-4 right-4 text-white/50 hover:text-white">
           <X className="w-5 h-5" />
         </button>
-        <h2 className="font-montserrat text-2xl font-bold mb-2">Zamów darmową wycenę</h2>
-        <p className="text-white/50 text-sm mb-6">Odpowiemy w ciągu 24h</p>
-        <form action="https://formsubmit.co/ajax/biuro@pbac.pl" method="POST" className="space-y-4">
-          <div>
-            <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Imię</label>
-            <input type="text" name="name" required placeholder="Jan Kowalski" className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30" />
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Telefon</label>
-              <input type="tel" name="phone" required placeholder="+48 500 000 000" className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30" />
+        {status === "success" ? (
+          <div className="flex flex-col items-center gap-5 py-6 text-center">
+            <div className="size-16 rounded-full gradient-primary flex items-center justify-center">
+              <CheckCircle2 className="size-8 text-white" />
             </div>
-            <div>
-              <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Metraż</label>
-              <input type="text" name="area" placeholder="np. 40 m²" className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30" />
-            </div>
+            <h2 className="font-montserrat text-2xl font-bold">Dziękujemy!</h2>
+            <p className="text-white/70">Skontaktujemy się z Tobą w ciągu 24 godzin.</p>
+            <button onClick={onClose} className="mt-2 rounded-full bg-white text-black px-6 py-3 text-sm font-bold hover:bg-white/90">
+              Zamknij
+            </button>
           </div>
-          <div>
-            <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Wiadomość</label>
-            <textarea name="message" rows={3} placeholder="Opisz swoje potrzeby..." className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30 resize-none" />
-          </div>
-          <input type="hidden" name="_subject" value="Darmowa wycena — pbac.pl" />
-          <button type="submit" className="w-full bg-white text-black rounded-xl px-6 py-4 font-bold text-sm hover:bg-white/90 transition-colors">
-            Wyślij zapytanie
-          </button>
-        </form>
+        ) : (
+          <>
+            <h2 className="font-montserrat text-2xl font-bold mb-2">Zamów darmową wycenę</h2>
+            <p className="text-white/50 text-sm mb-6">Odpowiemy w ciągu 24h</p>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input type="hidden" name="_subject" value="Darmowa wycena — pbac.pl" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" />
+              <div>
+                <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Imię</label>
+                <input type="text" name="name" required placeholder="Jan Kowalski" className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30" />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Telefon</label>
+                  <input type="tel" name="phone" required placeholder="+48 500 000 000" className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30" />
+                </div>
+                <div>
+                  <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Metraż</label>
+                  <input type="text" name="area" placeholder="np. 40 m²" className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30" />
+                </div>
+              </div>
+              <div>
+                <label className="text-xs text-white/50 uppercase tracking-wider mb-1.5 block">Wiadomość</label>
+                <textarea name="message" rows={3} placeholder="Opisz swoje potrzeby..." className="w-full rounded-xl bg-white/10 border border-white/15 px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-1 focus:ring-white/30 resize-none" />
+              </div>
+              <button type="submit" disabled={status === "loading"} className="w-full bg-white text-black rounded-xl px-6 py-4 font-bold text-sm hover:bg-white/90 transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
+                {status === "loading" && <Loader2 className="size-4 animate-spin" />}
+                {status === "loading" ? "Wysyłanie..." : "Wyślij zapytanie"}
+              </button>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );

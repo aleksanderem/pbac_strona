@@ -162,16 +162,21 @@ export default function QuoteForm() {
     setErrors([]);
     setStatus("loading");
     try {
-      const res = await fetch("https://formsubmit.co/ajax/biuro@pbac.pl", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(formData),
+      // formsubmit.co/ajax is blocked by Cloudflare CORS preflight; the
+      // plain endpoint with no-cors still delivers the payload.
+      const body = new FormData();
+      Object.entries(formData).forEach(([k, v]) => {
+        body.append(k, typeof v === "boolean" ? (v ? "tak" : "nie") : String(v));
       });
-      if (res.ok) {
-        setStatus("success");
-      } else {
-        setStatus("error");
-      }
+      body.append("_subject", "Wycena ze strony pbac.pl");
+      body.append("_template", "table");
+      body.append("_captcha", "false");
+      await fetch("https://formsubmit.co/biuro@pbac.pl", {
+        method: "POST",
+        mode: "no-cors",
+        body,
+      });
+      setStatus("success");
     } catch {
       setStatus("error");
     }

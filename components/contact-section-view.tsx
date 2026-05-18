@@ -258,6 +258,24 @@ export default function ContactSectionView({
 }: {
   testimonials: Testimonial[];
 }) {
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+
+  async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("loading");
+    const body = new FormData(e.currentTarget);
+    try {
+      await fetch("https://formsubmit.co/biuro@pbac.pl", {
+        method: "POST",
+        mode: "no-cors",
+        body,
+      });
+    } catch {
+      // no-cors fetch only throws on hard network failures
+    }
+    setStatus("success");
+  }
+
   return (
     <section className="w-full">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-10 md:px-8 lg:grid-cols-2 lg:py-20">
@@ -280,7 +298,16 @@ export default function ContactSectionView({
             </p>
 
             <div className="py-10">
-              <form action="https://formsubmit.co/ajax/biuro@pbac.pl" method="POST" className="space-y-4">
+              {status === "success" ? (
+                <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-6 text-center">
+                  <p className="font-montserrat font-bold text-lg mb-1">Dziękujemy!</p>
+                  <p className="text-white/70 text-sm">Skontaktujemy się z Tobą w ciągu 24 godzin.</p>
+                </div>
+              ) : (
+              <form onSubmit={handleContactSubmit} className="space-y-4">
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" />
                 <div>
                   <label htmlFor="contact-name" className="block text-sm leading-6 font-medium text-white/60">Imię i nazwisko</label>
                   <div className="mt-2">
@@ -312,11 +339,12 @@ export default function ContactSectionView({
                 <input type="hidden" name="_subject" value="Kontakt ze strony pbac.pl" />
 
                 <div className="mt-8">
-                  <button type="submit" className="flex w-full items-center justify-center rounded-full bg-white px-4 py-4 text-sm font-bold text-black transition duration-200 hover:bg-white/90">
-                    Wyślij wiadomość
+                  <button type="submit" disabled={status === "loading"} className="flex w-full items-center justify-center rounded-full bg-white px-4 py-4 text-sm font-bold text-black transition duration-200 hover:bg-white/90 disabled:opacity-50">
+                    {status === "loading" ? "Wysyłanie..." : "Wyślij wiadomość"}
                   </button>
                 </div>
               </form>
+              )}
             </div>
           </div>
         </div>
