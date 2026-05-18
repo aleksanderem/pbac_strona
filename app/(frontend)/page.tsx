@@ -24,6 +24,7 @@ const ServiceAreaMap = dynamic(() => import("@/components/service-area-map"));
 const TestimonialsSection = dynamic(() => import("@/components/testimonials-section"));
 const LatestBlogSection = dynamic(() => import("@/components/latest-blog-section"));
 const CTASection = dynamic(() => import("@/components/cta-section"));
+const QuoteForm = dynamic(() => import("@/components/quote-form"));
 const ContactSection = dynamic(() => import("@/components/contact-section"));
 const FaqSection = dynamic(() => import("@/components/faq-section"));
 const Footer = dynamic(() => import("@/components/footer"));
@@ -255,6 +256,7 @@ export default async function Home() {
       <ServiceAreaMap variant="montaz" />
       <TestimonialsSection />
       <LatestBlogSection />
+      <QuoteForm />
       <CTASection />
       <ContactSection />
       <FaqSection />
