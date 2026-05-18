@@ -14,6 +14,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import StickyPhone from "@/components/sticky-phone";
+import {
+  PlayairCTAButton,
+  PlayairQuoteModal,
+} from "@/components/playair/quote-cta";
 import { getPlayairLandingAsync } from "@/lib/cms";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -1303,17 +1307,20 @@ export default async function PlayAirPage() {
                     </li>
                   ))}
                 </ul>
-                <Button
-                  asChild
+                <PlayairCTAButton
+                  context={{
+                    kind: "package",
+                    packageName: p.tier,
+                    priceLabel: `od ${p.price} zł`,
+                  }}
                   className={
                     p.featured
-                      ? "mt-8 w-full h-11 bg-white text-black hover:bg-white/90 rounded-lg text-xs font-bold uppercase tracking-[0.1em]"
-                      : "mt-8 w-full h-11 bg-transparent border border-white/20 text-white hover:bg-white/5 rounded-lg text-xs font-bold uppercase tracking-[0.1em]"
+                      ? "mt-8 w-full h-11 bg-white text-black hover:bg-white/90 rounded-lg text-xs font-bold uppercase tracking-[0.1em] inline-flex items-center justify-center"
+                      : "mt-8 w-full h-11 bg-transparent border border-white/20 text-white hover:bg-white/5 rounded-lg text-xs font-bold uppercase tracking-[0.1em] inline-flex items-center justify-center"
                   }
-                  variant={p.featured ? "default" : "outline"}
                 >
-                  <a href="#wycena">Wybierz →</a>
-                </Button>
+                  Wybierz →
+                </PlayairCTAButton>
               </div>
             ))}
           </div>
@@ -1633,14 +1640,12 @@ export default async function PlayAirPage() {
                 <span className="text-white/70">Chłodne lato pewne.</span>
               </h2>
               <div className="flex flex-wrap gap-3 mt-10">
-                <Button
-                  asChild
-                  className="h-14 rounded-full bg-white text-black hover:bg-white/90 px-7 text-[13px] font-bold tracking-[0.1em] uppercase"
+                <PlayairCTAButton
+                  context={{ kind: "measurement" }}
+                  className="h-14 rounded-full bg-white text-black hover:bg-white/90 px-7 text-[13px] font-bold tracking-[0.1em] uppercase inline-flex items-center gap-2"
                 >
-                  <a href="#wycena">
-                    Umów pomiar <ArrowRight className="size-4" />
-                  </a>
-                </Button>
+                  Umów pomiar <ArrowRight className="size-4" />
+                </PlayairCTAButton>
                 <Button
                   asChild
                   variant="outline"
@@ -1669,6 +1674,7 @@ export default async function PlayAirPage() {
 
       <Footer />
       <StickyPhone />
+      <PlayairQuoteModal />
     </main>
   );
 }
